@@ -55,7 +55,7 @@ class ExhibitionTicketTableViewController: UITableViewController {
     
     @objc private func loadMore() {
         ticket.requestTickets(forExhibitionId: exhibition.exid, loadMore: true) { [weak self] (success, info, tickets) in
-            self?.tableView.mj_header.endRefreshing()
+            self?.tableView.mj_footer.endRefreshing()
             if success {
                 self?.tickets = tickets
                 self?.tableView.reloadData()
