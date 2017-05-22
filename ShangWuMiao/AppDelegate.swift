@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyJSON
+import SVProgressHUD
 
 
 @UIApplicationMain
@@ -59,19 +60,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if url.host == "safepay" {
             AlipaySDK.defaultService().processOrder(withPaymentResult: url, standbyCallback: { response in
                 let json = JSON(response as Any)
-                print("processOrder response: \(String(describing: json))")
                 let status = json["resultStatus"].intValue
 
-                UserPay.shared.paySuccess = status == 9000 ? true : false
+                UserPay.shared.paySuccess = (status == 9000) ? true : false
 
                 // tell database
-                UserPay.payResult(tradeStatus: status, callback: { success, info in
-                    if success {
-                        print("... tell me succes")
-                    } else {
-                        print("... tell me failure: \(info!)")
-                    }
-                })
+                if  status == 9000 {
+                    UserPay.payResult(tradeStatus: status, callback: { success, info in
+                        if success {
+                            SVProgressHUD.showSuccess(withStatus: info)
+                        } else {
+                            SVProgressHUD.showError(withStatus: info!)
+                        }
+                    })
+                }
+                
             })
             
             AlipaySDK.defaultService().processAuth_V2Result(url, standbyCallback: { response in

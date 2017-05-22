@@ -100,7 +100,6 @@ extension TopupViewController: UITableViewDataSource {
 extension TopupViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {   // alipay
-            isWechat = false
             UserPay.pay(withType: Pay.alipay,
                         orderPrice: Float(1),
                         completionHandler: { [weak self] (success, info) in
