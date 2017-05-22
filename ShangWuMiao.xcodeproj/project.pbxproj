@@ -41,6 +41,8 @@
 		8B05263E1ECF00370090F11B /* ExBlurView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B05263D1ECF00370090F11B /* ExBlurView.xib */; };
 		8B0E1A761ECD42310017F11C /* ExAddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0E1A741ECD42310017F11C /* ExAddressCell.swift */; };
 		8B0E1A771ECD42310017F11C /* ExAddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B0E1A751ECD42310017F11C /* ExAddressCell.xib */; };
+		8B24D3341ED2D07E00911340 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B24D32F1ED2D07E00911340 /* libWeChatSDK.a */; };
+		8B24D3371ED2D0BF00911340 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B24D3361ED2D0BF00911340 /* libsqlite3.0.tbd */; };
 		8B4753021ECE7E6400EDD02A /* UserPay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4753011ECE7E6400EDD02A /* UserPay.swift */; };
 		8B84EACC1EC54546001B1BFF /* ExhibitionTicketTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B84EACB1EC54546001B1BFF /* ExhibitionTicketTableViewController.swift */; };
 		8B84EAD51EC54720001B1BFF /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B84EAD41EC54720001B1BFF /* Ticket.swift */; };
@@ -216,6 +218,10 @@
 		8B05263D1ECF00370090F11B /* ExBlurView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExBlurView.xib; sourceTree = "<group>"; };
 		8B0E1A741ECD42310017F11C /* ExAddressCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExAddressCell.swift; sourceTree = "<group>"; };
 		8B0E1A751ECD42310017F11C /* ExAddressCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExAddressCell.xib; sourceTree = "<group>"; };
+		8B24D32F1ED2D07E00911340 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
+		8B24D3321ED2D07E00911340 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		8B24D3331ED2D07E00911340 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		8B24D3361ED2D0BF00911340 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		8B4753011ECE7E6400EDD02A /* UserPay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPay.swift; sourceTree = "<group>"; };
 		8B84EACB1EC54546001B1BFF /* ExhibitionTicketTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExhibitionTicketTableViewController.swift; sourceTree = "<group>"; };
 		8B84EAD41EC54720001B1BFF /* Ticket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
@@ -258,8 +264,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B24D3371ED2D0BF00911340 /* libsqlite3.0.tbd in Frameworks */,
 				8B0352E21ECEBFAE00E46DEE /* libc++.tbd in Frameworks */,
 				8B0352E01ECEBF6800E46DEE /* libz.tbd in Frameworks */,
+				8B24D3341ED2D07E00911340 /* libWeChatSDK.a in Frameworks */,
 				8B03528E1ECEB9F000E46DEE /* SystemConfiguration.framework in Frameworks */,
 				8B03528C1ECEB9E900E46DEE /* QuartzCore.framework in Frameworks */,
 				8B0352891ECEB9DF00E46DEE /* CoreTelephony.framework in Frameworks */,
@@ -363,6 +371,7 @@
 		8B0352161ECEB94A00E46DEE /* Pay */ = {
 			isa = PBXGroup;
 			children = (
+				8B24D32E1ED2D07E00911340 /* OpenSDK1.7.7 */,
 				8B0352171ECEB95E00E46DEE /* alipay */,
 			);
 			path = Pay;
@@ -491,6 +500,16 @@
 			path = Helper;
 			sourceTree = "<group>";
 		};
+		8B24D32E1ED2D07E00911340 /* OpenSDK1.7.7 */ = {
+			isa = PBXGroup;
+			children = (
+				8B24D32F1ED2D07E00911340 /* libWeChatSDK.a */,
+				8B24D3321ED2D07E00911340 /* WXApi.h */,
+				8B24D3331ED2D07E00911340 /* WXApiObject.h */,
+			);
+			path = OpenSDK1.7.7;
+			sourceTree = "<group>";
+		};
 		8B7A48D41EC0103400276058 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -560,6 +579,7 @@
 		CFA0ACAAC78DE45F580AF923 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8B24D3361ED2D0BF00911340 /* libsqlite3.0.tbd */,
 				8B0352E11ECEBFAE00E46DEE /* libc++.tbd */,
 				8B0352DF1ECEBF6800E46DEE /* libz.tbd */,
 				8B03528D1ECEB9F000E46DEE /* SystemConfiguration.framework */,
@@ -908,6 +928,10 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"-Objc",
+					"-all_load",
+				);
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -950,6 +974,10 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = (
+					"-Objc",
+					"-all_load",
+				);
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
@@ -972,6 +1000,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pay/alipay",
+					"$(PROJECT_DIR)/Pay/OpenSDK1.7.7",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ShangWuMiao;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -996,6 +1025,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pay/alipay",
+					"$(PROJECT_DIR)/Pay/OpenSDK1.7.7",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ShangWuMiao;
 				PRODUCT_NAME = "$(TARGET_NAME)";

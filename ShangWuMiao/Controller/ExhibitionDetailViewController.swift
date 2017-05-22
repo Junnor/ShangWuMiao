@@ -289,6 +289,8 @@ extension ExhibitionDetailViewController {
 }
 
 
+// MRAK: - Collection view datasource
+
 extension ExhibitionDetailViewController: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {

@@ -14,6 +14,7 @@ let kSecretKey = "us8dgf30hjRJGFU21"
 let kAppVersion = "2.0"
 let kAlipaySchema = "NyatoVendorAlipay"
 let kWechatSchema = "NyatoVendorWechat"
+let kAppId = "wx8356797cc8741cfb"
 
 
 struct RequestURL {

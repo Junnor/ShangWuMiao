@@ -13,6 +13,8 @@
 #import <CommonCrypto/CommonCrypto.h>
 #import <AlipaySDK/AlipaySDK.h>
 
+#import "WXApi.h"
+#import "WXApiObject.h"
 
 #endif /* ShangWuMiao_Bridging_Header_h */
 
