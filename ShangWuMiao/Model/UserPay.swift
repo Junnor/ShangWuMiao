@@ -27,11 +27,18 @@ final class UserPay {
     // for alipay
     var alipay_sign_str: String!
 
-    // for wechat
+    // for wechat ... Not used yet
+    /*
     var wechat_sign_str: String!
     var appid: String!
+    var noncestr: String!
+    var partnerid: String!
+    var prepayid: String!
+    var package: String!
+    var timestamp: UInt32!
+     */
     
-    // for 
+    // for
     var paySuccess: Bool!
 }
 
@@ -66,27 +73,35 @@ extension UserPay {
                                         
                                         UserPay.shared.alipay_sign_str = sign_str
                                     case .wechat:
+                                        /*     Not used yet
                                         if let wechatSource = json["wx_sign"].dictionary {
                                             let wechat = JSON(wechatSource)
                                             let appid = wechat["appid"].stringValue
                                             let sign = wechat["sign"].stringValue
 
-//                                            let noncestr = wechat["noncestr"].stringValue
-//                                            let package = wechat["package"].stringValue
-//                                            let packages = wechat["packages"].stringValue
-//                                            let partnerid = wechat["partnerid"].stringValue
-//                                            let prepayid = wechat["prepayid"].stringValue
-//                                            let timestamp = wechat["timestamp"].stringValue
-                                            
+                                            let noncestr = wechat["noncestr"].stringValue
+                                            let partnerid = wechat["partnerid"].stringValue
+                                            let prepayid = wechat["prepayid"].stringValue
+                                            let timestamp = wechat["timestamp"].stringValue
+                                            let package = wechat["package"].stringValue
+
                                             UserPay.shared.wechat_sign_str = sign
                                             UserPay.shared.appid = appid
+                                            UserPay.shared.noncestr = noncestr
+                                            UserPay.shared.partnerid = partnerid
+                                            UserPay.shared.prepayid = prepayid
+                                            UserPay.shared.package = package
+                                            UserPay.shared.timestamp = UInt32(timestamp)
                                         }
+                                         */
+                                        break
                                     }
                                     completionHandler(true, nil)
                                     return
                                 }
                                 completionHandler(false, info)
                             case .failure(let error):
+                                completionHandler(false, "支付错误")
                                 print("pay error: \(error)")
                             }
                             
@@ -114,12 +129,8 @@ extension UserPay {
                                 print("pay success json: \(jsonResource)")
                                 let json = JSON(jsonResource)
                                 let info = json["info"].stringValue
-                                guard let status = json["status"].int,
-                                status == 1 else {
-                                    completionHandler(false, info)
-                                    return
-                                }
-                                completionHandler(true, info)
+                                let status = json["status"].intValue
+                                completionHandler(status == 1, info)
                             case .failure(let error):
                                 print("pay callback error: \(error)")
                             }

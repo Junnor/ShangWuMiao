@@ -15,6 +15,7 @@ let kAppVersion = "2.0"
 let kAlipaySchema = "NyatoVendorAlipay"
 let kWechatSchema = "NyatoVendorWechat"
 let kAppId = "wx8356797cc8741cfb"
+var isWechat: Bool!
 
 
 struct RequestURL {

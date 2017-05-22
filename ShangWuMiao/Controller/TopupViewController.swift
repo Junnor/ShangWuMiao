@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SVProgressHUD
 
 class TopupViewController: UIViewController {
     
@@ -31,13 +31,7 @@ class TopupViewController: UIViewController {
 
         mcoinsLabel?.text = "\(User.shared.mcoins)"
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         
-        print("top up vc viewWillAppear")
-    }
-    
     fileprivate var currentMcoinsCount = 10 {
         didSet {
             mcoinsSumLabel?.text = "\(currentMcoinsCount)"
@@ -52,6 +46,21 @@ class TopupViewController: UIViewController {
                                                 print("alipay payOrder call back = \(String(describing: response))")
         })
     }
+    
+    /*       Not used yet
+    fileprivate func wechatAction() {
+        let payReq = PayReq()
+        payReq.openID = UserPay.shared.appid
+        payReq.partnerId = UserPay.shared.partnerid
+        payReq.prepayId = UserPay.shared.prepayid
+        payReq.package = UserPay.shared.package
+        payReq.nonceStr = UserPay.shared.noncestr
+        payReq.timeStamp = UserPay.shared.timestamp
+        payReq.sign = UserPay.shared.wechat_sign_str
+        
+        WXApi.send(payReq)
+    }
+     */
     
     @IBAction func mcoinsHundredPlusAction(_ sender: Any) {
         currentMcoinsCount += 100
@@ -73,17 +82,15 @@ class TopupViewController: UIViewController {
 extension TopupViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:topupIdentifier, for: indexPath)
         cell.selectionStyle = .none
         if let cell = cell as? TopupCell {
-            let image = indexPath.row == 0 ? #imageLiteral(resourceName: "pay-alipay") : #imageLiteral(resourceName: "pay-wenxin")
-            let title = indexPath.row == 0 ? "使用支付宝支付" : "使用微信支付"
-            cell.payImageView?.image = image
-            cell.titleLabel?.text = title
+            cell.payImageView?.image = #imageLiteral(resourceName: "pay-alipay")
+            cell.titleLabel?.text = "使用支付宝支付"
             
         }
         return cell
@@ -93,22 +100,36 @@ extension TopupViewController: UITableViewDataSource {
 extension TopupViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {   // alipay
+            isWechat = false
             UserPay.pay(withType: Pay.alipay,
                         orderPrice: Float(1),
                         completionHandler: { [weak self] (success, info) in
                             if success {
                                 self?.alipayAction()
                             } else {
+                                SVProgressHUD.showError(withStatus: info!)
                                 print("alipay pay failure: \(info!)")
                             }
             })
         } else {  // wechat
+            
+            // TODO: Hidden Hidden Hidden Hidden Hidden Hidden Hidden
+            /*
+            isWechat = true
+            // Float(currentMcoinsCount)
             UserPay.pay(withType: Pay.wechat,
-                        orderPrice: Float(currentMcoinsCount),
-                        completionHandler: { (success, info) in
+                        orderPrice: Float(1),
+                        completionHandler: { [weak self] (success, info) in
+                            if success {
+                                print("pay.....")
+                                self?.wechatAction()
+                            } else {
+                                SVProgressHUD.showError(withStatus: info!)
+                                print("wehcat pay failure: \(info!)")
+                            }
       
             })
-        
+             */
         }
     }
 }

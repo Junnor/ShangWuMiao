@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         // wechat register
-        WXApi.registerApp(kAppId)
+//        WXApi.registerApp(kAppId)
         
         // set different window root vc
         if UserDefaults.standard.value(forKeyPath: isLogin) != nil {
@@ -53,8 +53,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-    
-    // pay callback
+        
+        // pay callback
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
         if url.host == "safepay" {
             AlipaySDK.defaultService().processOrder(withPaymentResult: url, standbyCallback: { response in
@@ -79,7 +79,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 // TODO:
             })
         }
-        
+    
         return true
     }
 }
+
