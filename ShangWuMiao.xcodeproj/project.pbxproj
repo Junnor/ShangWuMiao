@@ -35,7 +35,7 @@
 		8B0352E01ECEBF6800E46DEE /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B0352DF1ECEBF6800E46DEE /* libz.tbd */; };
 		8B0352E21ECEBFAE00E46DEE /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B0352E11ECEBFAE00E46DEE /* libc++.tbd */; };
 		8B0352E91ECEE16F00E46DEE /* ClassHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0352E81ECEE16F00E46DEE /* ClassHelper.swift */; };
-		8B0352EB1ECEE17D00E46DEE /* URLAct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0352EA1ECEE17D00E46DEE /* URLAct.swift */; };
+		8B0352EB1ECEE17D00E46DEE /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0352EA1ECEE17D00E46DEE /* Constant.swift */; };
 		8B0352ED1ECEE18500E46DEE /* GlobalFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0352EC1ECEE18500E46DEE /* GlobalFunctions.swift */; };
 		8B05263C1ECF002A0090F11B /* ExBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B05263B1ECF002A0090F11B /* ExBlurView.swift */; };
 		8B05263E1ECF00370090F11B /* ExBlurView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B05263D1ECF00370090F11B /* ExBlurView.xib */; };
@@ -210,7 +210,7 @@
 		8B0352DF1ECEBF6800E46DEE /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		8B0352E11ECEBFAE00E46DEE /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		8B0352E81ECEE16F00E46DEE /* ClassHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassHelper.swift; sourceTree = "<group>"; };
-		8B0352EA1ECEE17D00E46DEE /* URLAct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLAct.swift; sourceTree = "<group>"; };
+		8B0352EA1ECEE17D00E46DEE /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		8B0352EC1ECEE18500E46DEE /* GlobalFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalFunctions.swift; sourceTree = "<group>"; };
 		8B05263B1ECF002A0090F11B /* ExBlurView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExBlurView.swift; sourceTree = "<group>"; };
 		8B05263D1ECF00370090F11B /* ExBlurView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExBlurView.xib; sourceTree = "<group>"; };
@@ -484,7 +484,7 @@
 		8B0352E71ECEE16200E46DEE /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				8B0352EA1ECEE17D00E46DEE /* URLAct.swift */,
+				8B0352EA1ECEE17D00E46DEE /* Constant.swift */,
 				8B0352E81ECEE16F00E46DEE /* ClassHelper.swift */,
 				8B0352EC1ECEE18500E46DEE /* GlobalFunctions.swift */,
 			);
@@ -804,7 +804,7 @@
 				8BCE2BAD1ECC369E00ACA1BB /* ExDescriptionCell.swift in Sources */,
 				8BDB06901EC01DBC00F0A660 /* TabBarViewController.swift in Sources */,
 				8B0352E91ECEE16F00E46DEE /* ClassHelper.swift in Sources */,
-				8B0352EB1ECEE17D00E46DEE /* URLAct.swift in Sources */,
+				8B0352EB1ECEE17D00E46DEE /* Constant.swift in Sources */,
 				8BF9B4691EC069360057531A /* LoginViewController.swift in Sources */,
 				8B0352ED1ECEE18500E46DEE /* GlobalFunctions.swift in Sources */,
 				8BDB06881EC0178100F0A660 /* ExhibitionViewController.swift in Sources */,

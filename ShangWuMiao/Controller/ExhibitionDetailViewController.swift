@@ -100,14 +100,17 @@ class ExhibitionDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if currentBarTintColor != nil {
-            let image = UIImage.from(color: currentBarTintColor)
-            self.navigationController?.navigationBar.setBackgroundImage(image, for: .default)
-            self.navigationController?.navigationBar.shadowImage = image
-        } else {
-            self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-            self.navigationController?.navigationBar.shadowImage = UIImage()
+        if !useDefaultImage {
+            if currentBarTintColor != nil {
+                let image = UIImage.from(color: currentBarTintColor)
+                self.navigationController?.navigationBar.setBackgroundImage(image, for: .default)
+                self.navigationController?.navigationBar.shadowImage = image
+            } else {
+                self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+                self.navigationController?.navigationBar.shadowImage = UIImage()
+            }
         }
+
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -232,6 +235,7 @@ class ExhibitionDetailViewController: UIViewController {
         }
     }
     
+    private var useDefaultImage = false
     private var currentBarTintColor: UIColor!
     private func naviBarTintColorWith(offsetY: CGFloat) {
         if offsetY >= 0 {
@@ -240,15 +244,19 @@ class ExhibitionDetailViewController: UIViewController {
             
             currentBarTintColor = color
             
-            let image = UIImage.from(color: color)
-            self.navigationController?.navigationBar.setBackgroundImage(image, for: .default)
-            self.navigationController?.navigationBar.shadowImage = image
-            
             self.titleLabel?.alpha = alpha
             self.titleLabel?.isHidden = false
-        } else {
-            self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-            self.navigationController?.navigationBar.shadowImage = UIImage()
+            
+            if offsetY >= 64 {
+                useDefaultImage = true
+                self.navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+                self.navigationController?.navigationBar.shadowImage = nil
+            } else {
+                useDefaultImage = false
+                let image = UIImage.from(color: color)
+                self.navigationController?.navigationBar.setBackgroundImage(image, for: .default)
+                self.navigationController?.navigationBar.shadowImage = image
+            }
         }
     }
     

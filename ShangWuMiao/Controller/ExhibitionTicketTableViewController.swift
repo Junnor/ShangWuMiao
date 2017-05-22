@@ -60,7 +60,7 @@ class ExhibitionTicketTableViewController: UITableViewController {
                 self?.tickets = tickets
                 self?.tableView.reloadData()
             } else {
-                print("load  mre tickets failure: \(String(describing: info))")
+                print("load more tickets failure: \(String(describing: info))")
             }
         }
     }

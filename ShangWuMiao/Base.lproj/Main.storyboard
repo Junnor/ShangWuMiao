@@ -22,10 +22,10 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="avatarCellIdentifier" rowHeight="186" id="IHJ-sO-R68" customClass="MeCell" customModule="ShangWuMiao" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="55.5" width="320" height="186"/>
+                                <rect key="frame" x="0.0" y="56" width="320" height="186"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IHJ-sO-R68" id="DDd-QN-87c">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="185.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="185"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6xg-xn-ezC">
@@ -92,10 +92,10 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="moneyCellIdentifier" rowHeight="58" id="fBD-8e-oXJ" customClass="MoneyCell" customModule="ShangWuMiao" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="241.5" width="320" height="58"/>
+                                <rect key="frame" x="0.0" y="242" width="320" height="58"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fBD-8e-oXJ" id="cCV-46-btx">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="57.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="57"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ico-mcionmy" translatesAutoresizingMaskIntoConstraints="NO" id="0si-ab-G69">
@@ -137,10 +137,10 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="detailCellIdentifier" rowHeight="58" id="p4c-4Y-pbF" customClass="DetailCell" customModule="ShangWuMiao" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="299.5" width="320" height="58"/>
+                                <rect key="frame" x="0.0" y="300" width="320" height="58"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="p4c-4Y-pbF" id="jvv-4X-ALF">
-                                    <rect key="frame" x="0.0" y="0.0" width="287" height="57.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="57"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ico-mcionmy" translatesAutoresizingMaskIntoConstraints="NO" id="OYp-Z1-F1T">
@@ -393,7 +393,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="61"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="egP-4q-tTc" id="z4P-5l-7Sa">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="60.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pay-alipay" translatesAutoresizingMaskIntoConstraints="NO" id="een-m0-K5f">
@@ -467,10 +467,10 @@
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="bought ticket identififer" rowHeight="59" id="YmF-XE-yVm" customClass="BoughtTicketCell" customModule="ShangWuMiao" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55.5" width="320" height="59"/>
+                                        <rect key="frame" x="0.0" y="56" width="320" height="59"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YmF-XE-yVm" id="gS9-dx-ZPc">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="58.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="58"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="进行中" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BqE-uv-27b">
@@ -532,10 +532,10 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ticket order identifier" rowHeight="104" id="SFW-H6-TC3" customClass="TicketOrderCell" customModule="ShangWuMiao" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="55.5" width="320" height="104"/>
+                                <rect key="frame" x="0.0" y="56" width="320" height="104"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SFW-H6-TC3" id="Aek-fJ-jXg">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="103.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="103"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="C90-tW-Cwv">
@@ -636,10 +636,10 @@
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="top up recorder identifier" rowHeight="108" id="suE-Ct-elg" customClass="TopupRecordCell" customModule="ShangWuMiao" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55.5" width="320" height="108"/>
+                                        <rect key="frame" x="0.0" y="56" width="320" height="108"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="suE-Ct-elg" id="0ec-TK-DG0">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="107.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="107"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="nyato喵币充值" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ohy-jb-act">
@@ -673,7 +673,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="支付失败" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GVO-ej-H7z">
-                                                    <rect key="frame" x="269" y="35.5" width="98" height="37"/>
+                                                    <rect key="frame" x="214" y="35.5" width="98" height="37"/>
                                                     <color key="backgroundColor" red="1" green="0.51402221020000005" blue="0.69891136480000005" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="37" id="92g-ln-cL8"/>

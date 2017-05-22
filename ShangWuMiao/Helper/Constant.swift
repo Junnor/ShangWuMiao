@@ -13,6 +13,8 @@ let kImageHeaderUrl = "https://img.nyato.com/"
 let kSecretKey = "us8dgf30hjRJGFU21"
 let kAppVersion = "2.0"
 let kAlipaySchema = "NyatoVendorAlipay"
+let kWechatSchema = "NyatoVendorWechat"
+
 
 struct RequestURL {
     static let kLoginUrlString = "/index.php?app=ios&mod=Member&act=login"
