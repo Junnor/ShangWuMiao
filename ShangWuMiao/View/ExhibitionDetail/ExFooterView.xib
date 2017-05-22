@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ExFooterViewID" id="U6b-Vx-4bR" customClass="ExFooterView" customModule="ShangWuMiao" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="354" height="67"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eWQ-bh-4nA">
+                    <rect key="frame" x="226" y="9.5" width="30" height="48"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                    <state key="normal" title="-"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sux-uQ-1Vp">
+                    <rect key="frame" x="304" y="9.5" width="30" height="48"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                    <state key="normal" title="+"/>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W2j-19-J29">
+                    <rect key="frame" x="276" y="23" width="8" height="21"/>
+                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <constraints>
+                <constraint firstItem="eWQ-bh-4nA" firstAttribute="centerY" secondItem="U6b-Vx-4bR" secondAttribute="centerY" id="4jH-My-gD4"/>
+                <constraint firstItem="Sux-uQ-1Vp" firstAttribute="centerY" secondItem="U6b-Vx-4bR" secondAttribute="centerY" id="Kik-U0-bhY"/>
+                <constraint firstItem="W2j-19-J29" firstAttribute="leading" secondItem="eWQ-bh-4nA" secondAttribute="trailing" constant="20" id="lEQ-ka-ah1"/>
+                <constraint firstAttribute="trailing" secondItem="Sux-uQ-1Vp" secondAttribute="trailing" constant="20" id="nvA-es-aNX"/>
+                <constraint firstItem="Sux-uQ-1Vp" firstAttribute="leading" secondItem="W2j-19-J29" secondAttribute="trailing" constant="20" id="pj8-Pr-DnS"/>
+                <constraint firstItem="W2j-19-J29" firstAttribute="centerY" secondItem="U6b-Vx-4bR" secondAttribute="centerY" id="xGt-Zw-p1M"/>
+            </constraints>
+            <connections>
+                <outlet property="minusButton" destination="eWQ-bh-4nA" id="iHx-zd-ruy"/>
+                <outlet property="plusButton" destination="Sux-uQ-1Vp" id="U0q-Iz-FdR"/>
+                <outlet property="sumLabel" destination="W2j-19-J29" id="Oc5-DA-g9Y"/>
+            </connections>
+            <point key="canvasLocation" x="35" y="62.5"/>
+        </collectionReusableView>
+    </objects>
+</document>

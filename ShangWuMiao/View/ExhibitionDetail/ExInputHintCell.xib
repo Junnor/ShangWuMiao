@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ExInputHintCellID" id="gTV-IL-0wX" customClass="ExInputHintCell" customModule="ShangWuMiao" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="431" height="155"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="431" height="155"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MUz-8P-4BS" userLabel="View2">
+                        <rect key="frame" x="0.0" y="78" width="431" height="77"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="选择购买的票种" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JLF-La-pZK">
+                                <rect key="frame" x="49" y="29.5" width="107.5" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q95-CT-fDV">
+                                <rect key="frame" x="308" y="22" width="108" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="108" id="3Vt-Sp-J3F"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title=" 显示代理票价 ">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="type-buy" translatesAutoresizingMaskIntoConstraints="NO" id="a5t-9J-bB8">
+                                <rect key="frame" x="15" y="26" width="24" height="24"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="Q95-CT-fDV" firstAttribute="centerY" secondItem="MUz-8P-4BS" secondAttribute="centerY" id="5JD-Ga-a52"/>
+                            <constraint firstItem="a5t-9J-bB8" firstAttribute="centerY" secondItem="MUz-8P-4BS" secondAttribute="centerY" id="EIW-56-9Sw"/>
+                            <constraint firstAttribute="trailing" secondItem="Q95-CT-fDV" secondAttribute="trailing" constant="15" id="ODK-sM-4OU"/>
+                            <constraint firstItem="JLF-La-pZK" firstAttribute="centerY" secondItem="a5t-9J-bB8" secondAttribute="centerY" id="cZw-Ht-u1t"/>
+                            <constraint firstItem="a5t-9J-bB8" firstAttribute="leading" secondItem="MUz-8P-4BS" secondAttribute="leading" constant="15" id="omS-pg-4cC"/>
+                            <constraint firstItem="JLF-La-pZK" firstAttribute="leading" secondItem="a5t-9J-bB8" secondAttribute="trailing" constant="10" id="t3P-h8-gUE"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="idv-Vj-6Vb" userLabel="View1">
+                        <rect key="frame" x="0.0" y="0.0" width="431" height="77.5"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="type-buy" translatesAutoresizingMaskIntoConstraints="NO" id="oN5-JR-DSE">
+                                <rect key="frame" x="15" y="26" width="24" height="24"/>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入手机号码" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MZO-E4-g9N">
+                                <rect key="frame" x="145.5" y="24" width="270.5" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="常用手机号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eFg-Vt-j6s">
+                                <rect key="frame" x="49" y="29" width="76.5" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="MZO-E4-g9N" secondAttribute="trailing" constant="15" id="2SN-YD-xo0"/>
+                            <constraint firstItem="MZO-E4-g9N" firstAttribute="leading" secondItem="eFg-Vt-j6s" secondAttribute="trailing" constant="20" id="AS6-TY-mNa"/>
+                            <constraint firstItem="MZO-E4-g9N" firstAttribute="centerY" secondItem="idv-Vj-6Vb" secondAttribute="centerY" id="Auv-tM-whk"/>
+                            <constraint firstItem="oN5-JR-DSE" firstAttribute="leading" secondItem="idv-Vj-6Vb" secondAttribute="leading" constant="15" id="ERX-CW-bc8"/>
+                            <constraint firstItem="eFg-Vt-j6s" firstAttribute="leading" secondItem="oN5-JR-DSE" secondAttribute="trailing" constant="10" id="NAu-ou-avo"/>
+                            <constraint firstItem="eFg-Vt-j6s" firstAttribute="centerY" secondItem="oN5-JR-DSE" secondAttribute="centerY" id="QkN-4C-yCV"/>
+                            <constraint firstItem="oN5-JR-DSE" firstAttribute="centerY" secondItem="idv-Vj-6Vb" secondAttribute="centerY" id="b0q-wo-Zsr"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="MUz-8P-4BS" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="02B-HV-cVP"/>
+                <constraint firstAttribute="bottom" secondItem="MUz-8P-4BS" secondAttribute="bottom" id="Cek-Kb-7kB"/>
+                <constraint firstItem="idv-Vj-6Vb" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Hdw-bL-575"/>
+                <constraint firstAttribute="trailing" secondItem="idv-Vj-6Vb" secondAttribute="trailing" id="OMY-On-Xea"/>
+                <constraint firstItem="MUz-8P-4BS" firstAttribute="top" secondItem="idv-Vj-6Vb" secondAttribute="bottom" id="fCz-5e-BZu"/>
+                <constraint firstAttribute="trailing" secondItem="MUz-8P-4BS" secondAttribute="trailing" id="p8H-kV-aw5"/>
+                <constraint firstItem="idv-Vj-6Vb" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="qon-ry-1hI"/>
+                <constraint firstItem="idv-Vj-6Vb" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="1:2" id="rt9-XP-bp7"/>
+            </constraints>
+            <size key="customSize" width="431" height="155"/>
+            <connections>
+                <outlet property="phoneTextField" destination="MZO-E4-g9N" id="tcJ-Qc-cCh"/>
+                <outlet property="priceButton" destination="Q95-CT-fDV" id="Nno-PY-tnd"/>
+            </connections>
+            <point key="canvasLocation" x="32.5" y="58.5"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="type-buy" width="24" height="24"/>
+    </resources>
+</document>
