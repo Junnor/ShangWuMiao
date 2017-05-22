@@ -136,7 +136,7 @@ extension User {
                                 let status = json["status"].intValue
                                 callBack(status == 1, info)
                             case .failure(let error):
-                                print("buy tickt error: \(error)")
+                                print("buy tickts error: \(error)")
                                 callBack(false, "购票错误")
                             }
         }

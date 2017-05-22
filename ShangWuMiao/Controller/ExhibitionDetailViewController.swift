@@ -26,7 +26,7 @@ class ExhibitionDetailViewController: UIViewController {
             collectionView.alwaysBounceVertical = true
         }
     }
-
+    
     // MARK: - Public property set from segue
     var exhibition: Exhibition!
     
@@ -35,7 +35,7 @@ class ExhibitionDetailViewController: UIViewController {
     fileprivate var tickts = [Ticket]()
     fileprivate var blurView: ExBlurView!
     fileprivate var layerBlurView = false
-
+    
     fileprivate let limitLines = 6
     fileprivate let showMoreButtonWithGap: CGFloat = 50
     fileprivate let noMoreButtonWithGap: CGFloat = 20
@@ -89,14 +89,14 @@ class ExhibitionDetailViewController: UIViewController {
         registerCollectionView()
         blurView = ExBlurView.blurViewFromNib()
         loadExhibitionData()
-
+        
         // keyboard notification
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(self.keyboardNotification(notification:)),
                                                name: NSNotification.Name.UIKeyboardWillChangeFrame,
                                                object: nil)
     }
-        
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -213,12 +213,12 @@ class ExhibitionDetailViewController: UIViewController {
         }
         return (false, "手机号码不能为空...")
     }
-
+    
     
     // set navigation bar
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offsetY = scrollView.contentOffset.y
-
+        
         // for navi bar
         naviBarTintColorWith(offsetY: offsetY)
         
@@ -454,7 +454,7 @@ extension ExhibitionDetailViewController: UICollectionViewDataSource {
         originalPrice = !originalPrice
         
         let lastSelectedIndex = collectionView.indexPathsForSelectedItems?.first
-
+        
         self.collectionView.reloadData()
         
         self.collectionView.selectItem(at: lastSelectedIndex, animated: true, scrollPosition: UICollectionViewScrollPosition.centeredHorizontally)
@@ -489,7 +489,7 @@ extension ExhibitionDetailViewController: UICollectionViewDelegateFlowLayout {
             if !originalPrice {
                 cell.priceLabel?.textColor = UIColor.themeYellow
             }
-          }
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
