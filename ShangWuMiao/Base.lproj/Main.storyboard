@@ -1107,7 +1107,7 @@
                                         <rect key="frame" x="-6.5" y="0.0" width="333" height="114"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="334" height="114"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="333" height="114"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PpH-D5-BTr">
@@ -1378,6 +1378,9 @@
                                         <real key="value" value="23"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="complete" destination="AVv-Vo-pPD" eventType="touchUpInside" id="faZ-1o-1US"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -1400,6 +1403,11 @@
                             <constraint firstItem="hgL-84-Ivl" firstAttribute="height" secondItem="Zgw-Od-gAy" secondAttribute="height" id="weK-3m-SqD"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="passwordTextField" destination="5GD-yJ-K2I" id="4lG-A6-eGc"/>
+                        <outlet property="unameTextField" destination="382-4y-7Fk" id="84v-mb-mwa"/>
+                        <outlet property="verifyTextField" destination="Zgw-Od-gAy" id="xAt-dh-lUd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vxd-Dr-3s7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1537,6 +1545,9 @@
                                         <real key="value" value="23"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="getCode" destination="O1a-CI-lYP" eventType="touchUpInside" id="Qpl-ni-fA8"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JsG-eA-jIt" customClass="CornerButton" customModule="ShangWuMiao" customModuleProvider="target">
                                 <rect key="frame" x="20" y="262" width="280" height="46"/>
@@ -1549,6 +1560,9 @@
                                         <real key="value" value="23"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="submit" destination="O1a-CI-lYP" eventType="touchUpInside" id="jZZ-w6-6Te"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="先输入手机号，点击“获取验证码”，..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YIb-MT-PHt">
                                 <rect key="frame" x="20" y="226" width="280" height="16"/>
@@ -1581,6 +1595,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="codeTextField" destination="h7e-Ea-Fam" id="Bzb-RU-aHo"/>
+                        <outlet property="phoneTextField" destination="f3J-H1-c2S" id="IiQ-2x-VUE"/>
+                        <outlet property="promptLable" destination="YIb-MT-PHt" id="BeC-CU-Cta"/>
                         <segue destination="AVv-Vo-pPD" kind="show" identifier="register" id="4iN-VU-axb"/>
                     </connections>
                 </viewController>

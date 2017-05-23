@@ -18,14 +18,13 @@ class LoginViewController: UIViewController {
     // MARK: - View controller lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // not elegant
         let itemAppearance = UIBarButtonItem.appearance()
         itemAppearance.setBackButtonTitlePositionAdjustment(UIOffset(horizontal: -100, vertical: -100), for: .default)
         // 从搜索结果返回的时候取消按钮回变成cleanColor
 //        UIBarButtonItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.clear], for: UIControlState.normal)
 //        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tap))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapAction))
         view.addGestureRecognizer(tapGesture)
     
         NotificationCenter.default.addObserver(self,
@@ -74,7 +73,7 @@ class LoginViewController: UIViewController {
         
     }
     
-    @objc private func tap() {
+    @objc private func tapAction() {
         self.unameTextfield.resignFirstResponder()
         self.passwordTextfield.resignFirstResponder()
     }

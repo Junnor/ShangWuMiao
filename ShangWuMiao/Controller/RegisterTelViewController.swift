@@ -10,26 +10,34 @@ import UIKit
 
 class RegisterTelViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBOutlet weak var promptLable: UILabel! {
+        didSet {
+            promptLable?.text = "先输入手机号，点击“获取验证码”，\n然后输入手机收到的验证码点击下一步 "
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBOutlet weak var phoneTextField: CornerTextField!
+    
+    @IBOutlet weak var codeTextField: CornerTextField!
+    
+    @IBAction func getCode() {
     }
-    */
+    
+    @IBAction func submit() {
+        performSegue(withIdentifier: "register", sender: nil)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapAction))
+        view.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc private func tapAction() {
+        self.phoneTextField.resignFirstResponder()
+        self.codeTextField.resignFirstResponder()
+    }
 
 }
