@@ -71,7 +71,7 @@ extension User {
     
     // MARK: - Login
     static func login(parameters: Dictionary<String, String>,
-               completionHandler: @escaping (Int, String) -> ()) {
+                      completionHandler: @escaping (_ success: Bool, _ info: String) -> ()) {
         let loginSecret = kSecretKey + ActType.login
         let token = loginSecret.md5
         let loginUrlString = kHeaderUrl + RequestURL.kLoginUrlString + "&token=" + token!
@@ -103,7 +103,7 @@ extension User {
                                         }
                                         
                                         print("login info: \(info)")
-                                        completionHandler(status, info)
+                                        completionHandler(status == 1, info)
                                     }
                                 }
                             case .failure(let error):

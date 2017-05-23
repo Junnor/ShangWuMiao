@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import SVProgressHUD
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
@@ -60,26 +61,19 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     // MARK: - Helper
     
     @IBAction func login(_ sender: UIButton) {
-        let emptyUname = isEmptyText(parse: unameTextfield.text)
-        if emptyUname {
-            print("empty username")
-            return
-        }
-        let emptyPassword = isEmptyText(parse: passwordTextfield.text)
-        if emptyPassword {
-            print("empty password")
-            return
+        guard let uname = unameTextfield.text,
+            let password = passwordTextfield.text else {
+                SVProgressHUD.showError(withStatus: "账号或密码不能为空")
+                return
         }
 
-        // test
-        let parameters = ["uname": unameTextfield.text!,
-                          "password": passwordTextfield.text!]
-        User.login(parameters: parameters) { [weak self] status, info in
-            if status == 1 {
+        let parameters = ["uname": uname,
+                          "password": password]
+        User.login(parameters: parameters) { [weak self] success, info in
+            SVProgressHUD.showInfo(withStatus: info)
+            if success {
                 self?.performSegue(withIdentifier: "login", sender: nil)
                 nyato_storeOauthData()
-            } else {
-                print("login failure: \(info)")
             }
         }
         
