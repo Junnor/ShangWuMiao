@@ -21,6 +21,11 @@ class ExhibitionViewController: UIViewController, UICollectionViewDataSource, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // not elegant
+        let itemAppearance = UIBarButtonItem.appearance()
+        itemAppearance.setBackButtonTitlePositionAdjustment(UIOffset(horizontal: -100, vertical: -100), for: .default)
+        
+        // collection view
         let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout
         layout?.itemSize = CGSize(width: view.bounds.width, height: 120)
         layout?.minimumLineSpacing = 0

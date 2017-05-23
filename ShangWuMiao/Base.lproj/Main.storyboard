@@ -1107,7 +1107,7 @@
                                         <rect key="frame" x="-6.5" y="0.0" width="333" height="114"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="333" height="114"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="334" height="114"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PpH-D5-BTr">
@@ -1226,6 +1226,7 @@
                         </connections>
                     </navigationItem>
                     <connections>
+                        <outlet property="cancelItem" destination="t2V-Wz-ck2" id="WoW-6L-hob"/>
                         <outlet property="collectionView" destination="OLt-mq-mFE" id="HI8-s7-v12"/>
                         <outlet property="searchBar" destination="bbs-9p-O0o" id="PAy-lV-9tT"/>
                     </connections>
@@ -1431,10 +1432,6 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="lN8-z3-7ap">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.12311627538071068" green="0.12311627538071068" blue="0.12311627538071068" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <textAttributes key="titleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -1454,10 +1451,6 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="BbJ-IV-e2U">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.1231162754" green="0.1231162754" blue="0.1231162754" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <textAttributes key="titleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -1476,10 +1469,6 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="KTa-BI-nvI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.1231162754" green="0.1231162754" blue="0.1231162754" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <textAttributes key="titleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -1498,10 +1487,6 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="eto-dP-A0F">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.1231162754" green="0.1231162754" blue="0.1231162754" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <textAttributes key="titleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -1614,6 +1599,6 @@
         <image name="pay-alipay" width="29" height="29"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Kef-4E-MMY"/>
+        <segue reference="HGO-XF-caW"/>
     </inferredMetricsTieBreakers>
 </document>

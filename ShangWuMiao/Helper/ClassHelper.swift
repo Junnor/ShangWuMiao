@@ -21,14 +21,6 @@ extension UIImage {
     }
 }
 
-//extension UIViewController {
-//    func customizeBackItem() {
-//        let backItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-//        navigationItem.backBarButtonItem = backItem
-//        self.navigationController?.navigationBar.tintColor = UIColor.white
-//    }
-//}
-
 extension String  {
     var md5: String! {
         let str = self.cString(using: String.Encoding.utf8)

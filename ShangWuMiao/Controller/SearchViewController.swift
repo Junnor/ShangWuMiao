@@ -15,7 +15,7 @@ class SearchViewController: UIViewController, UICollectionViewDataSource, UIColl
     // MARK: - Outlets
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet weak var collectionView: UICollectionView!
-    
+    @IBOutlet weak var cancelItem: UIBarButtonItem!
     // MARK: - Private properties
     private let exhibitionCellId = "ExhibitionSearchCellIdentifer"
     private let segueIdentifier = "show search exhibition"
@@ -74,7 +74,7 @@ class SearchViewController: UIViewController, UICollectionViewDataSource, UIColl
         
         collectionView?.mj_header = headerRefresh
     }
-    
+        
     private var forword = true
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
