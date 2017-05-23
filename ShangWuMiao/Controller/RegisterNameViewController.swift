@@ -9,6 +9,9 @@
 import UIKit
 
 class RegisterNameViewController: UIViewController {
+    
+    var code: String!
+    var phone: String!
 
     @IBOutlet weak var unameTextField: CornerTextField!
     @IBOutlet weak var passwordTextField: CornerTextField!
@@ -16,6 +19,17 @@ class RegisterNameViewController: UIViewController {
     
     @IBAction func complete() {
         tapAction()
+        
+        Login.register(forUser: unameTextField.text!,
+                       password: passwordTextField.text!, mobile: phone, code: code) {
+                        [weak self] success, info in
+                        if success {
+                            print("success info")
+                        } else {
+                            print("error info")
+                        }
+        }
+        
     }
     
     override func viewDidLoad() {

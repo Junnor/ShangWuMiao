@@ -21,7 +21,19 @@ class RegisterTelViewController: UIViewController {
     @IBOutlet weak var codeTextField: CornerTextField!
     
     @IBAction func getCode() {
-        // TODO: send phone
+        if phoneTextField?.text?.characters.count != 0 {
+            let response = nyato_isPhoneNumber(phoneNumber: phoneTextField?.text)
+            if response.result == false {
+                // 解决SVProgressHUD 在有键盘时不居中的bug
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                    SVProgressHUD.showInfo(withStatus: response.info!)
+                })
+            } else {
+                Login.requestPhoneCode(for: phoneTextField.text!) { (success, info) in
+                }
+            }
+        }
+
     }
     
     @IBAction func submit() {
