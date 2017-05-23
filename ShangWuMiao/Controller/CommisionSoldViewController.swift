@@ -13,6 +13,7 @@ import SVProgressHUD
 
 class CommisionSoldViewController: UIViewController, UIWebViewDelegate {
 
+    @IBOutlet weak var indicatorView: UIActivityIndicatorView!
     @IBOutlet weak var webView: UIWebView! {
         didSet {
             webView.delegate = self
@@ -21,7 +22,7 @@ class CommisionSoldViewController: UIViewController, UIWebViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         title = "Nyato喵特网 - 有爱、贴心、便捷的漫展服务平台 -"
         
         let url = URL(string: delegateUrlString)
@@ -32,6 +33,10 @@ class CommisionSoldViewController: UIViewController, UIWebViewDelegate {
     // MARK: - Delegate
     func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
         SVProgressHUD.showError(withStatus: "请求失败，请重新加载")
+    }
+    
+    func webViewDidFinishLoad(_ webView: UIWebView) {
+        indicatorView.stopAnimating()
     }
     
 }
