@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class RegisterNameViewController: UIViewController {
     
     var code: String!
     var phone: String!
 
-    @IBOutlet weak var unameTextField: CornerTextField!
+    @IBOutlet weak var unameTextField: CornerTextField! 
     @IBOutlet weak var passwordTextField: CornerTextField!
     @IBOutlet weak var verifyTextField: CornerTextField!
     
@@ -24,10 +25,13 @@ class RegisterNameViewController: UIViewController {
             let password = passwordTextField.text,
             let verified = verifyTextField.text,
             password == verified,
-            3 < uname.characters.count,
-            uname.characters.count < 10,
             7 <= password.characters.count,
             password.characters.count >= 16 else {
+            return
+        }
+        
+        if 3 < uname.characters.count || uname.characters.count < 10 {
+            SVProgressHUD.showInfo(withStatus: "名称太短或太长")
             return
         }
         
@@ -35,6 +39,7 @@ class RegisterNameViewController: UIViewController {
                        password: passwordTextField.text!, mobile: phone, code: code) {
                         success, info in
                         if success {
+                            // TODO: login
                             print("success info")
                         } else {
                             print("error info")

@@ -65,6 +65,8 @@ extension Login {
                          "mobile": mobile,
                          "code": code]
         
+        print("...register parameter: \(parameter)")
+        
         let url = URL(string: loginUrlString)
 
         Alamofire.request(url!,

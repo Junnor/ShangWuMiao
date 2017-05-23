@@ -117,7 +117,7 @@ class RegisterTelViewController: UIViewController, UITextFieldDelegate {
             if let vc = segue.destination as? RegisterNameViewController {
                 vc.code = code
                 vc.phone = codePhone
-                vc.title = "完善用户信息"
+                vc.title = "设置账户信息"
             }
         }
     }
@@ -146,9 +146,14 @@ class RegisterTelViewController: UIViewController, UITextFieldDelegate {
     
     @objc private func requestCodeAgain() {
         self.seconds -= 1
-        self.codeButton.setTitle("\(self.seconds)s 后重新发送", for: .normal)
+        self.codeButton.setTitle("重新获取\(self.seconds)秒", for: .normal)
         
-        print("..seconds = \(self.seconds)")
+        if self.seconds == 0 {
+            self.seconds = 60
+            self.timer.invalidate()
+            self.indicatorView.stopAnimating()
+            self.codeButton.setTitle("获取验证码", for: .normal)
+        }
     }
     
     @objc private func tapAction() {
