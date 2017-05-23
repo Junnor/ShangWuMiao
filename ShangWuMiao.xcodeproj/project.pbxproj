@@ -47,6 +47,9 @@
 		8B84EACC1EC54546001B1BFF /* ExhibitionTicketTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B84EACB1EC54546001B1BFF /* ExhibitionTicketTableViewController.swift */; };
 		8B84EAD51EC54720001B1BFF /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B84EAD41EC54720001B1BFF /* Ticket.swift */; };
 		8B84EB021EC587FB001B1BFF /* TopupList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B84EB011EC587FB001B1BFF /* TopupList.swift */; };
+		8B96043A1ED3D98E001AFC0F /* CornerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9604391ED3D98E001AFC0F /* CornerView.swift */; };
+		8B96043E1ED3E02C001AFC0F /* RegisterTelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B96043D1ED3E02C001AFC0F /* RegisterTelViewController.swift */; };
+		8B9604401ED3E03E001AFC0F /* RegisterNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B96043F1ED3E03E001AFC0F /* RegisterNameViewController.swift */; };
 		8BCE2BA91ECC351700ACA1BB /* ExHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCE2BA71ECC351700ACA1BB /* ExHeaderCell.swift */; };
 		8BCE2BAA1ECC351700ACA1BB /* ExHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BCE2BA81ECC351700ACA1BB /* ExHeaderCell.xib */; };
 		8BCE2BAD1ECC369E00ACA1BB /* ExDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCE2BAB1ECC369E00ACA1BB /* ExDescriptionCell.swift */; };
@@ -226,6 +229,9 @@
 		8B84EACB1EC54546001B1BFF /* ExhibitionTicketTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExhibitionTicketTableViewController.swift; sourceTree = "<group>"; };
 		8B84EAD41EC54720001B1BFF /* Ticket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
 		8B84EB011EC587FB001B1BFF /* TopupList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopupList.swift; sourceTree = "<group>"; };
+		8B9604391ED3D98E001AFC0F /* CornerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CornerView.swift; sourceTree = "<group>"; };
+		8B96043D1ED3E02C001AFC0F /* RegisterTelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterTelViewController.swift; sourceTree = "<group>"; };
+		8B96043F1ED3E03E001AFC0F /* RegisterNameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterNameViewController.swift; sourceTree = "<group>"; };
 		8BCE2BA71ECC351700ACA1BB /* ExHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExHeaderCell.swift; sourceTree = "<group>"; };
 		8BCE2BA81ECC351700ACA1BB /* ExHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExHeaderCell.xib; sourceTree = "<group>"; };
 		8BCE2BAB1ECC369E00ACA1BB /* ExDescriptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExDescriptionCell.swift; sourceTree = "<group>"; };
@@ -496,6 +502,7 @@
 				8B0352EA1ECEE17D00E46DEE /* Constant.swift */,
 				8B0352E81ECEE16F00E46DEE /* ClassHelper.swift */,
 				8B0352EC1ECEE18500E46DEE /* GlobalFunctions.swift */,
+				8B9604391ED3D98E001AFC0F /* CornerView.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -514,6 +521,8 @@
 			isa = PBXGroup;
 			children = (
 				8BF9B4681EC069360057531A /* LoginViewController.swift */,
+				8B96043D1ED3E02C001AFC0F /* RegisterTelViewController.swift */,
+				8B96043F1ED3E03E001AFC0F /* RegisterNameViewController.swift */,
 				8BDB06871EC0178100F0A660 /* ExhibitionViewController.swift */,
 				8BDB068B1EC01A4F00F0A660 /* ExhibitionDetailViewController.swift */,
 				8BDE8EC41EC15E860000C1C8 /* MeViewController.swift */,
@@ -794,11 +803,13 @@
 			files = (
 				4460C2A91E9B19F3004166DB /* AppDelegate.swift in Sources */,
 				8B03527C1ECEB95E00E46DEE /* RSADataVerifier.m in Sources */,
+				8B96043A1ED3D98E001AFC0F /* CornerView.swift in Sources */,
 				8BE3800D1EC1DA7B001A6651 /* TopupViewController.swift in Sources */,
 				8BE380111EC2A38A001A6651 /* TopupRecordCell.swift in Sources */,
 				8BE3800B1EC1D799001A6651 /* SoldTicketViewController.swift in Sources */,
 				8BE380151EC2A887001A6651 /* BoughtTicketCell.swift in Sources */,
 				8BE380131EC2A757001A6651 /* TopupCell.swift in Sources */,
+				8B9604401ED3E03E001AFC0F /* RegisterNameViewController.swift in Sources */,
 				8BCE2BB51ECC3A5D00ACA1BB /* ExTicketCell.swift in Sources */,
 				8BCE2BA91ECC351700ACA1BB /* ExHeaderCell.swift in Sources */,
 				8BE3800F1EC2A1A1001A6651 /* MeCell.swift in Sources */,
@@ -813,6 +824,7 @@
 				8B84EACC1EC54546001B1BFF /* ExhibitionTicketTableViewController.swift in Sources */,
 				8B0E1A761ECD42310017F11C /* ExAddressCell.swift in Sources */,
 				8B03527A1ECEB95E00E46DEE /* openssl_wrapper.m in Sources */,
+				8B96043E1ED3E02C001AFC0F /* RegisterTelViewController.swift in Sources */,
 				8BE380091EC1D77F001A6651 /* TopupRecordViewController.swift in Sources */,
 				8BE380071EC1D73D001A6651 /* FeebackViewController.swift in Sources */,
 				8BCE2BB91ECC3F9500ACA1BB /* ExFooterView.swift in Sources */,

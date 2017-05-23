@@ -66,9 +66,6 @@ class SearchViewController: UIViewController, UICollectionViewDataSource, UIColl
         layout?.itemSize = CGSize(width: view.bounds.width, height: 120)
         layout?.minimumLineSpacing = 0
         collectionView.collectionViewLayout = layout!
-        
-        // set navigation bar
-        customizeBackItem()
 
         // refresh
         let headerHandler = #selector(loadExhibition)

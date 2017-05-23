@@ -22,9 +22,6 @@ class SoldTicketViewController: UIViewController, UITableViewDataSource, UITable
 
         title = "已购票的漫展"
         
-        // set navigation bar
-        customizeBackItem()
-
         // refresh
         let headerHandler = #selector(loadTicketExhibition)
         

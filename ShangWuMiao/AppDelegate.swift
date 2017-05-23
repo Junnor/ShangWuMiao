@@ -20,10 +20,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        // wechat register
-//        WXApi.registerApp(kAppId)
-        
-        // set different window root vc
+        // Set navigation bar appearance and back title
+        let barAppearance = UINavigationBar.appearance()
+        barAppearance.tintColor = UIColor.white
+        barAppearance.barTintColor = UIColor.barTintColor
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.clear], for: UIControlState.normal)
+
+        // Set different window root vc
         if UserDefaults.standard.value(forKeyPath: isLogin) != nil {
             if let tabvc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarViewController") as? TabBarViewController {
                 window?.rootViewController = tabvc
@@ -79,7 +82,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             AlipaySDK.defaultService().processAuth_V2Result(url, standbyCallback: { response in
                 print("processAuth_V2Result response: \(String(describing: response))")
-                // TODO:
+                // TODO: alipay
             })
         }
     

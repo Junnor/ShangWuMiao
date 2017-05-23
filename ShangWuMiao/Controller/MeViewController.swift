@@ -14,8 +14,6 @@ class MeViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // set navigation bar
-        customizeBackItem()
         
         // 在Group模式下隐藏头部空白区域
         tableView.contentInset = UIEdgeInsets(top: -35, left: 0, bottom: 0, right: 0)
@@ -177,7 +175,8 @@ extension MeViewController {
             let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController")
             
             if let loginvc = vc as? LoginViewController {
-                present(loginvc, animated: true, completion: {
+                let navivc = UINavigationController(rootViewController: loginvc)
+                present(navivc, animated: true, completion: {
                     User.shared.clean()
                 })
             }

@@ -26,9 +26,6 @@ class ExhibitionViewController: UIViewController, UICollectionViewDataSource, UI
         layout?.minimumLineSpacing = 0
         collectionView.collectionViewLayout = layout!
         
-        // set navigation bar
-        customizeBackItem()
-        
         // refresh
         let headerHandler = #selector(loadExhibition)
         let headerRefresh = MJRefreshNormalHeader(refreshingTarget: self,

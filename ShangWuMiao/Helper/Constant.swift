@@ -25,6 +25,9 @@ let kAlipaySchema = "NyatoVendorAlipay"
 
 struct RequestURL {
     
+    // 用户注册
+    static let kRegisterString = "/index.php?app=ios&mod=Member&act=phoneReg"
+    
     // 用户登陆
     static let kLoginUrlString = "/index.php?app=ios&mod=Member&act=login"
     
@@ -64,6 +67,9 @@ struct RequestURL {
 }
 
 struct ActType {
+    
+    // 用户注册
+    static let register = "phoneReg"
     
     // 用户登陆
     static let login = "login"

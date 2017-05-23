@@ -18,6 +18,9 @@ class LoginViewController: UIViewController {
     // MARK: - View controller lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+
+
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tap))
         view.addGestureRecognizer(tapGesture)
     
@@ -38,6 +41,9 @@ class LoginViewController: UIViewController {
     }
 
     // MARK: - Helper
+    @IBAction func register() {
+    }
+    
     @IBAction func login(_ sender: UIButton) {
         let emptyUname = isEmptyText(parse: unameTextfield.text)
         if emptyUname {
@@ -70,11 +76,10 @@ class LoginViewController: UIViewController {
     }
     
     private func setUI() {
-        let cornerRadius = self.unameTextfield.bounds.height/2
-        self.view.backgroundColor = UIColor.lightGray
-        self.unameTextfield.layer.cornerRadius = cornerRadius
-        self.passwordTextfield.layer.cornerRadius = cornerRadius
-        self.loginButton.layer.cornerRadius = cornerRadius
+//        let cornerRadius = self.unameTextfield.bounds.height/2
+//        self.unameTextfield.layer.cornerRadius = cornerRadius
+//        self.passwordTextfield.layer.cornerRadius = cornerRadius
+//        self.loginButton.layer.cornerRadius = cornerRadius
         
         let height = self.unameTextfield.bounds.height
         let unameLeftView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: height))
