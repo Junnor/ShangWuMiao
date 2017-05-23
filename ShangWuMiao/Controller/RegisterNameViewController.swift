@@ -20,9 +20,20 @@ class RegisterNameViewController: UIViewController {
     @IBAction func complete() {
         tapAction()
         
+        guard let uname = unameTextField.text,
+            let password = passwordTextField.text,
+            let verified = verifyTextField.text,
+            password == verified,
+            3 < uname.characters.count,
+            uname.characters.count < 10,
+            7 <= password.characters.count,
+            password.characters.count >= 16 else {
+            return
+        }
+        
         Login.register(forUser: unameTextField.text!,
                        password: passwordTextField.text!, mobile: phone, code: code) {
-                        [weak self] success, info in
+                        success, info in
                         if success {
                             print("success info")
                         } else {

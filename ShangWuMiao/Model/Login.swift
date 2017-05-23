@@ -20,18 +20,20 @@ extension Login {
     static func requestPhoneCode(for phone: String, callback: @escaping (_ status: Bool, _ info: String) -> ()) {
         
         let count = phone.characters.count
-        let str = phone[count-4...count-1]
-        let codeString = phone[0...2] + phone[3..<7] + str
+        let value1 = Int(phone[0...2])!
+        let value2 = Int(phone[3..<7])!
+        let value3 = Int(phone[count-4...count-1])!
+        let result = value1 + value2 + value3
+        let codeString = String(result) + "nyato"
         let phoneCode = codeString.md5!
 
         let codeSecret = kSecretKey + ActType.sendPhoneCode
         let token = codeSecret.md5
         let loginUrlString = kHeaderUrl + RequestURL.kCodeUrlString + "&token=" + token!
-        
-        let parameter = ["mobile": phone, "code": phoneCode, "type": "bind"]
-        
         let url = URL(string: loginUrlString)
-        
+
+        let parameter = ["mobile": phone, "code": phoneCode, "type": "reg"]
+
         Alamofire.request(url!,
                           method: .post,
                           parameters: parameter,

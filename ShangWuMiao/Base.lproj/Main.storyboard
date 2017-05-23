@@ -1292,8 +1292,7 @@
                                     <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="register" destination="IzP-m5-aGS" eventType="touchUpInside" id="Ej2-1c-ooG"/>
-                                    <segue destination="O1a-CI-lYP" kind="show" id="0m8-90-GhO"/>
+                                    <segue destination="O1a-CI-lYP" kind="show" id="EKc-Vc-MuE"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1487,6 +1486,24 @@
             </objects>
             <point key="canvasLocation" x="2967" y="-779"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="1Sm-ey-HBh">
+            <objects>
+                <viewController id="Kei-UH-W4D" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Hl5-bF-x0i"/>
+                        <viewControllerLayoutGuide type="bottom" id="sda-tq-vha"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="QO1-Xu-nre">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HQN-5L-ntZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1058" y="-268"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="m66-oq-fes">
             <objects>
@@ -1517,7 +1534,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="手机" textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="f3J-H1-c2S" customClass="CornerTextField" customModule="ShangWuMiao" customModuleProvider="target">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入手机号码   " textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="f3J-H1-c2S" customClass="CornerTextField" customModule="ShangWuMiao" customModuleProvider="target">
                                 <rect key="frame" x="20" y="94" width="280" height="46"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -1525,14 +1542,14 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入验证码" textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="h7e-Ea-Fam" customClass="CornerTextField" customModule="ShangWuMiao" customModuleProvider="target">
                                 <rect key="frame" x="20" y="160" width="130" height="46"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UPX-Bu-sc2" customClass="CornerButton" customModule="ShangWuMiao" customModuleProvider="target">
                                 <rect key="frame" x="170" y="160" width="130" height="46"/>
@@ -1570,11 +1587,16 @@
                                 <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Q4o-Jo-Je1">
+                                <rect key="frame" x="225" y="173" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="f3J-H1-c2S" firstAttribute="centerX" secondItem="eXO-RX-OSD" secondAttribute="centerX" id="2cy-kp-MYs"/>
                             <constraint firstItem="UPX-Bu-sc2" firstAttribute="width" secondItem="h7e-Ea-Fam" secondAttribute="width" id="50q-UW-Qzw"/>
+                            <constraint firstItem="Q4o-Jo-Je1" firstAttribute="centerY" secondItem="UPX-Bu-sc2" secondAttribute="centerY" id="Aqz-IK-qIQ"/>
+                            <constraint firstItem="Q4o-Jo-Je1" firstAttribute="centerX" secondItem="UPX-Bu-sc2" secondAttribute="centerX" id="BQG-g4-XLe"/>
                             <constraint firstItem="h7e-Ea-Fam" firstAttribute="leading" secondItem="f3J-H1-c2S" secondAttribute="leading" id="CCI-jz-5mL"/>
                             <constraint firstItem="h7e-Ea-Fam" firstAttribute="top" secondItem="f3J-H1-c2S" secondAttribute="bottom" constant="20" id="KDg-cO-6mj"/>
                             <constraint firstItem="f3J-H1-c2S" firstAttribute="leading" secondItem="eXO-RX-OSD" secondAttribute="leading" constant="20" id="Ohr-wX-RPl"/>
@@ -1595,7 +1617,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="codeButton" destination="UPX-Bu-sc2" id="KHL-Hl-Irj"/>
                         <outlet property="codeTextField" destination="h7e-Ea-Fam" id="Bzb-RU-aHo"/>
+                        <outlet property="indicatorView" destination="Q4o-Jo-Je1" id="ekl-pC-7dD"/>
                         <outlet property="phoneTextField" destination="f3J-H1-c2S" id="IiQ-2x-VUE"/>
                         <outlet property="promptLable" destination="YIb-MT-PHt" id="BeC-CU-Cta"/>
                         <segue destination="AVv-Vo-pPD" kind="show" identifier="register" id="4iN-VU-axb"/>

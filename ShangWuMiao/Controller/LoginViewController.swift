@@ -9,15 +9,24 @@
 import UIKit
 import Alamofire
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
     
-    @IBOutlet weak var unameTextfield: UITextField!
-    @IBOutlet weak var passwordTextfield: UITextField!
+    @IBOutlet weak var unameTextfield: UITextField! {
+        didSet {
+            unameTextfield?.delegate = self
+        }
+    }
+    @IBOutlet weak var passwordTextfield: UITextField! {
+        didSet {
+            passwordTextfield?.delegate = self
+        }
+    }
     @IBOutlet weak var loginButton: UIButton!
 
     // MARK: - View controller lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // not elegant
         let itemAppearance = UIBarButtonItem.appearance()
         itemAppearance.setBackButtonTitlePositionAdjustment(UIOffset(horizontal: -100, vertical: -100), for: .default)
@@ -34,18 +43,21 @@ class LoginViewController: UIViewController {
 
     }
     
+    private var setedUI = false
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setUI()
+        if !setedUI {
+            setedUI = true
+            setUI()
+        }
     }
     
     deinit {
+        print("...... deinit")
         NotificationCenter.default.removeObserver(self)
     }
 
     // MARK: - Helper
-    @IBAction func register() {
-    }
     
     @IBAction func login(_ sender: UIButton) {
         let emptyUname = isEmptyText(parse: unameTextfield.text)
@@ -78,28 +90,42 @@ class LoginViewController: UIViewController {
         self.passwordTextfield.resignFirstResponder()
     }
     
+    private var unameLeftImageView = UIImageView()
+    private var passwordLeftImageView = UIImageView()
     private func setUI() {
-//        let cornerRadius = self.unameTextfield.bounds.height/2
-//        self.unameTextfield.layer.cornerRadius = cornerRadius
-//        self.passwordTextfield.layer.cornerRadius = cornerRadius
-//        self.loginButton.layer.cornerRadius = cornerRadius
-        
         let height = self.unameTextfield.bounds.height
         let unameLeftView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: height))
         let passwordLeftView = UIView(frame: unameLeftView.bounds)
-        let unameLeftImageView = UIImageView(image: UIImage(named: "ico-uname"))
-        let passwordLeftImageView = UIImageView(image: UIImage(named: "ico-pass"))
+        self.unameLeftImageView = UIImageView(image: #imageLiteral(resourceName: "ico-uname"))
+        self.passwordLeftImageView = UIImageView(image: #imageLiteral(resourceName: "ico-pass"))
         unameLeftView.addSubview(unameLeftImageView)
         unameLeftImageView.center = unameLeftView.center
         passwordLeftView.addSubview(passwordLeftImageView)
         passwordLeftImageView.center = passwordLeftView.center
 
-        self.unameTextfield.leftView = unameLeftView
-        self.unameTextfield.leftViewMode = .always
-        self.passwordTextfield.leftView = passwordLeftView
-        self.passwordTextfield.leftViewMode = .always
+        self.unameTextfield?.leftView = unameLeftView
+        self.unameTextfield?.leftViewMode = .always
+        self.passwordTextfield?.leftView = passwordLeftView
+        self.passwordTextfield?.leftViewMode = .always
     }
     
+
+    // MARK: - Text field delegate
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == unameTextfield {
+            unameLeftImageView.image = #imageLiteral(resourceName: "ico-uname")
+        } else if textField == passwordTextfield {
+            passwordLeftImageView.image = #imageLiteral(resourceName: "ico-pass")
+        }
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == unameTextfield {
+            unameLeftImageView.image = #imageLiteral(resourceName: "ico-unamed")
+        } else if textField == passwordTextfield {
+            passwordLeftImageView.image = #imageLiteral(resourceName: "ico-passed")
+        }
+    }
 }
 
 // MARK: - Keyboard action
