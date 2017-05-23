@@ -40,27 +40,22 @@ class RegisterNameViewController: UIViewController {
                         [weak self] success, info in
                         SVProgressHUD.showInfo(withStatus: info)
                         if success {
-                            print("register success info: \(info)")
                             if self != nil {
                                 print("1")
                                 let parameters = ["uname": self!.unameTextField.text!,
                                                   "password": self!.passwordTextField.text!]
-                                User.login(parameters: parameters) { [weak self] status, info in
-                                    if status == 1 {
+                                User.login(parameters: parameters) { [weak self] success, info in
+                                    SVProgressHUD.showInfo(withStatus: info)
+                                    if success {
                                         print("2")
-
                                         self?.performSegue(withIdentifier: "login from register", sender: nil)
                                         nyato_storeOauthData()
-                                    } else {
-                                        print("login failure: \(info)")
                                     }
                                 }
                                 print("3")
-
                             }
-
                         } else {
-                            print("register error info: \(info)")
+                            SVProgressHUD.showError(withStatus: info)
                         }
         }
         
