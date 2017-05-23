@@ -758,7 +758,7 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LEP-bm-Qe5">
                                 <rect key="frame" x="16" y="229" width="288" height="50"/>
-                                <color key="backgroundColor" red="0.84127141500000002" green="0.83880445449999996" blue="0.39204735439999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="1" green="0.83921568629999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="cnS-Vz-bcH"/>
                                 </constraints>
@@ -1107,7 +1107,7 @@
                                         <rect key="frame" x="-6.5" y="0.0" width="333" height="114"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="333" height="114"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="334" height="114"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PpH-D5-BTr">
@@ -1325,7 +1325,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ySQ-qu-2VI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-468" y="112.89355322338831"/>
+            <point key="canvasLocation" x="-1689" y="112"/>
         </scene>
         <!--Register Name View Controller-->
         <scene sceneID="K5B-ZI-6Qa">
@@ -1406,11 +1406,12 @@
                         <outlet property="passwordTextField" destination="5GD-yJ-K2I" id="4lG-A6-eGc"/>
                         <outlet property="unameTextField" destination="382-4y-7Fk" id="84v-mb-mwa"/>
                         <outlet property="verifyTextField" destination="Zgw-Od-gAy" id="xAt-dh-lUd"/>
+                        <segue destination="JzJ-jK-I5g" kind="show" identifier="login from register" id="kSV-FO-uvr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vxd-Dr-3s7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="206" y="-750"/>
+            <point key="canvasLocation" x="-79" y="-543"/>
         </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="aO4-vk-ezW">
@@ -1484,7 +1485,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iuC-7q-WjD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2967" y="-779"/>
+            <point key="canvasLocation" x="3126" y="-1037"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="m66-oq-fes">
@@ -1502,7 +1503,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="StW-mM-YUH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1407.2" y="112.89355322338831"/>
+            <point key="canvasLocation" x="-2651" y="112"/>
         </scene>
         <!--Register Tel View Controller-->
         <scene sceneID="Kbl-Ok-tOF">
@@ -1609,7 +1610,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DsD-1s-FS0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-645" y="-750"/>
+            <point key="canvasLocation" x="-857" y="-750"/>
         </scene>
     </scenes>
     <resources>
@@ -1622,6 +1623,7 @@
         <image name="pay-alipay" width="29" height="29"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="kSV-FO-uvr"/>
         <segue reference="HGO-XF-caW"/>
     </inferredMetricsTieBreakers>
 </document>

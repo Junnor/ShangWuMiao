@@ -83,6 +83,7 @@ extension User {
                           encoding: URLEncoding.default, headers: nil).responseJSON {                            response in
                             switch response.result {
                             case .success(let json):
+                                print("login json = \(json)")
                                 if let dic = json as? Dictionary<String, AnyObject> {
                                     if let status = dic["status"] as? Int {
                                         let info = dic["info"] as! String

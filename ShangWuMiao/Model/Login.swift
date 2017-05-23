@@ -18,7 +18,6 @@ extension Login {
     
     // MARK: - 获取验证码
     static func requestPhoneCode(for phone: String, callback: @escaping (_ status: Bool, _ info: String) -> ()) {
-        
         let count = phone.characters.count
         let value1 = Int(phone[0...2])!
         let value2 = Int(phone[3..<7])!
@@ -86,7 +85,6 @@ extension Login {
                                 print("register error: \(error)")
                             }
         }
-
     }
     
 }

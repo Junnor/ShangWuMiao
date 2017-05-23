@@ -37,12 +37,30 @@ class RegisterNameViewController: UIViewController {
         
         Login.register(forUser: unameTextField.text!,
                        password: passwordTextField.text!, mobile: phone, code: code) {
-                        success, info in
+                        [weak self] success, info in
+                        SVProgressHUD.showInfo(withStatus: info)
                         if success {
-                            // TODO: login
-                            print("success info")
+                            print("register success info: \(info)")
+                            if self != nil {
+                                print("1")
+                                let parameters = ["uname": self!.unameTextField.text!,
+                                                  "password": self!.passwordTextField.text!]
+                                User.login(parameters: parameters) { [weak self] status, info in
+                                    if status == 1 {
+                                        print("2")
+
+                                        self?.performSegue(withIdentifier: "login from register", sender: nil)
+                                        nyato_storeOauthData()
+                                    } else {
+                                        print("login failure: \(info)")
+                                    }
+                                }
+                                print("3")
+
+                            }
+
                         } else {
-                            print("error info")
+                            print("register error info: \(info)")
                         }
         }
         

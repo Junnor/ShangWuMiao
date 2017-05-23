@@ -59,8 +59,7 @@ class RegisterTelViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        timer.invalidate()
-        self.seconds = 60
+        resetInfo()
     }
     
     // MARK: - Helper
@@ -81,8 +80,7 @@ class RegisterTelViewController: UIViewController, UITextFieldDelegate {
                     if success {
                         if self != nil {
                             self?.codePhone = self?.phoneTextField.text
-                            self?.timer.fire()
-
+                            self?.fireTimer()
                         }
                     } else {
                         self?.indicatorView.stopAnimating()
@@ -136,23 +134,30 @@ class RegisterTelViewController: UIViewController, UITextFieldDelegate {
     }
     
     private var seconds = 60;
-    private lazy var timer: Timer = {
-        return Timer.scheduledTimer(timeInterval: 1.0,
-                             target: self,
-                             selector: #selector(self.requestCodeAgain),
-                             userInfo: nil,
-                             repeats: true)
-    }()
+    private var timer = Timer()
+    // Used fireTimer(), instead of timer.fire(), because timer may remove from the runloop
+    private func fireTimer() {
+        self.timer = Timer.scheduledTimer(timeInterval: 1.0,
+                                          target: self,
+                                          selector: #selector(self.requestCodeAgain),
+                                          userInfo: nil,
+                                          repeats: true)
+        self.timer.fire()
+    }
+    
+    private func resetInfo() {
+        self.seconds = 60
+        self.timer.invalidate()
+        self.indicatorView.stopAnimating()
+        self.codeButton.setTitle("获取验证码", for: .normal)
+    }
     
     @objc private func requestCodeAgain() {
         self.seconds -= 1
         self.codeButton.setTitle("重新获取\(self.seconds)秒", for: .normal)
         
         if self.seconds == 0 {
-            self.seconds = 60
-            self.timer.invalidate()
-            self.indicatorView.stopAnimating()
-            self.codeButton.setTitle("获取验证码", for: .normal)
+            resetInfo()
         }
     }
     
