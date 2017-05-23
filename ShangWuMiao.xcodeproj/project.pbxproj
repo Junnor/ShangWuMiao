@@ -44,6 +44,7 @@
 		8B24D3341ED2D07E00911340 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B24D32F1ED2D07E00911340 /* libWeChatSDK.a */; };
 		8B24D3371ED2D0BF00911340 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B24D3361ED2D0BF00911340 /* libsqlite3.0.tbd */; };
 		8B4753021ECE7E6400EDD02A /* UserPay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4753011ECE7E6400EDD02A /* UserPay.swift */; };
+		8B7F119E1ED413B300F503CE /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7F119D1ED413B300F503CE /* Login.swift */; };
 		8B84EACC1EC54546001B1BFF /* ExhibitionTicketTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B84EACB1EC54546001B1BFF /* ExhibitionTicketTableViewController.swift */; };
 		8B84EAD51EC54720001B1BFF /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B84EAD41EC54720001B1BFF /* Ticket.swift */; };
 		8B84EB021EC587FB001B1BFF /* TopupList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B84EB011EC587FB001B1BFF /* TopupList.swift */; };
@@ -226,6 +227,7 @@
 		8B24D3331ED2D07E00911340 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 		8B24D3361ED2D0BF00911340 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		8B4753011ECE7E6400EDD02A /* UserPay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPay.swift; sourceTree = "<group>"; };
+		8B7F119D1ED413B300F503CE /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		8B84EACB1EC54546001B1BFF /* ExhibitionTicketTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExhibitionTicketTableViewController.swift; sourceTree = "<group>"; };
 		8B84EAD41EC54720001B1BFF /* Ticket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
 		8B84EB011EC587FB001B1BFF /* TopupList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopupList.swift; sourceTree = "<group>"; };
@@ -541,6 +543,7 @@
 		8B7A48D51EC0103E00276058 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8B7F119D1ED413B300F503CE /* Login.swift */,
 				8BE380181EC2EA37001A6651 /* User.swift */,
 				8B4753011ECE7E6400EDD02A /* UserPay.swift */,
 				8BF6E7551EC3092B004FE5BB /* Exhibition.swift */,
@@ -808,6 +811,7 @@
 				8BE380111EC2A38A001A6651 /* TopupRecordCell.swift in Sources */,
 				8BE3800B1EC1D799001A6651 /* SoldTicketViewController.swift in Sources */,
 				8BE380151EC2A887001A6651 /* BoughtTicketCell.swift in Sources */,
+				8B7F119E1ED413B300F503CE /* Login.swift in Sources */,
 				8BE380131EC2A757001A6651 /* TopupCell.swift in Sources */,
 				8B9604401ED3E03E001AFC0F /* RegisterNameViewController.swift in Sources */,
 				8BCE2BB51ECC3A5D00ACA1BB /* ExTicketCell.swift in Sources */,

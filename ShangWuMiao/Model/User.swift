@@ -63,7 +63,7 @@ final class User {
         isBusiness = ""
         mcoins = 0.00
         
-        cleanStoredOauthData()
+        nyato_cleanStoredOauthData()
     }
 }
 

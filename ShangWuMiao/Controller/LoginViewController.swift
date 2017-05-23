@@ -65,7 +65,7 @@ class LoginViewController: UIViewController {
         User.login(parameters: parameters) { [weak self] status, info in
             if status == 1 {
                 self?.performSegue(withIdentifier: "login", sender: nil)
-                storeOauthData()
+                nyato_storeOauthData()
             } else {
                 print("login failure: \(info)")
             }

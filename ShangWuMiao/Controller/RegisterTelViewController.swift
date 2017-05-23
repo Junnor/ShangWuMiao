@@ -7,9 +7,9 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class RegisterTelViewController: UIViewController {
-
 
     @IBOutlet weak var promptLable: UILabel! {
         didSet {
@@ -18,14 +18,25 @@ class RegisterTelViewController: UIViewController {
     }
     
     @IBOutlet weak var phoneTextField: CornerTextField!
-    
     @IBOutlet weak var codeTextField: CornerTextField!
     
     @IBAction func getCode() {
+        // TODO: send phone
     }
     
     @IBAction func submit() {
-        performSegue(withIdentifier: "register", sender: nil)
+        tapAction()
+        if phoneTextField?.text?.characters.count != 0 {
+            let response = nyato_isPhoneNumber(phoneNumber: phoneTextField?.text)
+            if response.result == false {
+                // 解决SVProgressHUD 在有键盘时不居中的bug
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                SVProgressHUD.showInfo(withStatus: response.info!)
+                })
+            } else {
+                performSegue(withIdentifier: "register", sender: nil)
+            }
+        }
     }
     
     override func viewDidLoad() {

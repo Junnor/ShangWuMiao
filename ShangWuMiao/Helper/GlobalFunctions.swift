@@ -55,7 +55,7 @@ let oauth_token_secret = "oauth_token_secret"
 
 let kDefaultCount = 10
 
-func storeOauthData() {
+func nyato_storeOauthData() {
     let standard = UserDefaults.standard
     
     standard.setValue("1", forKeyPath: isLogin)
@@ -66,7 +66,7 @@ func storeOauthData() {
     UserDefaults.standard.synchronize()
 }
 
-func cleanStoredOauthData() {
+func nyato_cleanStoredOauthData() {
     let standard = UserDefaults.standard
     
     standard.setValue(nil, forKey: isLogin)
@@ -89,3 +89,18 @@ private func getStoredOauthData() {
     User.shared.oauth_token_secret = stored_oauth_token_secret
 }
 
+func nyato_isPhoneNumber(phoneNumber:String?) -> (result: Bool, info: String?) {
+    if let phoneNumber = phoneNumber {
+        if phoneNumber.characters.count == 0 {
+            return (false, "手机号码不能为空...")
+        }
+        let mobile = "^(13[0-9]|15[0-9]|18[0-9]|17[0-9]|147)\\d{8}$"
+        let regexMobile = NSPredicate(format: "SELF MATCHES %@",mobile)
+        if regexMobile.evaluate(with: phoneNumber) == true {
+            return (true, nil)
+        } else {
+            return (false, "请输入正确的手机号码...")
+        }
+    }
+    return (false, "手机号码不能为空...")
+}

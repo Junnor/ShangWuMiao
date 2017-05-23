@@ -15,6 +15,7 @@ class RegisterNameViewController: UIViewController {
     @IBOutlet weak var verifyTextField: CornerTextField!
     
     @IBAction func complete() {
+        tapAction()
     }
     
     override func viewDidLoad() {

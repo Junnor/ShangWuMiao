@@ -158,7 +158,7 @@ class ExhibitionDetailViewController: UIViewController {
     }
     
     @IBAction func buy(_ sender: Any) {
-        let result = isPhoneNumber(phoneNumber: self.phoneTextField.text)
+        let result = nyato_isPhoneNumber(phoneNumber: self.phoneTextField.text)
         if result.info != nil {
             SVProgressHUD.showInfo(withStatus: result.info!)
         } else {
@@ -200,23 +200,6 @@ class ExhibitionDetailViewController: UIViewController {
             
         }
     }
-    
-    private func isPhoneNumber(phoneNumber:String?) -> (success: Bool, info: String?) {
-        if let phoneNumber = phoneNumber {
-            if phoneNumber.characters.count == 0 {
-                return (false, "手机号码不能为空...")
-            }
-            let mobile = "^(13[0-9]|15[0-9]|18[0-9]|17[0-9]|147)\\d{8}$"
-            let regexMobile = NSPredicate(format: "SELF MATCHES %@",mobile)
-            if regexMobile.evaluate(with: phoneNumber) == true {
-                return (true, nil)
-            } else {
-                return (false, "请输入正确的手机号码...")
-            }
-        }
-        return (false, "手机号码不能为空...")
-    }
-    
     
     // set navigation bar
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
