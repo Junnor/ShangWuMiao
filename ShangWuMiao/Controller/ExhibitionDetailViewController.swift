@@ -64,18 +64,6 @@ class ExhibitionDetailViewController: UIViewController {
         }
     }
     
-    lazy fileprivate var shadowView: UIView = {
-        let shadow = UIView()
-        shadow.frame = UIScreen.main.bounds
-        shadow.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(textFieldResignFirstResonder)))
-        shadow.backgroundColor = UIColor.lightGray
-        shadow.alpha = 0.3
-        shadow.isHidden = true
-        self.view.addSubview(shadow)
-        
-        return shadow
-    }()
-    
     fileprivate weak var phoneTextField: UITextField!
     fileprivate weak var ticktsTimesLabel: UILabel!
     
@@ -90,9 +78,12 @@ class ExhibitionDetailViewController: UIViewController {
         blurView = ExBlurView.blurViewFromNib()
         loadExhibitionData()
         
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapAction))
+        view.addGestureRecognizer(tapGesture)
+        
         // keyboard notification
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(self.keyboardNotification(notification:)),
+        NotificationCenter.default.addObserver(self.collectionView,
+                                               selector: #selector(self.collectionView.nyato_keyboardNotification(notification:)),
                                                name: NSNotification.Name.UIKeyboardWillChangeFrame,
                                                object: nil)
     }
@@ -126,6 +117,10 @@ class ExhibitionDetailViewController: UIViewController {
     
     // MARK: - Helper
     
+    @objc private func tapAction() {
+        self.phoneTextField.resignFirstResponder()
+    }
+
     private func loadExhibitionData() {
         exhibition.requestExhibitionListTickets { [weak self] (success, info, tickts) in
             if success {
@@ -157,7 +152,6 @@ class ExhibitionDetailViewController: UIViewController {
     }
     
     @objc fileprivate func textFieldResignFirstResonder() {
-        shadowView.isHidden = true
         phoneTextField.resignFirstResponder()
     }
     
@@ -249,35 +243,6 @@ class ExhibitionDetailViewController: UIViewController {
     
 }
 
-// MARK: - Keyboard action
-extension ExhibitionDetailViewController {
-    func keyboardNotification(notification: NSNotification) {
-        if let userInfo = notification.userInfo {
-            var endFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
-            let duration:TimeInterval = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0
-            let animationCurveRawNSN = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber
-            let animationCurveRaw = animationCurveRawNSN?.uintValue ?? UIViewAnimationOptions.curveEaseInOut.rawValue
-            let animationCurve:UIViewAnimationOptions = UIViewAnimationOptions(rawValue: animationCurveRaw)
-            
-            if (endFrame?.origin.y)! >= UIScreen.main.bounds.size.height {
-                let contentInset:UIEdgeInsets = UIEdgeInsets.zero
-                self.collectionView.contentInset = contentInset
-            } else {
-                endFrame = self.view.convert(endFrame!, from: nil)
-                var contentInset:UIEdgeInsets = self.collectionView.contentInset
-                contentInset.bottom = endFrame!.size.height
-                self.collectionView.contentInset = contentInset
-            }
-            
-            UIView.animate(withDuration: duration,
-                           delay: TimeInterval(0),
-                           options: animationCurve,
-                           animations: { self.view.layoutIfNeeded() },
-                           completion: nil)
-        }
-    }
-}
-
 
 // MRAK: - Collection view datasource
 
@@ -360,7 +325,6 @@ extension ExhibitionDetailViewController: UICollectionViewDataSource {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ExInputHintCellID", for: indexPath)
                 cell.backgroundColor = UIColor.white
                 if let cell = cell as? ExInputHintCell {
-                    cell.phoneTextField.delegate = self
                     self.phoneTextField = cell.phoneTextField   // weak
                     
                     cell.priceButton.addTarget(self, action: #selector(priceChangeAction(sender:)), for: .touchUpInside)
@@ -550,10 +514,3 @@ extension ExhibitionDetailViewController: UICollectionViewDelegateFlowLayout {
         return ceil(rect.height)
     }
 }
-
-extension ExhibitionDetailViewController: UITextFieldDelegate {
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        shadowView.isHidden = false
-    }
-}
-
