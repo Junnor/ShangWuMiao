@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import SwiftyJSON
 
 class TopupList: NSObject {
     var orderid: String!
@@ -53,36 +54,38 @@ extension TopupList {
                           encoding: URLEncoding.default, headers: nil).responseJSON {
                             response in
                             switch response.result {
-                            case .success(let json):
-//                                print("list json: \(json)")
+                            case .success(let jsonSource):
+                                print("list json: \(jsonSource)")
                                 
-                                if let dic = json as? Dictionary<String, AnyObject> {
-                                    guard let status = dic["result"] as? Int, status == 1 else {
-                                        let error = dic["error"] as! String
-                                        completionHandler(false, error, [])
+                                let json = JSON(jsonSource)
+                                guard let result = json["result"].int,
+                                    result == 1 else {
+                                        let errorInfo = json["error"].stringValue
+                                        completionHandler(false, errorInfo, [])
                                         return
-                                    }
-                                    
-                                    if let data = dic["data"] as? [Dictionary<String, AnyObject>] {
-                                        var tmpLists = [TopupList]()
-                                        for listDic in data {
-                                            let price = listDic["order_price"] as! String
-                                            let id = listDic["orderid"] as! String
-                                            let title = listDic["ordertitle"] as! String
-                                            let payStatus = listDic["pay_status"] as! String
-                                            
-                                            let payStatusString = (payStatus == "1") ? "已支付" : "未支付"
-                                            
-                                            let list = TopupList(orderId: id,
-                                                                 orderTitle: title,
-                                                                 price: String(price),
-                                                                 payStatus: payStatusString)
-                                            tmpLists.append(list)
-                                        }
-                                        completionHandler(true, nil, tmpLists)
-                                    }
                                 }
+                                
+                                let data = json["data"].arrayValue
+                                var tmpLists = [TopupList]()
+
+                                for listDic in data {
+                                    let price = listDic["order_price"].stringValue
+                                    let id = listDic["orderid"].stringValue
+                                    let title = listDic["ordertitle"].stringValue
+                                    let payStatus = listDic["pay_status"].stringValue
+                                    
+                                    let payStatusString = (payStatus == "1") ? "已支付" : "未支付"
+                                    
+                                    let list = TopupList(orderId: id,
+                                                         orderTitle: title,
+                                                         price: String(price),
+                                                         payStatus: payStatusString)
+                                    tmpLists.append(list)
+
+                                }
+                                completionHandler(true, nil, tmpLists)
                             case .failure(let error):
+                                completionHandler(false, "获取错误", [])
                                 print("request top up list error: \(error)")
                             }
         }
