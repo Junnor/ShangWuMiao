@@ -59,14 +59,12 @@ class TopupViewController: UIViewController {
     }
     
     fileprivate func alipayAction() {
-        print("alipayAction")
         AlipaySDK.defaultService().payOrder(UserPay.shared.alipay_sign_str,
                                             fromScheme: kAlipaySchema,
                                             callback: { response in
                                                 let json = JSON(response as Any)
                                                 let status = json["resultStatus"].intValue
-                                                print(".... source application json: \(json)")
-                                                
+//                                                print(".... source application json: \(json)")
                                                 UserPay.shared.paySuccess = (status == 9000) ? true : false
                                                 
                                                 // tell database
@@ -88,7 +86,6 @@ class TopupViewController: UIViewController {
                                                         }
                                                     })
                                                 }
-                                                print("alipay payOrder call back = \(String(describing: response))")
         })
     }
     
@@ -145,8 +142,6 @@ extension TopupViewController: UITableViewDataSource {
 extension TopupViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {   // alipay
-            print("UserPay pay ")
-
             UserPay.pay(withType: Pay.alipay,
                         orderPrice: Float(1),
                         completionHandler: { [weak self] (success, info) in

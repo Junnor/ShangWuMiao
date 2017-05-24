@@ -26,7 +26,6 @@ class MeViewController: UITableViewController {
     }
     
     @objc private func reloadMcoins() {
-        print("##### reloadMcoins")
         self.tableView.reloadData()
     }
     

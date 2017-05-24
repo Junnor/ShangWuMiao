@@ -162,9 +162,10 @@ class ExhibitionDetailViewController: UIViewController {
         } else {
             if let price = Float((priceLabel?.text)!) {
                 // TODO: - Test price
-                let testPrice: Float = 1.0
-                let message = "确认购买门票？\n [请确认手机号码无误] \n\n 数量：\(ticktsTimes) \n\n 总价：\(testPrice)"
+//                let testPrice: Float = 1.0
+                let message = "确认购买门票？\n [请确认手机号码无误] \n\n 数量：\(ticktsTimes) \n\n 总价：\(price)"
                 let alert = UIAlertController(title: "确认购买", message: message, preferredStyle: .alert)
+                print("price = \(price)")
                 let cancel = UIAlertAction(title: "取消", style: .default, handler: nil)
                 let ok = UIAlertAction(title: "确定", style: .destructive) { [weak self] _ in
                     if User.shared.mcoins >= price {
@@ -173,9 +174,20 @@ class ExhibitionDetailViewController: UIViewController {
                             User.buyTickt(ticktId: Int(tickt!.id)!,
                                           counts: (self?.ticktsTimes)!,
                                           phone: (self?.phoneTextField.text!)!,
-                                          price: testPrice,
+                                          price: price,
                                           callBack: { success, info in
                                             if success {
+                                                // 更新金额
+                                                User.requestUserInfo(completionHandler: { (success, statusInfo) in
+                                                    if success {
+                                                        // TODO
+                                                    } else {
+                                                        SVProgressHUD.showInfo(withStatus: statusInfo)
+                                                        print("request user info failure: \(String(describing: statusInfo))")
+                                                    }
+                                                })
+                                                
+                                                // 页面跳转
                                                 if let ticktsvc = self?.storyboard?.instantiateViewController(withIdentifier: "SoldTicketViewController") as? SoldTicketViewController {
                                                     self?.navigationController?.pushViewController(ticktsvc, animated: true)
                                                 }

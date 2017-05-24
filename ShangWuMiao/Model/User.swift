@@ -163,7 +163,7 @@ extension User {
                             
                             switch response.result {
                             case .success(let json):
-                                print("user info json: \(json)")
+//                                print("user info json: \(json)")
                                 if let dic = json as? Dictionary<String, AnyObject> {
                                     guard let status = dic["status"] as? Int, status == 1 else {
                                         let info = dic["info"] as? String

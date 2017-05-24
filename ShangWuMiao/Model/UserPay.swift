@@ -53,7 +53,6 @@ extension UserPay {
         let parameters = ["uid": NSString(string: User.shared.uid).integerValue,
                           "order_price": orderPrice,
                           "pay_type": payType.rawValue] as [String : Any]
-        print("555555555555")
         Alamofire.request(url!,
                           method: .post,
                           parameters: parameters,
