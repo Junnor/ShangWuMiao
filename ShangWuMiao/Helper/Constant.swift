@@ -22,6 +22,9 @@ let kAlipaySchema = "NyatoVendorAlipay"
 //let kAppId = "wx8356797cc8741cfb"
 //var isWechat: Bool!
 
+// 喵币监听
+let nyatoMcoinsChange = Notification.Name("nyatoMcoinsChange")
+
 
 struct RequestURL {
     

@@ -127,6 +127,7 @@ extension UserPay {
                             switch response.result {
                             case .success(let jsonResource):
                                 let json = JSON(jsonResource)
+                                print("pay json: \(json)")
                                 let info = json["info"].stringValue
                                 let status = json["status"].intValue
                                 completionHandler(status == 1, info)

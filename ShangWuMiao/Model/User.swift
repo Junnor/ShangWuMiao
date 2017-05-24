@@ -49,7 +49,11 @@ final class User {
     var isBusiness = String()
     
     // 金额, 有两位小数点
-    var mcoins: Float = 0.00
+    var mcoins: Float = 0.00 {
+        didSet {
+            NotificationCenter.default.post(name: nyatoMcoinsChange, object: nil)
+        }
+    }
     
 
     // MARK: - clean after sign out
@@ -83,7 +87,7 @@ extension User {
                           encoding: URLEncoding.default, headers: nil).responseJSON {                            response in
                             switch response.result {
                             case .success(let json):
-                                print("login json = \(json)")
+//                                print("login json = \(json)")
                                 if let dic = json as? Dictionary<String, AnyObject> {
                                     if let status = dic["status"] as? Int {
                                         let info = dic["info"] as! String
@@ -159,6 +163,7 @@ extension User {
                             
                             switch response.result {
                             case .success(let json):
+                                print("user info json: \(json)")
                                 if let dic = json as? Dictionary<String, AnyObject> {
                                     guard let status = dic["status"] as? Int, status == 1 else {
                                         let info = dic["info"] as? String

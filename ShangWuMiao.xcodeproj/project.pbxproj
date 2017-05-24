@@ -51,7 +51,6 @@
 		8B96043A1ED3D98E001AFC0F /* CornerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9604391ED3D98E001AFC0F /* CornerView.swift */; };
 		8B96043E1ED3E02C001AFC0F /* RegisterTelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B96043D1ED3E02C001AFC0F /* RegisterTelViewController.swift */; };
 		8B9604401ED3E03E001AFC0F /* RegisterNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B96043F1ED3E03E001AFC0F /* RegisterNameViewController.swift */; };
-		8BA3E5411ED5476100127837 /* KeyboardObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA3E5401ED5476100127837 /* KeyboardObserver.swift */; };
 		8BCE2BA91ECC351700ACA1BB /* ExHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCE2BA71ECC351700ACA1BB /* ExHeaderCell.swift */; };
 		8BCE2BAA1ECC351700ACA1BB /* ExHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BCE2BA81ECC351700ACA1BB /* ExHeaderCell.xib */; };
 		8BCE2BAD1ECC369E00ACA1BB /* ExDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCE2BAB1ECC369E00ACA1BB /* ExDescriptionCell.swift */; };
@@ -235,7 +234,6 @@
 		8B9604391ED3D98E001AFC0F /* CornerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CornerView.swift; sourceTree = "<group>"; };
 		8B96043D1ED3E02C001AFC0F /* RegisterTelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterTelViewController.swift; sourceTree = "<group>"; };
 		8B96043F1ED3E03E001AFC0F /* RegisterNameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterNameViewController.swift; sourceTree = "<group>"; };
-		8BA3E5401ED5476100127837 /* KeyboardObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardObserver.swift; sourceTree = "<group>"; };
 		8BCE2BA71ECC351700ACA1BB /* ExHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExHeaderCell.swift; sourceTree = "<group>"; };
 		8BCE2BA81ECC351700ACA1BB /* ExHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExHeaderCell.xib; sourceTree = "<group>"; };
 		8BCE2BAB1ECC369E00ACA1BB /* ExDescriptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExDescriptionCell.swift; sourceTree = "<group>"; };
@@ -507,7 +505,6 @@
 				8B0352E81ECEE16F00E46DEE /* ClassHelper.swift */,
 				8B0352EC1ECEE18500E46DEE /* GlobalFunctions.swift */,
 				8B9604391ED3D98E001AFC0F /* CornerView.swift */,
-				8BA3E5401ED5476100127837 /* KeyboardObserver.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -809,7 +806,6 @@
 			files = (
 				4460C2A91E9B19F3004166DB /* AppDelegate.swift in Sources */,
 				8B03527C1ECEB95E00E46DEE /* RSADataVerifier.m in Sources */,
-				8BA3E5411ED5476100127837 /* KeyboardObserver.swift in Sources */,
 				8B96043A1ED3D98E001AFC0F /* CornerView.swift in Sources */,
 				8BE3800D1EC1DA7B001A6651 /* TopupViewController.swift in Sources */,
 				8BE380111EC2A38A001A6651 /* TopupRecordCell.swift in Sources */,

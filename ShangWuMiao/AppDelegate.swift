@@ -60,15 +60,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // pay callback
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        print("##### sourceApplication")
         if url.host == "safepay" {
             AlipaySDK.defaultService().processOrder(withPaymentResult: url, standbyCallback: { response in
                 let json = JSON(response as Any)
                 let status = json["resultStatus"].intValue
+                print(".... source application json: \(json)")
 
                 UserPay.shared.paySuccess = (status == 9000) ? true : false
 
                 // tell database
                 if  status == 9000 {
+                    User.requestUserInfo(completionHandler: { (success, statusInfo) in
+                        if success {
+                            // TODO
+                        } else {
+                            SVProgressHUD.showInfo(withStatus: statusInfo)
+                            print("request user info failure: \(String(describing: statusInfo))")
+                        }
+                    })
+
                     UserPay.payResult(tradeStatus: status, callback: { success, info in
                         if success {
                             SVProgressHUD.showSuccess(withStatus: info)

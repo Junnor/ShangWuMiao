@@ -17,8 +17,19 @@ class MeViewController: UITableViewController {
         
         // 在Group模式下隐藏头部空白区域
         tableView.contentInset = UIEdgeInsets(top: -35, left: 0, bottom: 0, right: 0)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadMcoins), name: nyatoMcoinsChange, object: nil)
     }
-            
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc private func reloadMcoins() {
+        print("##### reloadMcoins")
+        self.tableView.reloadData()
+    }
+    
     // MARK: - Navigation 
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

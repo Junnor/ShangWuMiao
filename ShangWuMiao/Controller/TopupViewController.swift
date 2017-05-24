@@ -37,8 +37,19 @@ class TopupViewController: UIViewController {
         title = "充值喵币"
 
         mcoinsLabel?.text = "\(User.shared.mcoins)"
-    }
         
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshMcoins), name: nyatoMcoinsChange, object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc private func refreshMcoins() {
+        mcoinsLabel?.text = "\(User.shared.mcoins)"
+    }
+    
     fileprivate var currentMcoinsCount = 10 {
         didSet {
             mcoinsSumLabel?.text = "\(currentMcoinsCount)"
