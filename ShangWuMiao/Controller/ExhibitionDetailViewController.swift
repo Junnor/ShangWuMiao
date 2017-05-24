@@ -33,7 +33,7 @@ class ExhibitionDetailViewController: UIViewController {
     var exhibition: Exhibition!
     
     // MARK: - Private properties
-    fileprivate let isVendor = (User.shared.vendorType != Vendor.none)
+    fileprivate var isVendor: Bool = true
     fileprivate var constCellCounts: Int {
         return isVendor ? 4 : 3
     }
@@ -92,6 +92,7 @@ class ExhibitionDetailViewController: UIViewController {
                                                selector: #selector(self.collectionView.nyato_keyboardNotification(notification:)),
                                                name: NSNotification.Name.UIKeyboardWillChangeFrame,
                                                object: nil)
+        isVendor = (User.shared.vendorType != Vendor.none)
         
         if self.isVendor {
             loadExhibitionData()
