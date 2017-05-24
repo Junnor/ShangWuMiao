@@ -65,6 +65,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     // MARK: - Helper
     
     @IBAction func login(_ sender: UIButton) {
+        tapAction()
+        
+        print("###login")
         guard let uname = unameTextfield.text,
             let password = passwordTextfield.text else {
                 SVProgressHUD.showError(withStatus: "账号或密码不能为空")
@@ -73,7 +76,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
         let parameters = ["uname": uname,
                           "password": password]
+        SVProgressHUD.show(withStatus: "登陆中...")
+        SVProgressHUD.setDefaultMaskType(.clear)
         User.login(parameters: parameters) { [weak self] success, info in
+            SVProgressHUD.dismiss()
             SVProgressHUD.showInfo(withStatus: info)
             if success {
                 self?.performSegue(withIdentifier: "login", sender: nil)

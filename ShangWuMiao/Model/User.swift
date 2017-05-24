@@ -90,33 +90,27 @@ extension User {
         Alamofire.request(url!,
                           method: .post,
                           parameters: parameters,
-                          encoding: URLEncoding.default, headers: nil).responseJSON {                            response in
+                          encoding: URLEncoding.default, headers: nil).responseJSON {
+                            response in
                             switch response.result {
-                            case .success(let json):
+                            case .success(let jsonResponse):
+                                let json = JSON(jsonResponse)
 //                                print("login json = \(json)")
-                                if let dic = json as? Dictionary<String, AnyObject> {
-                                    if let status = dic["status"] as? Int {
-                                        let info = dic["info"] as! String
-                                        
-                                        // user data
-                                        if status == 1 {
-                                            let data = dic["data"] as? Dictionary<String, String>
-                                            if let data = data {
-                                                let uid = data["uid"]
-                                                let oauth_token = data["oauth_token"]
-                                                let oauth_token_secret = data["oauth_token_secret"]
-                                                
-                                                User.shared.uid = uid ?? ""
-                                                User.shared.oauth_token = oauth_token ?? ""
-                                                User.shared.oauth_token_secret = oauth_token_secret ?? ""
-                                            }
-                                        }
-                                        
-                                        print("login info: \(info)")
-                                        completionHandler(status == 1, info)
-                                    }
+
+                                let info = json["info"].stringValue
+                                let status = json["status"].intValue
+                                if status == 1 {
+                                    let data = json["data"]
+                                    let uid = data["uid"].stringValue
+                                    let oauth_token = data["oauth_token"].stringValue
+                                    let oauth_token_secret = data["oauth_token_secret"].stringValue
+                                    User.shared.uid = uid
+                                    User.shared.oauth_token = oauth_token
+                                    User.shared.oauth_token_secret = oauth_token_secret
                                 }
+                                completionHandler(status == 1, info)
                             case .failure(let error):
+                                completionHandler(false, "登陆错误")
                                 print("login error = \(error)")
                             }
                             
@@ -141,8 +135,8 @@ extension User {
                           encoding: URLEncoding.default,
                           headers: nil).responseJSON { response in
                             switch response.result {
-                            case .success(let source):
-                                let json = JSON(source)
+                            case .success(let jsonResponse):
+                                let json = JSON(jsonResponse)
                                 let info = json["info"].stringValue
                                 let status = json["status"].intValue
                                 callBack(status == 1, info)

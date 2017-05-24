@@ -124,8 +124,9 @@ extension MeViewController {
                     let width = cell.avatarImageView.frame.width
                     cell.avatarImageView.layer.cornerRadius = width / 2
                     cell.avatarImageView.layer.masksToBounds = true
-                    
+                    print("...avatar url string = \(User.shared.avatarString)")
                     if let url = URL(string: User.shared.avatarString) {
+                        print("url = \(url)")
                         let resource = ImageResource(downloadURL: url,
                                                      cacheKey: url.absoluteString)
                         
@@ -143,7 +144,6 @@ extension MeViewController {
             let cell = cell as! DetailCell
             if indexPath.section == 1 {
                 var text = ""
-                
                 if meVendor {
                     if let se = VendorSegueEnum(rawValue: indexPath.row) {
                         switch se {
