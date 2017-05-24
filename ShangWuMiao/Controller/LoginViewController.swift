@@ -12,6 +12,11 @@ import SVProgressHUD
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
+    @IBOutlet weak var scrollView: UIScrollView! {
+        didSet {
+            scrollView.alwaysBounceVertical = true
+        }
+    }
     @IBOutlet weak var unameTextfield: UITextField! {
         didSet {
             unameTextfield?.delegate = self
