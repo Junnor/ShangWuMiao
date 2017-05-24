@@ -96,7 +96,6 @@ extension User {
                             case .success(let jsonResponse):
                                 let json = JSON(jsonResponse)
 //                                print("login json = \(json)")
-
                                 let info = json["info"].stringValue
                                 let status = json["status"].intValue
                                 if status == 1 {
@@ -162,46 +161,43 @@ extension User {
                           headers: nil).responseJSON { response in
                             
                             switch response.result {
-                            case .success(let json):
+                            case .success(let jsonResponse):
+                                let json = JSON(jsonResponse)
                                 print("user info json: \(json)")
-                                if let dic = json as? Dictionary<String, AnyObject> {
-                                    guard let status = dic["status"] as? Int, status == 1 else {
-                                        let info = dic["info"] as? String
-                                        completionHandler(false, info)
-                                        return
+                                let info = json["info"].stringValue
+                                let status = json["status"].intValue
+                                
+                                if status == 1 {
+                                    let data = json["data"]
+                                    let user = User.shared
+                                    
+                                    let uname = data["uname"].stringValue
+                                    let isBusiness = data["is_business"].stringValue
+                                    let avatarUrlString = data["avatar"].stringValue
+                                    let gender = data["sex"].stringValue
+                                    
+                                    let mcoins = data["mcoins"].float
+                                    if let m = mcoins {
+                                        user.mcoins = m
+                                    } else {
+                                        let m = data["mcoins"].stringValue
+                                        user.mcoins = Float(m)!
                                     }
-                                    if let data = dic["data"] as? Dictionary<String, AnyObject> {
-                                        let user = User.shared
-                                        
-                                        let uname = data["uname"] as? String
-                                        let isBusiness = data["is_business"] as? String
-                                        let avatarUrlString = data["avatar"] as? String
-                                        let gender = data["sex"] as? String
-                                        
-                                        let mcoins = data["mcoins"]
-                                        if mcoins is Float {
-                                            user.mcoins = mcoins as! Float
-                                        } else if mcoins is String {
-                                            user.mcoins = Float((mcoins as! String))!
-                                        }
-                                        
-                                        user.avatarString = avatarUrlString ?? ""
-                                        user.uname = uname ?? ""
-                                        user.gender = gender ?? ""
-                                        
-                                        if isBusiness != nil {
-                                            switch isBusiness! {
-                                            case "0": user.vendorType = Vendor.none
-                                            case "1": user.vendorType = Vendor.normal
-                                            case "2": user.vendorType = Vendor.vip
-                                            case "3": user.vendorType = Vendor.superVip
-                                            default: break
-                                            }
-                                        }
-                                        
-                                        completionHandler(true, nil)
+                                    
+                                    user.avatarString = avatarUrlString
+                                    user.uname = uname
+                                    user.gender = gender
+                                    
+                                    switch isBusiness {
+                                    case "0": user.vendorType = Vendor.none
+                                    case "1": user.vendorType = Vendor.normal
+                                    case "2": user.vendorType = Vendor.vip
+                                    case "3": user.vendorType = Vendor.superVip
+                                    default: break
                                     }
+
                                 }
+                                completionHandler(status == 1, info)
                             case .failure(let error):
                                 completionHandler(false, "获取错误")
                                 print("get user info error: \(error)")
