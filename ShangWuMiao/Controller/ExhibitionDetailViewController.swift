@@ -14,9 +14,11 @@ import SVProgressHUD
 class ExhibitionDetailViewController: UIViewController {
     
     // MARK: - Outlets
+    @IBOutlet weak var payView: UIView!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     
+    @IBOutlet weak var payViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
             collectionView.dataSource = self
@@ -31,7 +33,11 @@ class ExhibitionDetailViewController: UIViewController {
     var exhibition: Exhibition!
     
     // MARK: - Private properties
-    fileprivate let constCellCounts = 4
+    fileprivate let isVendor = (User.shared.vendorType != Vendor.none)
+    fileprivate var constCellCounts: Int {
+        return isVendor ? 4 : 3
+    }
+    
     fileprivate var tickts = [Ticket]()
     fileprivate var blurView: ExBlurView!
     fileprivate var layerBlurView = false
@@ -76,7 +82,6 @@ class ExhibitionDetailViewController: UIViewController {
         
         registerCollectionView()
         blurView = ExBlurView.blurViewFromNib()
-        loadExhibitionData()
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapAction))
         tapGesture.cancelsTouchesInView = false
@@ -87,7 +92,15 @@ class ExhibitionDetailViewController: UIViewController {
                                                selector: #selector(self.collectionView.nyato_keyboardNotification(notification:)),
                                                name: NSNotification.Name.UIKeyboardWillChangeFrame,
                                                object: nil)
+        
+        if self.isVendor {
+            loadExhibitionData()
+        } else {
+            self.payViewHeightConstraint.constant = 0
+            payView.isHidden = true
+        }
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -119,7 +132,7 @@ class ExhibitionDetailViewController: UIViewController {
     // MARK: - Helper
     
     @objc private func tapAction() {
-        self.phoneTextField.resignFirstResponder()
+        self.phoneTextField?.resignFirstResponder()
     }
 
     private func loadExhibitionData() {
@@ -153,7 +166,7 @@ class ExhibitionDetailViewController: UIViewController {
     }
     
     @objc fileprivate func textFieldResignFirstResonder() {
-        phoneTextField.resignFirstResponder()
+        phoneTextField?.resignFirstResponder()
     }
     
     @IBAction func buy(_ sender: Any) {
@@ -260,7 +273,7 @@ class ExhibitionDetailViewController: UIViewController {
 extension ExhibitionDetailViewController: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
+        return self.isVendor ? 2 : 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -332,7 +345,7 @@ extension ExhibitionDetailViewController: UICollectionViewDataSource {
                 }
                 
                 return cell
-            } else {
+            } else {   // Won't show if user not vendor
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ExInputHintCellID", for: indexPath)
                 cell.backgroundColor = UIColor.white
                 if let cell = cell as? ExInputHintCell {
@@ -467,11 +480,11 @@ extension ExhibitionDetailViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return section == 1 ? UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10) : UIEdgeInsets.zero
+        return section == 0 ? UIEdgeInsets.zero : UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return section == 1 ? 30 : 0
+        return section == 0 ? 0 : 30
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {

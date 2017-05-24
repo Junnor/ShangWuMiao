@@ -119,7 +119,7 @@ extension MeViewController {
                     }
                     
                     cell.usernameLabel?.text = User.shared.uname
-                    cell.levelLabel?.text = User.shared.isBusiness
+                    cell.levelLabel?.text = User.shared.vendorType
                 }
             } else {
                 let cell = cell as! MoneyCell

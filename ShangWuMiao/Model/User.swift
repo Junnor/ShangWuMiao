@@ -40,13 +40,13 @@ final class User {
     // 头像 url string
     var avatarString = String()
     
-    /*
+    /* Struct Vendor
      0: 不是商户
      1: 普通商户
      2: 高级商户
      3: 超级商户
      */
-    var isBusiness = String()
+    var vendorType = String()
     
     // 金额, 有两位小数点
     var mcoins: Float = 0.00 {
@@ -64,11 +64,18 @@ final class User {
         gender = ""
         uname = ""
         avatarString = ""
-        isBusiness = ""
+        vendorType = ""
         mcoins = 0.00
         
         nyato_cleanStoredOauthData()
     }
+}
+
+struct Vendor {
+    static let none = "不是商户"
+    static let normal = "普通商户"
+    static let vip = "高级商户"
+    static let superVip = "超级商户"
 }
 
 extension User {
@@ -191,10 +198,10 @@ extension User {
                                         
                                         if isBusiness != nil {
                                             switch isBusiness! {
-                                            case "0": user.isBusiness = "不是商户"
-                                            case "1": user.isBusiness = "普通商户"
-                                            case "2": user.isBusiness = "高级商户"
-                                            case "2": user.isBusiness = "超级商户"
+                                            case "0": user.vendorType = Vendor.none
+                                            case "1": user.vendorType = Vendor.normal
+                                            case "2": user.vendorType = Vendor.vip
+                                            case "3": user.vendorType = Vendor.superVip
                                             default: break
                                             }
                                         }
