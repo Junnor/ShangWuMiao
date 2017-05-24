@@ -120,6 +120,10 @@ class ExhibitionDetailViewController: UIViewController {
         self.navigationController?.navigationBar.shadowImage = nil
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     // MARK: - Helper
     
     private func loadExhibitionData() {
@@ -248,22 +252,25 @@ class ExhibitionDetailViewController: UIViewController {
 // MARK: - Keyboard action
 extension ExhibitionDetailViewController {
     func keyboardNotification(notification: NSNotification) {
-        print("keyboardNotification")
         if let userInfo = notification.userInfo {
-            let endFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
+            var endFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
             let duration:TimeInterval = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0
             let animationCurveRawNSN = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber
             let animationCurveRaw = animationCurveRawNSN?.uintValue ?? UIViewAnimationOptions.curveEaseInOut.rawValue
             let animationCurve:UIViewAnimationOptions = UIViewAnimationOptions(rawValue: animationCurveRaw)
             
-            // TODO: keyboard
             if (endFrame?.origin.y)! >= UIScreen.main.bounds.size.height {
-                self.collectionView.frame.origin.y = 0
+                let contentInset:UIEdgeInsets = UIEdgeInsets.zero
+                self.collectionView.contentInset = contentInset
             } else {
-                self.collectionView.frame.origin.y = -50
+                endFrame = self.view.convert(endFrame!, from: nil)
+                var contentInset:UIEdgeInsets = self.collectionView.contentInset
+                contentInset.bottom = endFrame!.size.height
+                self.collectionView.contentInset = contentInset
             }
+            
             UIView.animate(withDuration: duration,
-                           delay: TimeInterval(0.5),
+                           delay: TimeInterval(0),
                            options: animationCurve,
                            animations: { self.view.layoutIfNeeded() },
                            completion: nil)

@@ -57,6 +57,43 @@ class RegisterNameViewController: UIViewController {
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapAction))
         view.addGestureRecognizer(tapGesture)
+        
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.keyboardNotification(notification:)),
+                                               name: NSNotification.Name.UIKeyboardWillChangeFrame,
+                                               object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+
+    
+    func keyboardNotification(notification: NSNotification) {
+        if let userInfo = notification.userInfo {
+            var endFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
+            let duration:TimeInterval = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0
+            let animationCurveRawNSN = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber
+            let animationCurveRaw = animationCurveRawNSN?.uintValue ?? UIViewAnimationOptions.curveEaseInOut.rawValue
+            let animationCurve:UIViewAnimationOptions = UIViewAnimationOptions(rawValue: animationCurveRaw)
+            
+            if (endFrame?.origin.y)! >= UIScreen.main.bounds.size.height {
+                let contentInset:UIEdgeInsets = UIEdgeInsets.zero
+                self.scrollView.contentInset = contentInset
+            } else {
+                endFrame = self.view.convert(endFrame!, from: nil)
+                var contentInset:UIEdgeInsets = self.scrollView.contentInset
+                contentInset.bottom = endFrame!.size.height
+                self.scrollView.contentInset = contentInset
+            }
+            
+            UIView.animate(withDuration: duration,
+                           delay: TimeInterval(0),
+                           options: animationCurve,
+                           animations: { self.view.layoutIfNeeded() },
+                           completion: nil)
+        }
     }
     
     @objc private func tapAction() {

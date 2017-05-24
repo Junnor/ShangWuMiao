@@ -130,16 +130,22 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 extension LoginViewController {
     func keyboardNotification(notification: NSNotification) {
         if let userInfo = notification.userInfo {
-            let endFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
+            var endFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
             let duration:TimeInterval = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0
             let animationCurveRawNSN = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber
             let animationCurveRaw = animationCurveRawNSN?.uintValue ?? UIViewAnimationOptions.curveEaseInOut.rawValue
             let animationCurve:UIViewAnimationOptions = UIViewAnimationOptions(rawValue: animationCurveRaw)
+            
             if (endFrame?.origin.y)! >= UIScreen.main.bounds.size.height {
-                self.view.frame.origin.y = 0
+                let contentInset:UIEdgeInsets = UIEdgeInsets.zero
+                self.scrollView.contentInset = contentInset
             } else {
-                self.view.frame.origin.y = -50
+                endFrame = self.view.convert(endFrame!, from: nil)
+                var contentInset:UIEdgeInsets = self.scrollView.contentInset
+                contentInset.bottom = endFrame!.size.height
+                self.scrollView.contentInset = contentInset
             }
+            
             UIView.animate(withDuration: duration,
                            delay: TimeInterval(0),
                            options: animationCurve,
