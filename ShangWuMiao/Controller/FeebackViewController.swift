@@ -10,6 +10,12 @@ import UIKit
 
 class FeebackViewController: UIViewController, UITextViewDelegate {
 
+    @IBOutlet weak var scrollView: UIScrollView! {
+        didSet {
+            scrollView.alwaysBounceVertical = true
+        }
+    }
+
     @IBOutlet weak var textView: UITextView! {
         didSet {
             textView.delegate = self
@@ -46,8 +52,6 @@ class FeebackViewController: UIViewController, UITextViewDelegate {
         textView.layer.masksToBounds = true
         
         textView.textColor = UIColor.lightGray
-        
-        publishButton.layer.cornerRadius = publishButton.bounds.height / 2
     }
     
     @objc private func tapGessture() {

@@ -55,7 +55,7 @@ extension TopupList {
                             response in
                             switch response.result {
                             case .success(let jsonSource):
-                                print("list json: \(jsonSource)")
+//                                print("list json: \(jsonSource)")
                                 
                                 let json = JSON(jsonSource)
                                 guard let result = json["result"].int,

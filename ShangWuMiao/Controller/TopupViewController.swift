@@ -11,6 +11,12 @@ import SVProgressHUD
 
 class TopupViewController: UIViewController {
     
+    @IBOutlet weak var scrollView: UIScrollView! {
+        didSet {
+            scrollView.alwaysBounceVertical = true
+        }
+    }
+    
     @IBOutlet weak var mcoinsLabel: UILabel!
     @IBOutlet weak var mcoinsSumLabel: UILabel!
     @IBOutlet weak var sumIndicatorLabel: UILabel!
@@ -19,6 +25,7 @@ class TopupViewController: UIViewController {
         didSet {
             tableView.dataSource = self
             tableView.delegate = self
+            tableView.isScrollEnabled = false
         }
     }
     
