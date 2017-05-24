@@ -18,22 +18,7 @@ class MeViewController: UITableViewController {
         // 在Group模式下隐藏头部空白区域
         tableView.contentInset = UIEdgeInsets(top: -35, left: 0, bottom: 0, right: 0)
     }
-    
-    private var hadUserInfo = false
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        if !hadUserInfo {
-            User.requestUserInfo(completionHandler: { [weak self] (success, statusInfo) in
-                if success {
-                    self?.tableView.reloadData()
-                } else {
-                    print("request user info ffailure: \(String(describing: statusInfo))")
-                }
-            })
-        }
-    }
-        
+            
     // MARK: - Navigation 
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

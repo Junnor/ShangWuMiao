@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class TabBarViewController: UITabBarController {
 
@@ -14,5 +15,15 @@ class TabBarViewController: UITabBarController {
         super.viewDidLoad()
 
         UITabBar.appearance().tintColor = UIColor(red: 255/255.0, green: 196/255.0, blue: 80/255.0, alpha: 1.0)
+        
+        // 载入用户信息
+        User.requestUserInfo(completionHandler: { (success, statusInfo) in
+            if success {
+            } else {
+                SVProgressHUD.showInfo(withStatus: statusInfo)
+                print("request user info failure: \(String(describing: statusInfo))")
+            }
+        })
+
     }
 }
