@@ -1107,7 +1107,7 @@
                                         <rect key="frame" x="-6.5" y="0.0" width="333" height="114"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="334" height="114"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="333" height="114"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PpH-D5-BTr">
@@ -1406,7 +1406,7 @@
                         <outlet property="passwordTextField" destination="5GD-yJ-K2I" id="4lG-A6-eGc"/>
                         <outlet property="unameTextField" destination="382-4y-7Fk" id="84v-mb-mwa"/>
                         <outlet property="verifyTextField" destination="Zgw-Od-gAy" id="xAt-dh-lUd"/>
-                        <segue destination="JzJ-jK-I5g" kind="show" identifier="login from register" id="kSV-FO-uvr"/>
+                        <segue destination="JzJ-jK-I5g" kind="presentation" identifier="login from register" id="kmB-3A-xhH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vxd-Dr-3s7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1623,7 +1623,7 @@
         <image name="pay-alipay" width="29" height="29"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="kSV-FO-uvr"/>
+        <segue reference="kmB-3A-xhH"/>
         <segue reference="HGO-XF-caW"/>
     </inferredMetricsTieBreakers>
 </document>

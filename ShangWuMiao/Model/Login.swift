@@ -77,9 +77,33 @@ extension Login {
                             case .success(let jsonSource):
                                 let json = JSON(jsonSource)
                                 print("register json: \(json)")
-                                let info = json["info"].stringValue
                                 let status = json["status"].intValue
-                                callback(status == 1, info)
+                                var info = ""
+                                switch status {
+                                case 101: info = "成功"
+                                case 102: info = "失败"
+                                case 103: info = "名称过长或过短"
+                                case 104: info = "名称含有违禁词"
+                                case 105: info = "名称已存在"
+                                case 106: info = "该手机已绑定"
+                                case 107: info = "密码不合格"
+                                default: info = "未定义"
+                                    break
+                                }
+                                
+                                if status == 101 {
+                                    let data = json["data"].dictionaryValue
+                                    let dataJson = JSON(data)
+                                    let uid = dataJson["uid"].stringValue
+                                    let oauth_token = dataJson["oauth_token"].stringValue
+                                    let oauth_token_secret = dataJson["oauth_token_secret"].stringValue
+                                    
+                                    User.shared.uid = uid
+                                    User.shared.oauth_token = oauth_token
+                                    User.shared.oauth_token_secret = oauth_token_secret
+                                }
+                                
+                                callback(status == 101, info)
                             case .failure(let error):
                                 callback(false, "注册错误")
                                 print("register error: \(error)")

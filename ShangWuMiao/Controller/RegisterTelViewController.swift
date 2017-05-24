@@ -93,16 +93,16 @@ class RegisterTelViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func submit() {
         tapAction()
-        
-        guard let phone = phoneTextField.text, phone == codePhone else {
-            // 解决SVProgressHUD 在有键盘时不居中的bug
+        guard let phone = phoneTextField.text, codePhone != nil, phone == codePhone else {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
                 SVProgressHUD.showInfo(withStatus: "请勿更改手机号")
             })
             return
         }
         
-        if code == nil {
+        code = codeTextField?.text
+        
+        if code == nil || code == "" {
             return
         }
         
@@ -120,7 +120,7 @@ class RegisterTelViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    // two states
+    // two image states for leftImageView
     private var leftImageView = UIImageView()
     private func setUI() {
         let height = self.phoneTextField.bounds.height

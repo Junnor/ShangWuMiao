@@ -198,13 +198,14 @@ extension User {
                                     }
                                 }
                             case .failure(let error):
+                                completionHandler(false, "获取错误")
                                 print("get user info error: \(error)")
                             }
         }
     }
     
     // MARK: - Feedback
-    static func feedbackWithContent(contentText text: String, completionHandler: (Bool, String) -> ()) {
+    static func feedbackWithContent(contentText text: String, completionHandler: @escaping (Bool, String) -> ()) {
         let stringPara = stringParameters(actTo: ActType.report)
         let userinfoString = kHeaderUrl + RequestURL.kFeedbackUrlString + stringPara
         let url = URL(string: userinfoString)
@@ -218,7 +219,6 @@ extension User {
             return "appVersion: \(appVersion), systemVersion: \(systemVersion), device: \(model)"
         }
 
-        // config
         let parameters = ["uid": NSString(string: User.shared.uid).integerValue,
                           "denounce": text,
                           "type": "iOS",
@@ -231,6 +231,7 @@ extension User {
             case .success(let json):
                 print("feed back json: \(json)")
             case .failure(let error):
+                completionHandler(false, "反馈错误")
                 print("feed back error: \(error)")
             }
         }
