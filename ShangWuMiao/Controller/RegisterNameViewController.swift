@@ -14,7 +14,13 @@ class RegisterNameViewController: UIViewController {
     var code: String!
     var phone: String!
 
-    @IBOutlet weak var unameTextField: CornerTextField! 
+    @IBOutlet weak var scrollView: UIScrollView! {
+        didSet {
+            scrollView.alwaysBounceVertical = true
+        }
+    }
+
+    @IBOutlet weak var unameTextField: CornerTextField!
     @IBOutlet weak var passwordTextField: CornerTextField!
     @IBOutlet weak var verifyTextField: CornerTextField!
     

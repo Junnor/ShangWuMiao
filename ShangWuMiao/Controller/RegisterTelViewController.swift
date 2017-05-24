@@ -11,6 +11,11 @@ import SVProgressHUD
 
 class RegisterTelViewController: UIViewController, UITextFieldDelegate {
     
+    @IBOutlet weak var scrollView: UIScrollView! {
+        didSet {
+            scrollView.alwaysBounceVertical = true
+        }
+    }
     @IBOutlet weak var codeButton: CornerButton!
     @IBOutlet weak var indicatorView: UIActivityIndicatorView! {
         didSet {
@@ -93,6 +98,12 @@ class RegisterTelViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func submit() {
         tapAction()
+        
+        // ------------ Test
+        code = "123456"
+        codePhone = "15652805731"
+        // ------------
+
         guard let phone = phoneTextField.text, codePhone != nil, phone == codePhone else {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
                 SVProgressHUD.showInfo(withStatus: "请勿更改手机号")
@@ -100,11 +111,11 @@ class RegisterTelViewController: UIViewController, UITextFieldDelegate {
             return
         }
         
-        code = codeTextField?.text
-        
-        if code == nil || code == "" {
-            return
-        }
+//        code = codeTextField?.text
+//        
+//        if code == nil || code == "" {
+//            return
+//        }
         
         self.timer.invalidate()
         performSegue(withIdentifier: "register", sender: nil)
