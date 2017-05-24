@@ -79,6 +79,7 @@ class ExhibitionDetailViewController: UIViewController {
         loadExhibitionData()
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapAction))
+        tapGesture.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGesture)
         
         // keyboard notification
@@ -162,10 +163,8 @@ class ExhibitionDetailViewController: UIViewController {
         } else {
             if let price = Float((priceLabel?.text)!) {
                 // TODO: - Test price
-//                let testPrice: Float = 1.0
                 let message = "确认购买门票？\n [请确认手机号码无误] \n\n 数量：\(ticktsTimes) \n\n 总价：\(price)"
                 let alert = UIAlertController(title: "确认购买", message: message, preferredStyle: .alert)
-                print("price = \(price)")
                 let cancel = UIAlertAction(title: "取消", style: .default, handler: nil)
                 let ok = UIAlertAction(title: "确定", style: .destructive) { [weak self] _ in
                     if User.shared.mcoins >= price {
@@ -444,7 +443,6 @@ extension ExhibitionDetailViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("didSelectItemAt")
         if let cell = collectionView.cellForItem(at: indexPath) as? ExTicketCell {
             cell.nameLabel?.textColor = UIColor.white
             cell.priceLabel?.textColor = UIColor.white
