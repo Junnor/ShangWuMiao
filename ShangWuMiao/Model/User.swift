@@ -175,15 +175,9 @@ extension User {
                                     let isBusiness = data["is_business"].stringValue
                                     let avatarUrlString = data["avatar"].stringValue
                                     let gender = data["sex"].stringValue
+                                    let mcoins = data["mcoins"].floatValue
                                     
-                                    let mcoins = data["mcoins"].float
-                                    if let m = mcoins {
-                                        user.mcoins = m
-                                    } else {
-                                        let m = data["mcoins"].stringValue
-                                        user.mcoins = Float(m)!
-                                    }
-                                    
+                                    user.mcoins = mcoins
                                     user.avatarString = avatarUrlString
                                     user.uname = uname
                                     user.gender = gender
