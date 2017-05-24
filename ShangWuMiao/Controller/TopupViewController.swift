@@ -8,6 +8,7 @@
 
 import UIKit
 import SVProgressHUD
+import SwiftyJSON
 
 class TopupViewController: UIViewController {
     
@@ -58,9 +59,35 @@ class TopupViewController: UIViewController {
     }
     
     fileprivate func alipayAction() {
+        print("alipayAction")
         AlipaySDK.defaultService().payOrder(UserPay.shared.alipay_sign_str,
                                             fromScheme: kAlipaySchema,
                                             callback: { response in
+                                                let json = JSON(response as Any)
+                                                let status = json["resultStatus"].intValue
+                                                print(".... source application json: \(json)")
+                                                
+                                                UserPay.shared.paySuccess = (status == 9000) ? true : false
+                                                
+                                                // tell database
+                                                if  status == 9000 {
+                                                    User.requestUserInfo(completionHandler: { (success, statusInfo) in
+                                                        if success {
+                                                            // TODO
+                                                        } else {
+                                                            SVProgressHUD.showInfo(withStatus: statusInfo)
+                                                            print("request user info failure: \(String(describing: statusInfo))")
+                                                        }
+                                                    })
+                                                    
+                                                    UserPay.payResult(tradeStatus: status, callback: { success, info in
+                                                        if success {
+                                                            SVProgressHUD.showSuccess(withStatus: info)
+                                                        } else {
+                                                            SVProgressHUD.showError(withStatus: info!)
+                                                        }
+                                                    })
+                                                }
                                                 print("alipay payOrder call back = \(String(describing: response))")
         })
     }
@@ -118,6 +145,8 @@ extension TopupViewController: UITableViewDataSource {
 extension TopupViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {   // alipay
+            print("UserPay pay ")
+
             UserPay.pay(withType: Pay.alipay,
                         orderPrice: Float(1),
                         completionHandler: { [weak self] (success, info) in
