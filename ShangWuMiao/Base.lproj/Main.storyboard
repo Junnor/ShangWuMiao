@@ -1296,7 +1296,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="手机／邮箱／用户名" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="umJ-hv-UQi" customClass="CornerTextField" customModule="ShangWuMiao" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="195.5" width="280" height="46"/>
+                                                <rect key="frame" x="20" y="175.5" width="280" height="46"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="46" id="8eN-Kz-aFC"/>
@@ -1306,14 +1306,14 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="密码" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="03o-u7-T34" customClass="CornerTextField" customModule="ShangWuMiao" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="256.5" width="280" height="46"/>
+                                                <rect key="frame" x="20" y="236.5" width="280" height="46"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1aJ-qk-6Zh" customClass="CornerButton" customModule="ShangWuMiao" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="322.5" width="280" height="46"/>
+                                                <rect key="frame" x="20" y="302.5" width="280" height="46"/>
                                                 <color key="backgroundColor" red="1" green="0.83921568629999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <state key="normal" title="登陆">
@@ -1323,17 +1323,8 @@
                                                     <action selector="login:" destination="IzP-m5-aGS" eventType="touchUpInside" id="h5K-2v-dOJ"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gaj-ND-cen">
-                                                <rect key="frame" x="237.5" y="10" width="62" height="30"/>
-                                                <state key="normal" title="现在注册">
-                                                    <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <segue destination="O1a-CI-lYP" kind="show" identifier="register now" id="HTC-ak-Tzf"/>
-                                                </connections>
-                                            </button>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg-figure" translatesAutoresizingMaskIntoConstraints="NO" id="THB-Rx-mrs">
-                                                <rect key="frame" x="20" y="50" width="280" height="125.5"/>
+                                                <rect key="frame" x="20" y="30" width="280" height="125.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="THB-Rx-mrs" secondAttribute="height" multiplier="595:266" id="uyw-iV-haM"/>
                                                 </constraints>
@@ -1347,12 +1338,10 @@
                                             <constraint firstAttribute="trailing" secondItem="THB-Rx-mrs" secondAttribute="trailing" constant="20" id="8oS-D0-zRt"/>
                                             <constraint firstItem="03o-u7-T34" firstAttribute="top" secondItem="umJ-hv-UQi" secondAttribute="bottom" constant="15" id="Fp7-cD-5vR"/>
                                             <constraint firstItem="03o-u7-T34" firstAttribute="trailing" secondItem="umJ-hv-UQi" secondAttribute="trailing" id="N5h-Fl-fpq"/>
+                                            <constraint firstItem="THB-Rx-mrs" firstAttribute="top" secondItem="pcO-dn-z4z" secondAttribute="top" constant="30" id="Nd2-vR-3z0"/>
                                             <constraint firstItem="03o-u7-T34" firstAttribute="height" secondItem="umJ-hv-UQi" secondAttribute="height" id="e3W-vR-eSL"/>
-                                            <constraint firstItem="gaj-ND-cen" firstAttribute="trailing" secondItem="THB-Rx-mrs" secondAttribute="trailing" id="e8b-bW-9Qn"/>
                                             <constraint firstItem="1aJ-qk-6Zh" firstAttribute="top" secondItem="03o-u7-T34" secondAttribute="bottom" constant="20" id="eHm-wY-mAh"/>
                                             <constraint firstItem="03o-u7-T34" firstAttribute="leading" secondItem="umJ-hv-UQi" secondAttribute="leading" id="fvy-6z-h21"/>
-                                            <constraint firstItem="THB-Rx-mrs" firstAttribute="top" secondItem="gaj-ND-cen" secondAttribute="bottom" constant="10" id="gbK-eA-1vF"/>
-                                            <constraint firstItem="gaj-ND-cen" firstAttribute="top" secondItem="pcO-dn-z4z" secondAttribute="top" constant="10" id="kXL-ZJ-d2M"/>
                                             <constraint firstItem="1aJ-qk-6Zh" firstAttribute="trailing" secondItem="03o-u7-T34" secondAttribute="trailing" id="pgH-wS-cSC"/>
                                             <constraint firstItem="THB-Rx-mrs" firstAttribute="leading" secondItem="pcO-dn-z4z" secondAttribute="leading" constant="20" id="qeT-Xu-n9a"/>
                                             <constraint firstItem="1aJ-qk-6Zh" firstAttribute="leading" secondItem="03o-u7-T34" secondAttribute="leading" id="rHI-Ly-EIc"/>
@@ -1378,7 +1367,13 @@
                             <constraint firstItem="ziK-yQ-mam" firstAttribute="top" secondItem="Ipg-8W-TGX" secondAttribute="bottom" id="imW-Eo-i6B"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="登陆" id="QmF-uY-A6Z"/>
+                    <navigationItem key="navigationItem" title="登陆" id="QmF-uY-A6Z">
+                        <barButtonItem key="rightBarButtonItem" title="注册" id="Eg6-Y7-XHz">
+                            <connections>
+                                <segue destination="O1a-CI-lYP" kind="show" id="YI9-9L-Nj6"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="loginButton" destination="1aJ-qk-6Zh" id="1oc-An-YdV"/>
                         <outlet property="passwordTextfield" destination="03o-u7-T34" id="CAW-pc-c3u"/>
@@ -1389,7 +1384,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ySQ-qu-2VI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1689.375" y="111.97183098591549"/>
+            <point key="canvasLocation" x="-1736" y="38"/>
         </scene>
         <!--Register Name View Controller-->
         <scene sceneID="K5B-ZI-6Qa">
