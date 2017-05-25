@@ -1100,8 +1100,8 @@
                         <outlet property="collectionView" destination="E7M-YJ-y0d" id="s8h-qG-yCd"/>
                         <outlet property="payView" destination="fOH-aB-ByU" id="5r1-xE-APd"/>
                         <outlet property="payViewHeightConstraint" destination="AJr-Hk-Pjg" id="5F5-8J-M7j"/>
-                        <outlet property="priceLabel" destination="AP1-15-nMT" id="4WA-h2-f2a"/>
                         <outlet property="titleLabel" destination="Qh7-2q-aem" id="1rY-xG-ORQ"/>
+                        <outlet property="vcpriceLabel" destination="AP1-15-nMT" id="0GL-Pu-dkF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xVv-px-JKu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1141,7 +1141,7 @@
                                         <rect key="frame" x="-6.5" y="0.0" width="333" height="114"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="333" height="114"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="334" height="114"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PpH-D5-BTr">

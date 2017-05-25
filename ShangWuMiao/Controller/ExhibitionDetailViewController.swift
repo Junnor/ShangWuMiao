@@ -16,7 +16,7 @@ class ExhibitionDetailViewController: UIViewController {
     // MARK: - Outlets
     @IBOutlet weak var payView: UIView!
     @IBOutlet var titleLabel: UILabel!
-    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var vcpriceLabel: UILabel!
     
     @IBOutlet weak var payViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var collectionView: UICollectionView! {
@@ -54,9 +54,10 @@ class ExhibitionDetailViewController: UIViewController {
     fileprivate var ticktsTimes = 1 {
         didSet {
             if let indexPath = collectionView.indexPathsForSelectedItems?.first {
-                let money = originalPrice ?
-                    self.tickts[indexPath.item].price : self.tickts[indexPath.item].proxy_price
-                self.priceLabel?.text = "\(Float(money!)! * Float(self.ticktsTimes))"
+//                let money = originalPrice ?
+//                    self.tickts[indexPath.item].price : self.tickts[indexPath.item].proxy_price
+                let money = self.tickts[indexPath.item].proxy_price
+                self.vcpriceLabel?.text = "\(Float(money!)! * Float(self.ticktsTimes))"
                 
                 self.ticktsTimesLabel?.text = "\(ticktsTimes)"
             }
@@ -65,7 +66,7 @@ class ExhibitionDetailViewController: UIViewController {
     fileprivate var ticktPrice: Float! {
         didSet {
             if ticktPrice != nil {
-                self.priceLabel?.text = "\(ticktPrice * Float(self.ticktsTimes))"
+                self.vcpriceLabel?.text = "\(ticktPrice * Float(self.ticktsTimes))"
             }
         }
     }
@@ -149,7 +150,7 @@ class ExhibitionDetailViewController: UIViewController {
                                                 scrollPosition: UICollectionViewScrollPosition.centeredHorizontally)
                 
                 // set initial value
-                self?.priceLabel?.text = self?.tickts[0].price
+                self?.vcpriceLabel?.text = self?.tickts[0].proxy_price
             } else {
                 print("request exhibition ticket failure: \(String(describing: info))")
             }
@@ -175,8 +176,8 @@ class ExhibitionDetailViewController: UIViewController {
         if result.info != nil {
             SVProgressHUD.showInfo(withStatus: result.info!)
         } else {
-            if let price = Float((priceLabel?.text)!) {
-                let message = "确认购买门票？\n [请确认手机号码无误] \n\n 数量：\(ticktsTimes) \n\n 总价：\(price)"
+            if let price = Float((vcpriceLabel?.text)!) {
+                let message = "确认购买门票？\n [请确认手机号码 \(self.phoneTextField.text!) 无误] \n\n 数量：\(ticktsTimes) \n\n 总价：\(price)"
                 let alert = UIAlertController(title: "确认购买", message: message, preferredStyle: .alert)
                 let cancel = UIAlertAction(title: "取消", style: .default, handler: nil)
                 let ok = UIAlertAction(title: "确定", style: .destructive) { [weak self] _ in
@@ -382,7 +383,9 @@ extension ExhibitionDetailViewController: UICollectionViewDataSource {
                         cell.priceLabel?.textColor = UIColor.white
                         cell.backgroundColor = UIColor.themeRed
                         
-                        self.ticktPrice = Float(cell.priceLabel.text!)!
+//                        self.ticktPrice = Float(cell.priceLabel.text!)!
+                        self.ticktPrice = Float(tickt.proxy_price)!
+
                     } else {
                         cell.nameLabel?.textColor = UIColor.themeRed
                         cell.priceLabel?.textColor = UIColor.themeRed
