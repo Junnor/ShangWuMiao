@@ -108,7 +108,7 @@ class ExhibitionTicketTableViewController: UITableViewController {
             cell.phoneLabel?.text = "手机号:" + ticket.tel
             cell.countLabel?.text = "购买: \(ticket.shop_num!)张，"
             
-            if let url = URL(string: kHeaderUrl + ticket.cover) {
+            if let url = URL(string: kImageHeaderUrl + ticket.cover) {
                 let resource = ImageResource(downloadURL: url, cacheKey: url.absoluteString)
                 cell.orderImageView.kf.setImage(with: resource)
             }

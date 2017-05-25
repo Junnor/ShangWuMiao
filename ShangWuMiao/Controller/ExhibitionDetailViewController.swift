@@ -151,7 +151,7 @@ class ExhibitionDetailViewController: UIViewController {
                 // set initial value
                 self?.priceLabel?.text = self?.tickts[0].price
             } else {
-                print("request exhibition ticket failure: \(info!)")
+                print("request exhibition ticket failure: \(String(describing: info))")
             }
         }
     }

@@ -68,7 +68,7 @@ class SoldTicketViewController: UIViewController, UITableViewDataSource, UITable
                     }
                 }
             } else {
-                print("load exhibition ticket failure: \(info ?? "no value")")
+                print("load exhibition ticket failure: \(info)")
             }
         })
     }
@@ -83,7 +83,7 @@ class SoldTicketViewController: UIViewController, UITableViewDataSource, UITable
                     self!.tableView.reloadData()
                 }
             } else {
-                print("load more exhibition ticket failure: \(info ?? "no value")")
+                print("load more exhibition ticket failure: \(info)")
             }
         })
     }

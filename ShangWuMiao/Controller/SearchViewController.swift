@@ -123,7 +123,7 @@ class SearchViewController: UIViewController, UICollectionViewDataSource, UIColl
                     }
                 }
             } else {
-                print("load exhibition failure: \(info ?? "no value")")
+                print("load exhibition failure: \(info)")
             }
         })
     }
@@ -140,7 +140,7 @@ class SearchViewController: UIViewController, UICollectionViewDataSource, UIColl
                     self!.collectionView.reloadData()
                 }
             } else {
-                print("load more exhibition failure: \(info ?? "no value")")
+                print("load more exhibition failure: \(info)")
             }
         })
     }

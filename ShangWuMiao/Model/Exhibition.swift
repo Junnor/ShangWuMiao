@@ -62,9 +62,7 @@ class Exhibition: NSObject {
 
     fileprivate var exhibitions = [Exhibition]()
     
-    static func fromJSON(_ json: [String: Any]) -> Exhibition {
-        let json = JSON(json)
-
+    static func fromJSON(_ json: JSON) -> Exhibition {
         let addr = json["addr"].stringValue
         let cover = json["cover"].stringValue
         let start_time = json["start_time"].stringValue
@@ -128,38 +126,32 @@ extension Exhibition {
                           encoding: URLEncoding.default,
                           headers: nil).responseJSON { response in
                             switch response.result {
-                            case .success(let json):
+                            case .success(let jsonResponse):
+                                let json = JSON(jsonResponse)
 //                                print("exhibition detail json: \(json)")
-
-                                guard let dic = json as? Dictionary<String, Any>,
-                                    let result = dic["result"] as? Int, result == 1,
-                                    let sourceJson = dic["data"] as? [Dictionary<String, AnyObject>] else {
-                                        completionHandle(false, "加载失败", [])
-                                        return
-                                    
-                                }
+                                let status = json["result"].intValue
                                 var tickts = [Ticket]()
-                                for resource in sourceJson {
-                                    let json = JSON(resource)
-                                    let id = json["id"].stringValue
-                                    let name = json["name"].stringValue
-                                    let price = json["price"].stringValue
-                                    let proxy_price = json["proxy_price"].stringValue
-                                    
-                                    let ticket = Ticket(ticketId: id, name: name, price: price, proxy_price: proxy_price)
-                                    tickts.append(ticket)
+                                if status == 1 {
+                                    let data = json["data"].arrayValue
+                                    for tickt in data {
+                                        let id = tickt["id"].stringValue
+                                        let name = tickt["name"].stringValue
+                                        let price = tickt["price"].stringValue
+                                        let proxy_price = tickt["proxy_price"].stringValue
+                                        let ticket = Ticket(ticketId: id, name: name, price: price, proxy_price: proxy_price)
+                                        tickts.append(ticket)
+                                    }
                                 }
-                                
-                                completionHandle(true, nil, tickts)
+                                completionHandle(status == 1, nil, tickts)
                             case .failure(let error):
+                                completionHandle(false, "获取错误", [])
                                 print("get exhibition detail error: \(error)")
                             }
         }
         
     }
-
-    
-    func requestSoldTicketForExhibitionList(loadMore more: Bool, completionHandler: @escaping (Bool, String?, [Exhibition]) -> ()) {
+   
+    func requestSoldTicketForExhibitionList(loadMore more: Bool, completionHandler: @escaping (Bool, String, [Exhibition]) -> ()) {
         ticketPage = more ? ticketPage + 1 : 1
         
         let stringPara = stringParameters(actTo: ActType.my_list)
@@ -175,67 +167,46 @@ extension Exhibition {
                           encoding: URLEncoding.default,
                           headers: nil).responseJSON { response in
                             switch response.result {
-                            case .success(let json):
-                                //                                 print("exhibition list json: \(json)")
-                                //                                 print("........................................")
-                                if let dic = json as? Dictionary<String, AnyObject> {
-                                    if let status = dic["result"] as? Int {
-                                        if status == 1 {
-                                            if let dataArr = dic["data"] as? Array<Dictionary<String, AnyObject>> {
-                                                var tmpExhibitions = [Exhibition]()
-                                                for data in dataArr {
-                                                    // 先这样, 强制转换不好 ！！！
-                                                    let addr = data["addr"] as! String
-                                                    let cover = data["cover"] as! String
-                                                    let start_time = data["start_time"] as! String
-                                                    let end_time = data["end_time"] as! String
-                                                    let name = data["name"] as! String
-                                                    let exid = data["eid"] as! String
-                                                    let location = data["location"] as! String
-                                                    let description = data["description"] as! String
-                                                    
-                                                    let ex = Exhibition(id: exid,
-                                                                        cover: cover,
-                                                                        name: name,
-                                                                        exDescription: description,
-                                                                        addr: addr,
-                                                                        location: location,
-                                                                        start_time: start_time,
-                                                                        end_time: end_time)
-                                                    
-                                                    // for ticket exhibition
-                                                    let status = data["status"] as! String
-                                                    ex.stauts = status
+                            case .success(let jsonResponse):
+                                let json = JSON(jsonResponse)
+//                                print("ticket exhibition list json: \(json)")
+                                
+                                let status = json["result"].intValue
+                                let errorInfo = json["error"].stringValue
+                                var tmpExhibitions = [Exhibition]()
+                                if status == 1 {
+                                    let data = json["data"].arrayValue
+                                    for exhibition in data {
+                                        let ex = Exhibition.fromJSON(exhibition)
+                                        
+                                        // for ticket exhibition
+                                        let status = exhibition["status"].stringValue
+                                        ex.stauts = status
 
-                                                    tmpExhibitions.append(ex)
-                                                }
-                                                
-                                                if more {
-                                                    for exhibition in tmpExhibitions {
-                                                        self.exhibitions.append(exhibition)
-                                                    }
-                                                } else {
-                                                    self.exhibitions.removeAll()
-                                                    self.exhibitions = tmpExhibitions
-                                                }
-                                                
-                                                completionHandler(true, nil, self.exhibitions)
-                                            }
-                                            return
-                                        } else {
-                                            let errorInfo = dic["error"] as? String
-                                            completionHandler(false, errorInfo, [])
-                                        }
+                                        tmpExhibitions.append(ex)
                                     }
                                 }
+                                
+                                if more {
+                                    for exhibition in tmpExhibitions {
+                                        self.exhibitions.append(exhibition)
+                                    }
+                                } else {
+                                    self.exhibitions.removeAll()
+                                    self.exhibitions = tmpExhibitions
+                                }
+                                
+                                completionHandler(status == 1, errorInfo, self.exhibitions)
+                                
                             case .failure(let error):
+                                completionHandler(false, "获取已购漫展错误", [])
                                 print("get exhibition data error: \(error)")
                             }
         }
     }
 
     // true for more, false for page 0 or refresh
-    func requestExhibitionList(withKeyword keyword:  String?, loadMore: Bool, completionHandler: @escaping (Bool, String?, [Exhibition]) -> ()) {
+    func requestExhibitionList(withKeyword keyword:  String?, loadMore: Bool, completionHandler: @escaping (Bool, String, [Exhibition]) -> ()) {
         exhibitionPage = loadMore ? exhibitionPage + 1 : 1
         
         let stringPara = stringParameters(actTo: ActType.ex_list)
@@ -252,37 +223,32 @@ extension Exhibition {
                           encoding: URLEncoding.default,
                           headers: nil).responseJSON { response in
                             switch response.result {
-                            case .success(let json):
-//                                 print("exhibition list json: \(json)")
-                                if let dic = json as? Dictionary<String, AnyObject> {
-                                    if let status = dic["result"] as? Int {
-                                        if status == 1 {
-                                            if let dataArr = dic["data"] as? Array<Dictionary<String, AnyObject>> {
-                                                var tmpExhibitions = [Exhibition]()
-                                                for data in dataArr {
-                                                    let ex = Exhibition.fromJSON(data)
-                                                    tmpExhibitions.append(ex)
-                                                }
-                                                
-                                                if loadMore {
-                                                    for exhibition in tmpExhibitions {
-                                                        self.exhibitions.append(exhibition)
-                                                    }
-                                                } else {
-                                                    self.exhibitions.removeAll()
-                                                    self.exhibitions = tmpExhibitions
-                                                }
-                                                
-                                                completionHandler(true, nil, self.exhibitions)
-                                            }
-                                            return
-                                        } else {
-                                            let errorInfo = dic["error"] as? String
-                                            completionHandler(false, errorInfo, [])
-                                        }
+                            case .success(let jsonResponse):
+                                let json = JSON(jsonResponse)
+//                                print("exhibition list json: \(json)")
+                                let status = json["result"].intValue
+                                let errorInfo = json["error"].stringValue
+                                var tmpExhibitions = [Exhibition]()
+                                if status == 1 {
+                                    let data = json["data"].arrayValue
+                                    for exhibition in data {
+                                        let ex = Exhibition.fromJSON(exhibition)
+                                        tmpExhibitions.append(ex)
                                     }
                                 }
+                                
+                                if loadMore {
+                                    for exhibition in tmpExhibitions {
+                                        self.exhibitions.append(exhibition)
+                                    }
+                                } else {
+                                    self.exhibitions.removeAll()
+                                    self.exhibitions = tmpExhibitions
+                                }
+                                
+                                completionHandler(status == 1, errorInfo, self.exhibitions)
                             case .failure(let error):
+                                completionHandler(false, "获取漫展列表错误", [])
                                 print("get exhibition data error: \(error)")
                             }
         }

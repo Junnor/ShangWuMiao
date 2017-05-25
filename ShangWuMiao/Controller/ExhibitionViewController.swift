@@ -72,7 +72,7 @@ class ExhibitionViewController: UIViewController, UICollectionViewDataSource, UI
                     }
                 }
             } else {
-                print("load exhibition failure: \(info ?? "no value")")
+                print("load exhibition failure: \(info)")
             }
         })
     }
@@ -87,7 +87,7 @@ class ExhibitionViewController: UIViewController, UICollectionViewDataSource, UI
                     self!.collectionView.reloadData()
                 }
             } else {
-                print("load more exhibition failure: \(info ?? "no value")")
+                print("load more exhibition failure: \(info)")
             }
         })
     }
