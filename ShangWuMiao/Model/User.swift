@@ -163,7 +163,7 @@ extension User {
                             switch response.result {
                             case .success(let jsonResponse):
                                 let json = JSON(jsonResponse)
-                                print("user info json: \(json)")
+//                                print("user info json: \(json)")
                                 let info = json["info"].stringValue
                                 let status = json["status"].intValue
                                 
@@ -220,11 +220,14 @@ extension User {
                           "id": 0,
                           "denounce_version": deviceParameters()] as [String : Any]
 
-
         Alamofire.request(url!, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: nil).responseJSON { response in
             switch response.result {
-            case .success(let json):
+            case .success(let jsonResponse):
+                let json = JSON(jsonResponse)
                 print("feed back json: \(json)")
+                let info = json["info"].stringValue
+                let status = json["status"].intValue
+                completionHandler(status == 1, info)
             case .failure(let error):
                 completionHandler(false, "反馈错误")
                 print("feed back error: \(error)")

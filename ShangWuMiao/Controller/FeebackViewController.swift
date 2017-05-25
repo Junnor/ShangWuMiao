@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class FeebackViewController: UIViewController, UITextViewDelegate {
 
@@ -25,19 +26,25 @@ class FeebackViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var publishButton: UIButton!
     
     @IBAction func publish() {
+
+        if textView.text == promptText {
+            return
+        }
         
         let text = textView.text
-        User.feedbackWithContent(contentText: text!) { success, info in
-            
+        
+        User.feedbackWithContent(contentText: text!) { _, info in
+            SVProgressHUD.showInfo(withStatus: info)
         }
     }
-    
+    private let promptText = "请输入反馈内容(最多250个字)"
+    private let maximumChars = 250
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "反馈"
         
-        textView.text = "请输入反馈内容(最多250个字)"
+        textView.text = promptText
         
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapGessture)))
         
@@ -61,7 +68,8 @@ class FeebackViewController: UIViewController, UITextViewDelegate {
     // MARK: - Text view delegate
     
     private var isPlaceholderText = true
-        func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+    
+    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
         if isPlaceholderText {
             isPlaceholderText = false
             self.textView.text = ""
@@ -71,8 +79,17 @@ class FeebackViewController: UIViewController, UITextViewDelegate {
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            textView.resignFirstResponder()
+            return false
+        }
         
-        return true
+        let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
+        let numberOfChars = newText.characters.count
+        if numberOfChars > maximumChars {
+            SVProgressHUD.showInfo(withStatus: "反馈内容字数太多!")
+        }
+        return numberOfChars <= maximumChars
     }
     
 }
