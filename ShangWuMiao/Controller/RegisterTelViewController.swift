@@ -109,11 +109,11 @@ class RegisterTelViewController: UIViewController, UITextFieldDelegate {
     @IBAction func submit() {
         tapAction()
         
-//        // ------------ Test
+//        // ------------ TODO: test code
 //        code = "123456"
 //        codePhone = "15652805731"
 //        // ------------
-//
+
         if codePhone == nil {
             return
         }

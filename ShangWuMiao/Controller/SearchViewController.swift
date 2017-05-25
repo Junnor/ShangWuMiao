@@ -9,6 +9,7 @@
 import UIKit
 import MJRefresh
 import Kingfisher
+import SVProgressHUD
 
 class SearchViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
@@ -109,22 +110,22 @@ class SearchViewController: UIViewController, UICollectionViewDataSource, UIColl
         exhibition.requestExhibitionList(withKeyword: self.searchBar.text,
                                          loadMore: false,
                                          completionHandler: { [weak self] success, info, exhibitions in
-            self?.collectionView.mj_header.endRefreshing()
-            if success {
-                if self != nil {
-                    self!.exhibitions = exhibitions
-                    self!.collectionView.reloadData()
-                    
-                    if exhibitions.count >= kDefaultCount {
-                        let footerRefresh = MJRefreshAutoNormalFooter(refreshingTarget: self,
+                                            self?.collectionView.mj_header.endRefreshing()
+                                            if info != "" {
+                                                SVProgressHUD.showInfo(withStatus: info)
+                                            }
+                                            if success {
+                                                if self != nil {
+                                                    self!.exhibitions = exhibitions
+                                                    self!.collectionView.reloadData()
+                                                    if exhibitions.count >= kDefaultCount {
+                                                        let footerRefresh = MJRefreshAutoNormalFooter(refreshingTarget: self,
                                                                       refreshingAction: #selector(self!.loadMore))
-                        footerRefresh?.setTitle("已全部加载", for: .noMoreData)
-                        self!.collectionView?.mj_footer = footerRefresh
-                    }
-                }
-            } else {
-                print("load exhibition failure: \(info)")
-            }
+                                                        footerRefresh?.setTitle("已全部加载", for: .noMoreData)
+                                                        self!.collectionView?.mj_footer = footerRefresh
+                                                    }
+                                                }
+                                            }
         })
     }
     

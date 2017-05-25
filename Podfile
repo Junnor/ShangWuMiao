@@ -10,7 +10,7 @@ target 'ShangWuMiao' do
   pod 'Kingfisher', '~> 3.0'
   pod 'MJRefresh'
   pod 'SwiftyJSON'
-  pod 'Alamofire', '~> 4.4'
+  pod 'Alamofire'
   pod 'SVProgressHUD'
 
 end
