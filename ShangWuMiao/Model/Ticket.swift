@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import SwiftyJSON
 
 class Ticket: NSObject {
     
@@ -53,7 +54,7 @@ class Ticket: NSObject {
 }
 
 extension Ticket {
-    static func mesageSendWithOrderId(id: String, completionHandler: @escaping (Int, String) -> ()) {
+    static func mesageSendWithOrderId(id: String, completionHandler: @escaping (Bool, String) -> ()) {
         let stringPara = stringParameters(actTo: ActType.sendTicketSms)
         let userinfoString = kHeaderUrl + RequestURL.kTicketMsSendUrlString + stringPara
         
@@ -67,15 +68,14 @@ extension Ticket {
                           encoding: URLEncoding.default,
                           headers: nil).responseJSON { response in
                             switch response.result {
-                            case .success(let json):
+                            case .success(let jsonResponse):
+                                let json = JSON(jsonResponse)
 //                                print("..ticket json: \(json)")
-                                guard let dic = json as? Dictionary<String, Any>,
-                                let status = dic["status"] as? Int, let info = dic["info"] as? String else {
-                                    completionHandler(0, "cast type failure")
-                                    return
-                                }
-                                completionHandler(status, info)
+                                let status = json["status"].intValue
+                                let info = json["info"].stringValue
+                                completionHandler(status == 1, info)
                             case .failure(let error):
+                                completionHandler(false, "短信重发错误")
                                 print("send ticket message error: \(error)")
                             }
         }
@@ -99,46 +99,42 @@ extension Ticket {
                           encoding: URLEncoding.default,
                           headers: nil).responseJSON { response in
                             switch response.result {
-                            case .success(let json):
+                            case .success(let jsonResponse):
+                                let json = JSON(jsonResponse)
 //                                print("exhibition list json: \(json)")
-//                                print("........................................")
-                                if let dic = json as? Dictionary<String, AnyObject> {
-                                    if let status = dic["result"] as? Int {
-                                        if status == 1 {
-                                            if let dataArr = dic["data"] as? Array<Dictionary<String, AnyObject>> {
-                                                var tmpTickets = [Ticket]()
-                                                for data in dataArr {
-                                                    // 先这样, 强制转换不好 ！！！
-                                                    let orderid = data["orderid"] as! String
-                                                    let cover = data["cover"] as! String
-                                                    let ordertitle = data["ordertitle"] as! String
-                                                    let tel = data["tel"] as! String
-                                                    let shop_num = data["shop_num"] as! String
-
-                                                    let ticket = Ticket(orderId: orderid, title: ordertitle, cover: cover, telphone: tel, number: shop_num)
-                                                    
-                                                    tmpTickets.append(ticket)
-                                                }
-                                                
-                                                if more {
-                                                    for ticket in tmpTickets {
-                                                        self.tickets.append(ticket)
-                                                    }
-                                                } else {
-                                                    self.tickets.removeAll()
-                                                    self.tickets = tmpTickets
-                                                }
-                                                
-                                                completionHandler(true, nil, self.tickets)
-                                            }
-                                            return
-                                        } else {
-                                            let errorInfo = dic["error"] as? String
-                                            completionHandler(false, errorInfo, [])
-                                        }
+                                let status = json["result"].intValue
+                                let errorInfo = json["error"].stringValue
+                                var tmpTickets = [Ticket]()
+                                if status == 1 {
+                                    let data = json["data"].arrayValue
+                                    for tickt in data {
+                                        let orderid = tickt["orderid"].stringValue
+                                        let cover = tickt["cover"].stringValue
+                                        let ordertitle = tickt["ordertitle"].stringValue
+                                        let tel = tickt["tel"].stringValue
+                                        let shop_num = tickt["shop_num"].stringValue
+                                        
+                                        let ticket = Ticket(orderId: orderid,
+                                                            title: ordertitle,
+                                                            cover: cover,
+                                                            telphone: tel,
+                                                            number: shop_num)
+                                        tmpTickets.append(ticket)
                                     }
                                 }
+                                
+                                if more {
+                                    for ticket in tmpTickets {
+                                        self.tickets.append(ticket)
+                                    }
+                                } else {
+                                    self.tickets.removeAll()
+                                    self.tickets = tmpTickets
+                                }
+                                
+                                completionHandler(status == 1, errorInfo, self.tickets)
                             case .failure(let error):
+                                completionHandler(false, "获取错误", [])
                                 print("get tickets data error: \(error)")
                             }
         }

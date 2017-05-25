@@ -493,7 +493,7 @@
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="bought ticket identififer" rowHeight="59" id="YmF-XE-yVm" customClass="BoughtTicketCell" customModule="ShangWuMiao" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55.5" width="320" height="59"/>
+                                        <rect key="frame" x="0.0" y="56" width="320" height="59"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YmF-XE-yVm" id="gS9-dx-ZPc">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="58"/>
@@ -662,7 +662,7 @@
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="top up recorder identifier" rowHeight="108" id="suE-Ct-elg" customClass="TopupRecordCell" customModule="ShangWuMiao" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55.5" width="320" height="108"/>
+                                        <rect key="frame" x="0.0" y="56" width="320" height="108"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="suE-Ct-elg" id="0ec-TK-DG0">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="107"/>
@@ -912,7 +912,7 @@
                                         <rect key="frame" x="-6.5" y="0.0" width="333" height="114"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="333" height="114"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="334" height="114"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gAS-ey-bCM">
@@ -1161,7 +1161,7 @@
                                         <rect key="frame" x="-6.5" y="0.0" width="333" height="114"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="334" height="114"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="333" height="114"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PpH-D5-BTr">
@@ -1545,7 +1545,7 @@
         <scene sceneID="BXS-nj-cRl">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WlC-Jx-zYF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="漫展" image="nav-expo" id="602-yf-T22"/>
+                    <tabBarItem key="tabBarItem" title="漫展" image="nav-expo" selectedImage="nav-expoed" id="602-yf-T22"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="lN8-z3-7ap">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -1564,7 +1564,7 @@
         <scene sceneID="GLh-xh-zIp">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XdA-ZG-msl" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="我的" image="nav-index" id="oxT-CW-ieb"/>
+                    <tabBarItem key="tabBarItem" title="我的" image="nav-index" selectedImage="nav-indexed" id="oxT-CW-ieb"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="BbJ-IV-e2U">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -1754,8 +1754,10 @@
         <image name="buy-2" width="50" height="25"/>
         <image name="ico-addr-2" width="24" height="24"/>
         <image name="ico-mcionmy" width="25" height="25"/>
-        <image name="nav-expo" width="16" height="16"/>
-        <image name="nav-index" width="16" height="16"/>
+        <image name="nav-expo" width="60" height="60"/>
+        <image name="nav-expoed" width="60" height="60"/>
+        <image name="nav-index" width="60" height="60"/>
+        <image name="nav-indexed" width="60" height="60"/>
         <image name="pay-alipay" width="29" height="29"/>
     </resources>
     <inferredMetricsTieBreakers>

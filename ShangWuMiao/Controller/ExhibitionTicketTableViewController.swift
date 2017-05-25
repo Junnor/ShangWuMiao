@@ -9,6 +9,7 @@
 import UIKit
 import MJRefresh
 import Kingfisher
+import SVProgressHUD
 
 class ExhibitionTicketTableViewController: UITableViewController {
     
@@ -78,18 +79,8 @@ class ExhibitionTicketTableViewController: UITableViewController {
                 let indexPath = sender.indexPath!
                 let ticket = self!.tickets[indexPath.row]
                 
-                Ticket.mesageSendWithOrderId(id: ticket.orderid, completionHandler: { (status, info) in
-                    UIView.animate(withDuration: 3.0, animations: {
-                        infoAlert.message = info
-                    }, completion: { _ in
-                        infoAlert.dismiss(animated: true, completion: nil)
-                    })
-                    
-                    if status == 1 {
-                        print("send ticket message success: \(info)")
-                    } else {
-                        print("send ticket message failure: \(info)")
-                    }
+                Ticket.mesageSendWithOrderId(id: ticket.orderid, completionHandler: { (_, info) in
+                    SVProgressHUD.showInfo(withStatus: info)
                 })
             }
         })

@@ -2,15 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "nav-expoed.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "nav-expoed@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "nav-expos.png",
+      "filename" : "nav-expoed@3x.png",
       "scale" : "3x"
     }
   ],

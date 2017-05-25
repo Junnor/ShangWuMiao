@@ -25,7 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         barAppearance.tintColor = UIColor.white
         barAppearance.barTintColor = UIColor.barTintColor
         barAppearance.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
-    
+        UITabBar.appearance().tintColor = UIColor.themeYellow
+        
         // Set different window root vc
         if UserDefaults.standard.value(forKeyPath: isLogin) != nil {
             if let tabvc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarViewController") as? TabBarViewController {

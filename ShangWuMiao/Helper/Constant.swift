@@ -70,6 +70,10 @@ struct RequestURL {
     // 展会门票列表
     static let kExhibitionTicketList = "/index.php?app=ios&mod=Business&act=ticket_list"
     
+    
+    // 更新接口
+    static let kAppUpdateUrlString = "/index.php?app=ios&mod=Business&act=ios_update"
+    
 }
 
 struct ActType {
@@ -115,5 +119,8 @@ struct ActType {
     
     // 展会门票列表
     static let ticket_list = "ticket_list"
+    
+    // 更新接口
+    static let ios_update = "ios_update"
 }
 

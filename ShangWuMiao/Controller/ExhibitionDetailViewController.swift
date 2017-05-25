@@ -512,6 +512,7 @@ extension ExhibitionDetailViewController: UICollectionViewDelegateFlowLayout {
                     tmpHeight += showMoreButtonWithGap
                     height = readMore ? tmpHeight : limitTextHeight
                 } else {
+                    
                     tmpHeight += noMoreButtonWithGap
                     height = max(tmpHeight, 50)
                 }
