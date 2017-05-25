@@ -2,7 +2,7 @@
 
 source 'https://github.com/CocoaPods/Specs.git'
 
-platform :ios, '8.1'
+#platform :ios, '8.1'
 
 target 'ShangWuMiao' do
   use_frameworks!

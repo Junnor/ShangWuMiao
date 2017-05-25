@@ -23,6 +23,13 @@ class MeViewController: UITableViewController {
         meVendor = User.shared.vendorType != Vendor.none
     }
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // 解决9.0以下在从充值列表回退一些cell高度不对的bug
+        self.tableView.reloadData()
+    }
+    
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
