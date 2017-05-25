@@ -114,6 +114,10 @@ class RegisterTelViewController: UIViewController, UITextFieldDelegate {
 //        codePhone = "15652805731"
 //        // ------------
 //
+        if codePhone == nil {
+            return
+        }
+        
         guard let phone = phoneTextField.text, codePhone != nil, phone == codePhone else {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
                 SVProgressHUD.showInfo(withStatus: "请勿更改手机号")

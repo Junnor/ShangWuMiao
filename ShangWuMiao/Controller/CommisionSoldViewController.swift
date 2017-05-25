@@ -20,6 +20,8 @@ class CommisionSoldViewController: UIViewController, WKNavigationDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "Nyato喵特网 - 有爱、贴心、便捷的漫展服务平台 -"
+
         let url = URL(string: delegateUrlString)
         let reuqest = URLRequest(url: url!)
         
