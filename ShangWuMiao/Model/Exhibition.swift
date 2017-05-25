@@ -225,7 +225,7 @@ extension Exhibition {
                             switch response.result {
                             case .success(let jsonResponse):
                                 let json = JSON(jsonResponse)
-                                print("exhibition list json: \(json)")
+//                                print("exhibition list json: \(json)")
                                 let status = json["result"].intValue
                                 let errorInfo = json["error"].stringValue
                                 var tmpExhibitions = [Exhibition]()

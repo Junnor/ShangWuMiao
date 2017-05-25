@@ -7,7 +7,7 @@ platform :ios, '8.1'
 target 'ShangWuMiao' do
   use_frameworks!
 
-  pod 'Kingfisher', '~> 3.0'
+  pod 'Kingfisher'
   pod 'MJRefresh'
   pod 'SwiftyJSON'
   pod 'Alamofire'
