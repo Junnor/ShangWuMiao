@@ -26,6 +26,7 @@ class CommisionSoldViewController: UIViewController, WKNavigationDelegate {
         var frame = self.view.frame
         frame.origin.y = 64
         frame.size.height = frame.height - 64
+        
         webView = WKWebView(frame: frame)
         webView.navigationDelegate = self
         webView.load(reuqest)

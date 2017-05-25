@@ -13,6 +13,7 @@ class TabBarViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         SVProgressHUD.setDefaultMaskType(.none)
 
         // 载入用户信息
