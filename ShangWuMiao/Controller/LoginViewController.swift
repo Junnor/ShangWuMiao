@@ -116,6 +116,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
 
     // MARK: - Text field delegate
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        let nextTag = textField.tag + 1
+        if let nextResponder = textField.superview?.viewWithTag(nextTag) {
+            nextResponder.becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+        }
+        return false
+    }
+
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textField == unameTextfield {
             unameLeftImageView.image = #imageLiteral(resourceName: "ico-uname")
