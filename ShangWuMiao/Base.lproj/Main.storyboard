@@ -499,14 +499,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="58"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="进行中" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BqE-uv-27b">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="进行中" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BqE-uv-27b">
                                                     <rect key="frame" x="16" y="19" width="52" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="1" green="0.51402221020000005" blue="0.69891136480000005" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="喵特门票购买演示" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IbM-oN-KRr">
-                                                    <rect key="frame" x="88" y="19" width="139" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="喵特门票购买演示" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IbM-oN-KRr">
+                                                    <rect key="frame" x="88" y="19" width="199" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -515,6 +515,7 @@
                                             <constraints>
                                                 <constraint firstItem="BqE-uv-27b" firstAttribute="leading" secondItem="gS9-dx-ZPc" secondAttribute="leadingMargin" constant="8" id="7oG-Wl-tKv"/>
                                                 <constraint firstItem="IbM-oN-KRr" firstAttribute="centerY" secondItem="BqE-uv-27b" secondAttribute="centerY" id="ksI-Mr-jla"/>
+                                                <constraint firstAttribute="trailing" secondItem="IbM-oN-KRr" secondAttribute="trailing" id="mh2-Nk-uif"/>
                                                 <constraint firstItem="BqE-uv-27b" firstAttribute="centerY" secondItem="gS9-dx-ZPc" secondAttribute="centerY" id="qJM-rM-ECw"/>
                                                 <constraint firstItem="IbM-oN-KRr" firstAttribute="leading" secondItem="BqE-uv-27b" secondAttribute="trailing" constant="20" id="uuD-sl-Alq"/>
                                             </constraints>
