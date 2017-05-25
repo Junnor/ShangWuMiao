@@ -6,37 +6,43 @@
 //  Copyright © 2017年 moelove. All rights reserved.
 //
 
-private let delegateUrlString = "https://www.nyato.com/help/annouce_detail/63?apppage=1"
-
 import UIKit
 import SVProgressHUD
+import WebKit
 
-class CommisionSoldViewController: UIViewController, UIWebViewDelegate {
+class CommisionSoldViewController: UIViewController, WKNavigationDelegate {
 
-    @IBOutlet weak var indicatorView: UIActivityIndicatorView!
-    @IBOutlet weak var webView: UIWebView! {
-        didSet {
-            webView.delegate = self
-        }
-    }
+    private let delegateUrlString = "https://www.nyato.com/help/annouce_detail/63?apppage=1"
+    
+    private var indicator: UIActivityIndicatorView!
+    private var webView: WKWebView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
-        title = "Nyato喵特网 - 有爱、贴心、便捷的漫展服务平台 -"
         
         let url = URL(string: delegateUrlString)
         let reuqest = URLRequest(url: url!)
-        webView.loadRequest(reuqest)
+        
+        var frame = self.view.frame
+        frame.origin.y = 64
+        frame.size.height = frame.height - 64
+        webView = WKWebView(frame: frame)
+        webView.navigationDelegate = self
+        webView.load(reuqest)
+        view.addSubview(webView)
+        
+        indicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        indicator.center = webView.center
+        indicator.startAnimating()
+        view.addSubview(indicator)
     }
     
-    // MARK: - Delegate
-    func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
-        SVProgressHUD.showError(withStatus: "请求失败，请重新加载")
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+        indicator.stopAnimating()
     }
     
-    func webViewDidFinishLoad(_ webView: UIWebView) {
-        indicatorView.stopAnimating()
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        indicator.stopAnimating()
     }
     
 }

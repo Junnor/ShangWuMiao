@@ -858,29 +858,8 @@
                     <view key="view" contentMode="scaleToFill" id="joi-je-X2d">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o1K-tT-8WG">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </webView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="k9p-XO-ezR">
-                                <rect key="frame" x="150" y="274" width="20" height="20"/>
-                            </activityIndicatorView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="k9p-XO-ezR" firstAttribute="centerY" secondItem="joi-je-X2d" secondAttribute="centerY" id="N0o-7y-WF4"/>
-                            <constraint firstAttribute="trailing" secondItem="o1K-tT-8WG" secondAttribute="trailing" id="Nav-JA-xHZ"/>
-                            <constraint firstItem="k9p-XO-ezR" firstAttribute="centerX" secondItem="joi-je-X2d" secondAttribute="centerX" id="TdZ-WI-8an"/>
-                            <constraint firstAttribute="bottom" secondItem="o1K-tT-8WG" secondAttribute="bottom" id="ZuP-M8-OeW"/>
-                            <constraint firstItem="o1K-tT-8WG" firstAttribute="leading" secondItem="joi-je-X2d" secondAttribute="leading" id="cgz-86-GyU"/>
-                            <constraint firstItem="o1K-tT-8WG" firstAttribute="top" secondItem="a8m-LL-jBZ" secondAttribute="bottom" id="di2-JI-0vn"/>
-                        </constraints>
                     </view>
-                    <connections>
-                        <outlet property="indicatorView" destination="k9p-XO-ezR" id="TJe-7I-j90"/>
-                        <outlet property="webView" destination="o1K-tT-8WG" id="cs0-Lf-MX2"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gkv-JR-tb9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -912,7 +891,7 @@
                                         <rect key="frame" x="-6.5" y="0.0" width="333" height="114"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="334" height="114"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="333" height="114"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gAS-ey-bCM">
@@ -1161,7 +1140,7 @@
                                         <rect key="frame" x="-6.5" y="0.0" width="333" height="114"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="334" height="114"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="333" height="114"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PpH-D5-BTr">
