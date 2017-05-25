@@ -488,12 +488,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="59" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Qw4-i6-ubT">
-                                <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="bought ticket identififer" rowHeight="59" id="YmF-XE-yVm" customClass="BoughtTicketCell" customModule="ShangWuMiao" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="56" width="320" height="59"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="320" height="59"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YmF-XE-yVm" id="gS9-dx-ZPc">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="58"/>
@@ -534,10 +534,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Qw4-i6-ubT" firstAttribute="bottom" secondItem="f5o-cJ-dF5" secondAttribute="top" id="1Oi-GF-26J"/>
                             <constraint firstItem="Qw4-i6-ubT" firstAttribute="top" secondItem="9xD-ju-qjE" secondAttribute="bottom" id="VbL-Ny-ask"/>
                             <constraint firstItem="Qw4-i6-ubT" firstAttribute="leading" secondItem="mq8-Je-oNE" secondAttribute="leading" id="b9a-0j-lui"/>
                             <constraint firstAttribute="trailing" secondItem="Qw4-i6-ubT" secondAttribute="trailing" id="gQm-vQ-dem"/>
+                            <constraint firstAttribute="bottom" secondItem="Qw4-i6-ubT" secondAttribute="bottom" id="s3H-FA-NEm"/>
                         </constraints>
                     </view>
                     <connections>
@@ -546,7 +546,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZUi-JH-jGu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4312.8000000000002" y="1272.4137931034484"/>
+            <point key="canvasLocation" x="4312.5" y="1271.8309859154929"/>
         </scene>
         <!--Exhibition Ticket Table View Controller-->
         <scene sceneID="90c-O6-K8h">
@@ -658,11 +658,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="108" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="BNF-II-KaQ">
-                                <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="top up recorder identifier" rowHeight="108" id="suE-Ct-elg" customClass="TopupRecordCell" customModule="ShangWuMiao" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="56" width="320" height="108"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="320" height="108"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="suE-Ct-elg" id="0ec-TK-DG0">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="107"/>
@@ -738,9 +738,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="BNF-II-KaQ" secondAttribute="trailing" id="L3E-qC-frD"/>
+                            <constraint firstAttribute="bottom" secondItem="BNF-II-KaQ" secondAttribute="bottom" id="LXM-Xr-eaq"/>
                             <constraint firstItem="BNF-II-KaQ" firstAttribute="top" secondItem="z7f-1H-X1d" secondAttribute="bottom" id="OdR-BL-Oo9"/>
                             <constraint firstItem="BNF-II-KaQ" firstAttribute="leading" secondItem="BHR-3H-1kP" secondAttribute="leading" id="Qd2-qd-GHV"/>
-                            <constraint firstItem="BNF-II-KaQ" firstAttribute="bottom" secondItem="3LT-1F-Rr5" secondAttribute="top" id="gCP-tk-qxW"/>
                         </constraints>
                     </view>
                     <connections>
@@ -749,7 +749,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1ZQ-9S-vzN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4312.8000000000002" y="1961.4692653673164"/>
+            <point key="canvasLocation" x="4312.5" y="1960.5633802816901"/>
         </scene>
         <!--Feeback View Controller-->
         <scene sceneID="4un-dV-dK5">
@@ -860,7 +860,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o1K-tT-8WG">
-                                <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="k9p-XO-ezR">
@@ -872,7 +872,7 @@
                             <constraint firstItem="k9p-XO-ezR" firstAttribute="centerY" secondItem="joi-je-X2d" secondAttribute="centerY" id="N0o-7y-WF4"/>
                             <constraint firstAttribute="trailing" secondItem="o1K-tT-8WG" secondAttribute="trailing" id="Nav-JA-xHZ"/>
                             <constraint firstItem="k9p-XO-ezR" firstAttribute="centerX" secondItem="joi-je-X2d" secondAttribute="centerX" id="TdZ-WI-8an"/>
-                            <constraint firstItem="o1K-tT-8WG" firstAttribute="bottom" secondItem="S3j-nq-1tF" secondAttribute="top" id="Wq5-Gz-5Gm"/>
+                            <constraint firstAttribute="bottom" secondItem="o1K-tT-8WG" secondAttribute="bottom" id="ZuP-M8-OeW"/>
                             <constraint firstItem="o1K-tT-8WG" firstAttribute="leading" secondItem="joi-je-X2d" secondAttribute="leading" id="cgz-86-GyU"/>
                             <constraint firstItem="o1K-tT-8WG" firstAttribute="top" secondItem="a8m-LL-jBZ" secondAttribute="bottom" id="di2-JI-0vn"/>
                         </constraints>
@@ -884,7 +884,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gkv-JR-tb9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4312.8000000000002" y="3426.8365817091458"/>
+            <point key="canvasLocation" x="4312.5" y="3426.7605633802818"/>
         </scene>
         <!--漫展-->
         <scene sceneID="2Lt-aE-0U8">
@@ -1161,7 +1161,7 @@
                                         <rect key="frame" x="-6.5" y="0.0" width="333" height="114"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="333" height="114"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="334" height="114"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PpH-D5-BTr">
