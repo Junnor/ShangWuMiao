@@ -143,7 +143,7 @@ extension TopupViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {   // alipay
             UserPay.pay(withType: Pay.alipay,
-                        orderPrice: Float(1),
+                        orderPrice: Float(currentMcoinsCount),
                         completionHandler: { [weak self] (success, info) in
                             if success {
                                 self?.alipayAction()

@@ -176,7 +176,6 @@ class ExhibitionDetailViewController: UIViewController {
             SVProgressHUD.showInfo(withStatus: result.info!)
         } else {
             if let price = Float((priceLabel?.text)!) {
-                // TODO: - Test price
                 let message = "确认购买门票？\n [请确认手机号码无误] \n\n 数量：\(ticktsTimes) \n\n 总价：\(price)"
                 let alert = UIAlertController(title: "确认购买", message: message, preferredStyle: .alert)
                 let cancel = UIAlertAction(title: "取消", style: .default, handler: nil)

@@ -33,6 +33,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        SVProgressHUD.setDefaultMaskType(.clear)
+
         // not elegant
         let itemAppearance = UIBarButtonItem.appearance()
         itemAppearance.setBackButtonTitlePositionAdjustment(UIOffset(horizontal: -100, vertical: -100), for: .default)
@@ -77,7 +79,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let parameters = ["uname": uname,
                           "password": password]
         SVProgressHUD.show(withStatus: "登陆中...")
-        SVProgressHUD.setDefaultMaskType(.clear)
         User.login(parameters: parameters) { [weak self] success, info in
             SVProgressHUD.dismiss()
             SVProgressHUD.showInfo(withStatus: info)
