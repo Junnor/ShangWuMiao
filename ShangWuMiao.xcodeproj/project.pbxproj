@@ -522,6 +522,7 @@
 		8B7A48D41EC0103400276058 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				8BDB068F1EC01DBC00F0A660 /* TabBarViewController.swift */,
 				8BF9B4681EC069360057531A /* LoginViewController.swift */,
 				8B96043D1ED3E02C001AFC0F /* RegisterTelViewController.swift */,
 				8B96043F1ED3E03E001AFC0F /* RegisterNameViewController.swift */,
@@ -529,7 +530,6 @@
 				8BDB068B1EC01A4F00F0A660 /* ExhibitionDetailViewController.swift */,
 				8BDE8EC41EC15E860000C1C8 /* MeViewController.swift */,
 				8BDB06891EC01A3D00F0A660 /* SearchViewController.swift */,
-				8BDB068F1EC01DBC00F0A660 /* TabBarViewController.swift */,
 				8BE380041EC1D71C001A6651 /* CommisionSoldViewController.swift */,
 				8BE380061EC1D73D001A6651 /* FeebackViewController.swift */,
 				8BE380081EC1D77F001A6651 /* TopupRecordViewController.swift */,
@@ -679,7 +679,7 @@
 				TargetAttributes = {
 					4460C2A41E9B19F3004166DB = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = N5NQESTGE5;
+						DevelopmentTeam = V5NZ3R8346;
 						ProvisioningStyle = Automatic;
 					};
 					4460C2B81E9B19F3004166DB = {
@@ -1005,7 +1005,7 @@
 			baseConfigurationReference = 06F52BCD767B56C449717E1A /* Pods-ShangWuMiao.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = N5NQESTGE5;
+				DEVELOPMENT_TEAM = V5NZ3R8346;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pay/alipay",
@@ -1030,7 +1030,7 @@
 			baseConfigurationReference = 590987E7D1A7B64976B5ADA9 /* Pods-ShangWuMiao.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = N5NQESTGE5;
+				DEVELOPMENT_TEAM = V5NZ3R8346;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pay/alipay",

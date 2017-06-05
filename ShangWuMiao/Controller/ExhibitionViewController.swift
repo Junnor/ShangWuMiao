@@ -111,6 +111,7 @@ class ExhibitionViewController: UIViewController, UICollectionViewDataSource, UI
                                                 progressBlock: nil,
                                                 completionHandler: nil)
             }
+            
             cell.titleLabel?.text = ex.name
             let startTime = ex.exhibition(stringTime: ex.start_time, digit: false)
             let endTime = ex.exhibition(stringTime: ex.end_time, digit: false)
