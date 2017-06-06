@@ -18,6 +18,7 @@
 		673070B91EE551C200CEE9DA /* Exhibition.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 673070B81EE551C200CEE9DA /* Exhibition.storyboard */; };
 		673070BB1EE5532200CEE9DA /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673070BA1EE5532200CEE9DA /* WalletViewController.swift */; };
 		677D66651EE65ECD0078F1BC /* Lollipop.pkpass in Resources */ = {isa = PBXBuildFile; fileRef = 677D66641EE65ECD0078F1BC /* Lollipop.pkpass */; };
+		679CC62D1EE6896F0032210A /* ApplePayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679CC62C1EE6896F0032210A /* ApplePayViewController.swift */; };
 		8B0352741ECEB95E00E46DEE /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8B0352181ECEB95E00E46DEE /* AlipaySDK.bundle */; };
 		8B0352751ECEB95E00E46DEE /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B0352191ECEB95E00E46DEE /* AlipaySDK.framework */; };
 		8B0352761ECEB95E00E46DEE /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B03521A1ECEB95E00E46DEE /* libcrypto.a */; };
@@ -122,6 +123,8 @@
 		673070B81EE551C200CEE9DA /* Exhibition.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Exhibition.storyboard; sourceTree = "<group>"; };
 		673070BA1EE5532200CEE9DA /* WalletViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
 		677D66641EE65ECD0078F1BC /* Lollipop.pkpass */ = {isa = PBXFileReference; lastKnownFileType = file; path = Lollipop.pkpass; sourceTree = "<group>"; };
+		679CC62B1EE6889C0032210A /* ShangWuMiao.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShangWuMiao.entitlements; sourceTree = "<group>"; };
+		679CC62C1EE6896F0032210A /* ApplePayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplePayViewController.swift; sourceTree = "<group>"; };
 		8B0352181ECEB95E00E46DEE /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
 		8B0352191ECEB95E00E46DEE /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
 		8B03521A1ECEB95E00E46DEE /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
@@ -343,6 +346,7 @@
 		4460C2A71E9B19F3004166DB /* ShangWuMiao */ = {
 			isa = PBXGroup;
 			children = (
+				679CC62B1EE6889C0032210A /* ShangWuMiao.entitlements */,
 				8B7A48D61EC0104500276058 /* View */,
 				8B7A48D51EC0103E00276058 /* Model */,
 				8B7A48D41EC0103400276058 /* Controller */,
@@ -548,6 +552,7 @@
 				8B84EACB1EC54546001B1BFF /* ExhibitionTicketTableViewController.swift */,
 				8BE3800C1EC1DA7B001A6651 /* TopupViewController.swift */,
 				673070BA1EE5532200CEE9DA /* WalletViewController.swift */,
+				679CC62C1EE6896F0032210A /* ApplePayViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -693,6 +698,11 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = V5NZ3R8346;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplePay = {
+								enabled = 1;
+							};
+						};
 					};
 					4460C2B81E9B19F3004166DB = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -820,6 +830,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4460C2A91E9B19F3004166DB /* AppDelegate.swift in Sources */,
+				679CC62D1EE6896F0032210A /* ApplePayViewController.swift in Sources */,
 				8B03527C1ECEB95E00E46DEE /* RSADataVerifier.m in Sources */,
 				8B96043A1ED3D98E001AFC0F /* CornerView.swift in Sources */,
 				8BE3800D1EC1DA7B001A6651 /* TopupViewController.swift in Sources */,
@@ -1021,6 +1032,7 @@
 			baseConfigurationReference = 06F52BCD767B56C449717E1A /* Pods-ShangWuMiao.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ShangWuMiao/ShangWuMiao.entitlements;
 				DEVELOPMENT_TEAM = V5NZ3R8346;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1046,6 +1058,7 @@
 			baseConfigurationReference = 590987E7D1A7B64976B5ADA9 /* Pods-ShangWuMiao.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ShangWuMiao/ShangWuMiao.entitlements;
 				DEVELOPMENT_TEAM = V5NZ3R8346;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
