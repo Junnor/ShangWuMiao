@@ -14,6 +14,10 @@
 		4460C2B31E9B19F3004166DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4460C2B11E9B19F3004166DB /* LaunchScreen.storyboard */; };
 		4460C2BE1E9B19F3004166DB /* ShangWuMiaoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4460C2BD1E9B19F3004166DB /* ShangWuMiaoTests.swift */; };
 		4460C2C91E9B19F3004166DB /* ShangWuMiaoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4460C2C81E9B19F3004166DB /* ShangWuMiaoUITests.swift */; };
+		672EB0931EE54BE300ECE4A6 /* Me.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 672EB0921EE54BE300ECE4A6 /* Me.storyboard */; };
+		673070B91EE551C200CEE9DA /* Exhibition.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 673070B81EE551C200CEE9DA /* Exhibition.storyboard */; };
+		673070BB1EE5532200CEE9DA /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673070BA1EE5532200CEE9DA /* WalletViewController.swift */; };
+		677D66651EE65ECD0078F1BC /* Lollipop.pkpass in Resources */ = {isa = PBXBuildFile; fileRef = 677D66641EE65ECD0078F1BC /* Lollipop.pkpass */; };
 		8B0352741ECEB95E00E46DEE /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8B0352181ECEB95E00E46DEE /* AlipaySDK.bundle */; };
 		8B0352751ECEB95E00E46DEE /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B0352191ECEB95E00E46DEE /* AlipaySDK.framework */; };
 		8B0352761ECEB95E00E46DEE /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B03521A1ECEB95E00E46DEE /* libcrypto.a */; };
@@ -114,6 +118,10 @@
 		4460C2C81E9B19F3004166DB /* ShangWuMiaoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShangWuMiaoUITests.swift; sourceTree = "<group>"; };
 		4460C2CA1E9B19F3004166DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		590987E7D1A7B64976B5ADA9 /* Pods-ShangWuMiao.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShangWuMiao.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShangWuMiao/Pods-ShangWuMiao.release.xcconfig"; sourceTree = "<group>"; };
+		672EB0921EE54BE300ECE4A6 /* Me.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Me.storyboard; sourceTree = "<group>"; };
+		673070B81EE551C200CEE9DA /* Exhibition.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Exhibition.storyboard; sourceTree = "<group>"; };
+		673070BA1EE5532200CEE9DA /* WalletViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
+		677D66641EE65ECD0078F1BC /* Lollipop.pkpass */ = {isa = PBXFileReference; lastKnownFileType = file; path = Lollipop.pkpass; sourceTree = "<group>"; };
 		8B0352181ECEB95E00E46DEE /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
 		8B0352191ECEB95E00E46DEE /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
 		8B03521A1ECEB95E00E46DEE /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
@@ -340,10 +348,13 @@
 				8B7A48D41EC0103400276058 /* Controller */,
 				8B0352E71ECEE16200E46DEE /* Helper */,
 				4460C2AC1E9B19F3004166DB /* Main.storyboard */,
+				672EB0921EE54BE300ECE4A6 /* Me.storyboard */,
+				673070B81EE551C200CEE9DA /* Exhibition.storyboard */,
 				4460C2AF1E9B19F3004166DB /* Assets.xcassets */,
 				4460C2B11E9B19F3004166DB /* LaunchScreen.storyboard */,
 				4460C2A81E9B19F3004166DB /* AppDelegate.swift */,
 				8BDE8EC81EC193260000C1C8 /* ShangWuMiao-Bridging-Header.h */,
+				677D66641EE65ECD0078F1BC /* Lollipop.pkpass */,
 				4460C2B41E9B19F3004166DB /* Info.plist */,
 			);
 			path = ShangWuMiao;
@@ -536,6 +547,7 @@
 				8BE3800A1EC1D799001A6651 /* SoldTicketViewController.swift */,
 				8B84EACB1EC54546001B1BFF /* ExhibitionTicketTableViewController.swift */,
 				8BE3800C1EC1DA7B001A6651 /* TopupViewController.swift */,
+				673070BA1EE5532200CEE9DA /* WalletViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -723,12 +735,15 @@
 			files = (
 				8B05263E1ECF00370090F11B /* ExBlurView.xib in Resources */,
 				4460C2B31E9B19F3004166DB /* LaunchScreen.storyboard in Resources */,
+				677D66651EE65ECD0078F1BC /* Lollipop.pkpass in Resources */,
+				672EB0931EE54BE300ECE4A6 /* Me.storyboard in Resources */,
 				8B0352741ECEB95E00E46DEE /* AlipaySDK.bundle in Resources */,
 				8BCE2BAA1ECC351700ACA1BB /* ExHeaderCell.xib in Resources */,
 				8BCE2BB61ECC3A5D00ACA1BB /* ExTicketCell.xib in Resources */,
 				4460C2B01E9B19F3004166DB /* Assets.xcassets in Resources */,
 				4460C2AE1E9B19F3004166DB /* Main.storyboard in Resources */,
 				8BCE2BBA1ECC3F9500ACA1BB /* ExFooterView.xib in Resources */,
+				673070B91EE551C200CEE9DA /* Exhibition.storyboard in Resources */,
 				8BCE2BAE1ECC369E00ACA1BB /* ExDescriptionCell.xib in Resources */,
 				8BCE2BB21ECC375200ACA1BB /* ExInputHintCell.xib in Resources */,
 				8B0E1A771ECD42310017F11C /* ExAddressCell.xib in Resources */,
@@ -841,6 +856,7 @@
 				8BDB06901EC01DBC00F0A660 /* TabBarViewController.swift in Sources */,
 				8B0352E91ECEE16F00E46DEE /* ClassHelper.swift in Sources */,
 				8B0352EB1ECEE17D00E46DEE /* Constant.swift in Sources */,
+				673070BB1EE5532200CEE9DA /* WalletViewController.swift in Sources */,
 				8BF9B4691EC069360057531A /* LoginViewController.swift in Sources */,
 				8B0352ED1ECEE18500E46DEE /* GlobalFunctions.swift in Sources */,
 				8BDB06881EC0178100F0A660 /* ExhibitionViewController.swift in Sources */,

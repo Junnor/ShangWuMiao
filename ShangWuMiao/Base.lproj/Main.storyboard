@@ -473,7 +473,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gh5-s9-Pjt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4312.5" y="621.12676056338034"/>
+            <point key="canvasLocation" x="3004" y="823"/>
         </scene>
         <!--Sold Ticket View Controller-->
         <scene sceneID="nCY-eP-N3K">
@@ -547,7 +547,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZUi-JH-jGu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4312.5" y="1271.8309859154929"/>
+            <point key="canvasLocation" x="3004" y="1473"/>
         </scene>
         <!--Exhibition Ticket Table View Controller-->
         <scene sceneID="90c-O6-K8h">
@@ -644,7 +644,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SKp-wB-Df7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5056.8000000000002" y="1270.6146926536733"/>
+            <point key="canvasLocation" x="3748" y="1472"/>
         </scene>
         <!--Topup Record View Controller-->
         <scene sceneID="O8P-sF-sM1">
@@ -750,7 +750,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1ZQ-9S-vzN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4312.5" y="1960.5633802816901"/>
+            <point key="canvasLocation" x="3004" y="2161"/>
         </scene>
         <!--Feeback View Controller-->
         <scene sceneID="4un-dV-dK5">
@@ -771,26 +771,26 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                         <subviews>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="请输入反馈内容" translatesAutoresizingMaskIntoConstraints="NO" id="lCl-kG-kRH">
-                                                <rect key="frame" x="28" y="20" width="327" height="151"/>
+                                                <rect key="frame" x="28" y="20" width="327" height="151.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                                             </textView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="联系QQ：3075951511（展务娘QQ）" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o6U-Lv-sjL">
-                                                <rect key="frame" x="66" y="262" width="251" height="18"/>
+                                                <rect key="frame" x="66" y="262.5" width="251" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="联系客服：kf@nyato.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nRc-4h-hEe">
-                                                <rect key="frame" x="104.5" y="290" width="174.5" height="18"/>
+                                                <rect key="frame" x="104.5" y="290.5" width="174.5" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0av-JW-3CX" customClass="CornerButton" customModule="ShangWuMiao" customModuleProvider="target">
-                                                <rect key="frame" x="28" y="186" width="327" height="46"/>
+                                                <rect key="frame" x="28" y="186.5" width="327" height="46"/>
                                                 <color key="backgroundColor" red="1" green="0.83921568629999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="46" id="4jZ-gA-lxb"/>
@@ -846,7 +846,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pyx-Sl-E5J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4312.5" y="2676.7605633802818"/>
+            <point key="canvasLocation" x="3004" y="2913"/>
         </scene>
         <!--Commision Sold View Controller-->
         <scene sceneID="Mja-39-e9I">
@@ -864,7 +864,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gkv-JR-tb9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4312.5" y="3426.7605633802818"/>
+            <point key="canvasLocation" x="3004" y="3616"/>
         </scene>
         <!--漫展-->
         <scene sceneID="2Lt-aE-0U8">
@@ -1275,7 +1275,7 @@
                     </connections>
                 </searchBar>
             </objects>
-            <point key="canvasLocation" x="3900" y="-681"/>
+            <point key="canvasLocation" x="4839.1999999999998" y="-681.40929535232385"/>
         </scene>
         <!--登陆-->
         <scene sceneID="ky7-rR-TZi">
@@ -1510,11 +1510,44 @@
                     <connections>
                         <segue destination="WlC-Jx-zYF" kind="relationship" relationship="viewControllers" id="IPr-p8-cUi"/>
                         <segue destination="XdA-ZG-msl" kind="relationship" relationship="viewControllers" id="ODj-cm-ffD"/>
+                        <segue destination="pH1-Gd-wdM" kind="relationship" relationship="viewControllers" id="J04-IB-IrW"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gVy-xA-ECV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="344.80000000000001" y="112.89355322338831"/>
+        </scene>
+        <!--Wallet-->
+        <scene sceneID="6bU-Pe-bQu">
+            <objects>
+                <viewController id="Otm-2e-egK" customClass="WalletViewController" customModule="ShangWuMiao" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hMH-iH-JHh"/>
+                        <viewControllerLayoutGuide type="bottom" id="fDK-63-yeY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bYO-SB-rdq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v6v-hz-gLW">
+                                <rect key="frame" x="156" y="181" width="63" height="30"/>
+                                <state key="normal" title="To Wallet"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="v6v-hz-gLW" firstAttribute="centerX" secondItem="bYO-SB-rdq" secondAttribute="centerX" id="A2O-Qj-4oz"/>
+                            <constraint firstItem="v6v-hz-gLW" firstAttribute="top" secondItem="hMH-iH-JHh" secondAttribute="bottom" constant="117" id="K1L-FQ-NWt"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Wallet" id="i1j-KX-n4s"/>
+                    <connections>
+                        <outlet property="addPassButton" destination="v6v-hz-gLW" id="SQK-Iz-FYC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bf4-yh-D9J" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2236" y="-911"/>
         </scene>
         <!--漫展-->
         <scene sceneID="BXS-nj-cRl">
@@ -1552,7 +1585,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LBf-bv-1gB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1296.8" y="580.65967016491754"/>
+            <point key="canvasLocation" x="1297" y="648"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bqM-bL-33n">
@@ -1570,7 +1603,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iuC-7q-WjD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3126" y="-1037"/>
+            <point key="canvasLocation" x="4064.8000000000002" y="-1037.6311844077961"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="m66-oq-fes">
@@ -1662,7 +1695,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="qA6-CF-z7h">
-                                                <rect key="frame" x="267" y="109" width="20" height="20"/>
+                                                <rect key="frame" x="266.5" y="109" width="20" height="20"/>
                                             </activityIndicatorView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -1722,6 +1755,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DsD-1s-FS0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-858.75" y="-750"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="diw-g3-l2u">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pH1-Gd-wdM" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="recents" id="tMR-R8-WdY"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Gj6-6o-2tz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Otm-2e-egK" kind="relationship" relationship="rootViewController" id="X0I-Kw-GR8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ep3-fi-Mmu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1312.8" y="-910.79460269865069"/>
         </scene>
     </scenes>
     <resources>
