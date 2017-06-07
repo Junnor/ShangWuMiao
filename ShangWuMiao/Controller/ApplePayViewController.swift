@@ -25,9 +25,16 @@ class ApplePayViewController: UIViewController, UPAPayPluginDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        applePayButton.setTitle("", for: .normal)
+        let payButton = PKPaymentButton(type: .plain, style: .whiteOutline)
+        view.addSubview(payButton)
+        payButton.center = view.center
+        applePayButton = payButton
+        
         isApplePayAvailableCheck()
         
-        applePayButton.setTitle("Apple Pay", for: .normal)
+
+//        applePayButton.setTitle("Apple Pay", for: .normal)
         applePayButton.addTarget(self, action: #selector(applePay), for: .touchUpInside)
     }
     
@@ -37,11 +44,6 @@ class ApplePayViewController: UIViewController, UPAPayPluginDelegate {
         }
         tnPay()
         
-//        configureWithRequest(payRequest)
-//        
-//        let payauViewController = PKPaymentAuthorizationViewController(paymentRequest: payRequest)
-//        payauViewController.delegate = self
-//        present(payauViewController, animated: true, completion: nil)
     }
     
     private var tn: String!
@@ -87,7 +89,7 @@ class ApplePayViewController: UIViewController, UPAPayPluginDelegate {
     }
     
     private func showAlert(_ info: String) {
-        let alert = UIAlertController(title: "支付结果", message: info, preferredStyle: .alert)
+        let alert = UIAlertController(title: "提示", message: info, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "确定", style: .default, handler: nil)
         alert.addAction(okAction)
         present(alert, animated: true, completion: nil)
@@ -100,11 +102,7 @@ class ApplePayViewController: UIViewController, UPAPayPluginDelegate {
         // Show or hide the apple pay button
         if !PKPaymentAuthorizationViewController.canMakePayments() {
             msg = "当前设备版本或系统不支持ApplePay"
-            let alert = UIAlertController(title: "Apple Pay",
-                                          message: msg,
-                                          preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
-            present(alert, animated: true, completion: nil)
+            showAlert(msg)
         }
         applePayStatusLabel.text = msg
     }
@@ -116,11 +114,7 @@ class ApplePayViewController: UIViewController, UPAPayPluginDelegate {
             let msg = "当前设备没有包含支持的支付银联卡, 你可以到 Wallet 应用添加银联卡"
             applePayStatusLabel.text = msg
             
-            let alert = UIAlertController(title: "Apple Pay",
-                                          message:msg,
-                                          preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
-            present(alert, animated: true, completion: nil)
+            showAlert(msg)
             
             available = false
         }

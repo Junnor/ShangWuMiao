@@ -14,3 +14,9 @@ class TopupCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
 }
 
+class ApplePayCell: UITableViewCell {
+    @IBOutlet weak var applyPayView: UIView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var uinionPayImageView: UIImageView!
+}
+
