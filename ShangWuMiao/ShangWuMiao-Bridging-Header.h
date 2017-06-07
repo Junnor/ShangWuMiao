@@ -9,9 +9,15 @@
 #ifndef ShangWuMiao_Bridging_Header_h
 #define ShangWuMiao_Bridging_Header_h
 
-// string md5
+// String md5
 #import <CommonCrypto/CommonCrypto.h>
+
+// Alipay
 #import <AlipaySDK/AlipaySDK.h>
+
+// Apple pay
+#import "UPAPayPluginDelegate.h"
+#import "UPAPayPlugin.h"
 
 //#import "WXApi.h"
 //#import "WXApiObject.h"

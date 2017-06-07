@@ -19,6 +19,8 @@
 		673070BB1EE5532200CEE9DA /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673070BA1EE5532200CEE9DA /* WalletViewController.swift */; };
 		677D66651EE65ECD0078F1BC /* Lollipop.pkpass in Resources */ = {isa = PBXBuildFile; fileRef = 677D66641EE65ECD0078F1BC /* Lollipop.pkpass */; };
 		679CC62D1EE6896F0032210A /* ApplePayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679CC62C1EE6896F0032210A /* ApplePayViewController.swift */; };
+		67FD72DD1EE791CC00C3DED6 /* libUPAPayPlugin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 67FD72DC1EE791CC00C3DED6 /* libUPAPayPlugin.a */; };
+		67FD72DF1EE7920C00C3DED6 /* PassKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67FD72DE1EE7920C00C3DED6 /* PassKit.framework */; };
 		8B0352741ECEB95E00E46DEE /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8B0352181ECEB95E00E46DEE /* AlipaySDK.bundle */; };
 		8B0352751ECEB95E00E46DEE /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B0352191ECEB95E00E46DEE /* AlipaySDK.framework */; };
 		8B0352761ECEB95E00E46DEE /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B03521A1ECEB95E00E46DEE /* libcrypto.a */; };
@@ -125,6 +127,10 @@
 		677D66641EE65ECD0078F1BC /* Lollipop.pkpass */ = {isa = PBXFileReference; lastKnownFileType = file; path = Lollipop.pkpass; sourceTree = "<group>"; };
 		679CC62B1EE6889C0032210A /* ShangWuMiao.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShangWuMiao.entitlements; sourceTree = "<group>"; };
 		679CC62C1EE6896F0032210A /* ApplePayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplePayViewController.swift; sourceTree = "<group>"; };
+		67FD72D91EE791CC00C3DED6 /* UPAPayPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPAPayPlugin.h; sourceTree = "<group>"; };
+		67FD72DA1EE791CC00C3DED6 /* UPAPayPluginDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPAPayPluginDelegate.h; sourceTree = "<group>"; };
+		67FD72DC1EE791CC00C3DED6 /* libUPAPayPlugin.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUPAPayPlugin.a; sourceTree = "<group>"; };
+		67FD72DE1EE7920C00C3DED6 /* PassKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PassKit.framework; path = System/Library/Frameworks/PassKit.framework; sourceTree = SDKROOT; };
 		8B0352181ECEB95E00E46DEE /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
 		8B0352191ECEB95E00E46DEE /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
 		8B03521A1ECEB95E00E46DEE /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
@@ -283,6 +289,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67FD72DF1EE7920C00C3DED6 /* PassKit.framework in Frameworks */,
 				8B24D3371ED2D0BF00911340 /* libsqlite3.0.tbd in Frameworks */,
 				8B0352E21ECEBFAE00E46DEE /* libc++.tbd in Frameworks */,
 				8B0352E01ECEBF6800E46DEE /* libz.tbd in Frameworks */,
@@ -297,6 +304,7 @@
 				8B0352801ECEB9C600E46DEE /* CFNetwork.framework in Frameworks */,
 				8B03527E1ECEB9BC00E46DEE /* CoreMotion.framework in Frameworks */,
 				2B4E8BBB2299786AF4141814 /* Pods_ShangWuMiao.framework in Frameworks */,
+				67FD72DD1EE791CC00C3DED6 /* libUPAPayPlugin.a in Frameworks */,
 				8B0352751ECEB95E00E46DEE /* AlipaySDK.framework in Frameworks */,
 				8B0352771ECEB95E00E46DEE /* libssl.a in Frameworks */,
 				8B0352761ECEB95E00E46DEE /* libcrypto.a in Frameworks */,
@@ -382,6 +390,32 @@
 			path = ShangWuMiaoUITests;
 			sourceTree = "<group>";
 		};
+		67FD72D71EE791CC00C3DED6 /* applePaySDK */ = {
+			isa = PBXGroup;
+			children = (
+				67FD72D81EE791CC00C3DED6 /* inc */,
+				67FD72DB1EE791CC00C3DED6 /* libs */,
+			);
+			path = applePaySDK;
+			sourceTree = "<group>";
+		};
+		67FD72D81EE791CC00C3DED6 /* inc */ = {
+			isa = PBXGroup;
+			children = (
+				67FD72D91EE791CC00C3DED6 /* UPAPayPlugin.h */,
+				67FD72DA1EE791CC00C3DED6 /* UPAPayPluginDelegate.h */,
+			);
+			path = inc;
+			sourceTree = "<group>";
+		};
+		67FD72DB1EE791CC00C3DED6 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				67FD72DC1EE791CC00C3DED6 /* libUPAPayPlugin.a */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
 		7EF51B8EA468F8A98768E468 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -394,6 +428,7 @@
 		8B0352161ECEB94A00E46DEE /* Pay */ = {
 			isa = PBXGroup;
 			children = (
+				67FD72D71EE791CC00C3DED6 /* applePaySDK */,
 				8B24D32E1ED2D07E00911340 /* OpenSDK1.7.7 */,
 				8B0352171ECEB95E00E46DEE /* alipay */,
 			);
@@ -608,6 +643,7 @@
 		CFA0ACAAC78DE45F580AF923 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				67FD72DE1EE7920C00C3DED6 /* PassKit.framework */,
 				8B24D3361ED2D0BF00911340 /* libsqlite3.0.tbd */,
 				8B0352E11ECEBFAE00E46DEE /* libc++.tbd */,
 				8B0352DF1ECEBF6800E46DEE /* libz.tbd */,
@@ -1045,6 +1081,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pay/alipay",
 					"$(PROJECT_DIR)/Pay/OpenSDK1.7.7",
+					"$(PROJECT_DIR)/Pay/applePaySDK/libs",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ShangWuMiao;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1071,6 +1108,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pay/alipay",
 					"$(PROJECT_DIR)/Pay/OpenSDK1.7.7",
+					"$(PROJECT_DIR)/Pay/applePaySDK/libs",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ShangWuMiao;
 				PRODUCT_NAME = "$(TARGET_NAME)";
