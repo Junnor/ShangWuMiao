@@ -1571,49 +1571,6 @@
             </objects>
             <point key="canvasLocation" x="344.80000000000001" y="112.89355322338831"/>
         </scene>
-        <!--Apple Pay View Controller-->
-        <scene sceneID="4iK-KQ-9Di">
-            <objects>
-                <viewController id="B05-5x-ntp" customClass="ApplePayViewController" customModule="ShangWuMiao" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="5QX-Yg-NhY"/>
-                        <viewControllerLayoutGuide type="bottom" id="5hf-3c-qrL"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="kfS-lC-AjH">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S8t-Oa-IGx">
-                                <rect key="frame" x="164.5" y="164" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Apple Pay Button Status:  Availabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TtM-Ls-Q1m">
-                                <rect key="frame" x="36" y="244" width="303" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="TtM-Ls-Q1m" firstAttribute="leading" secondItem="kfS-lC-AjH" secondAttribute="leadingMargin" constant="20" id="GXP-Pi-uIi"/>
-                            <constraint firstItem="S8t-Oa-IGx" firstAttribute="top" secondItem="5QX-Yg-NhY" secondAttribute="bottom" constant="100" id="IUF-zd-xds"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="TtM-Ls-Q1m" secondAttribute="trailing" constant="20" id="Wcx-3d-ANW"/>
-                            <constraint firstItem="TtM-Ls-Q1m" firstAttribute="centerX" secondItem="S8t-Oa-IGx" secondAttribute="centerX" id="Yas-BD-imb"/>
-                            <constraint firstItem="TtM-Ls-Q1m" firstAttribute="top" secondItem="S8t-Oa-IGx" secondAttribute="bottom" constant="50" id="fJ4-Nx-TZb"/>
-                            <constraint firstItem="S8t-Oa-IGx" firstAttribute="centerX" secondItem="kfS-lC-AjH" secondAttribute="centerX" id="l6F-i4-sLe"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="do0-JN-T93"/>
-                    <connections>
-                        <outlet property="applePayButton" destination="S8t-Oa-IGx" id="JDc-il-m0v"/>
-                        <outlet property="applePayStatusLabel" destination="TtM-Ls-Q1m" id="4MQ-Mw-jxr"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8Z9-Ou-20c" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3058" y="-1080"/>
-        </scene>
         <!--Wallet-->
         <scene sceneID="6bU-Pe-bQu">
             <objects>
@@ -1638,11 +1595,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Wallet" id="i1j-KX-n4s">
-                        <barButtonItem key="rightBarButtonItem" title="APay" id="LTH-7O-sho">
-                            <connections>
-                                <segue destination="B05-5x-ntp" kind="show" id="cTw-1H-zDC"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="APay" id="LTH-7O-sho"/>
                     </navigationItem>
                     <connections>
                         <outlet property="addPassButton" destination="v6v-hz-gLW" id="SQK-Iz-FYC"/>

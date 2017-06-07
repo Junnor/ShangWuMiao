@@ -18,7 +18,6 @@
 		673070B91EE551C200CEE9DA /* Exhibition.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 673070B81EE551C200CEE9DA /* Exhibition.storyboard */; };
 		673070BB1EE5532200CEE9DA /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673070BA1EE5532200CEE9DA /* WalletViewController.swift */; };
 		677D66651EE65ECD0078F1BC /* Lollipop.pkpass in Resources */ = {isa = PBXBuildFile; fileRef = 677D66641EE65ECD0078F1BC /* Lollipop.pkpass */; };
-		679CC62D1EE6896F0032210A /* ApplePayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679CC62C1EE6896F0032210A /* ApplePayViewController.swift */; };
 		67FD72DD1EE791CC00C3DED6 /* libUPAPayPlugin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 67FD72DC1EE791CC00C3DED6 /* libUPAPayPlugin.a */; };
 		67FD72DF1EE7920C00C3DED6 /* PassKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67FD72DE1EE7920C00C3DED6 /* PassKit.framework */; };
 		8B0352741ECEB95E00E46DEE /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8B0352181ECEB95E00E46DEE /* AlipaySDK.bundle */; };
@@ -126,7 +125,6 @@
 		673070BA1EE5532200CEE9DA /* WalletViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
 		677D66641EE65ECD0078F1BC /* Lollipop.pkpass */ = {isa = PBXFileReference; lastKnownFileType = file; path = Lollipop.pkpass; sourceTree = "<group>"; };
 		679CC62B1EE6889C0032210A /* ShangWuMiao.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShangWuMiao.entitlements; sourceTree = "<group>"; };
-		679CC62C1EE6896F0032210A /* ApplePayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplePayViewController.swift; sourceTree = "<group>"; };
 		67FD72D91EE791CC00C3DED6 /* UPAPayPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPAPayPlugin.h; sourceTree = "<group>"; };
 		67FD72DA1EE791CC00C3DED6 /* UPAPayPluginDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPAPayPluginDelegate.h; sourceTree = "<group>"; };
 		67FD72DC1EE791CC00C3DED6 /* libUPAPayPlugin.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUPAPayPlugin.a; sourceTree = "<group>"; };
@@ -587,7 +585,6 @@
 				8B84EACB1EC54546001B1BFF /* ExhibitionTicketTableViewController.swift */,
 				8BE3800C1EC1DA7B001A6651 /* TopupViewController.swift */,
 				673070BA1EE5532200CEE9DA /* WalletViewController.swift */,
-				679CC62C1EE6896F0032210A /* ApplePayViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -866,7 +863,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4460C2A91E9B19F3004166DB /* AppDelegate.swift in Sources */,
-				679CC62D1EE6896F0032210A /* ApplePayViewController.swift in Sources */,
 				8B03527C1ECEB95E00E46DEE /* RSADataVerifier.m in Sources */,
 				8B96043A1ED3D98E001AFC0F /* CornerView.swift in Sources */,
 				8BE3800D1EC1DA7B001A6651 /* TopupViewController.swift in Sources */,
