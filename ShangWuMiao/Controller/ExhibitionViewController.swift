@@ -38,10 +38,19 @@ class ExhibitionViewController: UIViewController, UICollectionViewDataSource, UI
 
         collectionView?.mj_header = headerRefresh
         collectionView?.mj_header.beginRefreshing()
+        
+        // Register  for previewing  .... 3D touch
+        if #available(iOS 9.0, *) {
+            if traitCollection.forceTouchCapability == .available {
+                registerForPreviewing(with: self, sourceView: collectionView)
+            }
+        } else {
+            // Fallback on earlier versions
+        }
     }
     
     private let exhibition = Exhibition()
-    private var exhibitions = [Exhibition]()
+    fileprivate var exhibitions = [Exhibition]()
     
     // MARK: - Navigation
     
@@ -119,5 +128,35 @@ class ExhibitionViewController: UIViewController, UICollectionViewDataSource, UI
             cell.addressLabel?.text = ex.addr
         }
         return cell
+    }
+}
+
+extension ExhibitionViewController: UIViewControllerPreviewingDelegate {
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        
+        guard let indexPath = collectionView.indexPathForItem(at: location),
+            let cell = collectionView.cellForItem(at: indexPath) else {
+            return nil
+        }
+        
+        guard let detailViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ExhibitionDetailViewController") as? ExhibitionDetailViewController else {
+                return nil
+        }
+
+        let exData = exhibitions[indexPath.item]
+        detailViewController.exhibition = exData
+        
+        if #available(iOS 9.0, *) {
+            previewingContext.sourceRect = cell.frame
+        } else {
+            // Fallback on earlier versions
+        }
+
+        return detailViewController
+    }
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        show(viewControllerToCommit, sender: nil)
     }
 }

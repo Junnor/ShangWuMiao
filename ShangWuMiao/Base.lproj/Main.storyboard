@@ -1072,7 +1072,7 @@
         <!--Title-->
         <scene sceneID="neJ-Rj-N6Z">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="JL7-FZ-2LW" customClass="ExhibitionDetailViewController" customModule="ShangWuMiao" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ExhibitionDetailViewController" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="JL7-FZ-2LW" customClass="ExhibitionDetailViewController" customModule="ShangWuMiao" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cpS-QJ-1K0"/>
                         <viewControllerLayoutGuide type="bottom" id="ty6-yk-Nzd"/>
@@ -1846,6 +1846,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="abH-Lw-0tv"/>
-        <segue reference="HGO-XF-caW"/>
+        <segue reference="Kef-4E-MMY"/>
     </inferredMetricsTieBreakers>
 </document>

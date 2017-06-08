@@ -22,7 +22,7 @@ class SearchViewController: UIViewController, UICollectionViewDataSource, UIColl
     private let segueIdentifier = "show search exhibition"
     
     private let exhibition = Exhibition()
-    private var exhibitions = [Exhibition]()
+    fileprivate var exhibitions = [Exhibition]()
     
     fileprivate lazy var shadowView: UIView! = {
         let shadow = UIView(frame: self.view.bounds)
@@ -74,8 +74,17 @@ class SearchViewController: UIViewController, UICollectionViewDataSource, UIColl
                                                   refreshingAction: headerHandler)
         
         collectionView?.mj_header = headerRefresh
-    }
         
+        // Register  for previewing  .... 3D touch
+        if #available(iOS 9.0, *) {
+            if traitCollection.forceTouchCapability == .available {
+                registerForPreviewing(with: self, sourceView: collectionView)
+            }
+        } else {
+            // Fallback on earlier versions
+        }
+    }
+    
     private var forword = true
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -181,6 +190,36 @@ extension SearchViewController: UISearchBarDelegate {
         searchBar.resignFirstResponder()
 
         self.collectionView.mj_header.beginRefreshing()
+    }
+}
+
+extension SearchViewController: UIViewControllerPreviewingDelegate {
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        
+        guard let indexPath = collectionView.indexPathForItem(at: location),
+            let cell = collectionView.cellForItem(at: indexPath) else {
+                return nil
+        }
+        
+        guard let detailViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ExhibitionDetailViewController") as? ExhibitionDetailViewController else {
+            return nil
+        }
+        
+        let exData = exhibitions[indexPath.item]
+        detailViewController.exhibition = exData
+        
+        if #available(iOS 9.0, *) {
+            previewingContext.sourceRect = cell.frame
+        } else {
+            // Fallback on earlier versions
+        }
+        
+        return detailViewController
+    }
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        show(viewControllerToCommit, sender: nil)
     }
 }
 
