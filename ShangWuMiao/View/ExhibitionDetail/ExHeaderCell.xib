@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -25,15 +25,15 @@
                             <constraint firstAttribute="width" secondItem="Ciq-Am-XWM" secondAttribute="height" multiplier="71:97" id="rgf-0j-SEj"/>
                         </constraints>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ico-addr-2" translatesAutoresizingMaskIntoConstraints="NO" id="3p6-Ga-mUO">
-                        <rect key="frame" x="134.5" y="200" width="20" height="20"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ico-location" translatesAutoresizingMaskIntoConstraints="NO" id="3p6-Ga-mUO">
+                        <rect key="frame" x="134.5" y="202" width="18" height="18"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="20" id="Hfl-db-DPA"/>
-                            <constraint firstAttribute="width" constant="20" id="XZM-AO-XbY"/>
+                            <constraint firstAttribute="height" constant="18" id="Hfl-db-DPA"/>
+                            <constraint firstAttribute="width" constant="18" id="XZM-AO-XbY"/>
                         </constraints>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ico-addr-2" translatesAutoresizingMaskIntoConstraints="NO" id="aAM-Be-Cnx">
-                        <rect key="frame" x="134.5" y="175" width="20" height="20"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ico-time" translatesAutoresizingMaskIntoConstraints="NO" id="aAM-Be-Cnx">
+                        <rect key="frame" x="134.5" y="179" width="18" height="18"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017漫展" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lui-GT-6aI">
                         <rect key="frame" x="134.5" y="87" width="225.5" height="20.5"/>
@@ -42,38 +42,38 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥50" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A06-R3-fNs">
-                        <rect key="frame" x="134.5" y="129" width="37.5" height="24"/>
+                        <rect key="frame" x="134.5" y="131" width="37.5" height="24"/>
                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w0A-Ix-fUX">
-                        <rect key="frame" x="192" y="132.5" width="17.5" height="17"/>
+                        <rect key="frame" x="192" y="134.5" width="17.5" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="04-10 10:00 - 06-25 21:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kiY-DG-f1O">
-                        <rect key="frame" x="164.5" y="177" width="195.5" height="17"/>
+                        <rect key="frame" x="162.5" y="180" width="197.5" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="浙江 杭州" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yS8-3S-hlE">
-                        <rect key="frame" x="164.5" y="202" width="195.5" height="17"/>
+                        <rect key="frame" x="162.5" y="203" width="197.5" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YBa-3L-bj3" userLabel="View1">
-                        <rect key="frame" x="134.5" y="107.5" width="30" height="21.5"/>
+                        <rect key="frame" x="134.5" y="107.5" width="30" height="23.5"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="30" id="y4J-dM-IdG"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sp4-LY-l00" userLabel="View2">
-                        <rect key="frame" x="134.5" y="153" width="30" height="21.5"/>
+                        <rect key="frame" x="134.5" y="155" width="30" height="23.5"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
                 </subviews>
@@ -123,6 +123,7 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="ico-addr-2" width="24" height="24"/>
+        <image name="ico-location" width="54" height="54"/>
+        <image name="ico-time" width="54" height="54"/>
     </resources>
 </document>

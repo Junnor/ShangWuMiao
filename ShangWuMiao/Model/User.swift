@@ -46,7 +46,7 @@ final class User {
      2: 高级商户
      3: 超级商户
      */
-    var vendorType: String = Vendor.none   // Default
+    var vendorType: String = Vendor.normal   // Default
     // 金额, 有两位小数点
     var mcoins: Float = 0.00 {
         didSet {
