@@ -15,14 +15,22 @@ class ExhibitionDetailViewController: UIViewController {
     
     weak var previewSourceViewController: ExhibitionPreviewable!
     
+    weak var searchVC: SearchViewController!
+    weak var exhibitionVC: ExhibitionViewController!
+    
     @available(iOS 9.0, *)
     override var previewActionItems: [UIPreviewActionItem] {
-        let preview = UIPreviewAction(title: "查看", style: .default) { (previewAction, viewController) in
-            if let sourceVC = self.previewSourceViewController {
-                sourceVC.sourePreViewController.show(self, sender: nil)
+        print("1")
+        let preview = UIPreviewAction(title: "查看", style: .default) { [weak self] (previewAction, viewController) in
+            if let sourceVC = self?.previewSourceViewController {
+
+                sourceVC.sourePreViewController.show(self!, sender: nil)
+                self?.collectionView.updateConstraints()
+                self?.collectionView.reloadItems(at: [IndexPath(item: 0, section: 0)])
+                self?.previewSourceViewController = nil
             }
         }
-        
+
         return [preview]
     }
     
@@ -114,12 +122,15 @@ class ExhibitionDetailViewController: UIViewController {
             self.payViewHeightConstraint.constant = 0
             payView.isHidden = true
         }
+        
+        print("...search vc = \(searchVC)")
+        print("...exhibition vc = \(exhibitionVC)")
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         if !useDefaultImage {
             if currentBarTintColor != nil {
                 let image = UIImage.from(color: currentBarTintColor)
@@ -512,12 +523,14 @@ extension ExhibitionDetailViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        print("collection view from = \(collectionView.frame)")
+        print("sizeForItemAt: \(indexPath)")
         var width = collectionView.bounds.width
         var height: CGFloat = 0.0
         if indexPath.section == 0 {
             switch indexPath.row {
             case 0:
-                height = collectionView.bounds.height * 2 / 5
+                height = UIWindow().bounds.height * 2/5
             case 1:
                 let font = UIFont.systemFont(ofSize: 16)
                 let str = self.exhibition.exDescription!

@@ -158,6 +158,7 @@ extension ExhibitionViewController: UIViewControllerPreviewingDelegate {
         detailViewController.exhibition = exData
         
         detailViewController.previewSourceViewController = self
+        detailViewController.exhibitionVC = self
 
         if #available(iOS 9.0, *) {
             previewingContext.sourceRect = cell.frame
@@ -169,6 +170,6 @@ extension ExhibitionViewController: UIViewControllerPreviewingDelegate {
     }
     
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
-        show(viewControllerToCommit, sender: nil)
+        show(viewControllerToCommit, sender: self)
     }
 }

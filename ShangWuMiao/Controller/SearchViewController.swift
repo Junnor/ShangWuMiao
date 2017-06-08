@@ -215,7 +215,8 @@ extension SearchViewController: UIViewControllerPreviewingDelegate {
         let exData = exhibitions[indexPath.item]
         detailViewController.exhibition = exData
         detailViewController.previewSourceViewController = self
-        
+        detailViewController.searchVC = self
+
         if #available(iOS 9.0, *) {
             previewingContext.sourceRect = cell.frame
         } else {
@@ -226,6 +227,6 @@ extension SearchViewController: UIViewControllerPreviewingDelegate {
     }
     
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
-        show(viewControllerToCommit, sender: nil)
+        show(viewControllerToCommit, sender: self)
     }
 }
