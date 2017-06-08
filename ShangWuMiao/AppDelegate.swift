@@ -36,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
-            
+    
         // pay callback
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
         if url.host == "safepay" {
@@ -76,5 +76,74 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
         return true
     }
+}
+
+// Home sceen quick action
+extension AppDelegate {
+    
+    @available(iOS 9.0, *)
+    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+
+        handleShortcutItem(shortcutItem)
+        
+        // Whether deal with the completionHandler
+        if let navic = window?.rootViewController as? UINavigationController,
+            let _ = navic.visibleViewController as? LoginViewController {
+            completionHandler(false)
+        } else {
+            completionHandler(true)
+        }
+    }
+    
+    private enum ShortcutItemType: String {
+        case topup = "com.nyato.shangwumiao.topup"
+        case feedback = "com.nyato.shangwumiao.feedback"
+    }
+    
+    @available(iOS 9.0, *)
+    private func handleShortcutItem(_ shortcutItem: UIApplicationShortcutItem) {
+        switch shortcutItem.type {
+        case ShortcutItemType.topup.rawValue:
+            showTopup()
+        case ShortcutItemType.feedback.rawValue:
+            showFeedback()
+        default:
+            break
+        }
+    }
+    
+    private func showTopup() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        if let rootViewController = window?.rootViewController as? TabBarViewController {
+            rootViewController.selectedIndex = 1
+            
+            if User.shared.vendorType != Vendor.none {
+                
+                let identifier = "TopupViewController"
+                let topupViewController = storyboard.instantiateViewController(withIdentifier: identifier) as! TopupViewController
+                
+                if let meNavigationController = rootViewController.selectedViewController as? UINavigationController {
+                    meNavigationController.pushViewController(topupViewController, animated: true)
+                }
+            }
+        }
+    }
+    
+    private func showFeedback() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        if let rootViewController = window?.rootViewController as? TabBarViewController {
+            rootViewController.selectedIndex = 1
+            
+            let identifier = "FeedbackViewController"
+            let feedbackVC = storyboard.instantiateViewController(withIdentifier: identifier) as! FeedbackViewController
+            
+            if let meNavigationController = rootViewController.selectedViewController as? UINavigationController {
+                meNavigationController.pushViewController(feedbackVC, animated: true)
+            }
+        }
+    }
+
 }
 

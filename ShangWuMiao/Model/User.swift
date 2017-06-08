@@ -46,7 +46,7 @@ final class User {
      2: 高级商户
      3: 超级商户
      */
-    var vendorType: String = ""    
+    var vendorType: String = Vendor.none   // Default
     // 金额, 有两位小数点
     var mcoins: Float = 0.00 {
         didSet {
@@ -224,7 +224,7 @@ extension User {
             switch response.result {
             case .success(let jsonResponse):
                 let json = JSON(jsonResponse)
-                print("feed back json: \(json)")
+//                print("feed back json: \(json)")
                 let info = json["info"].stringValue
                 let status = json["status"].intValue
                 completionHandler(status == 1, info)

@@ -17,13 +17,15 @@ class TabBarViewController: UITabBarController {
         SVProgressHUD.setDefaultMaskType(.none)
 
         // 载入用户信息
-        User.requestUserInfo(completionHandler: { (success, statusInfo) in
+        User.requestUserInfo(completionHandler: { [weak self] (success, statusInfo) in
             if success {
+                // For home screen quick actions
+                UIApplication.shared.keyWindow?.rootViewController = self
             } else {
                 SVProgressHUD.showInfo(withStatus: statusInfo)
                 print("request user info failure: \(String(describing: statusInfo))")
             }
         })
-
     }
+    
 }

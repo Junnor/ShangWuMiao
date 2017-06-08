@@ -15,7 +15,7 @@
         <!--我的-->
         <scene sceneID="k91-kY-c3t">
             <objects>
-                <tableViewController id="yE2-q6-bL7" customClass="MeViewController" customModule="ShangWuMiao" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="MeViewController" id="yE2-q6-bL7" customClass="MeViewController" customModule="ShangWuMiao" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="woL-4b-m3g">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -806,10 +806,10 @@
             </objects>
             <point key="canvasLocation" x="3004" y="2161"/>
         </scene>
-        <!--Feeback View Controller-->
+        <!--Feedback View Controller-->
         <scene sceneID="4un-dV-dK5">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="0np-JJ-fP8" customClass="FeebackViewController" customModule="ShangWuMiao" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FeedbackViewController" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="0np-JJ-fP8" customClass="FeedbackViewController" customModule="ShangWuMiao" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aiO-uM-4ki"/>
                         <viewControllerLayoutGuide type="bottom" id="FJF-8R-gkD"/>
@@ -1627,7 +1627,7 @@
         <!--我的-->
         <scene sceneID="GLh-xh-zIp">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XdA-ZG-msl" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="MeNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="XdA-ZG-msl" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="我的" image="nav-index" selectedImage="nav-indexed" id="oxT-CW-ieb"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="BbJ-IV-e2U">
@@ -1845,7 +1845,7 @@
         <image name="union_pay" width="2339" height="1654"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="kmB-3A-xhH"/>
+        <segue reference="abH-Lw-0tv"/>
         <segue reference="HGO-XF-caW"/>
     </inferredMetricsTieBreakers>
 </document>

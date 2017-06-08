@@ -1,5 +1,5 @@
 //
-//  FeebackViewController.swift
+//  FeedbackViewController.swift
 //  ShangWuMiao
 //
 //  Created by Ju on 2017/5/9.
@@ -9,7 +9,7 @@
 import UIKit
 import SVProgressHUD
 
-class FeebackViewController: UIViewController, UITextViewDelegate {
+class FeedbackViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var scrollView: UIScrollView! {
         didSet {
