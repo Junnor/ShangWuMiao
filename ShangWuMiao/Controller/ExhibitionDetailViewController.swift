@@ -13,6 +13,19 @@ import SVProgressHUD
 
 class ExhibitionDetailViewController: UIViewController {
     
+    weak var previewSourceViewController: ExhibitionPreviewable!
+    
+    @available(iOS 9.0, *)
+    override var previewActionItems: [UIPreviewActionItem] {
+        let preview = UIPreviewAction(title: "查看", style: .default) { (previewAction, viewController) in
+            if let sourceVC = self.previewSourceViewController {
+                sourceVC.sourePreViewController.show(self, sender: nil)
+            }
+        }
+        
+        return [preview]
+    }
+    
     // MARK: - Outlets
     @IBOutlet weak var payView: UIView!
     @IBOutlet var titleLabel: UILabel!
@@ -126,7 +139,7 @@ class ExhibitionDetailViewController: UIViewController {
         self.navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
         self.navigationController?.navigationBar.shadowImage = nil
     }
-    
+        
     deinit {
         NotificationCenter.default.removeObserver(self)
     }

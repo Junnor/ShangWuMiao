@@ -10,6 +10,10 @@ import UIKit
 import Kingfisher
 import MJRefresh
 
+protocol ExhibitionPreviewable: class {
+    var sourePreViewController: UIViewController { get }
+}
+
 class ExhibitionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
     @IBOutlet weak var collectionView: UICollectionView!
@@ -131,6 +135,12 @@ class ExhibitionViewController: UIViewController, UICollectionViewDataSource, UI
     }
 }
 
+extension ExhibitionViewController: ExhibitionPreviewable {
+    var sourePreViewController: UIViewController {
+        return self
+    }
+}
+
 extension ExhibitionViewController: UIViewControllerPreviewingDelegate {
     
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
@@ -147,6 +157,8 @@ extension ExhibitionViewController: UIViewControllerPreviewingDelegate {
         let exData = exhibitions[indexPath.item]
         detailViewController.exhibition = exData
         
+        detailViewController.previewSourceViewController = self
+
         if #available(iOS 9.0, *) {
             previewingContext.sourceRect = cell.frame
         } else {

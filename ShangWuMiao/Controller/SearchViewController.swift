@@ -193,6 +193,12 @@ extension SearchViewController: UISearchBarDelegate {
     }
 }
 
+extension SearchViewController: ExhibitionPreviewable {
+    var sourePreViewController: UIViewController {
+        return self
+    }
+}
+
 extension SearchViewController: UIViewControllerPreviewingDelegate {
     
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
@@ -208,6 +214,7 @@ extension SearchViewController: UIViewControllerPreviewingDelegate {
         
         let exData = exhibitions[indexPath.item]
         detailViewController.exhibition = exData
+        detailViewController.previewSourceViewController = self
         
         if #available(iOS 9.0, *) {
             previewingContext.sourceRect = cell.frame
@@ -222,4 +229,3 @@ extension SearchViewController: UIViewControllerPreviewingDelegate {
         show(viewControllerToCommit, sender: nil)
     }
 }
-
