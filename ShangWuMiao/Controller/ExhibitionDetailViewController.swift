@@ -15,19 +15,17 @@ class ExhibitionDetailViewController: UIViewController {
     
     weak var previewSourceViewController: ExhibitionPreviewable!
     
-    weak var searchVC: SearchViewController!
-    weak var exhibitionVC: ExhibitionViewController!
-    
     @available(iOS 9.0, *)
     override var previewActionItems: [UIPreviewActionItem] {
-        print("1")
         let preview = UIPreviewAction(title: "查看", style: .default) { [weak self] (previewAction, viewController) in
             if let sourceVC = self?.previewSourceViewController {
-
-                sourceVC.sourePreViewController.show(self!, sender: nil)
-                self?.collectionView.updateConstraints()
-                self?.collectionView.reloadItems(at: [IndexPath(item: 0, section: 0)])
-                self?.previewSourceViewController = nil
+                guard let detailViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ExhibitionDetailViewController") as? ExhibitionDetailViewController else {
+                    return
+                }
+                // DO NOT perform sourceVC.sourePreViewController.show(self, sender: self)
+                // Because self is dismissed before perfome sourceVC.sourePreViewController.show(::)
+                detailViewController.exhibition = self?.exhibition
+                sourceVC.sourePreViewController.show(detailViewController, sender: self)
             }
         }
 
@@ -122,11 +120,7 @@ class ExhibitionDetailViewController: UIViewController {
             self.payViewHeightConstraint.constant = 0
             payView.isHidden = true
         }
-        
-        print("...search vc = \(searchVC)")
-        print("...exhibition vc = \(exhibitionVC)")
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -523,8 +517,6 @@ extension ExhibitionDetailViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        print("collection view from = \(collectionView.frame)")
-        print("sizeForItemAt: \(indexPath)")
         var width = collectionView.bounds.width
         var height: CGFloat = 0.0
         if indexPath.section == 0 {

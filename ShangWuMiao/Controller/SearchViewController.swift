@@ -215,7 +215,6 @@ extension SearchViewController: UIViewControllerPreviewingDelegate {
         let exData = exhibitions[indexPath.item]
         detailViewController.exhibition = exData
         detailViewController.previewSourceViewController = self
-        detailViewController.searchVC = self
 
         if #available(iOS 9.0, *) {
             previewingContext.sourceRect = cell.frame

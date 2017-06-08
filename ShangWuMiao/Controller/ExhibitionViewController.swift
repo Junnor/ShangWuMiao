@@ -158,7 +158,6 @@ extension ExhibitionViewController: UIViewControllerPreviewingDelegate {
         detailViewController.exhibition = exData
         
         detailViewController.previewSourceViewController = self
-        detailViewController.exhibitionVC = self
 
         if #available(iOS 9.0, *) {
             previewingContext.sourceRect = cell.frame
