@@ -445,18 +445,18 @@
                                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="union_pay" translatesAutoresizingMaskIntoConstraints="NO" id="rgT-Hz-fmN">
-                                                                    <rect key="frame" x="215" y="10.5" width="60" height="40"/>
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pay-union" translatesAutoresizingMaskIntoConstraints="NO" id="rgT-Hz-fmN">
+                                                                    <rect key="frame" x="215" y="18" width="87.5" height="25"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="width" constant="60" id="8rD-dj-bda"/>
-                                                                        <constraint firstAttribute="height" constant="40" id="Ssb-e8-yhd"/>
+                                                                        <constraint firstAttribute="height" constant="25" id="Ssb-e8-yhd"/>
+                                                                        <constraint firstAttribute="width" secondItem="rgT-Hz-fmN" secondAttribute="height" multiplier="7:2" id="tWr-Jj-Iug"/>
                                                                     </constraints>
                                                                 </imageView>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mSd-vw-t74">
-                                                                    <rect key="frame" x="20" y="15.5" width="48" height="30"/>
+                                                                    <rect key="frame" x="20" y="16.5" width="48" height="28"/>
                                                                     <color key="backgroundColor" red="0.91359561681747437" green="0.49123871326446533" blue="0.50298041105270386" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="height" constant="30" id="09F-uf-FzK"/>
+                                                                        <constraint firstAttribute="height" constant="28" id="09F-uf-FzK"/>
                                                                     </constraints>
                                                                 </view>
                                                             </subviews>
@@ -1844,7 +1844,7 @@
         <image name="nav-index" width="60" height="60"/>
         <image name="nav-indexed" width="60" height="60"/>
         <image name="pay-alipay" width="29" height="29"/>
-        <image name="union_pay" width="2339" height="1654"/>
+        <image name="pay-union" width="116" height="33"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="abH-Lw-0tv"/>

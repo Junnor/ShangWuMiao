@@ -91,7 +91,7 @@ class SearchViewController: UIViewController, UICollectionViewDataSource, UIColl
         if forword {  // only perform once
             forword = false
             
-            self.searchBar.becomeFirstResponder()
+            self.searchBar?.becomeFirstResponder()
 //            shadowView.isHidden = false
         }
     }

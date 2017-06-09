@@ -38,6 +38,8 @@ class TopupViewController: UIViewController {
     fileprivate let topupIdentifier = "top up identifier"
     fileprivate let applePayIdentifier = "Apple Pay"
     
+    fileprivate var addedPayButton = false
+    
     // For Apple pay
     fileprivate var tn: String!
     // "00" for distrubution, "01" for testing
@@ -105,16 +107,20 @@ extension TopupViewController: UITableViewDataSource, UITableViewDelegate {
             cell.titleLabel?.text = "使用支付宝支付"
             
         } else if let cell = cell as? ApplePayCell {
-            for subview in cell.applyPayView.subviews {
-                subview.removeFromSuperview()
-            }
+//            for subview in cell.applyPayView.subviews {
+//                subview.removeFromSuperview()
+//            }
             if #available(iOS 8.3, *) {
-                let payButton = PKPaymentButton(type: .plain, style: .white)
-                payButton.frame = cell.applyPayView.bounds
-                
-                cell.applyPayView.backgroundColor = UIColor.white
-                cell.applyPayView.addSubview(payButton)
-                cell.applyPayView.clipsToBounds = true
+                if !addedPayButton {
+                    addedPayButton = true
+                    
+                    let payButton = PKPaymentButton(type: .plain, style: .whiteOutline)
+                    
+                    cell.applyPayView.backgroundColor = UIColor.clear
+                    payButton.frame = cell.applyPayView.frame
+                    cell.contentView.addSubview(payButton)
+                }
+
             } else {
                 // Fallback on earlier versions
             }

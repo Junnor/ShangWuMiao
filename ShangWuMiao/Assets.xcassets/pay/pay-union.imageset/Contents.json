@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "union_pay.jpg",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "pay-union@2x.png",
       "scale" : "2x"
     },
     {
