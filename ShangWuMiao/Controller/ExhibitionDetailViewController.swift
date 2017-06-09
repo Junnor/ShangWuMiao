@@ -523,6 +523,12 @@ extension ExhibitionDetailViewController: UICollectionViewDelegateFlowLayout {
             switch indexPath.row {
             case 0:
                 height = UIWindow().bounds.height * 2/5
+                
+                // ####################    一个 5C 的不可思议的Bug
+                if height == 0 {
+                    height = collectionView.bounds.height * 2/5
+                }
+                // ###################
             case 1:
                 let font = UIFont.systemFont(ofSize: 16)
                 let str = self.exhibition.exDescription!
