@@ -100,6 +100,8 @@ class ExhibitionDetailViewController: UIViewController {
         self.titleLabel?.text = self.exhibition.name
         self.titleLabel?.isHidden = true
         
+        comfigureRightBarButtonItem()
+        
         registerCollectionView()
         blurView = ExBlurView.blurViewFromNib()
         
@@ -150,6 +152,22 @@ class ExhibitionDetailViewController: UIViewController {
     }
     
     // MARK: - Helper
+    
+    private func comfigureRightBarButtonItem() {
+
+        let item = UIBarButtonItem(image: #imageLiteral(resourceName: "ico-share"),
+                                   style: .done,
+                                   target: self,
+                                   action: #selector(share))
+        navigationItem.rightBarButtonItem = item
+    }
+    
+    @objc private func share() {
+        let url = URL(string: "https://stackoverflow.com/questions/33857638/swift-bar-button-item-image-set-size-and-width")!
+        let activityViewController = UIActivityViewController(activityItems: ["I love it", url],
+                                                              applicationActivities: nil)
+        present(activityViewController, animated: true, completion: nil)
+    }
     
     @objc private func tapAction() {
         self.phoneTextField?.resignFirstResponder()
@@ -524,7 +542,8 @@ extension ExhibitionDetailViewController: UICollectionViewDelegateFlowLayout {
             case 0:
                 height = UIWindow().bounds.height * 2/5
                 
-                // ####################    一个 5C 的不可思议的Bug
+                // BUGBUGBUG ####################    
+                // 一个 5C ios 8.1 的不可思议的Bug...... 好像是iOS8以下UIWindow 的初始问题
                 if height == 0 {
                     height = collectionView.bounds.height * 2/5
                 }

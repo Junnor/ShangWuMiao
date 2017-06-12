@@ -34,6 +34,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
+        // ShareSDK: App Key 1e9aa2d08bba3
+        
         return true
     }
     
