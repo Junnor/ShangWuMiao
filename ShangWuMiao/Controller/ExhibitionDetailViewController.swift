@@ -28,7 +28,7 @@ class ExhibitionDetailViewController: UIViewController {
                 sourceVC.sourePreViewController.show(detailViewController, sender: self)
             }
         }
-
+        
         return [preview]
     }
     
@@ -73,8 +73,8 @@ class ExhibitionDetailViewController: UIViewController {
     fileprivate var ticktsTimes = 1 {
         didSet {
             if let indexPath = collectionView.indexPathsForSelectedItems?.first {
-//                let money = originalPrice ?
-//                    self.tickts[indexPath.item].price : self.tickts[indexPath.item].proxy_price
+                //                let money = originalPrice ?
+                //                    self.tickts[indexPath.item].price : self.tickts[indexPath.item].proxy_price
                 let money = self.tickts[indexPath.item].proxy_price
                 self.vcpriceLabel?.text = "\(Float(money!)! * Float(self.ticktsTimes))"
                 
@@ -97,10 +97,10 @@ class ExhibitionDetailViewController: UIViewController {
     fileprivate lazy var shareShadowView: UIView = {
         let shadowView = UIView()
         shadowView.frame = self.view.frame
+        shadowView.backgroundColor = UIColor.lightGray
         shadowView.alpha = 0.0
         shadowView.addGestureRecognizer(UITapGestureRecognizer(target: self,
                                                                action: #selector(dissolveShadow)))
-        self.navigationController?.view.addSubview(shadowView)
         
         return shadowView
     }()
@@ -114,6 +114,8 @@ class ExhibitionDetailViewController: UIViewController {
         
         self.titleLabel?.text = self.exhibition.name
         self.titleLabel?.isHidden = true
+        
+        self.view.addSubview(shareShadowView)
         
         comfigureRightBarButtonItem()
         
@@ -145,7 +147,7 @@ class ExhibitionDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        
         if !useDefaultImage {
             if currentBarTintColor != nil {
                 let image = UIImage.from(color: currentBarTintColor)
@@ -156,7 +158,7 @@ class ExhibitionDetailViewController: UIViewController {
                 self.navigationController?.navigationBar.shadowImage = UIImage()
             }
         }
-
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -165,7 +167,7 @@ class ExhibitionDetailViewController: UIViewController {
         self.navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
         self.navigationController?.navigationBar.shadowImage = nil
     }
-        
+    
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
@@ -188,47 +190,47 @@ class ExhibitionDetailViewController: UIViewController {
             //                                                                  applicationActivities: nil)
             //            present(activityViewController, animated: true, completion: nil)
             
-
+            
             showShadowView()
             
-//            let imgs = [#imageLiteral(resourceName: "ico-share")]
-//            
-//            let parameter = NSMutableDictionary()
-//            parameter.ssdkSetupShareParams(byText: "分享内容",
-//                                           images: imgs,
-//                                           url: url,
-//                                           title: "分享标题",
-//                                           type: .auto)
-//
-//            parameter.ssdkEnableUseClientShare()
-//            ShareSDK.share(SSDKPlatformType.typeSinaWeibo,
-//                           parameters: parameter,
-//                           onStateChanged: { (state, _, _, error) in
-//                
-//                switch state {
-//                case .success:
-//                    print("share success")
-//                case .fail:
-//                    print("share failure")
-//                case .cancel:
-//                    print("share cancel")
-//                default: break
-//                    
-//                    
-//                }
-//            })
+            //            let imgs = [#imageLiteral(resourceName: "ico-share")]
+            //
+            //            let parameter = NSMutableDictionary()
+            //            parameter.ssdkSetupShareParams(byText: "分享内容",
+            //                                           images: imgs,
+            //                                           url: url,
+            //                                           title: "分享标题",
+            //                                           type: .auto)
+            //
+            //            parameter.ssdkEnableUseClientShare()
+            //            ShareSDK.share(SSDKPlatformType.typeSinaWeibo,
+            //                           parameters: parameter,
+            //                           onStateChanged: { (state, _, _, error) in
+            //
+            //                switch state {
+            //                case .success:
+            //                    print("share success")
+            //                case .fail:
+            //                    print("share failure")
+            //                case .cancel:
+            //                    print("share cancel")
+            //                default: break
+            //
+            //
+            //                }
+            //            })
         }
         
         
         
-
+        
         
     }
     
     @objc private func tapAction() {
         self.phoneTextField?.resignFirstResponder()
     }
-
+    
     private func loadExhibitionData() {
         exhibition.requestExhibitionListTickets { [weak self] (success, info, tickts) in
             if success {
@@ -475,9 +477,9 @@ extension ExhibitionDetailViewController: UICollectionViewDataSource {
                         cell.priceLabel?.textColor = UIColor.white
                         cell.backgroundColor = UIColor.themeRed
                         
-//                        self.ticktPrice = Float(cell.priceLabel.text!)!
+                        //                        self.ticktPrice = Float(cell.priceLabel.text!)!
                         self.ticktPrice = Float(tickt.proxy_price)!
-
+                        
                     } else {
                         cell.nameLabel?.textColor = UIColor.themeRed
                         cell.priceLabel?.textColor = UIColor.themeRed
@@ -598,12 +600,12 @@ extension ExhibitionDetailViewController: UICollectionViewDelegateFlowLayout {
             case 0:
                 height = UIWindow().bounds.height * 2/5
                 
-                // BUGBUGBUG ####################    
+                // BUGBUGBUG ####################
                 // 一个 5C ios 8.1 的不可思议的Bug...... 好像是iOS8以下UIWindow 的初始问题
                 if height == 0 {
                     height = collectionView.bounds.height * 2/5
                 }
-                // ###################
+            // ###################
             case 1:
                 let font = UIFont.systemFont(ofSize: 16)
                 let str = self.exhibition.exDescription!
@@ -645,24 +647,27 @@ extension ExhibitionDetailViewController: UICollectionViewDelegateFlowLayout {
 extension ExhibitionDetailViewController: ShareViewControllerDelegate {
     
     fileprivate func showShadowView() {
+        UIView.animate(withDuration: 0.2) {
+            self.shareShadowView.alpha = 0.5
+        }
         
-        UIView.animate(withDuration: 0.5,
-                       delay: 0.0,
-                       options: [],
-                       animations: {
-                        self.shareShadowView.alpha = 1.0
-                        self.shareView.frame.origin.y = self.view.frame.height - self.shareViewHeight
+        UIView.animate(withDuration: 0.2, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: { 
+            self.shareView.frame.origin.y = self.view.frame.height - self.shareViewHeight
+
         }, completion: nil)
+
     }
     
     @objc fileprivate func dissolveShadow() {
-        UIView.animate(withDuration: 0.5,
-                       delay: 0.0,
-                       options: [],
-                       animations: {
-                        self.shareShadowView.alpha = 0.0
-                        self.shareView.frame.origin.y = self.view.frame.height
+        UIView.animate(withDuration: 0.2) {
+            self.shareShadowView.alpha = 0.0
+        }
+        
+        
+        UIView.animate(withDuration: 0.2, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+            self.shareView.frame.origin.y = self.view.frame.height
         }, completion: nil)
+
     }
     
     fileprivate func configureShareView() {
@@ -671,13 +676,13 @@ extension ExhibitionDetailViewController: ShareViewControllerDelegate {
         self.addChildViewController(shareViewController)
         let rect = CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: shareViewHeight)
         shareViewController.view.frame = rect
-        view.addSubview(shareViewController.view)
+        self.view.addSubview(shareViewController.view)
         shareViewController.didMove(toParentViewController: self)
         
         shareView = shareViewController.view
     }
     
     func closeShareView() {
-        
+        dissolveShadow()
     }
 }

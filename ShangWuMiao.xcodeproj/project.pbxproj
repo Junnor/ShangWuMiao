@@ -64,12 +64,10 @@
 		673BD5DC1EEE364D005A733A /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 673BD5DB1EEE364D005A733A /* JavaScriptCore.framework */; };
 		673BD5DE1EEE3682005A733A /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 673BD5DD1EEE3682005A733A /* ImageIO.framework */; };
 		673BD5E01EEE3694005A733A /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 673BD5DF1EEE3694005A733A /* MessageUI.framework */; };
-		673BD5E31EEE6CE8005A733A /* ShareView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 673BD5E21EEE6CE8005A733A /* ShareView.xib */; };
-		673BD5E51EEE6D04005A733A /* ShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673BD5E41EEE6D04005A733A /* ShareView.swift */; };
-		673BD5E81EEE70B9005A733A /* ShareCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673BD5E61EEE70B9005A733A /* ShareCell.swift */; };
-		673BD5E91EEE70B9005A733A /* ShareCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 673BD5E71EEE70B9005A733A /* ShareCell.xib */; };
 		673BD5EB1EEE724B005A733A /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673BD5EA1EEE724B005A733A /* ShareViewController.swift */; };
 		673BD5ED1EEE8B44005A733A /* ShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 673BD5EC1EEE8B44005A733A /* ShareViewController.xib */; };
+		673BD5F01EEE8D92005A733A /* ShareCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673BD5EE1EEE8D92005A733A /* ShareCell.swift */; };
+		673BD5F11EEE8D92005A733A /* ShareCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 673BD5EF1EEE8D92005A733A /* ShareCell.xib */; };
 		677D66651EE65ECD0078F1BC /* Lollipop.pkpass in Resources */ = {isa = PBXBuildFile; fileRef = 677D66641EE65ECD0078F1BC /* Lollipop.pkpass */; };
 		67FD72DD1EE791CC00C3DED6 /* libUPAPayPlugin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 67FD72DC1EE791CC00C3DED6 /* libUPAPayPlugin.a */; };
 		67FD72DF1EE7920C00C3DED6 /* PassKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67FD72DE1EE7920C00C3DED6 /* PassKit.framework */; };
@@ -239,12 +237,10 @@
 		673BD5DB1EEE364D005A733A /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		673BD5DD1EEE3682005A733A /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		673BD5DF1EEE3694005A733A /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
-		673BD5E21EEE6CE8005A733A /* ShareView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareView.xib; sourceTree = "<group>"; };
-		673BD5E41EEE6D04005A733A /* ShareView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareView.swift; sourceTree = "<group>"; };
-		673BD5E61EEE70B9005A733A /* ShareCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareCell.swift; sourceTree = "<group>"; };
-		673BD5E71EEE70B9005A733A /* ShareCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareCell.xib; sourceTree = "<group>"; };
 		673BD5EA1EEE724B005A733A /* ShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		673BD5EC1EEE8B44005A733A /* ShareViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareViewController.xib; sourceTree = "<group>"; };
+		673BD5EE1EEE8D92005A733A /* ShareCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareCell.swift; sourceTree = "<group>"; };
+		673BD5EF1EEE8D92005A733A /* ShareCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareCell.xib; sourceTree = "<group>"; };
 		677D66641EE65ECD0078F1BC /* Lollipop.pkpass */ = {isa = PBXFileReference; lastKnownFileType = file; path = Lollipop.pkpass; sourceTree = "<group>"; };
 		679CC62B1EE6889C0032210A /* ShangWuMiao.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShangWuMiao.entitlements; sourceTree = "<group>"; };
 		67FD72D91EE791CC00C3DED6 /* UPAPayPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPAPayPlugin.h; sourceTree = "<group>"; };
@@ -738,17 +734,6 @@
 			path = Required;
 			sourceTree = "<group>";
 		};
-		673BD5E11EEE6CDF005A733A /* Helper */ = {
-			isa = PBXGroup;
-			children = (
-				673BD5E41EEE6D04005A733A /* ShareView.swift */,
-				673BD5E21EEE6CE8005A733A /* ShareView.xib */,
-				673BD5E61EEE70B9005A733A /* ShareCell.swift */,
-				673BD5E71EEE70B9005A733A /* ShareCell.xib */,
-			);
-			path = Helper;
-			sourceTree = "<group>";
-		};
 		67FD72D71EE791CC00C3DED6 /* applePaySDK */ = {
 			isa = PBXGroup;
 			children = (
@@ -968,13 +953,14 @@
 		8B7A48D61EC0104500276058 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				673BD5EE1EEE8D92005A733A /* ShareCell.swift */,
+				673BD5EF1EEE8D92005A733A /* ShareCell.xib */,
 				8BDB06AF1EC03C2F00F0A660 /* ComicViewCell.swift */,
 				8BE3800E1EC2A1A1001A6651 /* MeCell.swift */,
 				8BE380101EC2A38A001A6651 /* TopupRecordCell.swift */,
 				8BE380121EC2A757001A6651 /* TopupCell.swift */,
 				8BE380141EC2A887001A6651 /* BoughtTicketCell.swift */,
 				8BE380161EC2A8A3001A6651 /* TicketOrderCell.swift */,
-				673BD5E11EEE6CDF005A733A /* Helper */,
 				8BCE2B991ECC294000ACA1BB /* ExhibitionDetail */,
 			);
 			path = View;
@@ -1150,15 +1136,14 @@
 				4460C2B31E9B19F3004166DB /* LaunchScreen.storyboard in Resources */,
 				673BD5D51EEE358A005A733A /* ShareSDK.bundle in Resources */,
 				673BD5AC1EEE358A005A733A /* ShareSDKUI.bundle in Resources */,
+				673BD5F11EEE8D92005A733A /* ShareCell.xib in Resources */,
 				673BD5CC1EEE358A005A733A /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
-				673BD5E91EEE70B9005A733A /* ShareCell.xib in Resources */,
 				677D66651EE65ECD0078F1BC /* Lollipop.pkpass in Resources */,
 				673BD5A91EEE358A005A733A /* ShareSDKConfigFile.bundle in Resources */,
 				8B0352741ECEB95E00E46DEE /* AlipaySDK.bundle in Resources */,
 				8BCE2BAA1ECC351700ACA1BB /* ExHeaderCell.xib in Resources */,
 				8BCE2BB61ECC3A5D00ACA1BB /* ExTicketCell.xib in Resources */,
 				4460C2B01E9B19F3004166DB /* Assets.xcassets in Resources */,
-				673BD5E31EEE6CE8005A733A /* ShareView.xib in Resources */,
 				673BD5D21EEE358A005A733A /* README.txt in Resources */,
 				4460C2AE1E9B19F3004166DB /* Main.storyboard in Resources */,
 				8BCE2BBA1ECC3F9500ACA1BB /* ExFooterView.xib in Resources */,
@@ -1240,7 +1225,6 @@
 			files = (
 				4460C2A91E9B19F3004166DB /* AppDelegate.swift in Sources */,
 				8B03527C1ECEB95E00E46DEE /* RSADataVerifier.m in Sources */,
-				673BD5E51EEE6D04005A733A /* ShareView.swift in Sources */,
 				8B96043A1ED3D98E001AFC0F /* CornerView.swift in Sources */,
 				8BE3800D1EC1DA7B001A6651 /* TopupViewController.swift in Sources */,
 				8BE380111EC2A38A001A6651 /* TopupRecordCell.swift in Sources */,
@@ -1285,7 +1269,7 @@
 				673BD5C41EEE358A005A733A /* README.md in Sources */,
 				8BCE2BB11ECC375200ACA1BB /* ExInputHintCell.swift in Sources */,
 				8B4753021ECE7E6400EDD02A /* UserPay.swift in Sources */,
-				673BD5E81EEE70B9005A733A /* ShareCell.swift in Sources */,
+				673BD5F01EEE8D92005A733A /* ShareCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
