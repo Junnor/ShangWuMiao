@@ -121,6 +121,7 @@ extension ShareViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShareCell", for: indexPath)
         if let cell = cell as? ShareCell {
+            print("cellllllllllll")
             var img = UIImage()
             var title = ""
             var bgColor: UIColor = .grayBGColor
