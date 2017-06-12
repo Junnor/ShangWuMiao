@@ -10,7 +10,6 @@ import UIKit
 import SwiftyJSON
 import SVProgressHUD
 
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
