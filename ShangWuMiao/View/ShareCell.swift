@@ -9,14 +9,18 @@
 import UIKit
 
 class ShareCell: UICollectionViewCell {
-
     
+    @IBOutlet weak var itemBackgroundView: UIView!
+
     @IBOutlet weak var shareLabel: UILabel!
     @IBOutlet weak var shareImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-    }
+        
+        itemBackgroundView.layer.cornerRadius = itemBackgroundView.frame.size.width/2
 
+    }
+    
 }

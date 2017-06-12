@@ -106,7 +106,7 @@ class ExhibitionDetailViewController: UIViewController {
     }()
     
     fileprivate weak var shareView: UIView!
-    fileprivate let shareViewHeight: CGFloat = 300
+    fileprivate let shareViewHeight: CGFloat = 400
     
     // MARK: - View controller lifecycle
     override func viewDidLoad() {
@@ -144,6 +144,13 @@ class ExhibitionDetailViewController: UIViewController {
         // For share view
         configureShareView()
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        print("..detail viewDidLayoutSubviews")
+    }
+
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

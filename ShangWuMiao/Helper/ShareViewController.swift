@@ -53,11 +53,21 @@ class ShareViewController: UIViewController {
                                                   .wechatBGColor,
                                                   .wechatFriendBGColor,
                                                   .wechatStoreBGColor]
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        configureShareView()
+    
+    private var configured = false
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if !configured {
+            configured = true
+            configureShareView()
+        }
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        print("..viewDidLayoutSubviews")
     }
 
     private func configureShareView() {
@@ -71,8 +81,17 @@ class ShareViewController: UIViewController {
         brightCollectionView.register(nib, forCellWithReuseIdentifier: "ShareCell")
         grayCollectionView.register(nib, forCellWithReuseIdentifier: "ShareCell")
         
-//        let layout = 
+        let layout = brightCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
         
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+        let width = view.bounds.width - 20
+        layout.itemSize = CGSize(width: width/4.0, height: 100)
+        layout.minimumLineSpacing = 0
+        layout.minimumInteritemSpacing = 0
+        
+        brightCollectionView.collectionViewLayout = layout
+        grayCollectionView.collectionViewLayout = layout
+
         cancelButton.addTarget(self, action: #selector(closeShare), for: .touchUpInside)
     }
     
@@ -89,9 +108,12 @@ extension ShareViewController: UICollectionViewDataSource {
         if collectionView == brightCollectionView {
             // count + 1 , 1 is more cell
             count = brightCellColor.count
+            print("brightCollectionView")
         } else if collectionView == grayCollectionView {
+            print("grayCollectionView")
             count = 4
         }
+        print("count = \(count)")
         return count
     }
     
@@ -113,7 +135,8 @@ extension ShareViewController: UICollectionViewDataSource {
             
             cell.shareImageView.image = img
             cell.shareLabel.text = title
-            cell.backgroundColor = bgColor
+            cell.itemBackgroundView.backgroundColor = bgColor
+//            cell.itemBackgroundView.layer.cornerRadius = cell.itemBackgroundView.frame.width/2
         }
         return cell
     }
