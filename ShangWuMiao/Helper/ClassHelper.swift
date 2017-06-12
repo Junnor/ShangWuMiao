@@ -80,8 +80,34 @@ extension UIColor {
         return UIColor(red: 255/255.0, green: 214/255.0, blue: 0.0, alpha: 1.0)
     }
 
-}
+    // For Share
 
+    static var sinaBGColor: UIColor {
+        return UIColor(red: 252/255.0, green: 36/255.0, blue: 34/255.0, alpha: 1.0)
+    }
+    
+    static var qqBGColor: UIColor {
+        return UIColor(red: 50/255.0, green: 172/255.0, blue: 252/255.0, alpha: 1.0)
+    }
+    
+    static var qqZoneBGColor: UIColor {
+        return UIColor(red: 253/255.0, green: 187/255.0, blue: 99/255.0, alpha: 1.0)
+    }
+    static var wechatBGColor: UIColor {
+        return UIColor(red: 101/255.0, green: 189/255.0, blue: 66/255.0, alpha: 1.0)
+    }
+    static var wechatFriendBGColor: UIColor {
+        return UIColor(red: 253/255.0, green: 126/255.0, blue: 61/255.0, alpha: 1.0)
+    }
+    
+    static var wechatStoreBGColor: UIColor {
+        return wechatBGColor
+    }
+    static var grayBGColor: UIColor {
+        return UIColor(red: 170/255.0, green: 170/255.0, blue: 170/255.0, alpha: 1.0)
+    }
+
+}
 
 extension UIScrollView {
     

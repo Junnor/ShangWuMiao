@@ -93,6 +93,21 @@ class ExhibitionDetailViewController: UIViewController {
     fileprivate weak var phoneTextField: UITextField!
     fileprivate weak var ticktsTimesLabel: UILabel!
     
+    // For share
+    fileprivate lazy var shareShadowView: UIView = {
+        let shadowView = UIView()
+        shadowView.frame = self.view.frame
+        shadowView.alpha = 0.0
+        shadowView.addGestureRecognizer(UITapGestureRecognizer(target: self,
+                                                               action: #selector(dissolveShadow)))
+        self.navigationController?.view.addSubview(shadowView)
+        
+        return shadowView
+    }()
+    
+    fileprivate weak var shareView: UIView!
+    fileprivate let shareViewHeight: CGFloat = 300
+    
     // MARK: - View controller lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -122,6 +137,10 @@ class ExhibitionDetailViewController: UIViewController {
             self.payViewHeightConstraint.constant = 0
             payView.isHidden = true
         }
+        
+        
+        // For share view
+        configureShareView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -154,7 +173,6 @@ class ExhibitionDetailViewController: UIViewController {
     // MARK: - Helper
     
     private func comfigureRightBarButtonItem() {
-
         let item = UIBarButtonItem(image: #imageLiteral(resourceName: "ico-share"),
                                    style: .done,
                                    target: self,
@@ -163,10 +181,48 @@ class ExhibitionDetailViewController: UIViewController {
     }
     
     @objc private func share() {
-        let url = URL(string: "https://stackoverflow.com/questions/33857638/swift-bar-button-item-image-set-size-and-width")!
-        let activityViewController = UIActivityViewController(activityItems: ["I love it", url],
-                                                              applicationActivities: nil)
-        present(activityViewController, animated: true, completion: nil)
+        // TODO: - replace
+        let shareString = "https://www.nyato.com/manzhan/\(exhibition.exid!)/"
+        if let url = URL(string: shareString) {
+            //            let activityViewController = UIActivityViewController(activityItems: ["I love it", url],
+            //                                                                  applicationActivities: nil)
+            //            present(activityViewController, animated: true, completion: nil)
+            
+
+            showShadowView()
+            
+//            let imgs = [#imageLiteral(resourceName: "ico-share")]
+//            
+//            let parameter = NSMutableDictionary()
+//            parameter.ssdkSetupShareParams(byText: "分享内容",
+//                                           images: imgs,
+//                                           url: url,
+//                                           title: "分享标题",
+//                                           type: .auto)
+//
+//            parameter.ssdkEnableUseClientShare()
+//            ShareSDK.share(SSDKPlatformType.typeSinaWeibo,
+//                           parameters: parameter,
+//                           onStateChanged: { (state, _, _, error) in
+//                
+//                switch state {
+//                case .success:
+//                    print("share success")
+//                case .fail:
+//                    print("share failure")
+//                case .cancel:
+//                    print("share cancel")
+//                default: break
+//                    
+//                    
+//                }
+//            })
+        }
+        
+        
+        
+
+        
     }
     
     @objc private func tapAction() {
@@ -582,5 +638,46 @@ extension ExhibitionDetailViewController: UICollectionViewDelegateFlowLayout {
     fileprivate func heightForText(text: String, font: UIFont, width: CGFloat) -> CGFloat {
         let rect = NSString(string: text).boundingRect(with: CGSize(width: width, height: CGFloat(MAXFLOAT)), options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName: font], context: nil)
         return ceil(rect.height)
+    }
+}
+
+// MARK: - Share
+extension ExhibitionDetailViewController: ShareViewControllerDelegate {
+    
+    fileprivate func showShadowView() {
+        
+        UIView.animate(withDuration: 0.5,
+                       delay: 0.0,
+                       options: [],
+                       animations: {
+                        self.shareShadowView.alpha = 1.0
+                        self.shareView.frame.origin.y = self.view.frame.height - self.shareViewHeight
+        }, completion: nil)
+    }
+    
+    @objc fileprivate func dissolveShadow() {
+        UIView.animate(withDuration: 0.5,
+                       delay: 0.0,
+                       options: [],
+                       animations: {
+                        self.shareShadowView.alpha = 0.0
+                        self.shareView.frame.origin.y = self.view.frame.height
+        }, completion: nil)
+    }
+    
+    fileprivate func configureShareView() {
+        let shareViewController = ShareViewController(nibName: "ShareViewController", bundle: nil)
+        shareViewController.delegate = self
+        self.addChildViewController(shareViewController)
+        let rect = CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: shareViewHeight)
+        shareViewController.view.frame = rect
+        view.addSubview(shareViewController.view)
+        shareViewController.didMove(toParentViewController: self)
+        
+        shareView = shareViewController.view
+    }
+    
+    func closeShareView() {
+        
     }
 }

@@ -33,20 +33,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
-        // ShareSDK: App Key 1e9aa2d08bba3
+        registerShare()
         
         return true
     }
     
-        // pay callback
+    // pay callback
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
         if url.host == "safepay" {
             AlipaySDK.defaultService().processOrder(withPaymentResult: url, standbyCallback: { response in
                 let json = JSON(response as Any)
                 let status = json["resultStatus"].intValue
-
+                
                 UserPay.shared.paySuccess = (status == 9000) ? true : false
-
+                
                 // tell database
                 if  status == 9000 {
                     User.requestUserInfo(completionHandler: { (success, statusInfo) in
@@ -57,7 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             print("request user info failure: \(String(describing: statusInfo))")
                         }
                     })
-
+                    
                     UserPay.payResult(tradeStatus: status, callback: { success, info in
                         if success {
                             SVProgressHUD.showSuccess(withStatus: info)
@@ -74,8 +74,59 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 // TODO: alipay
             })
         }
-    
+        
         return true
+    }
+    
+    // MARK: Helper
+    
+    // ShareSDK: App Key 1e9aa2d08bba3
+    private func registerShare() {
+        let shareAppKey = "1e9aa2d08bba3"
+        let nyatourl = "http://nyato.com"
+        ShareSDK.registerApp(shareAppKey,
+                             activePlatforms: [SSDKPlatformType.typeSinaWeibo.rawValue,
+                                               SSDKPlatformType.typeTencentWeibo.rawValue,
+                                               SSDKPlatformType.typeQQ.rawValue,
+                                               SSDKPlatformType.subTypeQZone.rawValue,
+                                               SSDKPlatformType.typeWechat.rawValue,
+                                               SSDKPlatformType.typeAny.rawValue],
+                             onImport: { (platform: SSDKPlatformType) in
+                                switch platform{
+                                case SSDKPlatformType.typeWechat:
+                                    ShareSDKConnector.connectWeChat(WXApi.classForCoder())
+                                    ShareSDKConnector.connectWeChat(WXApi.classForCoder(), delegate: self)
+                                case SSDKPlatformType.typeQQ:
+                                    ShareSDKConnector.connectQQ(QQApiInterface.classForCoder(), tencentOAuthClass: TencentOAuth.classForCoder())
+                                case SSDKPlatformType.typeSinaWeibo:
+                                    ShareSDKConnector.connectWeibo(WeiboSDK.classForCoder())
+                                default:
+                                    break
+                                }
+        }) { (platform: SSDKPlatformType, appInfo: NSMutableDictionary?) in
+            switch platform {
+            case SSDKPlatformType.typeSinaWeibo:
+                
+                //设置新浪微博应用信息,其中authType设置为使用SSO＋Web形式授权
+                appInfo?.ssdkSetupSinaWeibo(byAppKey: "3026246088",
+                                            appSecret: "beb7d09137b4bb35e83f67caf04c48ce",
+                                            redirectUri : nyatourl,
+                                            authType : SSDKAuthTypeBoth)
+            case SSDKPlatformType.typeWechat:
+                appInfo?.ssdkSetupWeChat(byAppId: "wx8356797cc8741cfb",
+                                         appSecret: "432be9d7445dd12bff81e29ac6375c6a")
+            case SSDKPlatformType.typeQQ:
+                appInfo?.ssdkSetupQQ(byAppId: "EJ9RNFqRza1ZlQur",
+                                     appKey: "1101335990",
+                                     authType: SSDKAuthTypeSSO)
+            case SSDKPlatformType.subTypeQZone:
+                appInfo?.ssdkSetupQQ(byAppId: "1101335990",
+                                     appKey: "1101335990",
+                                     authType: SSDKAuthTypeSSO)
+            default:
+                break
+            }
+        }
     }
 }
 
@@ -84,7 +135,7 @@ extension AppDelegate {
     
     @available(iOS 9.0, *)
     func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
-
+        
         handleShortcutItem(shortcutItem)
         
         // Whether deal with the completionHandler
@@ -145,6 +196,6 @@ extension AppDelegate {
             }
         }
     }
-
+    
 }
 

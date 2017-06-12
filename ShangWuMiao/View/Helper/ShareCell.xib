@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ShareCell" id="gTV-IL-0wX" customClass="ShareCell" customModule="ShangWuMiao" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="149" height="190"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="149" height="190"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vLz-2h-nDS">
+                        <rect key="frame" x="8" y="8" width="133" height="133"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="vLz-2h-nDS" secondAttribute="height" multiplier="1:1" id="31c-Zs-TYv"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jcl-r7-MAW">
+                        <rect key="frame" x="0.0" y="149" width="149" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Jcl-r7-MAW" secondAttribute="trailing" id="8OQ-uz-SoR"/>
+                <constraint firstItem="vLz-2h-nDS" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="topMargin" id="R9A-cV-mcd"/>
+                <constraint firstItem="vLz-2h-nDS" firstAttribute="trailing" secondItem="gTV-IL-0wX" secondAttribute="trailingMargin" id="kAD-wr-TV7"/>
+                <constraint firstItem="Jcl-r7-MAW" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="vo2-so-Wmg"/>
+                <constraint firstItem="Jcl-r7-MAW" firstAttribute="top" secondItem="vLz-2h-nDS" secondAttribute="bottom" constant="8" id="yRc-p8-iwJ"/>
+                <constraint firstItem="vLz-2h-nDS" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leadingMargin" id="zCM-fg-GOz"/>
+            </constraints>
+            <size key="customSize" width="149" height="190"/>
+            <connections>
+                <outlet property="shareImageView" destination="vLz-2h-nDS" id="9M0-l2-D9c"/>
+                <outlet property="shareLabel" destination="Jcl-r7-MAW" id="2Uq-cw-yVO"/>
+            </connections>
+            <point key="canvasLocation" x="160.5" y="124"/>
+        </collectionViewCell>
+    </objects>
+</document>
