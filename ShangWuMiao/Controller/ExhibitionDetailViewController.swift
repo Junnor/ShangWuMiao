@@ -99,6 +99,7 @@ class ExhibitionDetailViewController: UIViewController {
         let shadowView = UIView()
         shadowView.frame = self.view.frame
         shadowView.backgroundColor = UIColor(white: 0, alpha: 0)
+        shadowView.isHidden = true
         shadowView.addGestureRecognizer(UITapGestureRecognizer(target: self,
                                                                action: #selector(dismissShareView)))
         
@@ -108,6 +109,8 @@ class ExhibitionDetailViewController: UIViewController {
     fileprivate weak var shareView: UIView!
     fileprivate let shareViewHeight: CGFloat = 360
     
+    fileprivate var shareString: String!
+    
     // MARK: - View controller lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -115,6 +118,8 @@ class ExhibitionDetailViewController: UIViewController {
         self.titleLabel?.text = self.exhibition.name
         self.titleLabel?.isHidden = true
         
+        shareString = "https://www.nyato.com/manzhan/\(exhibition.exid!)/"
+
         self.view.addSubview(shareShadowView)
         
         comfigureRightBarButtonItem()
@@ -182,7 +187,6 @@ class ExhibitionDetailViewController: UIViewController {
     
     @objc fileprivate func share(with type: SSDKPlatformType) {
         // TODO: - replace
-        let shareString = "https://www.nyato.com/manzhan/\(exhibition.exid!)/"
         if let url = URL(string: shareString) {
             let imgs = [#imageLiteral(resourceName: "ico-share")]
             
@@ -629,6 +633,7 @@ extension ExhibitionDetailViewController: UICollectionViewDelegateFlowLayout {
 extension ExhibitionDetailViewController: ShareViewControllerDelegate {
     
     @objc fileprivate func showShareView() {
+        self.shareShadowView.isHidden = false
         UIView.animate(withDuration: 0.2) {
             self.shareShadowView.backgroundColor = UIColor(white: 0, alpha: 0.4)
         }
@@ -641,6 +646,7 @@ extension ExhibitionDetailViewController: ShareViewControllerDelegate {
     }
     
     @objc fileprivate func dismissShareView() {
+        self.shareShadowView.isHidden = true
         UIView.animate(withDuration: 0.2) {
             self.shareShadowView.backgroundColor = UIColor(white: 1, alpha: 0.0)
         }
@@ -672,26 +678,48 @@ extension ExhibitionDetailViewController: ShareViewControllerDelegate {
         share(with: platformType)
     }
     
-    func shareViewController(_ shareViewController: ShareViewController, didSelected type: GrayType) {
-        switch type {
+    func shareViewController(_ shareViewController: ShareViewController, didSelected grayType: GrayType) {
+        switch grayType {
         case .calendar:
             print("calendat")
         case .copy:
             print("copy")
+            if let url = URL(string: shareString) {
+                let pasteBoard = UIPasteboard.general
+                pasteBoard.url = url
+                dismissShareView()
+                SVProgressHUD.showSuccess(withStatus: "已复制链接到剪切板")
+            }
         case .report:
             print("report")
+            dismissShareView()
+            
+            let identifier = "FeedbackViewController"
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let feedbackVC = storyboard.instantiateViewController(withIdentifier: identifier) as! FeedbackViewController
+            self.navigationController?.pushViewController(feedbackVC, animated: true)
+
         case .safari:
             print("safari")
+            dismissShareView()
+
+            if let url = URL(string: shareString) {
+                if #available(iOS 10.0, *) {
+                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                } else {
+                    // Fallback on earlier versions
+                    if UIApplication.shared.canOpenURL(url) {
+                        UIApplication.shared.openURL(url)
+                    }
+                }
+            }
         }
-        
-        // TODO: perform type selected
     }
     
     func shareViewController(_ shareViewController: ShareViewController, showMore more: Bool) {
         dismissShareView()
         
         // apple original UIActivityViewController
-        let shareString = "https://www.nyato.com/manzhan/\(exhibition.exid!)/"
         if let url = URL(string: shareString), let title = exhibition.name {
             let activityVC = UIActivityViewController(activityItems: [title, url], applicationActivities: nil)
             present(activityVC, animated: true, completion: nil)

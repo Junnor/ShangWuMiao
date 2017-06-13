@@ -13,7 +13,7 @@ protocol ShareViewControllerDelegate: class {
     
     func shareViewController(_ shareViewController: ShareViewController, didSelected platformType: SSDKPlatformType)
     
-    func shareViewController(_ shareViewController: ShareViewController, didSelected type: GrayType)
+    func shareViewController(_ shareViewController: ShareViewController, didSelected grayType: GrayType)
     
     func shareViewController(_ shareViewController: ShareViewController, showMore more: Bool)
 }
