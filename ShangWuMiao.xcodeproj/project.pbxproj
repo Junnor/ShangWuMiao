@@ -64,11 +64,24 @@
 		673BD5DC1EEE364D005A733A /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 673BD5DB1EEE364D005A733A /* JavaScriptCore.framework */; };
 		673BD5DE1EEE3682005A733A /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 673BD5DD1EEE3682005A733A /* ImageIO.framework */; };
 		673BD5E01EEE3694005A733A /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 673BD5DF1EEE3694005A733A /* MessageUI.framework */; };
-		673BD5EB1EEE724B005A733A /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673BD5EA1EEE724B005A733A /* ShareViewController.swift */; };
-		673BD5ED1EEE8B44005A733A /* ShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 673BD5EC1EEE8B44005A733A /* ShareViewController.xib */; };
 		673BD5F01EEE8D92005A733A /* ShareCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673BD5EE1EEE8D92005A733A /* ShareCell.swift */; };
 		673BD5F11EEE8D92005A733A /* ShareCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 673BD5EF1EEE8D92005A733A /* ShareCell.xib */; };
 		677D66651EE65ECD0078F1BC /* Lollipop.pkpass in Resources */ = {isa = PBXBuildFile; fileRef = 677D66641EE65ECD0078F1BC /* Lollipop.pkpass */; };
+		67DB54221EEFCDA9004243EA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DB541F1EEFCDA9004243EA /* LoginViewController.swift */; };
+		67DB54231EEFCDA9004243EA /* RegisterNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DB54201EEFCDA9004243EA /* RegisterNameViewController.swift */; };
+		67DB54241EEFCDA9004243EA /* RegisterTelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DB54211EEFCDA9004243EA /* RegisterTelViewController.swift */; };
+		67DB54291EEFCDB4004243EA /* ExhibitionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DB54261EEFCDB4004243EA /* ExhibitionDetailViewController.swift */; };
+		67DB542A1EEFCDB4004243EA /* ExhibitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DB54271EEFCDB4004243EA /* ExhibitionViewController.swift */; };
+		67DB542B1EEFCDB4004243EA /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DB54281EEFCDB4004243EA /* SearchViewController.swift */; };
+		67DB54341EEFCDBA004243EA /* CommisionSoldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DB542D1EEFCDBA004243EA /* CommisionSoldViewController.swift */; };
+		67DB54351EEFCDBA004243EA /* ExhibitionTicketTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DB542E1EEFCDBA004243EA /* ExhibitionTicketTableViewController.swift */; };
+		67DB54361EEFCDBA004243EA /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DB542F1EEFCDBA004243EA /* FeedbackViewController.swift */; };
+		67DB54371EEFCDBA004243EA /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DB54301EEFCDBA004243EA /* MeViewController.swift */; };
+		67DB54381EEFCDBA004243EA /* SoldTicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DB54311EEFCDBA004243EA /* SoldTicketViewController.swift */; };
+		67DB54391EEFCDBA004243EA /* TopupRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DB54321EEFCDBA004243EA /* TopupRecordViewController.swift */; };
+		67DB543A1EEFCDBA004243EA /* TopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DB54331EEFCDBA004243EA /* TopupViewController.swift */; };
+		67DB543D1EEFCDEB004243EA /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DB543B1EEFCDEB004243EA /* ShareViewController.swift */; };
+		67DB543E1EEFCDEB004243EA /* ShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67DB543C1EEFCDEB004243EA /* ShareViewController.xib */; };
 		67FD72DD1EE791CC00C3DED6 /* libUPAPayPlugin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 67FD72DC1EE791CC00C3DED6 /* libUPAPayPlugin.a */; };
 		67FD72DF1EE7920C00C3DED6 /* PassKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67FD72DE1EE7920C00C3DED6 /* PassKit.framework */; };
 		8B0352741ECEB95E00E46DEE /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8B0352181ECEB95E00E46DEE /* AlipaySDK.bundle */; };
@@ -102,12 +115,9 @@
 		8B24D3371ED2D0BF00911340 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B24D3361ED2D0BF00911340 /* libsqlite3.0.tbd */; };
 		8B4753021ECE7E6400EDD02A /* UserPay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4753011ECE7E6400EDD02A /* UserPay.swift */; };
 		8B7F119E1ED413B300F503CE /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7F119D1ED413B300F503CE /* Login.swift */; };
-		8B84EACC1EC54546001B1BFF /* ExhibitionTicketTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B84EACB1EC54546001B1BFF /* ExhibitionTicketTableViewController.swift */; };
 		8B84EAD51EC54720001B1BFF /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B84EAD41EC54720001B1BFF /* Ticket.swift */; };
 		8B84EB021EC587FB001B1BFF /* TopupList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B84EB011EC587FB001B1BFF /* TopupList.swift */; };
 		8B96043A1ED3D98E001AFC0F /* CornerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9604391ED3D98E001AFC0F /* CornerView.swift */; };
-		8B96043E1ED3E02C001AFC0F /* RegisterTelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B96043D1ED3E02C001AFC0F /* RegisterTelViewController.swift */; };
-		8B9604401ED3E03E001AFC0F /* RegisterNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B96043F1ED3E03E001AFC0F /* RegisterNameViewController.swift */; };
 		8BCE2BA91ECC351700ACA1BB /* ExHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCE2BA71ECC351700ACA1BB /* ExHeaderCell.swift */; };
 		8BCE2BAA1ECC351700ACA1BB /* ExHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BCE2BA81ECC351700ACA1BB /* ExHeaderCell.xib */; };
 		8BCE2BAD1ECC369E00ACA1BB /* ExDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCE2BAB1ECC369E00ACA1BB /* ExDescriptionCell.swift */; };
@@ -118,17 +128,8 @@
 		8BCE2BB61ECC3A5D00ACA1BB /* ExTicketCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BCE2BB41ECC3A5C00ACA1BB /* ExTicketCell.xib */; };
 		8BCE2BB91ECC3F9500ACA1BB /* ExFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCE2BB71ECC3F9500ACA1BB /* ExFooterView.swift */; };
 		8BCE2BBA1ECC3F9500ACA1BB /* ExFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BCE2BB81ECC3F9500ACA1BB /* ExFooterView.xib */; };
-		8BDB06881EC0178100F0A660 /* ExhibitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDB06871EC0178100F0A660 /* ExhibitionViewController.swift */; };
-		8BDB068A1EC01A3D00F0A660 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDB06891EC01A3D00F0A660 /* SearchViewController.swift */; };
-		8BDB068C1EC01A4F00F0A660 /* ExhibitionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDB068B1EC01A4F00F0A660 /* ExhibitionDetailViewController.swift */; };
 		8BDB06901EC01DBC00F0A660 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDB068F1EC01DBC00F0A660 /* TabBarViewController.swift */; };
 		8BDB06B01EC03C2F00F0A660 /* ComicViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDB06AF1EC03C2F00F0A660 /* ComicViewCell.swift */; };
-		8BDE8EC51EC15E860000C1C8 /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDE8EC41EC15E860000C1C8 /* MeViewController.swift */; };
-		8BE380051EC1D71C001A6651 /* CommisionSoldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE380041EC1D71C001A6651 /* CommisionSoldViewController.swift */; };
-		8BE380071EC1D73D001A6651 /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE380061EC1D73D001A6651 /* FeedbackViewController.swift */; };
-		8BE380091EC1D77F001A6651 /* TopupRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE380081EC1D77F001A6651 /* TopupRecordViewController.swift */; };
-		8BE3800B1EC1D799001A6651 /* SoldTicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE3800A1EC1D799001A6651 /* SoldTicketViewController.swift */; };
-		8BE3800D1EC1DA7B001A6651 /* TopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE3800C1EC1DA7B001A6651 /* TopupViewController.swift */; };
 		8BE3800F1EC2A1A1001A6651 /* MeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE3800E1EC2A1A1001A6651 /* MeCell.swift */; };
 		8BE380111EC2A38A001A6651 /* TopupRecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE380101EC2A38A001A6651 /* TopupRecordCell.swift */; };
 		8BE380131EC2A757001A6651 /* TopupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE380121EC2A757001A6651 /* TopupCell.swift */; };
@@ -136,7 +137,6 @@
 		8BE380171EC2A8A3001A6651 /* TicketOrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE380161EC2A8A3001A6651 /* TicketOrderCell.swift */; };
 		8BE380191EC2EA37001A6651 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE380181EC2EA37001A6651 /* User.swift */; };
 		8BF6E7561EC3092B004FE5BB /* Exhibition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF6E7551EC3092B004FE5BB /* Exhibition.swift */; };
-		8BF9B4691EC069360057531A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF9B4681EC069360057531A /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -237,12 +237,25 @@
 		673BD5DB1EEE364D005A733A /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		673BD5DD1EEE3682005A733A /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		673BD5DF1EEE3694005A733A /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
-		673BD5EA1EEE724B005A733A /* ShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
-		673BD5EC1EEE8B44005A733A /* ShareViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareViewController.xib; sourceTree = "<group>"; };
 		673BD5EE1EEE8D92005A733A /* ShareCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareCell.swift; sourceTree = "<group>"; };
 		673BD5EF1EEE8D92005A733A /* ShareCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareCell.xib; sourceTree = "<group>"; };
 		677D66641EE65ECD0078F1BC /* Lollipop.pkpass */ = {isa = PBXFileReference; lastKnownFileType = file; path = Lollipop.pkpass; sourceTree = "<group>"; };
 		679CC62B1EE6889C0032210A /* ShangWuMiao.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShangWuMiao.entitlements; sourceTree = "<group>"; };
+		67DB541F1EEFCDA9004243EA /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		67DB54201EEFCDA9004243EA /* RegisterNameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterNameViewController.swift; sourceTree = "<group>"; };
+		67DB54211EEFCDA9004243EA /* RegisterTelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterTelViewController.swift; sourceTree = "<group>"; };
+		67DB54261EEFCDB4004243EA /* ExhibitionDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExhibitionDetailViewController.swift; sourceTree = "<group>"; };
+		67DB54271EEFCDB4004243EA /* ExhibitionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExhibitionViewController.swift; sourceTree = "<group>"; };
+		67DB54281EEFCDB4004243EA /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		67DB542D1EEFCDBA004243EA /* CommisionSoldViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommisionSoldViewController.swift; sourceTree = "<group>"; };
+		67DB542E1EEFCDBA004243EA /* ExhibitionTicketTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExhibitionTicketTableViewController.swift; sourceTree = "<group>"; };
+		67DB542F1EEFCDBA004243EA /* FeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
+		67DB54301EEFCDBA004243EA /* MeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
+		67DB54311EEFCDBA004243EA /* SoldTicketViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoldTicketViewController.swift; sourceTree = "<group>"; };
+		67DB54321EEFCDBA004243EA /* TopupRecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopupRecordViewController.swift; sourceTree = "<group>"; };
+		67DB54331EEFCDBA004243EA /* TopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopupViewController.swift; sourceTree = "<group>"; };
+		67DB543B1EEFCDEB004243EA /* ShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		67DB543C1EEFCDEB004243EA /* ShareViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareViewController.xib; sourceTree = "<group>"; };
 		67FD72D91EE791CC00C3DED6 /* UPAPayPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPAPayPlugin.h; sourceTree = "<group>"; };
 		67FD72DA1EE791CC00C3DED6 /* UPAPayPluginDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPAPayPluginDelegate.h; sourceTree = "<group>"; };
 		67FD72DC1EE791CC00C3DED6 /* libUPAPayPlugin.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUPAPayPlugin.a; sourceTree = "<group>"; };
@@ -361,12 +374,9 @@
 		8B24D3361ED2D0BF00911340 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		8B4753011ECE7E6400EDD02A /* UserPay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPay.swift; sourceTree = "<group>"; };
 		8B7F119D1ED413B300F503CE /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
-		8B84EACB1EC54546001B1BFF /* ExhibitionTicketTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExhibitionTicketTableViewController.swift; sourceTree = "<group>"; };
 		8B84EAD41EC54720001B1BFF /* Ticket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
 		8B84EB011EC587FB001B1BFF /* TopupList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopupList.swift; sourceTree = "<group>"; };
 		8B9604391ED3D98E001AFC0F /* CornerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CornerView.swift; sourceTree = "<group>"; };
-		8B96043D1ED3E02C001AFC0F /* RegisterTelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterTelViewController.swift; sourceTree = "<group>"; };
-		8B96043F1ED3E03E001AFC0F /* RegisterNameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterNameViewController.swift; sourceTree = "<group>"; };
 		8BCE2BA71ECC351700ACA1BB /* ExHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExHeaderCell.swift; sourceTree = "<group>"; };
 		8BCE2BA81ECC351700ACA1BB /* ExHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExHeaderCell.xib; sourceTree = "<group>"; };
 		8BCE2BAB1ECC369E00ACA1BB /* ExDescriptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExDescriptionCell.swift; sourceTree = "<group>"; };
@@ -377,18 +387,9 @@
 		8BCE2BB41ECC3A5C00ACA1BB /* ExTicketCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExTicketCell.xib; sourceTree = "<group>"; };
 		8BCE2BB71ECC3F9500ACA1BB /* ExFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExFooterView.swift; sourceTree = "<group>"; };
 		8BCE2BB81ECC3F9500ACA1BB /* ExFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExFooterView.xib; sourceTree = "<group>"; };
-		8BDB06871EC0178100F0A660 /* ExhibitionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExhibitionViewController.swift; sourceTree = "<group>"; };
-		8BDB06891EC01A3D00F0A660 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		8BDB068B1EC01A4F00F0A660 /* ExhibitionDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExhibitionDetailViewController.swift; sourceTree = "<group>"; };
 		8BDB068F1EC01DBC00F0A660 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		8BDB06AF1EC03C2F00F0A660 /* ComicViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComicViewCell.swift; sourceTree = "<group>"; };
-		8BDE8EC41EC15E860000C1C8 /* MeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 		8BDE8EC81EC193260000C1C8 /* ShangWuMiao-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ShangWuMiao-Bridging-Header.h"; sourceTree = "<group>"; };
-		8BE380041EC1D71C001A6651 /* CommisionSoldViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommisionSoldViewController.swift; sourceTree = "<group>"; };
-		8BE380061EC1D73D001A6651 /* FeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
-		8BE380081EC1D77F001A6651 /* TopupRecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopupRecordViewController.swift; sourceTree = "<group>"; };
-		8BE3800A1EC1D799001A6651 /* SoldTicketViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoldTicketViewController.swift; sourceTree = "<group>"; };
-		8BE3800C1EC1DA7B001A6651 /* TopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopupViewController.swift; sourceTree = "<group>"; };
 		8BE3800E1EC2A1A1001A6651 /* MeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeCell.swift; sourceTree = "<group>"; };
 		8BE380101EC2A38A001A6651 /* TopupRecordCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopupRecordCell.swift; sourceTree = "<group>"; };
 		8BE380121EC2A757001A6651 /* TopupCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopupCell.swift; sourceTree = "<group>"; };
@@ -396,7 +397,6 @@
 		8BE380161EC2A8A3001A6651 /* TicketOrderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketOrderCell.swift; sourceTree = "<group>"; };
 		8BE380181EC2EA37001A6651 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		8BF6E7551EC3092B004FE5BB /* Exhibition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exhibition.swift; sourceTree = "<group>"; };
-		8BF9B4681EC069360057531A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CEE920BAE7153B51B83F0AD9 /* Pods_ShangWuMiao.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShangWuMiao.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -734,6 +734,42 @@
 			path = Required;
 			sourceTree = "<group>";
 		};
+		67DB541E1EEFCDA9004243EA /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				67DB541F1EEFCDA9004243EA /* LoginViewController.swift */,
+				67DB54201EEFCDA9004243EA /* RegisterNameViewController.swift */,
+				67DB54211EEFCDA9004243EA /* RegisterTelViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		67DB54251EEFCDB4004243EA /* Exhibition */ = {
+			isa = PBXGroup;
+			children = (
+				67DB54271EEFCDB4004243EA /* ExhibitionViewController.swift */,
+				67DB54261EEFCDB4004243EA /* ExhibitionDetailViewController.swift */,
+				67DB54281EEFCDB4004243EA /* SearchViewController.swift */,
+				67DB543B1EEFCDEB004243EA /* ShareViewController.swift */,
+				67DB543C1EEFCDEB004243EA /* ShareViewController.xib */,
+			);
+			path = Exhibition;
+			sourceTree = "<group>";
+		};
+		67DB542C1EEFCDBA004243EA /* Me */ = {
+			isa = PBXGroup;
+			children = (
+				67DB542D1EEFCDBA004243EA /* CommisionSoldViewController.swift */,
+				67DB542E1EEFCDBA004243EA /* ExhibitionTicketTableViewController.swift */,
+				67DB542F1EEFCDBA004243EA /* FeedbackViewController.swift */,
+				67DB54301EEFCDBA004243EA /* MeViewController.swift */,
+				67DB54311EEFCDBA004243EA /* SoldTicketViewController.swift */,
+				67DB54321EEFCDBA004243EA /* TopupRecordViewController.swift */,
+				67DB54331EEFCDBA004243EA /* TopupViewController.swift */,
+			);
+			path = Me;
+			sourceTree = "<group>";
+		};
 		67FD72D71EE791CC00C3DED6 /* applePaySDK */ = {
 			isa = PBXGroup;
 			children = (
@@ -899,8 +935,6 @@
 				8B0352E81ECEE16F00E46DEE /* ClassHelper.swift */,
 				8B0352EC1ECEE18500E46DEE /* GlobalFunctions.swift */,
 				8B9604391ED3D98E001AFC0F /* CornerView.swift */,
-				673BD5EA1EEE724B005A733A /* ShareViewController.swift */,
-				673BD5EC1EEE8B44005A733A /* ShareViewController.xib */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -919,20 +953,10 @@
 			isa = PBXGroup;
 			children = (
 				8BDB068F1EC01DBC00F0A660 /* TabBarViewController.swift */,
-				8BF9B4681EC069360057531A /* LoginViewController.swift */,
-				8B96043D1ED3E02C001AFC0F /* RegisterTelViewController.swift */,
-				8B96043F1ED3E03E001AFC0F /* RegisterNameViewController.swift */,
-				8BDB06871EC0178100F0A660 /* ExhibitionViewController.swift */,
-				8BDB068B1EC01A4F00F0A660 /* ExhibitionDetailViewController.swift */,
-				8BDE8EC41EC15E860000C1C8 /* MeViewController.swift */,
-				8BDB06891EC01A3D00F0A660 /* SearchViewController.swift */,
-				8BE380041EC1D71C001A6651 /* CommisionSoldViewController.swift */,
-				8BE380061EC1D73D001A6651 /* FeedbackViewController.swift */,
-				8BE380081EC1D77F001A6651 /* TopupRecordViewController.swift */,
-				8BE3800A1EC1D799001A6651 /* SoldTicketViewController.swift */,
-				8B84EACB1EC54546001B1BFF /* ExhibitionTicketTableViewController.swift */,
-				8BE3800C1EC1DA7B001A6651 /* TopupViewController.swift */,
 				673070BA1EE5532200CEE9DA /* WalletViewController.swift */,
+				67DB541E1EEFCDA9004243EA /* Login */,
+				67DB542C1EEFCDBA004243EA /* Me */,
+				67DB54251EEFCDB4004243EA /* Exhibition */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1132,7 +1156,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B05263E1ECF00370090F11B /* ExBlurView.xib in Resources */,
-				673BD5ED1EEE8B44005A733A /* ShareViewController.xib in Resources */,
 				4460C2B31E9B19F3004166DB /* LaunchScreen.storyboard in Resources */,
 				673BD5D51EEE358A005A733A /* ShareSDK.bundle in Resources */,
 				673BD5AC1EEE358A005A733A /* ShareSDKUI.bundle in Resources */,
@@ -1142,6 +1165,7 @@
 				673BD5A91EEE358A005A733A /* ShareSDKConfigFile.bundle in Resources */,
 				8B0352741ECEB95E00E46DEE /* AlipaySDK.bundle in Resources */,
 				8BCE2BAA1ECC351700ACA1BB /* ExHeaderCell.xib in Resources */,
+				67DB543E1EEFCDEB004243EA /* ShareViewController.xib in Resources */,
 				8BCE2BB61ECC3A5D00ACA1BB /* ExTicketCell.xib in Resources */,
 				4460C2B01E9B19F3004166DB /* Assets.xcassets in Resources */,
 				673BD5D21EEE358A005A733A /* README.txt in Resources */,
@@ -1226,49 +1250,49 @@
 				4460C2A91E9B19F3004166DB /* AppDelegate.swift in Sources */,
 				8B03527C1ECEB95E00E46DEE /* RSADataVerifier.m in Sources */,
 				8B96043A1ED3D98E001AFC0F /* CornerView.swift in Sources */,
-				8BE3800D1EC1DA7B001A6651 /* TopupViewController.swift in Sources */,
 				8BE380111EC2A38A001A6651 /* TopupRecordCell.swift in Sources */,
-				673BD5EB1EEE724B005A733A /* ShareViewController.swift in Sources */,
-				8BE3800B1EC1D799001A6651 /* SoldTicketViewController.swift in Sources */,
 				8BE380151EC2A887001A6651 /* BoughtTicketCell.swift in Sources */,
 				8B7F119E1ED413B300F503CE /* Login.swift in Sources */,
 				8BE380131EC2A757001A6651 /* TopupCell.swift in Sources */,
-				8B9604401ED3E03E001AFC0F /* RegisterNameViewController.swift in Sources */,
+				67DB54231EEFCDA9004243EA /* RegisterNameViewController.swift in Sources */,
 				8BCE2BB51ECC3A5D00ACA1BB /* ExTicketCell.swift in Sources */,
+				67DB54391EEFCDBA004243EA /* TopupRecordViewController.swift in Sources */,
+				67DB542B1EEFCDB4004243EA /* SearchViewController.swift in Sources */,
 				8BCE2BA91ECC351700ACA1BB /* ExHeaderCell.swift in Sources */,
 				8BE3800F1EC2A1A1001A6651 /* MeCell.swift in Sources */,
-				8BE380051EC1D71C001A6651 /* CommisionSoldViewController.swift in Sources */,
 				8BE380191EC2EA37001A6651 /* User.swift in Sources */,
-				8BDB068A1EC01A3D00F0A660 /* SearchViewController.swift in Sources */,
 				8BE380171EC2A8A3001A6651 /* TicketOrderCell.swift in Sources */,
-				8BDE8EC51EC15E860000C1C8 /* MeViewController.swift in Sources */,
 				8B03527B1ECEB95E00E46DEE /* RSADataSigner.m in Sources */,
 				8B0352791ECEB95E00E46DEE /* NSDataEx.m in Sources */,
 				8B0352781ECEB95E00E46DEE /* base64.m in Sources */,
-				8B84EACC1EC54546001B1BFF /* ExhibitionTicketTableViewController.swift in Sources */,
+				67DB543D1EEFCDEB004243EA /* ShareViewController.swift in Sources */,
+				67DB54351EEFCDBA004243EA /* ExhibitionTicketTableViewController.swift in Sources */,
 				8B0E1A761ECD42310017F11C /* ExAddressCell.swift in Sources */,
 				8B03527A1ECEB95E00E46DEE /* openssl_wrapper.m in Sources */,
-				8B96043E1ED3E02C001AFC0F /* RegisterTelViewController.swift in Sources */,
-				8BE380091EC1D77F001A6651 /* TopupRecordViewController.swift in Sources */,
-				8BE380071EC1D73D001A6651 /* FeedbackViewController.swift in Sources */,
+				67DB54241EEFCDA9004243EA /* RegisterTelViewController.swift in Sources */,
 				8BCE2BB91ECC3F9500ACA1BB /* ExFooterView.swift in Sources */,
 				8B05263C1ECF002A0090F11B /* ExBlurView.swift in Sources */,
 				8BDB06B01EC03C2F00F0A660 /* ComicViewCell.swift in Sources */,
 				8B84EAD51EC54720001B1BFF /* Ticket.swift in Sources */,
-				8BDB068C1EC01A4F00F0A660 /* ExhibitionDetailViewController.swift in Sources */,
 				8B84EB021EC587FB001B1BFF /* TopupList.swift in Sources */,
 				8BCE2BAD1ECC369E00ACA1BB /* ExDescriptionCell.swift in Sources */,
+				67DB54341EEFCDBA004243EA /* CommisionSoldViewController.swift in Sources */,
+				67DB54291EEFCDB4004243EA /* ExhibitionDetailViewController.swift in Sources */,
 				8BDB06901EC01DBC00F0A660 /* TabBarViewController.swift in Sources */,
 				8B0352E91ECEE16F00E46DEE /* ClassHelper.swift in Sources */,
 				8B0352EB1ECEE17D00E46DEE /* Constant.swift in Sources */,
 				673070BB1EE5532200CEE9DA /* WalletViewController.swift in Sources */,
-				8BF9B4691EC069360057531A /* LoginViewController.swift in Sources */,
+				67DB54371EEFCDBA004243EA /* MeViewController.swift in Sources */,
+				67DB54221EEFCDA9004243EA /* LoginViewController.swift in Sources */,
 				8B0352ED1ECEE18500E46DEE /* GlobalFunctions.swift in Sources */,
-				8BDB06881EC0178100F0A660 /* ExhibitionViewController.swift in Sources */,
 				8BF6E7561EC3092B004FE5BB /* Exhibition.swift in Sources */,
+				67DB54361EEFCDBA004243EA /* FeedbackViewController.swift in Sources */,
+				67DB543A1EEFCDBA004243EA /* TopupViewController.swift in Sources */,
 				673BD5C41EEE358A005A733A /* README.md in Sources */,
+				67DB542A1EEFCDB4004243EA /* ExhibitionViewController.swift in Sources */,
 				8BCE2BB11ECC375200ACA1BB /* ExInputHintCell.swift in Sources */,
 				8B4753021ECE7E6400EDD02A /* UserPay.swift in Sources */,
+				67DB54381EEFCDBA004243EA /* SoldTicketViewController.swift in Sources */,
 				673BD5F01EEE8D92005A733A /* ShareCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
