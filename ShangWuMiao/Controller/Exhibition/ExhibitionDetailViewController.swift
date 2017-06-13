@@ -120,7 +120,7 @@ class ExhibitionDetailViewController: UIViewController {
         self.titleLabel?.isHidden = true
         
         shareString = "https://www.nyato.com/manzhan/\(exhibition.exid!)/"
-
+        
         self.view.addSubview(shareShadowView)
         
         comfigureRightBarButtonItem()
@@ -188,27 +188,43 @@ class ExhibitionDetailViewController: UIViewController {
     
     @objc fileprivate func share(with type: SSDKPlatformType) {
         // TODO: - replace
-        if let url = URL(string: shareString) {
-            let imgs = [#imageLiteral(resourceName: "ico-share")]
+        if let shareUrl = URL(string: shareString) {
+            let title = exhibition.name!
             
-            let parameter = NSMutableDictionary()
-            parameter.ssdkSetupShareParams(byText: "分享内容",
-                                           images: imgs,
-                                           url: url,
-                                           title: "分享标题",
+            let startTime = exhibition.exhibition(stringTime: self.exhibition.start_time,
+                                                  digit: false)
+            let description = exhibition.location + " " + exhibition.addr + " " + startTime + " 举办"
+            
+            var logoImg = UIImage()
+            if let logoUrl = URL(string: exhibition.cover) {
+                if let data = try? Data(contentsOf: logoUrl) {
+                    logoImg = UIImage(data: data)!
+                }
+            }
+            let content = title + " " + description
+            
+            let sharePars = NSMutableDictionary()
+            var text = content
+            if type == .typeSinaWeibo {
+                text =  "\(content) http://nyato.com/"
+            }
+            
+            sharePars.ssdkSetupShareParams(byText: text,
+                                           images: logoImg,
+                                           url: shareUrl,
+                                           title: title,
                                            type: .auto)
             
-            parameter.ssdkEnableUseClientShare()
             ShareSDK.share(type,
-                           parameters: parameter,
+                           parameters: sharePars,
                            onStateChanged: { (state, _, _, error) in
                             switch state {
                             case .success:
-                                print("share success")
+                                print("=======share success")
                             case .fail:
-                                print("share failure")
+                                print("=======share failure")
                             case .cancel:
-                                print("share cancel")
+                                print("=======share cancel")
                             default: break
                             }
             })

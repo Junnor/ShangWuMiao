@@ -64,13 +64,13 @@ class ShareViewController: UIViewController {
             case .sina:
                 plat = .typeSinaWeibo
             case .qqZone:
-                plat = .subTypeQQFriend
+                plat = .typeQQ
             case .qqFriend:
-                plat = .subTypeQQFriend
+                plat = .subTypeQZone
             case .wechatFriend:
-                plat = .typeWechat
-            case .wechatZone:
                 plat = .subTypeWechatSession
+            case .wechatZone:
+                plat = .subTypeWechatTimeline
             case .wechatStore:
                 plat = .subTypeWechatFav
             }

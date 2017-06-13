@@ -747,9 +747,9 @@
 		67DB54251EEFCDB4004243EA /* Exhibition */ = {
 			isa = PBXGroup;
 			children = (
+				67DB54281EEFCDB4004243EA /* SearchViewController.swift */,
 				67DB54271EEFCDB4004243EA /* ExhibitionViewController.swift */,
 				67DB54261EEFCDB4004243EA /* ExhibitionDetailViewController.swift */,
-				67DB54281EEFCDB4004243EA /* SearchViewController.swift */,
 				67DB543B1EEFCDEB004243EA /* ShareViewController.swift */,
 				67DB543C1EEFCDEB004243EA /* ShareViewController.xib */,
 			);
