@@ -14,6 +14,43 @@ import EventKit
 
 class ExhibitionDetailViewController: UIViewController {
     
+    // MARK: - Share, because ExhibitionDetailViewController+Share
+    // need access the properties, so make it as public
+    
+    var shareView: UIView!
+    let shareViewHeight: CGFloat = 400
+    
+    lazy var shareShadowView: UIView = {
+        let shadowView = UIView()
+        shadowView.frame = self.view.frame
+        shadowView.backgroundColor = UIColor(white: 0, alpha: 0)
+        shadowView.isHidden = true
+        shadowView.addGestureRecognizer(UITapGestureRecognizer(target: self,
+                                                               action: #selector(dismissShareView)))
+        
+        return shadowView
+    }()
+    
+    private func comfigureRightBarButtonItem() {
+        let item = UIBarButtonItem(image: #imageLiteral(resourceName: "ico-share"),
+                                   style: .done,
+                                   target: self,
+                                   action: #selector(showShareView))
+        navigationItem.rightBarButtonItem = item
+    }
+    
+    private func configureShareView() {
+        let shareViewController = ShareViewController(nibName: "ShareViewController", bundle: nil)
+        shareViewController.delegate = self
+        self.addChildViewController(shareViewController)
+        let rect = CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: shareViewHeight)
+        shareViewController.view.frame = rect
+        self.view.addSubview(shareViewController.view)
+        shareViewController.didMove(toParentViewController: self)
+        
+        shareView = shareViewController.view
+    }
+    
     // MARK: - For 3D Touch previewing
     weak var previewSourceViewController: ExhibitionPreviewable!
     
@@ -95,23 +132,6 @@ class ExhibitionDetailViewController: UIViewController {
     fileprivate weak var phoneTextField: UITextField!
     fileprivate weak var ticktsTimesLabel: UILabel!
     
-    // For share
-    fileprivate lazy var shareShadowView: UIView = {
-        let shadowView = UIView()
-        shadowView.frame = self.view.frame
-        shadowView.backgroundColor = UIColor(white: 0, alpha: 0)
-        shadowView.isHidden = true
-        shadowView.addGestureRecognizer(UITapGestureRecognizer(target: self,
-                                                               action: #selector(dismissShareView)))
-        
-        return shadowView
-    }()
-    
-    fileprivate weak var shareView: UIView!
-    fileprivate let shareViewHeight: CGFloat = 400
-    
-    fileprivate var shareString: String!
-    
     // MARK: - View controller lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -119,11 +139,8 @@ class ExhibitionDetailViewController: UIViewController {
         self.titleLabel?.text = self.exhibition.name
         self.titleLabel?.isHidden = true
         
-        shareString = "https://www.nyato.com/manzhan/\(exhibition.exid!)/"
-        
         self.view.addSubview(shareShadowView)
         
-        comfigureRightBarButtonItem()
         
         registerCollectionView()
         blurView = ExBlurView.blurViewFromNib()
@@ -146,6 +163,7 @@ class ExhibitionDetailViewController: UIViewController {
             payView.isHidden = true
         }
         
+        comfigureRightBarButtonItem()
         configureShareView()
     }
     
@@ -178,58 +196,6 @@ class ExhibitionDetailViewController: UIViewController {
     
     // MARK: - Helper
     
-    private func comfigureRightBarButtonItem() {
-        let item = UIBarButtonItem(image: #imageLiteral(resourceName: "ico-share"),
-                                   style: .done,
-                                   target: self,
-                                   action: #selector(showShareView))
-        navigationItem.rightBarButtonItem = item
-    }
-    
-    @objc fileprivate func share(with type: SSDKPlatformType) {
-        // TODO: - replace
-        if let shareUrl = URL(string: shareString) {
-            let title = exhibition.name!
-            
-            let startTime = exhibition.exhibition(stringTime: self.exhibition.start_time,
-                                                  digit: false)
-            let description = exhibition.location + " " + exhibition.addr + " " + startTime + " 举办"
-            
-            var logoImg = UIImage()
-            if let logoUrl = URL(string: exhibition.cover) {
-                if let data = try? Data(contentsOf: logoUrl) {
-                    logoImg = UIImage(data: data)!
-                }
-            }
-            let content = title + " " + description
-            
-            let sharePars = NSMutableDictionary()
-            var text = content
-            if type == .typeSinaWeibo {
-                text = "\(content) http://nyato.com/"
-            }
-            
-            sharePars.ssdkSetupShareParams(byText: text,
-                                           images: logoImg,
-                                           url: shareUrl,
-                                           title: title,
-                                           type: .auto)
-            
-            ShareSDK.share(type,
-                           parameters: sharePars,
-                           onStateChanged: { (state, _, _, error) in
-                            switch state {
-                            case .success:
-                                print("=======share success")
-                            case .fail:
-                                print("=======share failure")
-                            case .cancel:
-                                print("=======share cancel")
-                            default: break
-                            }
-            })
-        }
-    }
     
     @objc private func tapAction() {
         self.phoneTextField?.resignFirstResponder()
@@ -643,164 +609,5 @@ extension ExhibitionDetailViewController: UICollectionViewDelegateFlowLayout {
     fileprivate func heightForText(text: String, font: UIFont, width: CGFloat) -> CGFloat {
         let rect = NSString(string: text).boundingRect(with: CGSize(width: width, height: CGFloat(MAXFLOAT)), options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName: font], context: nil)
         return ceil(rect.height)
-    }
-}
-
-// MARK: - Share view controller delegate
-
-extension ExhibitionDetailViewController: ShareViewControllerDelegate {
-    
-    // .....  helper
-    
-    @objc fileprivate func showShareView() {
-        self.shareShadowView.isHidden = false
-        UIView.animate(withDuration: 0.2) {
-            self.shareShadowView.backgroundColor = UIColor(white: 0, alpha: 0.4)
-        }
-        
-        UIView.animate(withDuration: 0.2, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
-            self.shareView.frame.origin.y = self.view.frame.height - self.shareViewHeight
-            
-        }, completion: nil)
-        
-    }
-    
-    @objc fileprivate func dismissShareView() {
-        self.shareShadowView.isHidden = true
-        UIView.animate(withDuration: 0.2) {
-            self.shareShadowView.backgroundColor = UIColor(white: 1, alpha: 0.0)
-        }
-        
-        UIView.animate(withDuration: 0.2, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
-            self.shareView.frame.origin.y = self.view.frame.height
-        }, completion: nil)
-        
-    }
-    
-    fileprivate func configureShareView() {
-        let shareViewController = ShareViewController(nibName: "ShareViewController", bundle: nil)
-        shareViewController.delegate = self
-        self.addChildViewController(shareViewController)
-        let rect = CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: shareViewHeight)
-        shareViewController.view.frame = rect
-        self.view.addSubview(shareViewController.view)
-        shareViewController.didMove(toParentViewController: self)
-        
-        shareView = shareViewController.view
-    }
-    
-    // 添加到日历
-    private func calendarAction() {
-        let eventStore = EKEventStore()
-        
-        func insertEvent(_ store: EKEventStore) {
-            let event = EKEvent(eventStore: store)
-            event.calendar = store.defaultCalendarForNewEvents
-            
-            event.title = exhibition.name!
-            event.startDate = Date(timeIntervalSince1970: TimeInterval(exhibition.start_time)!)
-            event.endDate = Date(timeIntervalSince1970: TimeInterval(exhibition.end_time)!)
-            event.notes = "\(exhibition.description)\n\(exhibition.location)\(exhibition.addr)"
-            
-            let alarm = EKAlarm()
-            alarm.relativeOffset = -3600*24
-            event.addAlarm(alarm)
-            
-            do {
-                try store.save(event, span: .thisEvent)
-                DispatchQueue.main.async {
-                    SVProgressHUD.showSuccess(withStatus: "已添加事件到日历")
-                }
-            } catch {
-                print("insert event to calendar error: \(error)")
-            }
-        }
-        
-        switch EKEventStore.authorizationStatus(for: EKEntityType.event) {
-        case .authorized:
-            insertEvent(eventStore)
-        case .denied:
-            print("Insert calendar action denied !")
-            let info = "要想添加漫展事件到日历，请到设置中找到" + " 喵特商户 " + "打开日历权限"
-            SVProgressHUD.showInfo(withStatus: info)
-        case .notDetermined:
-            eventStore.requestAccess(to: EKEntityType.event, completion: { (access, error) in
-                if access {
-                    insertEvent(eventStore)
-                } else {
-                    print("Access calendar action denied !")
-                }
-            })
-        default: break
-        }
-    }
-    
-    // 复制链接到剪切板
-    private func pasteboardAction() {
-        if let url = URL(string: shareString) {
-            let pasteBoard = UIPasteboard.general
-            pasteBoard.url = url
-            SVProgressHUD.showSuccess(withStatus: "已复制链接到剪切板")
-        }
-    }
-    
-    // 问题反馈
-    private func feedbackAction() {
-        let identifier = "FeedbackViewController"
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let feedbackVC = storyboard.instantiateViewController(withIdentifier: identifier) as! FeedbackViewController
-        self.navigationController?.pushViewController(feedbackVC, animated: true)
-    }
-    
-    // Safari 打开链接
-    private func openWithSafari() {
-        if let url = URL(string: shareString) {
-            if #available(iOS 10.0, *) {
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
-            } else {
-                // Fallback on earlier versions
-                if UIApplication.shared.canOpenURL(url) {
-                    UIApplication.shared.openURL(url)
-                }
-            }
-        }
-    }
-    
-    //..... Delegate
-    
-    func closeShareView() {
-        dismissShareView()
-    }
-    
-    func shareViewController(_ shareViewController: ShareViewController, didSelected platformType: SSDKPlatformType) {
-        share(with: platformType)
-    }
-    
-    func shareViewController(_ shareViewController: ShareViewController, didSelected grayType: GrayType) {
-        dismissShareView()
-        switch grayType {
-        case .calendar:
-            print("calendar")
-            calendarAction()
-        case .copy:
-            print("copy")
-            pasteboardAction()
-        case .report:
-            print("report")
-            feedbackAction()
-        case .safari:
-            print("safari")
-            openWithSafari()
-        }
-    }
-    
-    func shareViewController(_ shareViewController: ShareViewController, showMore more: Bool) {
-        dismissShareView()
-        
-        // apple original UIActivityViewController
-        if let url = URL(string: shareString), let title = exhibition.name {
-            let activityVC = UIActivityViewController(activityItems: [title, url], applicationActivities: nil)
-            present(activityVC, animated: true, completion: nil)
-        }
     }
 }
