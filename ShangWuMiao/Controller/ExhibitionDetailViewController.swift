@@ -10,6 +10,7 @@
 import UIKit
 import Kingfisher
 import SVProgressHUD
+import EventKit
 
 class ExhibitionDetailViewController: UIViewController {
     
@@ -629,8 +630,11 @@ extension ExhibitionDetailViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-// MARK: - Share
+// MARK: - Share view controller delegate
+
 extension ExhibitionDetailViewController: ShareViewControllerDelegate {
+    
+    // .....  helper
     
     @objc fileprivate func showShareView() {
         self.shareShadowView.isHidden = false
@@ -669,7 +673,85 @@ extension ExhibitionDetailViewController: ShareViewControllerDelegate {
         shareView = shareViewController.view
     }
     
-    // Delegate
+    // 添加到日历
+    private func calendarAction() {
+        let eventStore = EKEventStore()
+        
+        func insertEvent(_ store: EKEventStore) {
+            let event = EKEvent(eventStore: store)
+            event.calendar = store.defaultCalendarForNewEvents
+            
+            event.title = exhibition.name!
+            event.startDate = Date(timeIntervalSince1970: TimeInterval(exhibition.start_time)!)
+            event.endDate = Date(timeIntervalSince1970: TimeInterval(exhibition.end_time)!)
+            event.notes = "\(exhibition.description)\n\(exhibition.location)\(exhibition.addr)"
+            
+            let alarm = EKAlarm()
+            alarm.relativeOffset = -3600*24
+            event.addAlarm(alarm)
+            
+            do {
+                try store.save(event, span: .thisEvent)
+                DispatchQueue.main.async {
+                    SVProgressHUD.showSuccess(withStatus: "已添加事件到日历")
+                }
+            } catch {
+                print("insert event to calendar error: \(error)")
+            }
+        }
+        
+        switch EKEventStore.authorizationStatus(for: EKEntityType.event) {
+        case .authorized:
+            insertEvent(eventStore)
+        case .denied:
+            print("Insert calendar action denied !")
+            let info = "要想添加漫展事件到日历，请到设置中找到" + " 喵特商户 " + "打开日历权限"
+            SVProgressHUD.showInfo(withStatus: info)
+        case .notDetermined:
+            eventStore.requestAccess(to: EKEntityType.event, completion: { (access, error) in
+                if access {
+                    insertEvent(eventStore)
+                } else {
+                    print("Access calendar action denied !")
+                }
+            })
+        default: break
+        }
+    }
+    
+    // 复制链接到剪切板
+    private func pasteboardAction() {
+        if let url = URL(string: shareString) {
+            let pasteBoard = UIPasteboard.general
+            pasteBoard.url = url
+            SVProgressHUD.showSuccess(withStatus: "已复制链接到剪切板")
+        }
+    }
+    
+    // 问题反馈
+    private func feedbackAction() {
+        let identifier = "FeedbackViewController"
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let feedbackVC = storyboard.instantiateViewController(withIdentifier: identifier) as! FeedbackViewController
+        self.navigationController?.pushViewController(feedbackVC, animated: true)
+    }
+    
+    // Safari 打开链接
+    private func openWithSafari() {
+        if let url = URL(string: shareString) {
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            } else {
+                // Fallback on earlier versions
+                if UIApplication.shared.canOpenURL(url) {
+                    UIApplication.shared.openURL(url)
+                }
+            }
+        }
+    }
+    
+    //..... Delegate
+    
     func closeShareView() {
         dismissShareView()
     }
@@ -679,40 +761,20 @@ extension ExhibitionDetailViewController: ShareViewControllerDelegate {
     }
     
     func shareViewController(_ shareViewController: ShareViewController, didSelected grayType: GrayType) {
+        dismissShareView()
         switch grayType {
         case .calendar:
-            print("calendat")
+            print("calendar")
+            calendarAction()
         case .copy:
             print("copy")
-            if let url = URL(string: shareString) {
-                let pasteBoard = UIPasteboard.general
-                pasteBoard.url = url
-                dismissShareView()
-                SVProgressHUD.showSuccess(withStatus: "已复制链接到剪切板")
-            }
+            pasteboardAction()
         case .report:
             print("report")
-            dismissShareView()
-            
-            let identifier = "FeedbackViewController"
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let feedbackVC = storyboard.instantiateViewController(withIdentifier: identifier) as! FeedbackViewController
-            self.navigationController?.pushViewController(feedbackVC, animated: true)
-
+            feedbackAction()
         case .safari:
             print("safari")
-            dismissShareView()
-
-            if let url = URL(string: shareString) {
-                if #available(iOS 10.0, *) {
-                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                } else {
-                    // Fallback on earlier versions
-                    if UIApplication.shared.canOpenURL(url) {
-                        UIApplication.shared.openURL(url)
-                    }
-                }
-            }
+            openWithSafari()
         }
     }
     
