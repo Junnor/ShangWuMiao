@@ -13,6 +13,7 @@ import SVProgressHUD
 
 class ExhibitionDetailViewController: UIViewController {
     
+    // MARK: - For 3D Touch previewing
     weak var previewSourceViewController: ExhibitionPreviewable!
     
     @available(iOS 9.0, *)
@@ -97,10 +98,9 @@ class ExhibitionDetailViewController: UIViewController {
     fileprivate lazy var shareShadowView: UIView = {
         let shadowView = UIView()
         shadowView.frame = self.view.frame
-        shadowView.backgroundColor = UIColor.lightGray
-        shadowView.alpha = 0.0
+        shadowView.backgroundColor = UIColor(white: 0, alpha: 0)
         shadowView.addGestureRecognizer(UITapGestureRecognizer(target: self,
-                                                               action: #selector(dissolveShadow)))
+                                                               action: #selector(dismissShareView)))
         
         return shadowView
     }()
@@ -139,8 +139,10 @@ class ExhibitionDetailViewController: UIViewController {
             self.payViewHeightConstraint.constant = 0
             payView.isHidden = true
         }
-    }
         
+        configureShareView()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -174,62 +176,38 @@ class ExhibitionDetailViewController: UIViewController {
         let item = UIBarButtonItem(image: #imageLiteral(resourceName: "ico-share"),
                                    style: .done,
                                    target: self,
-                                   action: #selector(share))
+                                   action: #selector(showShareView))
         navigationItem.rightBarButtonItem = item
     }
     
-    private var hasShareView = false
-    @objc private func share() {
+    @objc fileprivate func share(with type: SSDKPlatformType) {
         // TODO: - replace
         let shareString = "https://www.nyato.com/manzhan/\(exhibition.exid!)/"
         if let url = URL(string: shareString) {
-            //            let activityViewController = UIActivityViewController(activityItems: ["I love it", url],
-            //                                                                  applicationActivities: nil)
-            //            present(activityViewController, animated: true, completion: nil)
+            let imgs = [#imageLiteral(resourceName: "ico-share")]
             
+            let parameter = NSMutableDictionary()
+            parameter.ssdkSetupShareParams(byText: "分享内容",
+                                           images: imgs,
+                                           url: url,
+                                           title: "分享标题",
+                                           type: .auto)
             
-            
-            //            let imgs = [#imageLiteral(resourceName: "ico-share")]
-            //
-            //            let parameter = NSMutableDictionary()
-            //            parameter.ssdkSetupShareParams(byText: "分享内容",
-            //                                           images: imgs,
-            //                                           url: url,
-            //                                           title: "分享标题",
-            //                                           type: .auto)
-            //
-            //            parameter.ssdkEnableUseClientShare()
-            //            ShareSDK.share(SSDKPlatformType.typeSinaWeibo,
-            //                           parameters: parameter,
-            //                           onStateChanged: { (state, _, _, error) in
-            //
-            //                switch state {
-            //                case .success:
-            //                    print("share success")
-            //                case .fail:
-            //                    print("share failure")
-            //                case .cancel:
-            //                    print("share cancel")
-            //                default: break
-            //
-            //
-            //                }
-            //            })
-            
-            if !hasShareView {
-                // For share view
-                hasShareView = true
-
-                configureShareView()
-            }
-            
-            showShadowView()
+            parameter.ssdkEnableUseClientShare()
+            ShareSDK.share(type,
+                           parameters: parameter,
+                           onStateChanged: { (state, _, _, error) in
+                            switch state {
+                            case .success:
+                                print("share success")
+                            case .fail:
+                                print("share failure")
+                            case .cancel:
+                                print("share cancel")
+                            default: break
+                            }
+            })
         }
-        
-        
-        
-        
-        
     }
     
     @objc private func tapAction() {
@@ -368,8 +346,7 @@ class ExhibitionDetailViewController: UIViewController {
 }
 
 
-// MRAK: - Collection view datasource
-
+// MARK: - Collection view datasource
 extension ExhibitionDetailViewController: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -551,6 +528,7 @@ extension ExhibitionDetailViewController: UICollectionViewDataSource {
     }
 }
 
+// MARK: - Collection view delegate flow layout
 extension ExhibitionDetailViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
@@ -604,9 +582,8 @@ extension ExhibitionDetailViewController: UICollectionViewDelegateFlowLayout {
             switch indexPath.row {
             case 0:
                 height = UIWindow().bounds.height * 2/5
-                
                 // BUGBUGBUG ####################
-                // 一个 5C ios 8.1 的不可思议的Bug...... 好像是iOS8以下UIWindow 的初始问题
+                // 一个 5C ios 8.1 的不可思议的Bug...... 好像是iOS8以下 UIWindow 的初始问题
                 if height == 0 {
                     height = collectionView.bounds.height * 2/5
                 }
@@ -651,28 +628,27 @@ extension ExhibitionDetailViewController: UICollectionViewDelegateFlowLayout {
 // MARK: - Share
 extension ExhibitionDetailViewController: ShareViewControllerDelegate {
     
-    fileprivate func showShadowView() {
+    @objc fileprivate func showShareView() {
         UIView.animate(withDuration: 0.2) {
-            self.shareShadowView.alpha = 0.5
+            self.shareShadowView.backgroundColor = UIColor(white: 0, alpha: 0.4)
         }
         
-        UIView.animate(withDuration: 0.2, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: { 
+        UIView.animate(withDuration: 0.2, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
             self.shareView.frame.origin.y = self.view.frame.height - self.shareViewHeight
-
+            
         }, completion: nil)
-
+        
     }
     
-    @objc fileprivate func dissolveShadow() {
+    @objc fileprivate func dismissShareView() {
         UIView.animate(withDuration: 0.2) {
-            self.shareShadowView.alpha = 0.0
+            self.shareShadowView.backgroundColor = UIColor(white: 1, alpha: 0.0)
         }
-        
         
         UIView.animate(withDuration: 0.2, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
             self.shareView.frame.origin.y = self.view.frame.height
         }, completion: nil)
-
+        
     }
     
     fileprivate func configureShareView() {
@@ -687,7 +663,38 @@ extension ExhibitionDetailViewController: ShareViewControllerDelegate {
         shareView = shareViewController.view
     }
     
+    // Delegate
     func closeShareView() {
-        dissolveShadow()
+        dismissShareView()
+    }
+    
+    func shareViewController(_ shareViewController: ShareViewController, didSelected platformType: SSDKPlatformType) {
+        share(with: platformType)
+    }
+    
+    func shareViewController(_ shareViewController: ShareViewController, didSelected type: GrayType) {
+        switch type {
+        case .calendar:
+            print("calendat")
+        case .copy:
+            print("copy")
+        case .report:
+            print("report")
+        case .safari:
+            print("safari")
+        }
+        
+        // TODO: perform type selected
+    }
+    
+    func shareViewController(_ shareViewController: ShareViewController, showMore more: Bool) {
+        dismissShareView()
+        
+        // apple original UIActivityViewController
+        let shareString = "https://www.nyato.com/manzhan/\(exhibition.exid!)/"
+        if let url = URL(string: shareString), let title = exhibition.name {
+            let activityVC = UIActivityViewController(activityItems: [title, url], applicationActivities: nil)
+            present(activityVC, animated: true, completion: nil)
+        }
     }
 }

@@ -8,16 +8,31 @@
 
 import UIKit
 
-
 protocol ShareViewControllerDelegate: class {
     func closeShareView()
+    
+    func shareViewController(_ shareViewController: ShareViewController, didSelected platformType: SSDKPlatformType)
+    
+    func shareViewController(_ shareViewController: ShareViewController, didSelected type: GrayType)
+    
+    func shareViewController(_ shareViewController: ShareViewController, showMore more: Bool)
 }
+
+enum GrayType: Int {
+    case copy = 0
+    case safari
+    case report
+    case calendar
+}
+
 
 class ShareViewController: UIViewController {
     
+    // MARK: - Public properties
+
     weak var delegate: ShareViewControllerDelegate?
     
-    var platformType: SSDKPlatformType = .typeUnknown
+    // MARK: Outlets
     
     @IBOutlet weak var cancelButton: UIButton!
     
@@ -25,14 +40,17 @@ class ShareViewController: UIViewController {
     @IBOutlet weak var brightCollectionView: UICollectionView!
     @IBOutlet weak var grayCollectionView: UICollectionView!
     
+    // MARK: - Private properties
+    
     fileprivate let brightImgs = [#imageLiteral(resourceName: "invite-sina"),
                                   #imageLiteral(resourceName: "invite-qq"),
                                   #imageLiteral(resourceName: "invite-qqspace"),
                                   #imageLiteral(resourceName: "invite-wechat"),
                                   #imageLiteral(resourceName: "invite-wechats"),
-                                  #imageLiteral(resourceName: "invite-wechatw")]
+                                  #imageLiteral(resourceName: "invite-wechatw"),
+                                  UIImage()]
     
-    fileprivate enum Bright: Int {
+    fileprivate enum ShareBright: Int {
         case sina = 0
         case qqFriend
         case qqZone
@@ -65,14 +83,16 @@ class ShareViewController: UIViewController {
                                    "QQ空间",
                                    "微信好友",
                                    "微信朋友圈",
-                                   "微信收藏"];
+                                   "微信收藏",
+                                   "更多"];
     
     fileprivate let brightCellColor: [UIColor] = [.sinaBGColor,
                                                   .qqBGColor,
                                                   .qqZoneBGColor,
                                                   .wechatBGColor,
                                                   .wechatFriendBGColor,
-                                                  .wechatStoreBGColor]
+                                                  .wechatStoreBGColor,
+                                                  UIColor.purple]
     
     fileprivate let grayImgs = [#imageLiteral(resourceName: "invite-copy"),
                                 #imageLiteral(resourceName: "invite-safari"),
@@ -83,13 +103,6 @@ class ShareViewController: UIViewController {
                                  "Safari 打开",
                                  "举报",
                                  "添加日历"]
-    
-    fileprivate enum Gray: Int {
-        case copy = 0
-        case safari
-        case report
-        case calendar
-    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -116,13 +129,15 @@ class ShareViewController: UIViewController {
 
 }
 
+// MARK: - Collection view datasource
+
 extension ShareViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         var count = 0
         if collectionView == brightCollectionView {
             // count + 1 , 1 is more cell
-            count = brightCellColor.count
+            count = brightTitle.count
         } else if collectionView == grayCollectionView {
             count = 4
         }
@@ -154,16 +169,25 @@ extension ShareViewController: UICollectionViewDataSource {
     }
 }
 
+// MARK: - Collection view delegate
+
 extension ShareViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == brightCollectionView {
-            print("brightCollectionView")
-            if let type = Bright(rawValue: indexPath.row) {
-                platformType = type.value
+            print("brightCollectionView didSelectItemAt")
+            if indexPath.row == brightTitle.count - 1 {  // more item
+                delegate?.shareViewController(self, showMore: true)
+            } else {   // normal item
+                if let type = ShareBright(rawValue: indexPath.row) {
+                    delegate?.shareViewController(self, didSelected: type.value)
+                }
             }
         } else if collectionView == grayCollectionView {
-            print("grayCollectionView")
+            print("grayCollectionView didSelectItemAt")
+            if let type = GrayType(rawValue: indexPath.row) {
+                delegate?.shareViewController(self, didSelected: type)
+            }
         }
     }
     
