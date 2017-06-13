@@ -70,18 +70,18 @@ class ShareViewController: UIViewController {
         let nib = UINib(nibName: "ShareCell", bundle: nil)
         brightCollectionView.register(nib, forCellWithReuseIdentifier: "ShareCell")
         grayCollectionView.register(nib, forCellWithReuseIdentifier: "ShareCell")
-        
+                
+        let padding = (view.bounds.width - 4 * 80) / 2
+
         let brightLayout = brightCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        
-        brightLayout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
-        let width = view.bounds.width - 20
-        brightLayout.itemSize = CGSize(width: width/4.0, height: 100)
+        brightLayout.sectionInset = UIEdgeInsets(top: 0, left: padding, bottom: 0, right: padding)
+        brightLayout.itemSize = CGSize(width: 80, height: 100)
         brightLayout.minimumLineSpacing = 0
         brightLayout.minimumInteritemSpacing = 0
         
         let grayLayout = grayCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        brightLayout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
-        grayLayout.itemSize = CGSize(width: width/4.0, height: 100)
+        grayLayout.sectionInset = UIEdgeInsets(top: 0, left: padding, bottom: 0, right: padding)
+        grayLayout.itemSize = CGSize(width: 80, height: 100)
         grayLayout.minimumLineSpacing = 0
         grayLayout.minimumInteritemSpacing = 0
 
@@ -126,10 +126,12 @@ extension ShareViewController: UICollectionViewDataSource {
                 title = grayTitle[indexPath.item]
             }
             
+            cell.backgroundColor = UIColor.purple
+            
             cell.shareImageView.image = img
             cell.shareLabel.text = title
             cell.itemBackgroundView.backgroundColor = bgColor
-            cell.itemBackgroundView.layer.cornerRadius = cell.itemBackgroundView.frame.width/2
+//            cell.itemBackgroundView.layer.cornerRadius = cell.itemBackgroundView.frame.width/2
         }
         return cell
     }

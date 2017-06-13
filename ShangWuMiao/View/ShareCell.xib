@@ -7,7 +7,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -23,9 +22,12 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xey-9E-quU">
                         <rect key="frame" x="8" y="8" width="164" height="164"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="Xey-9E-quU" secondAttribute="height" multiplier="1:1" id="aH0-1V-vNy"/>
+                        </constraints>
                     </view>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vLz-2h-nDS">
-                        <rect key="frame" x="8" y="8" width="164" height="164"/>
+                        <rect key="frame" x="20" y="20" width="140" height="140"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="vLz-2h-nDS" secondAttribute="height" multiplier="1:1" id="31c-Zs-TYv"/>
                         </constraints>
@@ -39,16 +41,15 @@
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="Xey-9E-quU" firstAttribute="bottom" secondItem="vLz-2h-nDS" secondAttribute="bottom" id="3Jw-TZ-sWU"/>
                 <constraint firstAttribute="trailing" secondItem="Jcl-r7-MAW" secondAttribute="trailing" id="8OQ-uz-SoR"/>
-                <constraint firstItem="vLz-2h-nDS" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="topMargin" id="R9A-cV-mcd"/>
-                <constraint firstItem="Xey-9E-quU" firstAttribute="leading" secondItem="vLz-2h-nDS" secondAttribute="leading" id="Yc2-35-cIK"/>
-                <constraint firstItem="Xey-9E-quU" firstAttribute="trailing" secondItem="vLz-2h-nDS" secondAttribute="trailing" id="gaR-eq-oi7"/>
-                <constraint firstItem="vLz-2h-nDS" firstAttribute="trailing" secondItem="gTV-IL-0wX" secondAttribute="trailingMargin" id="kAD-wr-TV7"/>
-                <constraint firstItem="Xey-9E-quU" firstAttribute="top" secondItem="vLz-2h-nDS" secondAttribute="top" id="qKP-vb-EHq"/>
+                <constraint firstItem="vLz-2h-nDS" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="9S3-DH-026"/>
+                <constraint firstItem="Jcl-r7-MAW" firstAttribute="top" secondItem="Xey-9E-quU" secondAttribute="bottom" constant="8" id="FVe-cN-vF6"/>
+                <constraint firstAttribute="trailing" secondItem="Xey-9E-quU" secondAttribute="trailing" constant="8" id="Jbn-dQ-NSj"/>
+                <constraint firstItem="Xey-9E-quU" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="Xub-bH-caK"/>
+                <constraint firstAttribute="trailing" secondItem="vLz-2h-nDS" secondAttribute="trailing" constant="20" id="d3G-ot-ekt"/>
+                <constraint firstItem="vLz-2h-nDS" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="20" id="hYZ-Bz-t84"/>
+                <constraint firstItem="Xey-9E-quU" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="m26-Yk-Cjy"/>
                 <constraint firstItem="Jcl-r7-MAW" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="vo2-so-Wmg"/>
-                <constraint firstItem="Jcl-r7-MAW" firstAttribute="top" secondItem="vLz-2h-nDS" secondAttribute="bottom" constant="8" id="yRc-p8-iwJ"/>
-                <constraint firstItem="vLz-2h-nDS" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leadingMargin" id="zCM-fg-GOz"/>
             </constraints>
             <size key="customSize" width="180" height="242"/>
             <connections>
