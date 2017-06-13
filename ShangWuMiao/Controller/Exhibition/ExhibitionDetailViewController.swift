@@ -206,7 +206,7 @@ class ExhibitionDetailViewController: UIViewController {
             let sharePars = NSMutableDictionary()
             var text = content
             if type == .typeSinaWeibo {
-                text =  "\(content) http://nyato.com/"
+                text = "\(content) http://nyato.com/"
             }
             
             sharePars.ssdkSetupShareParams(byText: text,

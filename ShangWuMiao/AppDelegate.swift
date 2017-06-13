@@ -83,7 +83,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // ShareSDK: App Key 1e9aa2d08bba3
     private func registerShare() {
         let shareAppKey = "1e9aa2d08bba3"
-        let nyatourl = "https://nyato.com"
+        let nyatourl = "http://nyato.com"
         ShareSDK.registerApp(shareAppKey,
                              activePlatforms: [SSDKPlatformType.typeSinaWeibo.rawValue,
                                                SSDKPlatformType.typeTencentWeibo.rawValue,
@@ -110,7 +110,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 //设置新浪微博应用信息,其中authType设置为使用SSO＋Web形式授权
                 appInfo?.ssdkSetupSinaWeibo(byAppKey: "3026246088",
                                             appSecret: "beb7d09137b4bb35e83f67caf04c48ce",
-                                            redirectUri : "http://www.sharesdk.cn",
+                                            redirectUri : nyatourl,
                                             authType : SSDKAuthTypeBoth)
             case SSDKPlatformType.typeWechat:
                 appInfo?.ssdkSetupWeChat(byAppId: "wx8356797cc8741cfb",
