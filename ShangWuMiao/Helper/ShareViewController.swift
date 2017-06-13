@@ -131,7 +131,7 @@ class ShareViewController: UIViewController {
         
         cancelButton.addTarget(self, action: #selector(closeShare), for: .touchUpInside)
         
-        let padding = (view.bounds.width - CGFloat(rowCount) * itemWidth + cellPading * 3) / 6
+        let padding = (view.bounds.width - CGFloat(rowCount) * itemWidth + cellPading * 2) / 5
         lineSpace = padding - cellPading
         sectionInsets = UIEdgeInsets(top: 10, left: padding, bottom: 0, right: padding)
     }
