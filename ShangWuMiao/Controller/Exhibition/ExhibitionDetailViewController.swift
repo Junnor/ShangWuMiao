@@ -14,8 +14,8 @@ import EventKit
 
 class ExhibitionDetailViewController: UIViewController {
     
-    // MARK: - Share, because ExhibitionDetailViewController+Share
-    // need access the properties, so make it as public
+    // MARK: - For Share, because ExhibitionDetailViewController+Share
+    // need access the properties, so make them as public
     
     var shareView: UIView!
     let shareViewHeight: CGFloat = 400

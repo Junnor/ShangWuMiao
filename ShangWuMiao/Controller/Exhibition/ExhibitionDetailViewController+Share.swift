@@ -14,11 +14,7 @@ import EventKit
 
 extension ExhibitionDetailViewController: ShareViewControllerDelegate {
     
-    private var shareString: String {
-        return "https://www.nyato.com/manzhan/\(exhibition.exid!)/"
-    }
-    
-    // May called by ExhibitionDetailViewController
+    // MARK: - Public to ExhibitionDetailViewController
     
     @objc func showShareView() {
         self.shareShadowView.isHidden = false
@@ -45,6 +41,11 @@ extension ExhibitionDetailViewController: ShareViewControllerDelegate {
         
     }
     
+    // MARK: - Helper
+    
+    private var shareString: String {
+        return "https://www.nyato.com/manzhan/\(exhibition.exid!)/"
+    }
     
     // 添加到日历
     private func calendarAction() {
@@ -77,7 +78,6 @@ extension ExhibitionDetailViewController: ShareViewControllerDelegate {
         case .authorized:
             insertEvent(eventStore)
         case .denied:
-            print("Insert calendar action denied !")
             let info = "要想添加漫展事件到日历，请到设置中找到" + " 喵特商户 " + "打开日历权限"
             SVProgressHUD.showInfo(withStatus: info)
         case .notDetermined:
@@ -157,9 +157,9 @@ extension ExhibitionDetailViewController: ShareViewControllerDelegate {
                            onStateChanged: { (state, _, _, error) in
                             switch state {
                             case .success:
-                                print("=======share success")
+                                SVProgressHUD.showSuccess(withStatus: "分享成功")
                             case .fail:
-                                print("=======share failure")
+                                SVProgressHUD.showError(withStatus: "分享失败")
                             case .cancel:
                                 print("=======share cancel")
                             default: break
@@ -169,7 +169,7 @@ extension ExhibitionDetailViewController: ShareViewControllerDelegate {
     }
     
     
-    //..... Delegate
+    // MARK: - Share view controller delegate
     
     func closeShareView() {
         dismissShareView()
@@ -178,7 +178,6 @@ extension ExhibitionDetailViewController: ShareViewControllerDelegate {
     func shareViewController(_ shareViewController: ShareViewController, didSelected platformType: SSDKPlatformType) {
         share(with: platformType)
     }
-    
     
     func shareViewController(_ shareViewController: ShareViewController, didSelected grayType: GrayType) {
         dismissShareView()
