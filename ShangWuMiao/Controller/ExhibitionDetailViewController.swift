@@ -139,19 +139,8 @@ class ExhibitionDetailViewController: UIViewController {
             self.payViewHeightConstraint.constant = 0
             payView.isHidden = true
         }
-        
-        
-        // For share view
-        configureShareView()
     }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
         
-        print("..detail viewDidLayoutSubviews")
-    }
-
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -189,6 +178,7 @@ class ExhibitionDetailViewController: UIViewController {
         navigationItem.rightBarButtonItem = item
     }
     
+    private var hasShareView = false
     @objc private func share() {
         // TODO: - replace
         let shareString = "https://www.nyato.com/manzhan/\(exhibition.exid!)/"
@@ -198,7 +188,6 @@ class ExhibitionDetailViewController: UIViewController {
             //            present(activityViewController, animated: true, completion: nil)
             
             
-            showShadowView()
             
             //            let imgs = [#imageLiteral(resourceName: "ico-share")]
             //
@@ -226,6 +215,15 @@ class ExhibitionDetailViewController: UIViewController {
             //
             //                }
             //            })
+            
+            if !hasShareView {
+                // For share view
+                hasShareView = true
+
+                configureShareView()
+            }
+            
+            showShadowView()
         }
         
         

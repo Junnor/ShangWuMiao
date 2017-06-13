@@ -37,6 +37,13 @@ class ShareViewController: UIViewController {
                                    "微信朋友圈",
                                    "微信收藏"];
     
+    fileprivate let brightCellColor: [UIColor] = [.sinaBGColor,
+                                                  .qqBGColor,
+                                                  .qqZoneBGColor,
+                                                  .wechatBGColor,
+                                                  .wechatFriendBGColor,
+                                                  .wechatStoreBGColor]
+    
     fileprivate let grayImgs = [#imageLiteral(resourceName: "invite-copy"),
                                 #imageLiteral(resourceName: "invite-safari"),
                                 #imageLiteral(resourceName: "invite-feed"),
@@ -46,30 +53,13 @@ class ShareViewController: UIViewController {
                                  "Safari 打开",
                                  "举报",
                                  "添加日历"]
+
     
-    fileprivate let brightCellColor: [UIColor] = [.sinaBGColor,
-                                                  .qqBGColor,
-                                                  .qqZoneBGColor,
-                                                  .wechatBGColor,
-                                                  .wechatFriendBGColor,
-                                                  .wechatStoreBGColor]
-    
-    private var configured = false
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        if !configured {
-            configured = true
-            configureShareView()
-        }
+        configureShareView()
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        print("..viewDidLayoutSubviews")
-    }
-
     private func configureShareView() {
         
         brightCollectionView.dataSource = self
@@ -81,16 +71,22 @@ class ShareViewController: UIViewController {
         brightCollectionView.register(nib, forCellWithReuseIdentifier: "ShareCell")
         grayCollectionView.register(nib, forCellWithReuseIdentifier: "ShareCell")
         
-        let layout = brightCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        let brightLayout = brightCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
         
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+        brightLayout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         let width = view.bounds.width - 20
-        layout.itemSize = CGSize(width: width/4.0, height: 100)
-        layout.minimumLineSpacing = 0
-        layout.minimumInteritemSpacing = 0
+        brightLayout.itemSize = CGSize(width: width/4.0, height: 100)
+        brightLayout.minimumLineSpacing = 0
+        brightLayout.minimumInteritemSpacing = 0
         
-        brightCollectionView.collectionViewLayout = layout
-        grayCollectionView.collectionViewLayout = layout
+        let grayLayout = grayCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        brightLayout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+        grayLayout.itemSize = CGSize(width: width/4.0, height: 100)
+        grayLayout.minimumLineSpacing = 0
+        grayLayout.minimumInteritemSpacing = 0
+
+        brightCollectionView.collectionViewLayout = brightLayout
+        grayCollectionView.collectionViewLayout = grayLayout
 
         cancelButton.addTarget(self, action: #selector(closeShare), for: .touchUpInside)
     }
@@ -108,12 +104,9 @@ extension ShareViewController: UICollectionViewDataSource {
         if collectionView == brightCollectionView {
             // count + 1 , 1 is more cell
             count = brightCellColor.count
-            print("brightCollectionView")
         } else if collectionView == grayCollectionView {
-            print("grayCollectionView")
             count = 4
         }
-        print("count = \(count)")
         return count
     }
     
@@ -121,7 +114,6 @@ extension ShareViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShareCell", for: indexPath)
         if let cell = cell as? ShareCell {
-            print("cellllllllllll")
             var img = UIImage()
             var title = ""
             var bgColor: UIColor = .grayBGColor
@@ -137,7 +129,7 @@ extension ShareViewController: UICollectionViewDataSource {
             cell.shareImageView.image = img
             cell.shareLabel.text = title
             cell.itemBackgroundView.backgroundColor = bgColor
-//            cell.itemBackgroundView.layer.cornerRadius = cell.itemBackgroundView.frame.width/2
+            cell.itemBackgroundView.layer.cornerRadius = cell.itemBackgroundView.frame.width/2
         }
         return cell
     }

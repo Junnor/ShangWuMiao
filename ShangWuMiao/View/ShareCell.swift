@@ -15,8 +15,8 @@ class ShareCell: UICollectionViewCell {
     @IBOutlet weak var shareLabel: UILabel!
     @IBOutlet weak var shareImageView: UIImageView!
     
-    override func layoutSubviews() {
-        itemBackgroundView.layer.cornerRadius = itemBackgroundView.bounds.height / 2
-        itemBackgroundView.clipsToBounds = true
-    }
+//    override func layoutSubviews() {
+//        itemBackgroundView.layer.cornerRadius = itemBackgroundView.bounds.height / 2
+//        itemBackgroundView.clipsToBounds = true
+//    }
 }
