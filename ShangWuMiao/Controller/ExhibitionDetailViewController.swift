@@ -107,7 +107,7 @@ class ExhibitionDetailViewController: UIViewController {
     }()
     
     fileprivate weak var shareView: UIView!
-    fileprivate let shareViewHeight: CGFloat = 360
+    fileprivate let shareViewHeight: CGFloat = 400
     
     fileprivate var shareString: String!
     

@@ -104,13 +104,22 @@ class ShareViewController: UIViewController {
                                  "举报",
                                  "添加日历"]
     
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        // Only perform once
         configureShareView()
     }
     
-    private func configureShareView() {
+    fileprivate var sectionInsets: UIEdgeInsets!
+    fileprivate let itemWidth: CGFloat = 70
+    fileprivate let itemHeight: CGFloat = 100
+    fileprivate var lineSpace: CGFloat = 5
+    fileprivate let rowCount = 4
+    fileprivate let cellPading: CGFloat = 16
+    
+    fileprivate func configureShareView() {
         brightCollectionView.dataSource = self
         brightCollectionView.delegate = self
         grayCollectionView.dataSource = self
@@ -121,6 +130,10 @@ class ShareViewController: UIViewController {
         grayCollectionView.register(nib, forCellWithReuseIdentifier: "ShareCell")
         
         cancelButton.addTarget(self, action: #selector(closeShare), for: .touchUpInside)
+        
+        let padding = (view.bounds.width - CGFloat(rowCount) * itemWidth + cellPading * 3) / 6
+        lineSpace = padding - cellPading
+        sectionInsets = UIEdgeInsets(top: 10, left: padding, bottom: 0, right: padding)
     }
     
     @objc private func closeShare() {
@@ -136,7 +149,6 @@ extension ShareViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         var count = 0
         if collectionView == brightCollectionView {
-            // count + 1 , 1 is more cell
             count = brightTitle.count
         } else if collectionView == grayCollectionView {
             count = 4
@@ -175,7 +187,6 @@ extension ShareViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == brightCollectionView {
-            print("brightCollectionView didSelectItemAt")
             if indexPath.row == brightTitle.count - 1 {  // more item
                 delegate?.shareViewController(self, showMore: true)
             } else {   // normal item
@@ -184,7 +195,6 @@ extension ShareViewController: UICollectionViewDelegateFlowLayout {
                 }
             }
         } else if collectionView == grayCollectionView {
-            print("grayCollectionView didSelectItemAt")
             if let type = GrayType(rawValue: indexPath.row) {
                 delegate?.shareViewController(self, didSelected: type)
             }
@@ -192,12 +202,11 @@ extension ShareViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 80, height: 100)
+        return CGSize(width: itemWidth, height: itemHeight)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        let padding = (collectionView.bounds.width - 4 * 80) / 2
-        return UIEdgeInsets(top: 0, left: padding, bottom: 0, right: padding)
+        return sectionInsets
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -205,6 +214,6 @@ extension ShareViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
+        return lineSpace
     }
 }
