@@ -48,7 +48,7 @@ class ShareViewController: UIViewController {
                                   #imageLiteral(resourceName: "invite-wechat"),
                                   #imageLiteral(resourceName: "invite-wechats"),
                                   #imageLiteral(resourceName: "invite-wechatw"),
-                                  UIImage()]
+                                  #imageLiteral(resourceName: "ico-more")]
     
     fileprivate enum ShareBright: Int {
         case sina = 0
@@ -92,7 +92,7 @@ class ShareViewController: UIViewController {
                                                   .wechatBGColor,
                                                   .wechatFriendBGColor,
                                                   .wechatStoreBGColor,
-                                                  UIColor.purple]
+                                                  UIColor.white]
     
     fileprivate let grayImgs = [#imageLiteral(resourceName: "invite-copy"),
                                 #imageLiteral(resourceName: "invite-safari"),
@@ -166,6 +166,14 @@ extension ShareViewController: UICollectionViewDataSource {
                 img = brightImgs[indexPath.item]
                 title = brightTitle[indexPath.item]
                 bgColor = brightCellColor[indexPath.item]
+                
+                // set for more item cell
+                if indexPath.item == brightCellColor.count - 1 {
+                    cell.itemBackgroundView.layer.borderColor = UIColor.gray.cgColor
+                    cell.itemBackgroundView.layer.borderWidth = 1.0
+                    cell.shareImageView.contentMode = .center
+                }
+                
             } else if collectionView == grayCollectionView {
                 img = grayImgs[indexPath.item]
                 title = grayTitle[indexPath.item]
