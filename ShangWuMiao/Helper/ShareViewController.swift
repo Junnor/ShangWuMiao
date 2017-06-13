@@ -17,6 +17,8 @@ class ShareViewController: UIViewController {
     
     weak var delegate: ShareViewControllerDelegate?
     
+    var platformType: SSDKPlatformType = .typeUnknown
+    
     @IBOutlet weak var cancelButton: UIButton!
     
     // May replace brightCollectionView with page view someday
@@ -29,6 +31,34 @@ class ShareViewController: UIViewController {
                                   #imageLiteral(resourceName: "invite-wechat"),
                                   #imageLiteral(resourceName: "invite-wechats"),
                                   #imageLiteral(resourceName: "invite-wechatw")]
+    
+    fileprivate enum Bright: Int {
+        case sina = 0
+        case qqFriend
+        case qqZone
+        case wechatFriend
+        case wechatZone
+        case wechatStore
+        
+        var value: SSDKPlatformType {
+            var plat = SSDKPlatformType.typeUnknown
+            switch self {
+            case .sina:
+                plat = .typeSinaWeibo
+            case .qqZone:
+                plat = .subTypeQQFriend
+            case .qqFriend:
+                plat = .subTypeQQFriend
+            case .wechatFriend:
+                plat = .typeWechat
+            case .wechatZone:
+                plat = .subTypeWechatSession
+            case .wechatStore:
+                plat = .subTypeWechatFav
+            }
+            return plat
+        }
+    }
     
     fileprivate let brightTitle = ["微博",
                                    "QQ好友",
@@ -53,7 +83,13 @@ class ShareViewController: UIViewController {
                                  "Safari 打开",
                                  "举报",
                                  "添加日历"]
-
+    
+    fileprivate enum Gray: Int {
+        case copy = 0
+        case safari
+        case report
+        case calendar
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -123,6 +159,9 @@ extension ShareViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == brightCollectionView {
             print("brightCollectionView")
+            if let type = Bright(rawValue: indexPath.row) {
+                platformType = type.value
+            }
         } else if collectionView == grayCollectionView {
             print("grayCollectionView")
         }
