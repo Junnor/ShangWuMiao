@@ -109,7 +109,7 @@ class ShareViewController: UIViewController {
         super.viewWillAppear(animated)
         
         // Only perform once
-        configureShareView()
+        configureShareView()        
     }
     
     fileprivate var sectionInsets: UIEdgeInsets!
@@ -155,7 +155,6 @@ extension ShareViewController: UICollectionViewDataSource {
         }
         return count
     }
-    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShareCell", for: indexPath)
