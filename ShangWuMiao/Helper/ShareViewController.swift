@@ -57,11 +57,11 @@ class ShareViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         configureShareView()
     }
     
     private func configureShareView() {
-        
         brightCollectionView.dataSource = self
         brightCollectionView.delegate = self
         grayCollectionView.dataSource = self
@@ -70,24 +70,7 @@ class ShareViewController: UIViewController {
         let nib = UINib(nibName: "ShareCell", bundle: nil)
         brightCollectionView.register(nib, forCellWithReuseIdentifier: "ShareCell")
         grayCollectionView.register(nib, forCellWithReuseIdentifier: "ShareCell")
-                
-        let padding = (view.bounds.width - 4 * 80) / 2
-
-        let brightLayout = brightCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        brightLayout.sectionInset = UIEdgeInsets(top: 0, left: padding, bottom: 0, right: padding)
-        brightLayout.itemSize = CGSize(width: 80, height: 100)
-        brightLayout.minimumLineSpacing = 0
-        brightLayout.minimumInteritemSpacing = 0
         
-        let grayLayout = grayCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        grayLayout.sectionInset = UIEdgeInsets(top: 0, left: padding, bottom: 0, right: padding)
-        grayLayout.itemSize = CGSize(width: 80, height: 100)
-        grayLayout.minimumLineSpacing = 0
-        grayLayout.minimumInteritemSpacing = 0
-
-        brightCollectionView.collectionViewLayout = brightLayout
-        grayCollectionView.collectionViewLayout = grayLayout
-
         cancelButton.addTarget(self, action: #selector(closeShare), for: .touchUpInside)
     }
     
@@ -126,18 +109,16 @@ extension ShareViewController: UICollectionViewDataSource {
                 title = grayTitle[indexPath.item]
             }
             
-            cell.backgroundColor = UIColor.purple
-            
             cell.shareImageView.image = img
             cell.shareLabel.text = title
             cell.itemBackgroundView.backgroundColor = bgColor
-//            cell.itemBackgroundView.layer.cornerRadius = cell.itemBackgroundView.frame.width/2
+            cell.itemBackgroundView.layer.cornerRadius = cell.itemBackgroundView.frame.width/2
         }
         return cell
     }
 }
 
-extension ShareViewController: UICollectionViewDelegate {
+extension ShareViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == brightCollectionView {
@@ -145,5 +126,22 @@ extension ShareViewController: UICollectionViewDelegate {
         } else if collectionView == grayCollectionView {
             print("grayCollectionView")
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 80, height: 100)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        let padding = (collectionView.bounds.width - 4 * 80) / 2
+        return UIEdgeInsets(top: 0, left: padding, bottom: 0, right: padding)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
 }

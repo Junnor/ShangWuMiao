@@ -106,7 +106,7 @@ class ExhibitionDetailViewController: UIViewController {
     }()
     
     fileprivate weak var shareView: UIView!
-    fileprivate let shareViewHeight: CGFloat = 400
+    fileprivate let shareViewHeight: CGFloat = 360
     
     // MARK: - View controller lifecycle
     override func viewDidLoad() {
