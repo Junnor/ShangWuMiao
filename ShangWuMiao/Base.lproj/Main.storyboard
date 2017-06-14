@@ -1390,6 +1390,9 @@
                                                     <constraint firstAttribute="width" secondItem="Qlv-1L-N8E" secondAttribute="height" multiplier="1:1" id="gm1-VE-7te"/>
                                                 </constraints>
                                                 <state key="normal" image="ico-sina"/>
+                                                <connections>
+                                                    <action selector="sinaLogin" destination="IzP-m5-aGS" eventType="touchUpInside" id="Iwz-Wq-39f"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jUS-2d-4FC" userLabel="QQ Button">
                                                 <rect key="frame" x="242.5" y="403" width="50" height="50"/>
@@ -1397,13 +1400,19 @@
                                                     <constraint firstAttribute="width" secondItem="jUS-2d-4FC" secondAttribute="height" multiplier="1:1" id="hs6-tg-1YE"/>
                                                 </constraints>
                                                 <state key="normal" image="ico-qq"/>
+                                                <connections>
+                                                    <action selector="qqLogin" destination="IzP-m5-aGS" eventType="touchUpInside" id="TDC-Ih-7LK"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fbP-4K-c8t" userLabel="Wechat Button">
                                                 <rect key="frame" x="82.5" y="403" width="50" height="50"/>
                                                 <state key="normal" image="ico-wechat"/>
+                                                <connections>
+                                                    <action selector="wehcatLogin" destination="IzP-m5-aGS" eventType="touchUpInside" id="T0o-al-1eb"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="第三方登录" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Irc-16-2e5">
-                                                <rect key="frame" x="150" y="463" width="75" height="21"/>
+                                                <rect key="frame" x="150" y="458" width="75" height="21"/>
                                                 <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="15"/>
                                                 <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1421,7 +1430,7 @@
                                             <constraint firstItem="03o-u7-T34" firstAttribute="top" secondItem="umJ-hv-UQi" secondAttribute="bottom" constant="15" id="Fp7-cD-5vR"/>
                                             <constraint firstItem="fbP-4K-c8t" firstAttribute="centerY" secondItem="Qlv-1L-N8E" secondAttribute="centerY" id="Gfl-HM-Ww5"/>
                                             <constraint firstItem="Qlv-1L-N8E" firstAttribute="leading" secondItem="fbP-4K-c8t" secondAttribute="trailing" constant="30" id="HRO-FL-vxR"/>
-                                            <constraint firstItem="Irc-16-2e5" firstAttribute="top" secondItem="Qlv-1L-N8E" secondAttribute="bottom" constant="10" id="LdB-lk-4qW"/>
+                                            <constraint firstItem="Irc-16-2e5" firstAttribute="top" secondItem="Qlv-1L-N8E" secondAttribute="bottom" constant="5" id="LdB-lk-4qW"/>
                                             <constraint firstItem="03o-u7-T34" firstAttribute="trailing" secondItem="umJ-hv-UQi" secondAttribute="trailing" id="N5h-Fl-fpq"/>
                                             <constraint firstItem="THB-Rx-mrs" firstAttribute="top" secondItem="pcO-dn-z4z" secondAttribute="top" constant="30" id="Nd2-vR-3z0"/>
                                             <constraint firstItem="Qlv-1L-N8E" firstAttribute="centerX" secondItem="pcO-dn-z4z" secondAttribute="centerX" id="VsX-Jg-LWF"/>
@@ -1874,10 +1883,10 @@
         <image name="ico-addr-2" width="24" height="24"/>
         <image name="ico-location" width="54" height="54"/>
         <image name="ico-mcionmy" width="25" height="25"/>
-        <image name="ico-qq" width="16" height="16"/>
-        <image name="ico-sina" width="16" height="16"/>
+        <image name="ico-qq" width="66" height="66"/>
+        <image name="ico-sina" width="66" height="66"/>
         <image name="ico-time" width="54" height="54"/>
-        <image name="ico-wechat" width="16" height="16"/>
+        <image name="ico-wechat" width="66" height="66"/>
         <image name="nav-expo" width="60" height="60"/>
         <image name="nav-expoed" width="60" height="60"/>
         <image name="nav-index" width="60" height="60"/>

@@ -26,14 +26,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         barAppearance.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         UITabBar.appearance().tintColor = UIColor.themeYellow
         
+        registerShare()
+
         // Set different window root vc
         if UserDefaults.standard.value(forKeyPath: isLogin) != nil {
             if let tabvc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarViewController") as? TabBarViewController {
                 window?.rootViewController = tabvc
             }
         }
-        
-        registerShare()
         
         return true
     }
@@ -83,7 +83,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // ShareSDK: App Key 1e9aa2d08bba3
     private func registerShare() {
         let shareAppKey = "1e9aa2d08bba3"
-        let nyatourl = "http://nyato.com/"
+        let nyatourl = "http://www.nyato.com"
         ShareSDK.registerApp(shareAppKey,
                              activePlatforms: [SSDKPlatformType.typeSinaWeibo.rawValue,
                                                SSDKPlatformType.typeTencentWeibo.rawValue,
@@ -116,7 +116,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 appInfo?.ssdkSetupWeChat(byAppId: "wx8356797cc8741cfb",
                                          appSecret: "432be9d7445dd12bff81e29ac6375c6a")
             case SSDKPlatformType.typeQQ:
-                appInfo?.ssdkSetupQQ(byAppId: "EJ9RNFqRza1ZlQur",
+                appInfo?.ssdkSetupQQ(byAppId: "1101335990",
                                      appKey: "1101335990",
                                      authType: SSDKAuthTypeSSO)
             case SSDKPlatformType.subTypeQZone:

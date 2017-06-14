@@ -66,6 +66,41 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
     // MARK: - Helper
     
+    @IBAction func sinaLogin() {
+        loginWith(platformType: .typeSinaWeibo, type: "sina")
+    }
+    
+    @IBAction func qqLogin() {
+        loginWith(platformType: .typeQQ, type: "qzone")
+    }
+    
+    @IBAction func wehcatLogin() {
+        loginWith(platformType: .typeWechat, type: "wechat")
+    }
+    
+    private func loginWith(platformType: SSDKPlatformType, type: String) {
+        ShareSDK.getUserInfo(platformType) { (state, user, error) in
+            switch state {
+            case .success:
+                if let user = user {
+                    User.shared.bindType = type
+                    User.shared.bindUid = user.uid
+                    User.shared.bindToken = user.credential.token
+                    User.shared.avatarString = user.icon
+                    User.shared.uname = user.nickname
+                    
+                    if User.hadBind(for: type) {
+                    } else {
+                    }
+                }
+                print("success, user = \(String(describing: user))")
+            case .fail:
+                print("binding sina weibo fail: \(String(describing: error))")
+            default: break
+            }
+        }
+    }
+    
     @IBAction func login(_ sender: UIButton) {
         tapAction()
         

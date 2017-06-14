@@ -54,6 +54,10 @@ final class User {
         }
     }
     
+    // MARK: - 第三方登录绑定
+    var bindType = "nyato"
+    var bindToken = ""
+    var bindUid = ""
 
     // MARK: - clean after sign out
     func clean() {
@@ -78,6 +82,12 @@ struct Vendor {
 }
 
 extension User {
+    
+    // MARK: - Login with third party
+    
+    static func hadBind(for type: String) -> Bool {
+        return false
+    }
     
     // MARK: - Login
     static func login(parameters: Dictionary<String, String>,
