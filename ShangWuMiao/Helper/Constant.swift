@@ -31,7 +31,7 @@ struct RequestURL {
     static let kBindNyato = "/index.php?app=ios&mod=Member&act=bind_user"
     
     // 第三方登录绑定判断
-    static let kThirdPartyBind = "/index.php?app=ios&mod=Member&act=is_bind"
+    static let kThirdPartyBindCheck = "/index.php?app=ios&mod=Member&act=is_bind"
     
     // 获取验证码
     static let kCodeUrlString = "/index.php?app=ios&mod=Member&act=sendPhoneCode"
@@ -87,7 +87,7 @@ struct ActType {
     static let bindNyato = "bind_user"
     
     // 第三方登录绑定
-    static let thirdParty_Bind = "is_bind"
+    static let thirdParty_BindCheck = "is_bind"
     
     // 获取验证码
     static let sendPhoneCode = "sendPhoneCode"

@@ -47,6 +47,36 @@ func stringParameters(actTo act: String) -> String {
     return token_para + oauth_para + app_time_para + app_device_para + app_sign_para + version
 }
 
+// MARK: - 第三方登录绑定的参数
+func stringBindThirdPartyParameters(actTo act: String) -> String {
+    
+    let app_time = String(NSDate().timeIntervalSince1970*1000).components(separatedBy: ".").first!
+    
+    let uid_para = "&uid=" + ""
+    let oauth_token_para = "&oauth_token=" + app_time.md5
+    let oauth_token_secret_para = "&oauth_token_secret=" + kAppVersion.md5
+    
+    let oauth_para = uid_para + oauth_token_para + oauth_token_secret_para
+    
+    let userinfoSecret = kSecretKey + act
+    let token = userinfoSecret.md5
+    let app_device = UIDevice.current.identifierForVendor?.uuidString ?? "0"
+    
+    let sort = [app_device, app_time, token!, User.shared.uid]
+    let sorted = sort.sorted { $0 < $1 }
+    let appsignSecret = sorted.joined(separator: "&")
+    let app_sign = appsignSecret.md5
+    
+    let app_time_para = "&app_time=" + app_time
+    let app_device_para = "&app_device=" + app_device
+    let token_para = "&token=" + token!
+    let app_sign_para = "&app_sign=" + app_sign!
+    
+    let version = "&version=" + kAppVersion
+    
+    return token_para + oauth_para + app_time_para + app_device_para + app_sign_para + version
+}
+
 // MARK: - 存在本地相关
 let isLogin = "isLogin"
 let uid = "uid"

@@ -86,10 +86,17 @@ extension LoginViewController {
             textField.isSecureTextEntry = true
         }
         let cancel = UIAlertAction(title: "取消", style: .cancel, handler: nil)
-        let done = UIAlertAction(title: "确定绑定", style: .destructive) { [weak self] (action) in
+        let done = UIAlertAction(title: "确定绑定", style: .destructive) { (action) in
             if let account = alert.textFields?.first?.text,
                 let password = alert.textFields?.last?.text {
-                self?.submitBindInfo(with: account, password: password)
+                
+                User.bindNaytoWithThirdPartyAccount(account, password: password, completionHander: { (success, info) in
+                    if success {
+                        SVProgressHUD.showSuccess(withStatus: "绑定成功")
+                    } else {
+                        SVProgressHUD.showError(withStatus: "绑定失败")
+                    }
+                })
             } else {
                 SVProgressHUD.showError(withStatus: "账号或密码不能为空")
             }
@@ -103,6 +110,4 @@ extension LoginViewController {
     private func createNewOne() {
     }
     
-    private func submitBindInfo(with account: String, password: String) {
-    }
 }
