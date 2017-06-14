@@ -27,6 +27,11 @@ let nyatoMcoinsChange = Notification.Name("nyatoMcoinsChange")
 
 
 struct RequestURL {
+    // 绑定已有的喵特账户
+    static let kBindNyato = "/index.php?app=ios&mod=Member&act=bind_user"
+    
+    // 第三方登录绑定判断
+    static let kThirdPartyBind = "/index.php?app=ios&mod=Member&act=is_bind"
     
     // 获取验证码
     static let kCodeUrlString = "/index.php?app=ios&mod=Member&act=sendPhoneCode"
@@ -77,6 +82,12 @@ struct RequestURL {
 }
 
 struct ActType {
+    
+    // 绑定喵特账户
+    static let bindNyato = "bind_user"
+    
+    // 第三方登录绑定
+    static let thirdParty_Bind = "is_bind"
     
     // 获取验证码
     static let sendPhoneCode = "sendPhoneCode"

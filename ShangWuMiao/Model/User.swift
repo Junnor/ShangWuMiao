@@ -84,9 +84,71 @@ struct Vendor {
 extension User {
     
     // MARK: - Login with third party
-    
-    static func hadBind(for type: String) -> Bool {
-        return false
+    // if binded aready, then login directory, otherwise, let user to bind the account
+    static func hadBindThirdParty(for type: String, completionHandler: @escaping (_ binded: Bool) -> ()) {
+        
+        func parameters() -> String {
+            let app_time = String(NSDate().timeIntervalSince1970*1000).components(separatedBy: ".").first!
+            
+            let uid_para = "&uid=" + ""
+            let oauth_token_para = "&oauth_token=" + app_time.md5
+            let oauth_token_secret_para = "&oauth_token_secret=" + kAppVersion.md5
+
+            let oauth_para = uid_para + oauth_token_para + oauth_token_secret_para
+            
+            let userinfoSecret = kSecretKey + ActType.thirdParty_Bind
+            let token = userinfoSecret.md5
+            let app_device = UIDevice.current.identifierForVendor?.uuidString ?? "0"
+            
+            let sort = [app_device, app_time, token!, User.shared.uid]
+            let sorted = sort.sorted { $0 < $1 }
+            let appsignSecret = sorted.joined(separator: "&")
+            let app_sign = appsignSecret.md5
+            
+            let app_time_para = "&app_time=" + app_time
+            let app_device_para = "&app_device=" + app_device
+            let token_para = "&token=" + token!
+            let app_sign_para = "&app_sign=" + app_sign!
+            
+            let version = "&version=" + kAppVersion
+            
+            return token_para + oauth_para + app_time_para + app_device_para + app_sign_para + version
+        }
+        
+        let stringParas = parameters()
+        let urlString = kHeaderUrl + RequestURL.kThirdPartyBind + stringParas
+        let url = URL(string: urlString)!
+        let paras = ["other_type": type,
+                     "type_uid": User.shared.bindUid]
+        
+        Alamofire.request(url,
+                          method: .post,
+                          parameters: paras,
+                          encoding: URLEncoding.default,
+                          headers: nil).responseJSON { (response) in
+                            switch response.result {
+                            case .success(let jsonResponse):
+                                let json = JSON(jsonResponse)
+                                print("third party json = \(json)")
+                                let status = json["status"].intValue
+                                if status == 0 {
+                                    completionHandler(false)
+                                } else {
+                                    let data = json["data"]
+                                    let uid = data["uid"].stringValue
+                                    let oauth_token = data["oauth_token"].stringValue
+                                    let oauth_token_secret = data["oauth_token_secret"].stringValue
+                                    User.shared.uid = uid
+                                    User.shared.oauth_token = oauth_token
+                                    User.shared.oauth_token_secret = oauth_token_secret
+                                    
+                                    completionHandler(true)
+                                }
+                            case .failure(let error):
+                                completionHandler(false)
+                                print("bind error: \(error)")
+                            }
+        }
     }
     
     // MARK: - Login

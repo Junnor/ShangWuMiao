@@ -67,6 +67,7 @@
 		673BD5F01EEE8D92005A733A /* ShareCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673BD5EE1EEE8D92005A733A /* ShareCell.swift */; };
 		673BD5F11EEE8D92005A733A /* ShareCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 673BD5EF1EEE8D92005A733A /* ShareCell.xib */; };
 		677D66651EE65ECD0078F1BC /* Lollipop.pkpass in Resources */ = {isa = PBXBuildFile; fileRef = 677D66641EE65ECD0078F1BC /* Lollipop.pkpass */; };
+		67AF73CA1EF13E740068B349 /* LoginViewController+ThirdParty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AF73C91EF13E740068B349 /* LoginViewController+ThirdParty.swift */; };
 		67DB54221EEFCDA9004243EA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DB541F1EEFCDA9004243EA /* LoginViewController.swift */; };
 		67DB54231EEFCDA9004243EA /* RegisterNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DB54201EEFCDA9004243EA /* RegisterNameViewController.swift */; };
 		67DB54241EEFCDA9004243EA /* RegisterTelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DB54211EEFCDA9004243EA /* RegisterTelViewController.swift */; };
@@ -242,6 +243,7 @@
 		673BD5EF1EEE8D92005A733A /* ShareCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareCell.xib; sourceTree = "<group>"; };
 		677D66641EE65ECD0078F1BC /* Lollipop.pkpass */ = {isa = PBXFileReference; lastKnownFileType = file; path = Lollipop.pkpass; sourceTree = "<group>"; };
 		679CC62B1EE6889C0032210A /* ShangWuMiao.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShangWuMiao.entitlements; sourceTree = "<group>"; };
+		67AF73C91EF13E740068B349 /* LoginViewController+ThirdParty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LoginViewController+ThirdParty.swift"; sourceTree = "<group>"; };
 		67DB541F1EEFCDA9004243EA /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		67DB54201EEFCDA9004243EA /* RegisterNameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterNameViewController.swift; sourceTree = "<group>"; };
 		67DB54211EEFCDA9004243EA /* RegisterTelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterTelViewController.swift; sourceTree = "<group>"; };
@@ -740,6 +742,7 @@
 			isa = PBXGroup;
 			children = (
 				67DB541F1EEFCDA9004243EA /* LoginViewController.swift */,
+				67AF73C91EF13E740068B349 /* LoginViewController+ThirdParty.swift */,
 				67DB54201EEFCDA9004243EA /* RegisterNameViewController.swift */,
 				67DB54211EEFCDA9004243EA /* RegisterTelViewController.swift */,
 			);
@@ -1274,6 +1277,7 @@
 				8B0E1A761ECD42310017F11C /* ExAddressCell.swift in Sources */,
 				8B03527A1ECEB95E00E46DEE /* openssl_wrapper.m in Sources */,
 				67DB54241EEFCDA9004243EA /* RegisterTelViewController.swift in Sources */,
+				67AF73CA1EF13E740068B349 /* LoginViewController+ThirdParty.swift in Sources */,
 				8BCE2BB91ECC3F9500ACA1BB /* ExFooterView.swift in Sources */,
 				8B05263C1ECF002A0090F11B /* ExBlurView.swift in Sources */,
 				8BDB06B01EC03C2F00F0A660 /* ComicViewCell.swift in Sources */,

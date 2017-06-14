@@ -183,27 +183,28 @@ extension ExhibitionDetailViewController: ShareViewControllerDelegate {
         dismissShareView()
         switch grayType {
         case .calendar:
-            print("calendar")
             calendarAction()
         case .copy:
-            print("copy")
             pasteboardAction()
         case .report:
-            print("report")
             feedbackAction()
         case .safari:
-            print("safari")
             openWithSafari()
         }
     }
-    
+        
     func shareViewController(_ shareViewController: ShareViewController, showMore more: Bool) {
         dismissShareView()
         
         // apple original UIActivityViewController
         if let url = URL(string: shareString), let title = exhibition.name {
+            print("1")
             let activityVC = UIActivityViewController(activityItems: [title, url], applicationActivities: nil)
+            print("2")
+            
             present(activityVC, animated: true, completion: nil)
+            print("3")
+
         }
     }
 }

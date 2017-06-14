@@ -28,27 +28,27 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
     @IBOutlet weak var loginButton: UIButton!
-
+    
     // MARK: - View controller lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         SVProgressHUD.setDefaultMaskType(.clear)
-
+        
         // not elegant
         let itemAppearance = UIBarButtonItem.appearance()
         itemAppearance.setBackButtonTitlePositionAdjustment(UIOffset(horizontal: -100, vertical: -100), for: .default)
         // 从搜索结果返回的时候取消按钮回变成cleanColor
-//        UIBarButtonItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.clear], for: UIControlState.normal)
-//        
+        //        UIBarButtonItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.clear], for: UIControlState.normal)
+        //
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapAction))
         view.addGestureRecognizer(tapGesture)
-    
+        
         NotificationCenter.default.addObserver(self.scrollView,
                                                selector: #selector(self.scrollView.nyato_keyboardNotification(notification:)),
                                                name: NSNotification.Name.UIKeyboardWillChangeFrame,
                                                object: nil)
-
+        
     }
     
     private var setedUI = false
@@ -63,54 +63,19 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
-
+    
     // MARK: - Helper
-    
-    @IBAction func sinaLogin() {
-        loginWith(platformType: .typeSinaWeibo, type: "sina")
-    }
-    
-    @IBAction func qqLogin() {
-        loginWith(platformType: .typeQQ, type: "qzone")
-    }
-    
-    @IBAction func wehcatLogin() {
-        loginWith(platformType: .typeWechat, type: "wechat")
-    }
-    
-    private func loginWith(platformType: SSDKPlatformType, type: String) {
-        ShareSDK.getUserInfo(platformType) { (state, user, error) in
-            switch state {
-            case .success:
-                if let user = user {
-                    User.shared.bindType = type
-                    User.shared.bindUid = user.uid
-                    User.shared.bindToken = user.credential.token
-                    User.shared.avatarString = user.icon
-                    User.shared.uname = user.nickname
-                    
-                    if User.hadBind(for: type) {
-                    } else {
-                    }
-                }
-                print("success, user = \(String(describing: user))")
-            case .fail:
-                print("binding sina weibo fail: \(String(describing: error))")
-            default: break
-            }
-        }
-    }
-    
+        
     @IBAction func login(_ sender: UIButton) {
         tapAction()
         
-//        print("###login")
+        //        print("###login")
         guard let uname = unameTextfield.text,
             let password = passwordTextfield.text else {
                 SVProgressHUD.showError(withStatus: "账号或密码不能为空")
                 return
         }
-
+        
         let parameters = ["uname": uname,
                           "password": password]
         SVProgressHUD.show(withStatus: "登陆中...")
@@ -142,14 +107,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         unameLeftImageView.center = unameLeftView.center
         passwordLeftView.addSubview(passwordLeftImageView)
         passwordLeftImageView.center = passwordLeftView.center
-
+        
         self.unameTextfield?.leftView = unameLeftView
         self.unameTextfield?.leftViewMode = .always
         self.passwordTextfield?.leftView = passwordLeftView
         self.passwordTextfield?.leftViewMode = .always
     }
     
-
+    
     // MARK: - Text field delegate
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -161,7 +126,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
         return false
     }
-
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textField == unameTextfield {
             unameLeftImageView.image = #imageLiteral(resourceName: "ico-uname")
