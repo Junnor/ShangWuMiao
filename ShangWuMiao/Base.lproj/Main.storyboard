@@ -1349,6 +1349,12 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pcO-dn-z4z">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                         <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg-figure" translatesAutoresizingMaskIntoConstraints="NO" id="THB-Rx-mrs">
+                                                <rect key="frame" x="20" y="30" width="335" height="150"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="THB-Rx-mrs" secondAttribute="height" multiplier="595:266" id="uyw-iV-haM"/>
+                                                </constraints>
+                                            </imageView>
                                             <textField opaque="NO" clipsSubviews="YES" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="手机／邮箱／用户名" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="umJ-hv-UQi" customClass="CornerTextField" customModule="ShangWuMiao" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="200" width="335" height="46"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1377,29 +1383,59 @@
                                                     <action selector="login:" destination="IzP-m5-aGS" eventType="touchUpInside" id="h5K-2v-dOJ"/>
                                                 </connections>
                                             </button>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg-figure" translatesAutoresizingMaskIntoConstraints="NO" id="THB-Rx-mrs">
-                                                <rect key="frame" x="20" y="30" width="335" height="150"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qlv-1L-N8E" userLabel="Sina Button">
+                                                <rect key="frame" x="162.5" y="403" width="50" height="50"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" secondItem="THB-Rx-mrs" secondAttribute="height" multiplier="595:266" id="uyw-iV-haM"/>
+                                                    <constraint firstAttribute="width" constant="50" id="9OP-er-9dA"/>
+                                                    <constraint firstAttribute="width" secondItem="Qlv-1L-N8E" secondAttribute="height" multiplier="1:1" id="gm1-VE-7te"/>
                                                 </constraints>
-                                            </imageView>
+                                                <state key="normal" image="ico-sina"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jUS-2d-4FC" userLabel="QQ Button">
+                                                <rect key="frame" x="242.5" y="403" width="50" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="jUS-2d-4FC" secondAttribute="height" multiplier="1:1" id="hs6-tg-1YE"/>
+                                                </constraints>
+                                                <state key="normal" image="ico-qq"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fbP-4K-c8t" userLabel="Wechat Button">
+                                                <rect key="frame" x="82.5" y="403" width="50" height="50"/>
+                                                <state key="normal" image="ico-wechat"/>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="第三方登录" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Irc-16-2e5">
+                                                <rect key="frame" x="150" y="463" width="75" height="21"/>
+                                                <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="15"/>
+                                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="umJ-hv-UQi" firstAttribute="top" secondItem="THB-Rx-mrs" secondAttribute="bottom" constant="20" id="1jA-xV-Kpy"/>
+                                            <constraint firstItem="Qlv-1L-N8E" firstAttribute="top" secondItem="1aJ-qk-6Zh" secondAttribute="bottom" constant="30" id="1ma-A2-ddR"/>
                                             <constraint firstItem="umJ-hv-UQi" firstAttribute="leading" secondItem="THB-Rx-mrs" secondAttribute="leading" id="3cR-eu-HtO"/>
                                             <constraint firstItem="umJ-hv-UQi" firstAttribute="trailing" secondItem="THB-Rx-mrs" secondAttribute="trailing" id="7op-BN-irW"/>
                                             <constraint firstAttribute="trailing" secondItem="THB-Rx-mrs" secondAttribute="trailing" constant="20" id="8oS-D0-zRt"/>
+                                            <constraint firstItem="jUS-2d-4FC" firstAttribute="centerY" secondItem="Qlv-1L-N8E" secondAttribute="centerY" id="C5a-4h-WQQ"/>
+                                            <constraint firstItem="jUS-2d-4FC" firstAttribute="leading" secondItem="Qlv-1L-N8E" secondAttribute="trailing" constant="30" id="D7W-wh-Gkm"/>
                                             <constraint firstItem="03o-u7-T34" firstAttribute="top" secondItem="umJ-hv-UQi" secondAttribute="bottom" constant="15" id="Fp7-cD-5vR"/>
+                                            <constraint firstItem="fbP-4K-c8t" firstAttribute="centerY" secondItem="Qlv-1L-N8E" secondAttribute="centerY" id="Gfl-HM-Ww5"/>
+                                            <constraint firstItem="Qlv-1L-N8E" firstAttribute="leading" secondItem="fbP-4K-c8t" secondAttribute="trailing" constant="30" id="HRO-FL-vxR"/>
+                                            <constraint firstItem="Irc-16-2e5" firstAttribute="top" secondItem="Qlv-1L-N8E" secondAttribute="bottom" constant="10" id="LdB-lk-4qW"/>
                                             <constraint firstItem="03o-u7-T34" firstAttribute="trailing" secondItem="umJ-hv-UQi" secondAttribute="trailing" id="N5h-Fl-fpq"/>
                                             <constraint firstItem="THB-Rx-mrs" firstAttribute="top" secondItem="pcO-dn-z4z" secondAttribute="top" constant="30" id="Nd2-vR-3z0"/>
+                                            <constraint firstItem="Qlv-1L-N8E" firstAttribute="centerX" secondItem="pcO-dn-z4z" secondAttribute="centerX" id="VsX-Jg-LWF"/>
+                                            <constraint firstItem="fbP-4K-c8t" firstAttribute="width" secondItem="fbP-4K-c8t" secondAttribute="height" multiplier="1:1" id="bTF-1x-pmt"/>
                                             <constraint firstItem="03o-u7-T34" firstAttribute="height" secondItem="umJ-hv-UQi" secondAttribute="height" id="e3W-vR-eSL"/>
                                             <constraint firstItem="1aJ-qk-6Zh" firstAttribute="top" secondItem="03o-u7-T34" secondAttribute="bottom" constant="20" id="eHm-wY-mAh"/>
                                             <constraint firstItem="03o-u7-T34" firstAttribute="leading" secondItem="umJ-hv-UQi" secondAttribute="leading" id="fvy-6z-h21"/>
+                                            <constraint firstItem="fbP-4K-c8t" firstAttribute="width" secondItem="Qlv-1L-N8E" secondAttribute="width" id="gQy-ln-yKI"/>
+                                            <constraint firstItem="Irc-16-2e5" firstAttribute="centerX" secondItem="pcO-dn-z4z" secondAttribute="centerX" id="jbl-Ev-h7G"/>
                                             <constraint firstItem="1aJ-qk-6Zh" firstAttribute="trailing" secondItem="03o-u7-T34" secondAttribute="trailing" id="pgH-wS-cSC"/>
                                             <constraint firstItem="THB-Rx-mrs" firstAttribute="leading" secondItem="pcO-dn-z4z" secondAttribute="leading" constant="20" id="qeT-Xu-n9a"/>
                                             <constraint firstItem="1aJ-qk-6Zh" firstAttribute="leading" secondItem="03o-u7-T34" secondAttribute="leading" id="rHI-Ly-EIc"/>
                                             <constraint firstItem="1aJ-qk-6Zh" firstAttribute="height" secondItem="03o-u7-T34" secondAttribute="height" id="xPY-Gu-b09"/>
+                                            <constraint firstItem="jUS-2d-4FC" firstAttribute="width" secondItem="Qlv-1L-N8E" secondAttribute="width" id="yAm-mp-2qV"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -1438,7 +1474,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ySQ-qu-2VI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1736" y="38"/>
+            <point key="canvasLocation" x="-1736.8" y="37.331334332833585"/>
         </scene>
         <!--Register Name View Controller-->
         <scene sceneID="K5B-ZI-6Qa">
@@ -1838,7 +1874,10 @@
         <image name="ico-addr-2" width="24" height="24"/>
         <image name="ico-location" width="54" height="54"/>
         <image name="ico-mcionmy" width="25" height="25"/>
+        <image name="ico-qq" width="16" height="16"/>
+        <image name="ico-sina" width="16" height="16"/>
         <image name="ico-time" width="54" height="54"/>
+        <image name="ico-wechat" width="16" height="16"/>
         <image name="nav-expo" width="60" height="60"/>
         <image name="nav-expoed" width="60" height="60"/>
         <image name="nav-index" width="60" height="60"/>

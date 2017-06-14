@@ -14,9 +14,7 @@ import EventKit
 
 class ExhibitionDetailViewController: UIViewController {
     
-    // MARK: - For Share, because ExhibitionDetailViewController+Share
-    // need access the properties, so make them as public
-    
+    /// MARK: - For Share
     var shareView: UIView!
     let shareViewHeight: CGFloat = 400
     
@@ -51,7 +49,7 @@ class ExhibitionDetailViewController: UIViewController {
         shareView = shareViewController.view
     }
     
-    // MARK: - For 3D Touch previewing
+    /// MARK: - For 3D Touch previewing
     weak var previewSourceViewController: ExhibitionPreviewable!
     
     @available(iOS 9.0, *)
@@ -71,11 +69,14 @@ class ExhibitionDetailViewController: UIViewController {
         return [preview]
     }
     
-    // MARK: - Outlets
+    /// MARK: - Outlets
     @IBOutlet weak var payView: UIView!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet weak var vcpriceLabel: UILabel!
     
+    /**
+     dsdd
+     */
     @IBOutlet weak var payViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
@@ -86,11 +87,12 @@ class ExhibitionDetailViewController: UIViewController {
             collectionView.alwaysBounceVertical = true
         }
     }
+ 
     
-    // MARK: - Public property set from segue
+    /// MARK: - Public property set from segue
     var exhibition: Exhibition!
     
-    // MARK: - Private properties
+    /// MARK: - Private properties
     fileprivate var isVendor: Bool = true
     fileprivate var constCellCounts: Int {
         return isVendor ? 4 : 3
