@@ -130,14 +130,16 @@ extension ExhibitionDetailViewController: ShareViewControllerDelegate {
             
             let startTime = exhibition.exhibition(stringTime: self.exhibition.start_time,
                                                   digit: false)
-            let description = exhibition.location + " " + exhibition.addr + " " + startTime + " 举办"
+            let description = exhibition.location + exhibition.addr + startTime + "举办"
             
             var logoImg = UIImage()
-            if let logoUrl = URL(string: exhibition.cover) {
+            if let cover = exhibition.cover,
+                let logoUrl = URL(string: kImageHeaderUrl + cover) {
                 if let data = try? Data(contentsOf: logoUrl) {
                     logoImg = UIImage(data: data)!
                 }
             }
+            
             let content = title + " " + description
             
             let sharePars = NSMutableDictionary()
@@ -154,7 +156,10 @@ extension ExhibitionDetailViewController: ShareViewControllerDelegate {
             
             ShareSDK.share(type,
                            parameters: sharePars,
-                           onStateChanged: { (state, _, _, error) in
+                           onStateChanged: { [weak self] (state, _, _, error) in
+                            
+                            self?.dismissShareView()
+                            
                             switch state {
                             case .success:
                                 SVProgressHUD.showSuccess(withStatus: "分享成功")
