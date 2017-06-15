@@ -58,6 +58,7 @@ final class User {
     var bindType = "nyato"
     var bindToken = ""
     var bindUid = ""
+    var tmpPassword = ""
     
     // MARK: - clean after sign out
     func clean() {
@@ -83,7 +84,9 @@ struct Vendor {
 
 extension User {
     
-    // MARK: - Bind third party with nyato
+    // MARK: - Create nyato account with third party
+    
+    // MARK: - Bind third party with nyato acoount
     static func bindNaytoWithThirdPartyAccount(_ account: String, password: String, completionHander: @escaping (_ success: Bool, _ info: String?) -> ()) {
         let stringParas = stringBindThirdPartyParameters(actTo: ActType.bindNyato)
         let urlString = kHeaderUrl + RequestURL.kBindNyato + stringParas
@@ -156,12 +159,18 @@ extension User {
                                     completionHandler(false)
                                 } else {
                                     let data = json["data"]
+                                    
                                     let uid = data["uid"].stringValue
                                     let oauth_token = data["oauth_token"].stringValue
                                     let oauth_token_secret = data["oauth_token_secret"].stringValue
+                                    let passworld = data["password"].stringValue
+                                    
                                     User.shared.uid = uid
                                     User.shared.oauth_token = oauth_token
                                     User.shared.oauth_token_secret = oauth_token_secret
+                                    User.shared.tmpPassword = passworld
+                                    
+                                    UserDefaults.standard.setValue(passworld, forKey: "TmpPassword")
                                     
                                     completionHandler(true)
                                 }

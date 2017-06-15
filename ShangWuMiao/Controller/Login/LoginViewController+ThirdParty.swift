@@ -26,6 +26,10 @@ extension LoginViewController {
     
     private func loginWith(platformType: SSDKPlatformType, type: String) {
         ShareSDK.getUserInfo(platformType) { [weak self] (state, user, error) in
+            print("=====user: \(user)")
+            print("=====error: \(error)")
+            print("=====state: \(state)")
+
             switch state {
             case .success:
                 if let user = user {
@@ -34,18 +38,22 @@ extension LoginViewController {
                     User.shared.bindToken = user.credential.token
                     User.shared.avatarString = user.icon
                     User.shared.uname = user.nickname
-                    
+                    print("======....success")
                     // Network layer
                     User.hadBindThirdParty(for: type, completionHandler: { (binded) in
                         if binded {
+                            // TODO: to content window
                             SVProgressHUD.showSuccess(withStatus: "登录成功")
+                            
+                            self?.performSegue(withIdentifier: "login", sender: nil)
+                            nyato_storeOauthData()
                         } else {
                             self?.bindAccountCheck()
                         }
                     })
                 }
             case .fail:
-                print("binding sina weibo fail: \(String(describing: error))")
+                print("getUserInfo fail: \(String(describing: error))")
             default: break
             }
         }
@@ -61,12 +69,15 @@ extension LoginViewController {
                                          handler: { [weak self] action in
                                             self?.bindNyato()
         })
+//        let newOne = UIAlertAction(title: "新注册个账号",
+//                                   style: .destructive,
+//                                   handler: { [weak self] action in
+//                                    self?.createNewOne()
+//        })
         let newOne = UIAlertAction(title: "新注册个账号",
                                    style: .destructive,
-                                   handler: { [weak self] action in
-                                    self?.createNewOne()
-        })
-        
+                                   handler: { action in })
+
         alert.addAction(nyatoAccount)
         alert.addAction(newOne)
         alert.addAction(cancel)
@@ -92,6 +103,7 @@ extension LoginViewController {
                 
                 User.bindNaytoWithThirdPartyAccount(account, password: password, completionHander: { (success, info) in
                     if success {
+                        // TODO: to content window
                         SVProgressHUD.showSuccess(withStatus: "绑定成功")
                     } else {
                         SVProgressHUD.showError(withStatus: "绑定失败")
@@ -105,11 +117,6 @@ extension LoginViewController {
         alert.addAction(cancel)
         
         present(alert, animated: true, completion: nil)
-    }
-    
-    private func createNewOne() {
-        // act: "other_login")
-        // Like normal register
     }
     
 }

@@ -106,7 +106,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }) { (platform: SSDKPlatformType, appInfo: NSMutableDictionary?) in
             switch platform {
             case SSDKPlatformType.typeSinaWeibo:
-                print("=======sina weibo")
                 //设置新浪微博应用信息,其中authType设置为使用SSO＋Web形式授权
                 appInfo?.ssdkSetupSinaWeibo(byAppKey: "3026246088",
                                             appSecret: "beb7d09137b4bb35e83f67caf04c48ce",
