@@ -40,7 +40,7 @@ extension LoginViewController {
                         if binded {
                             SVProgressHUD.showSuccess(withStatus: "登录成功")
                         } else {
-                            self?.bindAccount()
+                            self?.bindAccountCheck()
                         }
                     })
                 }
@@ -51,7 +51,7 @@ extension LoginViewController {
         }
     }
     
-    private func bindAccount() {
+    private func bindAccountCheck() {
         let alert = UIAlertController(title: "请绑定喵特账号",
                                       message: "您还未绑定喵特账号，请选择以下操作完成喵特账号绑定",
                                       preferredStyle: .alert)
@@ -108,6 +108,8 @@ extension LoginViewController {
     }
     
     private func createNewOne() {
+        // act: "other_login")
+        // Like normal register
     }
     
 }

@@ -143,7 +143,7 @@ extension ExhibitionDetailViewController: ShareViewControllerDelegate {
             let sharePars = NSMutableDictionary()
             var text = content
             if type == .typeSinaWeibo {
-                text = "\(content) http://www.nyato.com/"
+                text = "\(content) http://www.nyato.com"
             }
             
             sharePars.ssdkSetupShareParams(byText: text,
@@ -159,6 +159,7 @@ extension ExhibitionDetailViewController: ShareViewControllerDelegate {
                             case .success:
                                 SVProgressHUD.showSuccess(withStatus: "分享成功")
                             case .fail:
+                                print("share error: \(String(describing: error))")
                                 SVProgressHUD.showError(withStatus: "分享失败")
                             case .cancel:
                                 print("=======share cancel")
