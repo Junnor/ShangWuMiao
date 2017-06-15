@@ -7,11 +7,25 @@
 //
 
 import Foundation
-import UIKit
 
 
 // MARK: - 加密相关
 func stringOauthParameters() -> String {
+    
+    func getStoredOauthData() {
+        let standard = UserDefaults.standard
+        
+        let stored_uid = standard.value(forKey: uid) as! String
+        let stored_oauth_token = standard.value(forKey: oauth_token) as! String
+        let stored_oauth_token_secret = standard.value(forKey: oauth_token_secret) as! String
+        let passwordCheck = standard.value(forKey: passwordToCheck) as! String
+        
+        User.shared.uid = stored_uid
+        User.shared.oauth_token = stored_oauth_token
+        User.shared.oauth_token_secret = stored_oauth_token_secret
+        User.shared.passwordToCheck = passwordCheck
+    }
+    
     if User.shared.uid .isEmpty {
         getStoredOauthData()
     }
@@ -111,19 +125,19 @@ func nyato_cleanStoredOauthData() {
     standard.synchronize()
 }
 
-private func getStoredOauthData() {
-    let standard = UserDefaults.standard
-    
-    let stored_uid = standard.value(forKey: uid) as! String
-    let stored_oauth_token = standard.value(forKey: oauth_token) as! String
-    let stored_oauth_token_secret = standard.value(forKey: oauth_token_secret) as! String
-    let passwordCheck = standard.value(forKey: passwordToCheck) as! String
-
-    User.shared.uid = stored_uid
-    User.shared.oauth_token = stored_oauth_token
-    User.shared.oauth_token_secret = stored_oauth_token_secret
-    User.shared.passwordToCheck = passwordCheck
+// MARK: - unregister the third party
+func nyato_unregisterThirdParty() {
+    if ShareSDK.hasAuthorized(.typeSinaWeibo) {
+        ShareSDK.cancelAuthorize(.typeSinaWeibo)
+    }
+    if ShareSDK.hasAuthorized(.typeQQ) {
+        ShareSDK.cancelAuthorize(.typeQQ)
+    }
+    if ShareSDK.hasAuthorized(.typeWechat) {
+        ShareSDK.cancelAuthorize(.typeWechat)
+    }
 }
+
 
 func nyato_isPhoneNumber(phoneNumber:String?) -> (result: Bool, info: String?) {
     if let phoneNumber = phoneNumber {

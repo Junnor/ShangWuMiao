@@ -74,19 +74,7 @@ final class User {
         mcoins = 0.00
         
         nyato_cleanStoredOauthData()
-    }
-    
-    // MARK: - unregister the third party
-    func unregisterForThirdParty() {
-        if ShareSDK.hasAuthorized(.typeSinaWeibo) {
-            ShareSDK.cancelAuthorize(.typeSinaWeibo)
-        }
-        if ShareSDK.hasAuthorized(.typeQQ) {
-            ShareSDK.cancelAuthorize(.typeQQ)
-        }
-        if ShareSDK.hasAuthorized(.typeWechat) {
-            ShareSDK.cancelAuthorize(.typeWechat)
-        }
+        nyato_unregisterThirdParty()
     }
 }
 

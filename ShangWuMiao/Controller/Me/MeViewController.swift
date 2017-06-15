@@ -232,7 +232,6 @@ extension MeViewController {
                 let navivc = UINavigationController(rootViewController: loginvc)
                 present(navivc, animated: true, completion: {
                     User.shared.clean()
-                    User.shared.unregisterForThirdParty()
                 })
             }
         }
