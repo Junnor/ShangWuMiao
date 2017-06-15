@@ -36,26 +36,35 @@ class FindPasswordViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet private weak var codeButton: UIButton!
     @IBOutlet private weak var promptLabel: UILabel!
-    
+    @IBOutlet private weak var telephoneBar: UIView!
+    @IBOutlet private weak var emailBar: UIView!
+
     @IBOutlet private weak var scrollView: UIScrollView! {
         didSet {
             scrollView.alwaysBounceVertical = true
         }
     }
 
+    @IBOutlet private weak var containerView: UIView!
+    
     private var emailView: UIView!
     private var telephoneView: UIView!
 
     private var codePhone: String!
     private var submitPhone: String!
     private var code: String!
+    
+    private enum PromptType: String {
+        case telephone = "先输入手机号，点击“获取验证码”，然后输入手机收到的验证码点击下一步 "
+        case email = "请输入注册时填写的邮箱，完成找回密码后，建议绑定手机号码"
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "找回密码"
         
-        promptLabel?.text = "先输入手机号，点击“获取验证码”，\n然后输入手机收到的验证码点击下一步 "
+        promptLabel?.text = PromptType.telephone.rawValue
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapAction))
         view.addGestureRecognizer(tapGesture)
@@ -65,6 +74,52 @@ class FindPasswordViewController: UIViewController, UITextFieldDelegate {
                                                selector: #selector(self.scrollView.nyato_keyboardNotification(notification:)),
                                                name: NSNotification.Name.UIKeyboardWillChangeFrame,
                                                object: nil)
+        
+        telephoneView = UINib(nibName: "FindPasswordWithTelephone", bundle: nil).instantiate(withOwner: self, options: nil).first as! UIView
+        emailView = UINib(nibName: "FindPasswordWithEmail", bundle: nil).instantiate(withOwner: self, options: nil).first as! UIView
+        
+        telephoneView.isHidden = false
+        emailView.isHidden = true
+        
+        telephoneBar.isHidden = telephoneView.isHidden
+        emailBar.isHidden = emailView.isHidden
+
+        containerView.addSubview(telephoneView)
+        containerView.addSubview(emailView)
+        
+        containerView.backgroundColor = UIColor.clear
+    }
+    
+    private var layoutEmail = false
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        if !layoutEmail {
+            layoutEmail = true
+            
+            let containerViewBounds = containerView.bounds
+            telephoneView.frame = containerViewBounds
+            emailView.frame = containerViewBounds
+        }
+    }
+    
+    
+    @IBAction func findPasswordType(_ sender: UIButton) {
+        if let text = sender.currentTitle, text == "手机找回" {
+            promptLabel.text = PromptType.telephone.rawValue
+            telephoneView.isHidden = false
+            emailView.isHidden = true
+            
+            telephoneBar.isHidden = telephoneView.isHidden
+            emailBar.isHidden = emailView.isHidden
+        } else {
+            promptLabel.text = PromptType.email.rawValue
+            telephoneView.isHidden = true
+            emailView.isHidden = false
+            
+            telephoneBar.isHidden = telephoneView.isHidden
+            emailBar.isHidden = emailView.isHidden
+        }
     }
     
     @IBAction private func getCode() {
@@ -97,11 +152,6 @@ class FindPasswordViewController: UIViewController, UITextFieldDelegate {
     @IBAction private func telephoneSubmit() {
         tapAction()
         
-        //        // ------------ TODO: test code
-        //        code = "123456"
-        //        codePhone = "15652805731"
-        //        // ------------
-        
         if codePhone == nil {
             return
         }
@@ -120,15 +170,18 @@ class FindPasswordViewController: UIViewController, UITextFieldDelegate {
         }
         
         self.timer.invalidate()
-        performSegue(withIdentifier: "register", sender: nil)
+        performSegue(withIdentifier: "resetPassword", sender: nil)
     }
 
     @IBAction private func emailSubmit() {
+        // TODO: - emailSubmit
+        performSegue(withIdentifier: "resetPassword", sender: nil)
     }
     
     @objc private func tapAction() {
         self.phoneTextField.resignFirstResponder()
         self.codeTextField.resignFirstResponder()
+        self.emailTextField.resignFirstResponder()
     }
 
     private var hasLeftImage = false
@@ -136,7 +189,8 @@ class FindPasswordViewController: UIViewController, UITextFieldDelegate {
         super.viewWillAppear(animated)
         if !hasLeftImage {
             hasLeftImage = false
-            setUI()
+            
+            setLeftImage()
         }
     }
     
@@ -152,7 +206,7 @@ class FindPasswordViewController: UIViewController, UITextFieldDelegate {
     // two image states for leftImageView
     private var telephoneLeftImageView = UIImageView()
     private var emailLeftImageView = UIImageView()
-    private func setUI() {
+    private func setLeftImage() {
         // for telephone
         let height = self.phoneTextField.bounds.height
         let leftView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: height))
