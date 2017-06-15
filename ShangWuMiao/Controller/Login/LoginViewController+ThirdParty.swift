@@ -69,15 +69,12 @@ extension LoginViewController {
                                          handler: { [weak self] action in
                                             self?.bindNyato()
         })
-//        let newOne = UIAlertAction(title: "新注册个账号",
-//                                   style: .destructive,
-//                                   handler: { [weak self] action in
-//                                    self?.createNewOne()
-//        })
         let newOne = UIAlertAction(title: "新注册个账号",
                                    style: .destructive,
-                                   handler: { action in })
-
+                                   handler: { [weak self] action in
+                                    self?.createNewOne()
+        })
+   
         alert.addAction(nyatoAccount)
         alert.addAction(newOne)
         alert.addAction(cancel)
@@ -100,13 +97,11 @@ extension LoginViewController {
         let done = UIAlertAction(title: "确定绑定", style: .destructive) { (action) in
             if let account = alert.textFields?.first?.text,
                 let password = alert.textFields?.last?.text {
-                
-                User.bindNaytoWithThirdPartyAccount(account, password: password, completionHander: { (success, info) in
+                User.bindNaytoWithThirdPartyAccount(account, password: password, completionHander: { [weak self] (success, info) in
+                    SVProgressHUD.showInfo(withStatus: info)
                     if success {
-                        // TODO: to content window
-                        SVProgressHUD.showSuccess(withStatus: "绑定成功")
-                    } else {
-                        SVProgressHUD.showError(withStatus: "绑定失败")
+                        self?.performSegue(withIdentifier: "login", sender: nil)
+                        nyato_storeOauthData()
                     }
                 })
             } else {
@@ -117,6 +112,47 @@ extension LoginViewController {
         alert.addAction(cancel)
         
         present(alert, animated: true, completion: nil)
+    }
+    
+    private func createNewOne() {
+        
+        func rename() {
+            let alert = UIAlertController(title: "修改喵特内昵称", message: "昵称太短，请重新命名", preferredStyle: .alert
+            )
+            alert.addTextField { (textField) in
+                textField.placeholder = User.shared.uname
+            }
+            let ok = UIAlertAction(title: "提交", style: .default) { [weak self] (_) in
+                if let text = alert.textFields?.first?.text {
+                    User.shared.uname = text
+                }
+                self?.createNewOne()
+            }
+            let cancel = UIAlertAction(title: "取消", style: .destructive, handler: nil)
+            alert.addAction(cancel)
+            alert.addAction(ok)
+            present(alert, animated: true, completion: nil)
+        }
+        
+        var password = ""
+        for _ in 0...7 {
+            let num = String(arc4random() % 9)
+            password += num
+        }
+
+        let name = User.shared.uname
+        if name.characters.count <= 2 {
+            rename()
+            return
+        }
+        
+        User.createNyatoAccount(name, password: password) { [weak self] (success, info) in
+            SVProgressHUD.showInfo(withStatus: info)
+            if success {
+                self?.performSegue(withIdentifier: "login", sender: nil)
+                nyato_storeOauthData()
+            }
+        }
     }
     
 }

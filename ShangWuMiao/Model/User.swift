@@ -61,6 +61,7 @@ final class User {
     var bindType = "nyato"
     var bindToken = ""
     var bindUid = ""
+//    var willRegisterNyato = false
     
     // MARK: - clean after sign out
     func clean() {
@@ -129,7 +130,7 @@ extension User {
                                  >0: 退出用户
                                  */
                                 let json = JSON(jsonResponse)
-                                print("user check json: \(json)")
+//                                print("user check json: \(json)")
 
                                 let status = json["status"].intValue
                                 let info = json["info"].stringValue

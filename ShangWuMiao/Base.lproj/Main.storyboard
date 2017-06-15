@@ -1726,7 +1726,7 @@
         <!--Register Tel View Controller-->
         <scene sceneID="Kbl-Ok-tOF">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="O1a-CI-lYP" customClass="RegisterTelViewController" customModule="ShangWuMiao" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegisterTelViewController" automaticallyAdjustsScrollViewInsets="NO" id="O1a-CI-lYP" customClass="RegisterTelViewController" customModule="ShangWuMiao" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ohY-Wu-Q30"/>
                         <viewControllerLayoutGuide type="bottom" id="wIe-Ei-anF"/>

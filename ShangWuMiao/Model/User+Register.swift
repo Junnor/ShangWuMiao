@@ -75,7 +75,9 @@ extension User {
                                 let status = json["status"].intValue
                                 var info = ""
                                 switch status {
-                                case 101: info = "成功"
+                                case 101:
+                                    info = "成功"
+                                    User.parseUserData(with: json)
                                 case 102: info = "失败"
                                 case 103: info = "名称过长或过短"
                                 case 104: info = "名称含有违禁词"
@@ -86,20 +88,8 @@ extension User {
                                     break
                                 }
                                 
-                                if status == 101 {
-                                    
-                                    let data = json["data"].dictionaryValue
-                                    let dataJson = JSON(data)
-                                    let uid = dataJson["uid"].stringValue
-                                    let oauth_token = dataJson["oauth_token"].stringValue
-                                    let oauth_token_secret = dataJson["oauth_token_secret"].stringValue
-                                    
-                                    User.shared.uid = uid
-                                    User.shared.oauth_token = oauth_token
-                                    User.shared.oauth_token_secret = oauth_token_secret
-                                }
-                                
                                 callback(status == 101, info)
+                                
                             case .failure(let error):
                                 callback(false, "注册错误")
                                 print("register error: \(error)")
