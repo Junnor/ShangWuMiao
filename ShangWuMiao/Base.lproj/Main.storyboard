@@ -1847,6 +1847,7 @@
                     </view>
                     <connections>
                         <outlet property="promptLabel" destination="Eii-zb-sOg" id="URo-pl-AP9"/>
+                        <outlet property="scrollView" destination="TYO-cR-w6U" id="9GW-Nk-Sg6"/>
                         <segue destination="xix-rN-UQy" kind="show" identifier="resetPassword" id="Gwe-NN-fiO"/>
                     </connections>
                 </viewController>
