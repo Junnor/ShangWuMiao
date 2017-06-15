@@ -104,7 +104,6 @@ func nyato_storeOauthData() {
     let standard = UserDefaults.standard
     
     standard.setValue("1", forKeyPath: isLogin)
-    
     standard.setValue(User.shared.uid, forKeyPath: uid)
     standard.setValue(User.shared.oauth_token, forKeyPath: oauth_token)
     standard.setValue(User.shared.oauth_token_secret, forKeyPath: oauth_token_secret)

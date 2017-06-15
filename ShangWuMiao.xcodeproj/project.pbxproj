@@ -86,6 +86,10 @@
 		67DB547E1EEFF08A004243EA /* ExhibitionDetailViewController+Share.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DB547D1EEFF08A004243EA /* ExhibitionDetailViewController+Share.swift */; };
 		67F4B1AC1EF22BA8003EEB44 /* User+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F4B1AB1EF22BA8003EEB44 /* User+Register.swift */; };
 		67F4B1AE1EF22C18003EEB44 /* User+ThirdParty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F4B1AD1EF22C18003EEB44 /* User+ThirdParty.swift */; };
+		67F4B1B01EF2682D003EEB44 /* FindPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F4B1AF1EF2682D003EEB44 /* FindPasswordViewController.swift */; };
+		67F4B1B21EF26839003EEB44 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F4B1B11EF26839003EEB44 /* ResetPasswordViewController.swift */; };
+		67F4B1F01EF26FB9003EEB44 /* FindPasswordWithTelephone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67F4B1EF1EF26FB9003EEB44 /* FindPasswordWithTelephone.xib */; };
+		67F4B1F21EF26FF5003EEB44 /* FindPasswordWithEmail.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67F4B1F11EF26FF5003EEB44 /* FindPasswordWithEmail.xib */; };
 		67FD72DD1EE791CC00C3DED6 /* libUPAPayPlugin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 67FD72DC1EE791CC00C3DED6 /* libUPAPayPlugin.a */; };
 		67FD72DF1EE7920C00C3DED6 /* PassKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67FD72DE1EE7920C00C3DED6 /* PassKit.framework */; };
 		8B0352741ECEB95E00E46DEE /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8B0352181ECEB95E00E46DEE /* AlipaySDK.bundle */; };
@@ -263,6 +267,10 @@
 		67DB547D1EEFF08A004243EA /* ExhibitionDetailViewController+Share.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ExhibitionDetailViewController+Share.swift"; sourceTree = "<group>"; };
 		67F4B1AB1EF22BA8003EEB44 /* User+Register.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+Register.swift"; sourceTree = "<group>"; };
 		67F4B1AD1EF22C18003EEB44 /* User+ThirdParty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+ThirdParty.swift"; sourceTree = "<group>"; };
+		67F4B1AF1EF2682D003EEB44 /* FindPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindPasswordViewController.swift; sourceTree = "<group>"; };
+		67F4B1B11EF26839003EEB44 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
+		67F4B1EF1EF26FB9003EEB44 /* FindPasswordWithTelephone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FindPasswordWithTelephone.xib; sourceTree = "<group>"; };
+		67F4B1F11EF26FF5003EEB44 /* FindPasswordWithEmail.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FindPasswordWithEmail.xib; sourceTree = "<group>"; };
 		67FD72D91EE791CC00C3DED6 /* UPAPayPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPAPayPlugin.h; sourceTree = "<group>"; };
 		67FD72DA1EE791CC00C3DED6 /* UPAPayPluginDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPAPayPluginDelegate.h; sourceTree = "<group>"; };
 		67FD72DC1EE791CC00C3DED6 /* libUPAPayPlugin.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUPAPayPlugin.a; sourceTree = "<group>"; };
@@ -747,6 +755,8 @@
 				67AF73C91EF13E740068B349 /* LoginViewController+ThirdParty.swift */,
 				67DB54201EEFCDA9004243EA /* RegisterNameViewController.swift */,
 				67DB54211EEFCDA9004243EA /* RegisterTelViewController.swift */,
+				67F4B1AF1EF2682D003EEB44 /* FindPasswordViewController.swift */,
+				67F4B1B11EF26839003EEB44 /* ResetPasswordViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -986,6 +996,8 @@
 		8B7A48D61EC0104500276058 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				67F4B1EF1EF26FB9003EEB44 /* FindPasswordWithTelephone.xib */,
+				67F4B1F11EF26FF5003EEB44 /* FindPasswordWithEmail.xib */,
 				673BD5EE1EEE8D92005A733A /* ShareCell.swift */,
 				673BD5EF1EEE8D92005A733A /* ShareCell.xib */,
 				8BDB06AF1EC03C2F00F0A660 /* ComicViewCell.swift */,
@@ -1174,11 +1186,13 @@
 				673BD5A91EEE358A005A733A /* ShareSDKConfigFile.bundle in Resources */,
 				8B0352741ECEB95E00E46DEE /* AlipaySDK.bundle in Resources */,
 				8BCE2BAA1ECC351700ACA1BB /* ExHeaderCell.xib in Resources */,
+				67F4B1F21EF26FF5003EEB44 /* FindPasswordWithEmail.xib in Resources */,
 				67DB543E1EEFCDEB004243EA /* ShareViewController.xib in Resources */,
 				8BCE2BB61ECC3A5D00ACA1BB /* ExTicketCell.xib in Resources */,
 				4460C2B01E9B19F3004166DB /* Assets.xcassets in Resources */,
 				673BD5D21EEE358A005A733A /* README.txt in Resources */,
 				4460C2AE1E9B19F3004166DB /* Main.storyboard in Resources */,
+				67F4B1F01EF26FB9003EEB44 /* FindPasswordWithTelephone.xib in Resources */,
 				8BCE2BBA1ECC3F9500ACA1BB /* ExFooterView.xib in Resources */,
 				673BD5D01EEE358A005A733A /* WeiboSDK.bundle in Resources */,
 				8BCE2BAE1ECC369E00ACA1BB /* ExDescriptionCell.xib in Resources */,
@@ -1269,6 +1283,7 @@
 				67DB542B1EEFCDB4004243EA /* SearchViewController.swift in Sources */,
 				8BCE2BA91ECC351700ACA1BB /* ExHeaderCell.swift in Sources */,
 				8BE3800F1EC2A1A1001A6651 /* MeCell.swift in Sources */,
+				67F4B1B01EF2682D003EEB44 /* FindPasswordViewController.swift in Sources */,
 				8BE380191EC2EA37001A6651 /* User.swift in Sources */,
 				8BE380171EC2A8A3001A6651 /* TicketOrderCell.swift in Sources */,
 				8B03527B1ECEB95E00E46DEE /* RSADataSigner.m in Sources */,
@@ -1290,6 +1305,7 @@
 				67DB54341EEFCDBA004243EA /* CommisionSoldViewController.swift in Sources */,
 				67DB54291EEFCDB4004243EA /* ExhibitionDetailViewController.swift in Sources */,
 				8BDB06901EC01DBC00F0A660 /* TabBarViewController.swift in Sources */,
+				67F4B1B21EF26839003EEB44 /* ResetPasswordViewController.swift in Sources */,
 				8B0352E91ECEE16F00E46DEE /* ClassHelper.swift in Sources */,
 				8B0352EB1ECEE17D00E46DEE /* Constant.swift in Sources */,
 				673070BB1EE5532200CEE9DA /* WalletViewController.swift in Sources */,

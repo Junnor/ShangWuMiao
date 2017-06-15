@@ -90,6 +90,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    @IBAction func findPassword() {
+        performSegue(withIdentifier: "findPassword", sender: self)
+    }
+    
+    @IBAction func register() {
+        performSegue(withIdentifier: "registerNow", sender: self)
+    }
+    
     @objc private func tapAction() {
         self.unameTextfield.resignFirstResponder()
         self.passwordTextfield.resignFirstResponder()
