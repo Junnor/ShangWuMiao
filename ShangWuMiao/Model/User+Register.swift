@@ -87,6 +87,7 @@ extension User {
                                 }
                                 
                                 if status == 101 {
+                                    
                                     let data = json["data"].dictionaryValue
                                     let dataJson = JSON(data)
                                     let uid = dataJson["uid"].stringValue

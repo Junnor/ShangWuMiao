@@ -76,6 +76,20 @@ final class User {
         nyato_cleanStoredOauthData()
         nyato_unregisterThirdParty()
     }
+    
+    static func parseUserData(with json: JSON) {
+        let data = json["data"]
+        
+        let uid = data["uid"].stringValue
+        let oauth_token = data["oauth_token"].stringValue
+        let oauth_token_secret = data["oauth_token_secret"].stringValue
+        let passwordToCheck = data["password"].stringValue
+        
+        User.shared.uid = uid
+        User.shared.oauth_token = oauth_token
+        User.shared.oauth_token_secret = oauth_token_secret
+        User.shared.passwordToCheck = passwordToCheck
+    }
 }
 
 struct Vendor {
@@ -148,16 +162,8 @@ extension User {
                                 let info = json["info"].stringValue
                                 let status = json["status"].intValue
                                 if status == 1 {
-                                    let data = json["data"]
-                                    let uid = data["uid"].stringValue
-                                    let oauth_token = data["oauth_token"].stringValue
-                                    let oauth_token_secret = data["oauth_token_secret"].stringValue
-                                    let passwordToCheck = data["password"].stringValue
                                     
-                                    User.shared.uid = uid
-                                    User.shared.oauth_token = oauth_token
-                                    User.shared.oauth_token_secret = oauth_token_secret
-                                    User.shared.passwordToCheck = passwordToCheck
+                                    User.parseUserData(with: json)
                                 }
                                 completionHandler(status == 1, info)
                             case .failure(let error):

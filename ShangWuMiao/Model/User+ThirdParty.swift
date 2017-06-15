@@ -39,15 +39,8 @@ extension User {
                                 let json = JSON(jsonResponse)
                                 print("bind nyato json = \(json)")
                                 let status = json["status"].intValue
-                                if status == 100 {
-                                    // TODO: - parse .......
-                                    let data = json["data"]
-                                    let uid = data["uid"].stringValue
-                                    let oauth_token = data["oauth_token"].stringValue
-                                    let oauth_token_secret = data["oauth_token_secret"].stringValue
-                                    User.shared.uid = uid
-                                    User.shared.oauth_token = oauth_token
-                                    User.shared.oauth_token_secret = oauth_token_secret
+                                if status == 100 {                                    
+                                    User.parseUserData(with: json)
                                     
                                     completionHander(true, nil)
                                 } else {
@@ -60,7 +53,7 @@ extension User {
                             }
         }
     }
-    
+        
     // MARK: - Login with third party
     // if binded aready, then login directory, otherwise, let user to bind the account
     static func hadBindThirdParty(for type: String, completionHandler: @escaping (_ binded: Bool) -> ()) {
@@ -84,18 +77,7 @@ extension User {
                                 if status == 0 {
                                     completionHandler(false)
                                 } else {
-                                    let data = json["data"]
-                                    
-                                    let uid = data["uid"].stringValue
-                                    let oauth_token = data["oauth_token"].stringValue
-                                    let oauth_token_secret = data["oauth_token_secret"].stringValue
-                                    let passwordToCheck = data["password"].stringValue
-                                    
-                                    User.shared.uid = uid
-                                    User.shared.oauth_token = oauth_token
-                                    User.shared.oauth_token_secret = oauth_token_secret
-                                    User.shared.passwordToCheck = passwordToCheck
-                                    
+                                    User.parseUserData(with: json)
                                     completionHandler(true)
                                 }
                             case .failure(let error):

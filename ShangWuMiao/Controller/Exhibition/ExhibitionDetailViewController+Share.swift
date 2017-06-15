@@ -43,7 +43,7 @@ extension ExhibitionDetailViewController: ShareViewControllerDelegate {
     
     // MARK: - Helper
     
-    private var shareString: String {
+    private var shareUrlString: String {
         return "https://www.nyato.com/manzhan/\(exhibition.exid!)/"
     }
     
@@ -61,7 +61,7 @@ extension ExhibitionDetailViewController: ShareViewControllerDelegate {
             event.notes = "\(exhibition.description)\n\(exhibition.location)\(exhibition.addr)"
             
             let alarm = EKAlarm()
-            alarm.relativeOffset = -3600*24
+            alarm.relativeOffset = -3600 * 24
             event.addAlarm(alarm)
             
             do {
@@ -94,7 +94,7 @@ extension ExhibitionDetailViewController: ShareViewControllerDelegate {
     
     // 复制链接到剪切板
     private func pasteboardAction() {
-        if let url = URL(string: shareString) {
+        if let url = URL(string: shareUrlString) {
             let pasteBoard = UIPasteboard.general
             pasteBoard.url = url
             SVProgressHUD.showSuccess(withStatus: "已复制链接到剪切板")
@@ -111,7 +111,7 @@ extension ExhibitionDetailViewController: ShareViewControllerDelegate {
     
     // Safari 打开链接
     private func openWithSafari() {
-        if let url = URL(string: shareString) {
+        if let url = URL(string: shareUrlString) {
             if #available(iOS 10.0, *) {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
             } else {
@@ -125,7 +125,7 @@ extension ExhibitionDetailViewController: ShareViewControllerDelegate {
     
     @objc private func share(with type: SSDKPlatformType) {
         // TODO: - replace
-        if let shareUrl = URL(string: shareString) {
+        if let shareUrl = URL(string: shareUrlString) {
             let title = exhibition.name!
             
             let startTime = exhibition.exhibition(stringTime: self.exhibition.start_time,
@@ -203,7 +203,7 @@ extension ExhibitionDetailViewController: ShareViewControllerDelegate {
         dismissShareView()
         
         // apple original UIActivityViewController
-        if let url = URL(string: shareString), let title = exhibition.name {
+        if let url = URL(string: shareUrlString), let title = exhibition.name {
             print("1")
             let activityVC = UIActivityViewController(activityItems: [title, url], applicationActivities: nil)
             print("2")
