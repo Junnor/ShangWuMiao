@@ -9,11 +9,13 @@
 import UIKit
 import Kingfisher
 import Alamofire
+import SVProgressHUD
 
 class MeViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("me view controller view did load")
         
         // 在Group模式下隐藏头部空白区域
         tableView.contentInset = UIEdgeInsets(top: -35, left: 0, bottom: 0, right: 0)
@@ -21,6 +23,9 @@ class MeViewController: UITableViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(reloadMcoins), name: nyatoMcoinsChange, object: nil)
         
         meVendor = User.shared.vendorType != Vendor.none
+        
+        // User check with first load
+        userCheck()
     }
     
     
@@ -52,6 +57,15 @@ class MeViewController: UITableViewController {
                 print(".. sold")
             } else if identifier == SegueIdentifer.topUpAction {
                 print(".. top up action")
+            }
+        }
+    }
+    
+    // MARK: - Helper
+    private func userCheck() {
+        User.userCheck { (isUserValid, info) in
+            if !isUserValid {
+                SVProgressHUD.showError(withStatus: info)
             }
         }
     }
@@ -218,6 +232,7 @@ extension MeViewController {
                 let navivc = UINavigationController(rootViewController: loginvc)
                 present(navivc, animated: true, completion: {
                     User.shared.clean()
+                    User.shared.unregisterForThirdParty()
                 })
             }
         }

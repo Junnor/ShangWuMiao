@@ -71,7 +71,7 @@ class RegisterNameViewController: UIViewController, UITextFieldDelegate {
             return
         }
         
-        Login.register(forUser: uname,
+        User.register(forUser: uname,
                        password: password, mobile: phone, code: code) {
                         [weak self] success, info in
                         SVProgressHUD.showInfo(withStatus: info)

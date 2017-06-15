@@ -82,6 +82,7 @@ let isLogin = "isLogin"
 let uid = "uid"
 let oauth_token = "oauth_token"
 let oauth_token_secret = "oauth_token_secret"
+let passwordToCheck = "passwordToCheck"
 
 let kDefaultCount = 10
 
@@ -89,10 +90,12 @@ func nyato_storeOauthData() {
     let standard = UserDefaults.standard
     
     standard.setValue("1", forKeyPath: isLogin)
+    
     standard.setValue(User.shared.uid, forKeyPath: uid)
     standard.setValue(User.shared.oauth_token, forKeyPath: oauth_token)
     standard.setValue(User.shared.oauth_token_secret, forKeyPath: oauth_token_secret)
-    
+    standard.setValue(User.shared.passwordToCheck, forKeyPath: passwordToCheck)
+
     UserDefaults.standard.synchronize()
 }
 
@@ -103,7 +106,8 @@ func nyato_cleanStoredOauthData() {
     standard.setValue(nil, forKey: uid)
     standard.setValue(nil, forKey: oauth_token)
     standard.setValue(nil, forKey: oauth_token_secret)
-    
+    standard.setValue(nil, forKey: passwordToCheck)
+
     standard.synchronize()
 }
 
@@ -113,10 +117,12 @@ private func getStoredOauthData() {
     let stored_uid = standard.value(forKey: uid) as! String
     let stored_oauth_token = standard.value(forKey: oauth_token) as! String
     let stored_oauth_token_secret = standard.value(forKey: oauth_token_secret) as! String
-    
+    let passwordCheck = standard.value(forKey: passwordToCheck) as! String
+
     User.shared.uid = stored_uid
     User.shared.oauth_token = stored_oauth_token
     User.shared.oauth_token_secret = stored_oauth_token_secret
+    User.shared.passwordToCheck = passwordCheck
 }
 
 func nyato_isPhoneNumber(phoneNumber:String?) -> (result: Bool, info: String?) {

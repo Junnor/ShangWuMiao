@@ -29,13 +29,13 @@ let nyatoMcoinsChange = Notification.Name("nyatoMcoinsChange")
 struct RequestURL {
     
     // 注册喵特账号绑定第三方（比如微信，微博， QQ）
-    static let kThirdPartyCreateNyato = "/index.php?app=ios&mod=Member&act=other_login"
+    static let kThirdPartyCreateNyatoUrlString = "/index.php?app=ios&mod=Member&act=other_login"
     
     // 第三方账号绑定已有的喵特账户
-    static let kBindNyato = "/index.php?app=ios&mod=Member&act=bind_user"
+    static let kBindNyatoUrlString = "/index.php?app=ios&mod=Member&act=bind_user"
     
     // 第三方登录绑定判断
-    static let kThirdPartyBindCheck = "/index.php?app=ios&mod=Member&act=is_bind"
+    static let kThirdPartyBindCheckUrlString = "/index.php?app=ios&mod=Member&act=is_bind"
     
     // 获取验证码
     static let kCodeUrlString = "/index.php?app=ios&mod=Member&act=sendPhoneCode"
@@ -57,6 +57,9 @@ struct RequestURL {
     
     // 用户反馈
     static let kFeedbackUrlString = "/index.php?app=ios&mod=Index&act=report"
+    
+    // 用户检测
+    static let kUserCheckUrlString = "/index.php?app=ios&mod=Member&act=userCheck"
     
     // 用户充值
     static let kRechargeUrlString = "/index.php?app=ios&mod=PayInfo&act=rechargeMb"
@@ -116,6 +119,9 @@ struct ActType {
     
     // 用户反馈
     static let report = "report"
+    
+    // 用户检测
+    static let user_check = "userCheck"
     
     // 用户充值
     static let rechargeMb = "rechargeMb"

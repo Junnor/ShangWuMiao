@@ -84,6 +84,8 @@
 		67DB543D1EEFCDEB004243EA /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DB543B1EEFCDEB004243EA /* ShareViewController.swift */; };
 		67DB543E1EEFCDEB004243EA /* ShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67DB543C1EEFCDEB004243EA /* ShareViewController.xib */; };
 		67DB547E1EEFF08A004243EA /* ExhibitionDetailViewController+Share.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DB547D1EEFF08A004243EA /* ExhibitionDetailViewController+Share.swift */; };
+		67F4B1AC1EF22BA8003EEB44 /* User+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F4B1AB1EF22BA8003EEB44 /* User+Register.swift */; };
+		67F4B1AE1EF22C18003EEB44 /* User+ThirdParty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F4B1AD1EF22C18003EEB44 /* User+ThirdParty.swift */; };
 		67FD72DD1EE791CC00C3DED6 /* libUPAPayPlugin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 67FD72DC1EE791CC00C3DED6 /* libUPAPayPlugin.a */; };
 		67FD72DF1EE7920C00C3DED6 /* PassKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67FD72DE1EE7920C00C3DED6 /* PassKit.framework */; };
 		8B0352741ECEB95E00E46DEE /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8B0352181ECEB95E00E46DEE /* AlipaySDK.bundle */; };
@@ -116,7 +118,6 @@
 		8B24D3341ED2D07E00911340 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B24D32F1ED2D07E00911340 /* libWeChatSDK.a */; };
 		8B24D3371ED2D0BF00911340 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B24D3361ED2D0BF00911340 /* libsqlite3.0.tbd */; };
 		8B4753021ECE7E6400EDD02A /* UserPay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4753011ECE7E6400EDD02A /* UserPay.swift */; };
-		8B7F119E1ED413B300F503CE /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7F119D1ED413B300F503CE /* Login.swift */; };
 		8B84EAD51EC54720001B1BFF /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B84EAD41EC54720001B1BFF /* Ticket.swift */; };
 		8B84EB021EC587FB001B1BFF /* TopupList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B84EB011EC587FB001B1BFF /* TopupList.swift */; };
 		8B96043A1ED3D98E001AFC0F /* CornerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9604391ED3D98E001AFC0F /* CornerView.swift */; };
@@ -260,6 +261,8 @@
 		67DB543B1EEFCDEB004243EA /* ShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		67DB543C1EEFCDEB004243EA /* ShareViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareViewController.xib; sourceTree = "<group>"; };
 		67DB547D1EEFF08A004243EA /* ExhibitionDetailViewController+Share.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ExhibitionDetailViewController+Share.swift"; sourceTree = "<group>"; };
+		67F4B1AB1EF22BA8003EEB44 /* User+Register.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+Register.swift"; sourceTree = "<group>"; };
+		67F4B1AD1EF22C18003EEB44 /* User+ThirdParty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+ThirdParty.swift"; sourceTree = "<group>"; };
 		67FD72D91EE791CC00C3DED6 /* UPAPayPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPAPayPlugin.h; sourceTree = "<group>"; };
 		67FD72DA1EE791CC00C3DED6 /* UPAPayPluginDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPAPayPluginDelegate.h; sourceTree = "<group>"; };
 		67FD72DC1EE791CC00C3DED6 /* libUPAPayPlugin.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUPAPayPlugin.a; sourceTree = "<group>"; };
@@ -377,7 +380,6 @@
 		8B24D3331ED2D07E00911340 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 		8B24D3361ED2D0BF00911340 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		8B4753011ECE7E6400EDD02A /* UserPay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPay.swift; sourceTree = "<group>"; };
-		8B7F119D1ED413B300F503CE /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		8B84EAD41EC54720001B1BFF /* Ticket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
 		8B84EB011EC587FB001B1BFF /* TopupList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopupList.swift; sourceTree = "<group>"; };
 		8B9604391ED3D98E001AFC0F /* CornerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CornerView.swift; sourceTree = "<group>"; };
@@ -765,10 +767,10 @@
 		67DB542C1EEFCDBA004243EA /* Me */ = {
 			isa = PBXGroup;
 			children = (
+				67DB54301EEFCDBA004243EA /* MeViewController.swift */,
 				67DB542D1EEFCDBA004243EA /* CommisionSoldViewController.swift */,
 				67DB542E1EEFCDBA004243EA /* ExhibitionTicketTableViewController.swift */,
 				67DB542F1EEFCDBA004243EA /* FeedbackViewController.swift */,
-				67DB54301EEFCDBA004243EA /* MeViewController.swift */,
 				67DB54311EEFCDBA004243EA /* SoldTicketViewController.swift */,
 				67DB54321EEFCDBA004243EA /* TopupRecordViewController.swift */,
 				67DB54331EEFCDBA004243EA /* TopupViewController.swift */,
@@ -970,8 +972,9 @@
 		8B7A48D51EC0103E00276058 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				8B7F119D1ED413B300F503CE /* Login.swift */,
 				8BE380181EC2EA37001A6651 /* User.swift */,
+				67F4B1AB1EF22BA8003EEB44 /* User+Register.swift */,
+				67F4B1AD1EF22C18003EEB44 /* User+ThirdParty.swift */,
 				8B4753011ECE7E6400EDD02A /* UserPay.swift */,
 				8BF6E7551EC3092B004FE5BB /* Exhibition.swift */,
 				8B84EAD41EC54720001B1BFF /* Ticket.swift */,
@@ -1258,7 +1261,6 @@
 				8B96043A1ED3D98E001AFC0F /* CornerView.swift in Sources */,
 				8BE380111EC2A38A001A6651 /* TopupRecordCell.swift in Sources */,
 				8BE380151EC2A887001A6651 /* BoughtTicketCell.swift in Sources */,
-				8B7F119E1ED413B300F503CE /* Login.swift in Sources */,
 				8BE380131EC2A757001A6651 /* TopupCell.swift in Sources */,
 				67DB54231EEFCDA9004243EA /* RegisterNameViewController.swift in Sources */,
 				67DB547E1EEFF08A004243EA /* ExhibitionDetailViewController+Share.swift in Sources */,
@@ -1275,6 +1277,7 @@
 				67DB543D1EEFCDEB004243EA /* ShareViewController.swift in Sources */,
 				67DB54351EEFCDBA004243EA /* ExhibitionTicketTableViewController.swift in Sources */,
 				8B0E1A761ECD42310017F11C /* ExAddressCell.swift in Sources */,
+				67F4B1AE1EF22C18003EEB44 /* User+ThirdParty.swift in Sources */,
 				8B03527A1ECEB95E00E46DEE /* openssl_wrapper.m in Sources */,
 				67DB54241EEFCDA9004243EA /* RegisterTelViewController.swift in Sources */,
 				67AF73CA1EF13E740068B349 /* LoginViewController+ThirdParty.swift in Sources */,
@@ -1300,6 +1303,7 @@
 				67DB542A1EEFCDB4004243EA /* ExhibitionViewController.swift in Sources */,
 				8BCE2BB11ECC375200ACA1BB /* ExInputHintCell.swift in Sources */,
 				8B4753021ECE7E6400EDD02A /* UserPay.swift in Sources */,
+				67F4B1AC1EF22BA8003EEB44 /* User+Register.swift in Sources */,
 				67DB54381EEFCDBA004243EA /* SoldTicketViewController.swift in Sources */,
 				673BD5F01EEE8D92005A733A /* ShareCell.swift in Sources */,
 			);

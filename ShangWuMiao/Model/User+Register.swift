@@ -1,20 +1,17 @@
 //
-//  Login.swift
+//  User+Register.swift
 //  ShangWuMiao
 //
-//  Created by Ju on 2017/5/23.
+//  Created by nyato喵特 on 2017/6/15.
 //  Copyright © 2017年 moelove. All rights reserved.
 //
 
-import UIKit
+import Foundation
 import Alamofire
 import SwiftyJSON
 
-class Login: NSObject {
-    
-}
 
-extension Login {
+extension User {
     
     // MARK: - 获取验证码
     static func requestPhoneCode(for phone: String, callback: @escaping (_ status: Bool, _ info: String) -> ()) {
@@ -25,14 +22,14 @@ extension Login {
         let result = value1 + value2 + value3
         let codeString = String(result) + "nyato"
         let phoneCode = codeString.md5!
-
+        
         let codeSecret = kSecretKey + ActType.sendPhoneCode
         let token = codeSecret.md5
         let loginUrlString = kHeaderUrl + RequestURL.kCodeUrlString + "&token=" + token!
         let url = URL(string: loginUrlString)
-
+        
         let parameter = ["mobile": phone, "code": phoneCode, "type": "reg"]
-
+        
         Alamofire.request(url!,
                           method: .post,
                           parameters: parameter,
@@ -64,10 +61,8 @@ extension Login {
                          "mobile": mobile,
                          "code": code]
         
-        print("...register parameter: \(parameter)")
-        
         let url = URL(string: loginUrlString)
-
+        
         Alamofire.request(url!,
                           method: .post,
                           parameters: parameter,

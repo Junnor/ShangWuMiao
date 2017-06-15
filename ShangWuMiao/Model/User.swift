@@ -27,6 +27,9 @@ final class User {
     // 用户加密信息
     var oauth_token_secret = String()
     
+    // 用户验证密码
+    var passwordToCheck = ""
+
     /*
      1: 男
      2: 女
@@ -58,7 +61,6 @@ final class User {
     var bindType = "nyato"
     var bindToken = ""
     var bindUid = ""
-    var tmpPassword = ""
     
     // MARK: - clean after sign out
     func clean() {
@@ -73,6 +75,19 @@ final class User {
         
         nyato_cleanStoredOauthData()
     }
+    
+    // MARK: - unregister the third party
+    func unregisterForThirdParty() {
+        if ShareSDK.hasAuthorized(.typeSinaWeibo) {
+            ShareSDK.cancelAuthorize(.typeSinaWeibo)
+        }
+        if ShareSDK.hasAuthorized(.typeQQ) {
+            ShareSDK.cancelAuthorize(.typeQQ)
+        }
+        if ShareSDK.hasAuthorized(.typeWechat) {
+            ShareSDK.cancelAuthorize(.typeWechat)
+        }
+    }
 }
 
 struct Vendor {
@@ -84,99 +99,42 @@ struct Vendor {
 
 extension User {
     
-    // MARK: - Create nyato account with third party
-    
-    // MARK: - Bind third party with nyato acoount
-    static func bindNaytoWithThirdPartyAccount(_ account: String, password: String, completionHander: @escaping (_ success: Bool, _ info: String?) -> ()) {
-        let stringParas = stringBindThirdPartyParameters(actTo: ActType.bindNyato)
-        let urlString = kHeaderUrl + RequestURL.kBindNyato + stringParas
+
+    // MARK: - User check
+    static func userCheck(_ completionHandler: @escaping (_ isUserValid: Bool, _ info: String) -> ()) {
         
-        let app_time = String(NSDate().timeIntervalSince1970*1000).components(separatedBy: ".").first!
-        let au = app_time.md5!
+        let stringPara = stringParameters(actTo: ActType.user_check)
+        let userinfoString = kHeaderUrl + RequestURL.kUserCheckUrlString + stringPara
+        let url = URL(string: userinfoString)
         
-        let paras = ["email": account,
-                     "password": password,
-                     "other_type": User.shared.bindType,
-                     "type_uid": User.shared.bindUid,
-                     "oauth_token": au]
+        let parameters = ["uid": NSString(string: User.shared.uid).integerValue,
+                          "password": User.shared.passwordToCheck] as [String : Any]
         
-        let url = URL(string: urlString)!
-        
-        Alamofire.request(url,
+        Alamofire.request(url!,
                           method: .post,
-                          parameters: paras,
-                          encoding: URLEncoding.default,
-                          headers: nil).responseJSON { (response) in
-                            
-                            switch response.result {
-                            case .success(let jsonResponse):
-                                let json = JSON(jsonResponse)
-                                print("bind nyato json = \(json)")
-                                let status = json["status"].intValue
-                                if status == 100 {
-                                    // TODO: - parse .......
-                                    let data = json["data"]
-                                    let uid = data["uid"].stringValue
-                                    let oauth_token = data["oauth_token"].stringValue
-                                    let oauth_token_secret = data["oauth_token_secret"].stringValue
-                                    User.shared.uid = uid
-                                    User.shared.oauth_token = oauth_token
-                                    User.shared.oauth_token_secret = oauth_token_secret
-                                    
-                                    completionHander(true, nil)
-                                } else {
-                                    let info = json["info"].stringValue
-                                    completionHander(false, info)
-                                }
-                                
-                            case .failure(let error):
-                                print("bind nyato error: \(error)")
-                            }
-        }
-    }
-    
-    // MARK: - Login with third party
-    // if binded aready, then login directory, otherwise, let user to bind the account
-    static func hadBindThirdParty(for type: String, completionHandler: @escaping (_ binded: Bool) -> ()) {
-        
-        let stringParas = stringBindThirdPartyParameters(actTo: ActType.thirdParty_BindCheck)
-        let urlString = kHeaderUrl + RequestURL.kThirdPartyBindCheck + stringParas
-        let url = URL(string: urlString)!
-        let paras = ["other_type": type,
-                     "type_uid": User.shared.bindUid]
-        
-        Alamofire.request(url,
-                          method: .post,
-                          parameters: paras,
+                          parameters: parameters,
                           encoding: URLEncoding.default,
                           headers: nil).responseJSON { (response) in
                             switch response.result {
                             case .success(let jsonResponse):
+                                /* status
+                                 0: 正常
+                                 1: 密码变动
+                                 2: 被禁用
+                                 3: 被删除
+                                 4: 缓存清理
+                                 5: token加密失效
+                                 >0: 退出用户
+                                 */
                                 let json = JSON(jsonResponse)
-                                print("third party json = \(json)")
+                                print("user check json: \(json)")
+
                                 let status = json["status"].intValue
-                                if status == 0 {
-                                    completionHandler(false)
-                                } else {
-                                    let data = json["data"]
-                                    
-                                    let uid = data["uid"].stringValue
-                                    let oauth_token = data["oauth_token"].stringValue
-                                    let oauth_token_secret = data["oauth_token_secret"].stringValue
-                                    let passworld = data["password"].stringValue
-                                    
-                                    User.shared.uid = uid
-                                    User.shared.oauth_token = oauth_token
-                                    User.shared.oauth_token_secret = oauth_token_secret
-                                    User.shared.tmpPassword = passworld
-                                    
-                                    UserDefaults.standard.setValue(passworld, forKey: "TmpPassword")
-                                    
-                                    completionHandler(true)
-                                }
+                                let info = json["info"].stringValue
+                                completionHandler(status == 0, info)
                             case .failure(let error):
-                                completionHandler(false)
-                                print("bind error: \(error)")
+                                completionHandler(false, "请求数据失败")
+                                print("user check error: \(error)")
                             }
         }
     }
@@ -197,7 +155,8 @@ extension User {
                             switch response.result {
                             case .success(let jsonResponse):
                                 let json = JSON(jsonResponse)
-                                //                                print("login json = \(json)")
+                                
+//                                print("login json = \(json)")
                                 let info = json["info"].stringValue
                                 let status = json["status"].intValue
                                 if status == 1 {
@@ -205,9 +164,12 @@ extension User {
                                     let uid = data["uid"].stringValue
                                     let oauth_token = data["oauth_token"].stringValue
                                     let oauth_token_secret = data["oauth_token_secret"].stringValue
+                                    let passwordToCheck = data["password"].stringValue
+                                    
                                     User.shared.uid = uid
                                     User.shared.oauth_token = oauth_token
                                     User.shared.oauth_token_secret = oauth_token_secret
+                                    User.shared.passwordToCheck = passwordToCheck
                                 }
                                 completionHandler(status == 1, info)
                             case .failure(let error):
