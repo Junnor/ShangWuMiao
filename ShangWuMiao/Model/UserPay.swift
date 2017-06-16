@@ -46,13 +46,14 @@ extension UserPay {
     static func pay(withType payType: Pay, orderPrice: Float, completionHandler: @escaping (Bool, String?) -> ()) {
         UserPay.shared.orderPrice = orderPrice
         
-        let stringPara = stringParameters(actTo: ActType.rechargeMb)
-        let userinfoString = kHeaderUrl + RequestURL.kRechargeUrlString + stringPara
+        let stringPara = stringParameters(actTo: ActType.rechargeMb.rawValue)
+        let userinfoString = kHeaderUrl + RequestUrlStringType.recharge.rawValue + stringPara
         
         let url = URL(string: userinfoString)
         let parameters = ["uid": NSString(string: User.shared.uid).integerValue,
                           "order_price": orderPrice,
                           "pay_type": payType.rawValue] as [String : Any]
+        
         Alamofire.request(url!,
                           method: .post,
                           parameters: parameters,
@@ -109,8 +110,8 @@ extension UserPay {
     }
     
     static func payResult(tradeStatus status: Int, callback completionHandler: @escaping (Bool, String?) -> ()) {
-        let stringPara = stringParameters(actTo: ActType.recharge_back)
-        let userinfoString = kHeaderUrl + RequestURL.kRechargeBackUrlString + stringPara
+        let stringPara = stringParameters(actTo: ActType.recharge_back.rawValue)
+        let userinfoString = kHeaderUrl + RequestUrlStringType.rechargeCallback.rawValue + stringPara
         
         let url = URL(string: userinfoString)
         let parameters = ["uid": NSString(string: User.shared.uid).integerValue,

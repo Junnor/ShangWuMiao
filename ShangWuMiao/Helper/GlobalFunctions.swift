@@ -10,8 +10,40 @@ import Foundation
 
 // MARK: - 未登录情况的通过参数获取的URL
 
-func nyato_url(for act: String) -> URL? {
-    return nil
+func nonSignInUrl(forUrlType urlStringType: RequestUrlStringType, actType: ActType) -> URL? {
+    let secret = kSecretKey + actType.rawValue
+    let token = secret.md5
+    let urlString = kHeaderUrl + urlStringType.rawValue + "&token=" + token!
+    
+    /*
+    let loginSecret = kSecretKey + ActType.login.rawValue
+    let token = loginSecret.md5
+    let loginUrlString = kHeaderUrl + RequestUrlStringType.login.rawValue + "&token=" + token!
+    */
+    
+    guard let url = URL(string: urlString) else {
+        print("=====Warning: invalid url with urlStringType: \(urlStringType), actType: \(actType)")
+        return nil
+    }
+    
+    return url
+}
+
+// MARK: - 已经登录情况的通过参数获取的URL
+
+func signedInUrl(for urlStringType: RequestUrlStringType, actType: ActType) -> URL? {
+    // TODO: ... replace
+    let secret = kSecretKey + actType.rawValue
+    let token = secret.md5
+    let urlString = kHeaderUrl + urlStringType.rawValue + "&token=" + token!
+    
+    
+    guard let url = URL(string: urlString) else {
+        print("=====Warning: invalid url with urlStringType: \(urlStringType), actType: \(actType)")
+        return nil
+    }
+    
+    return url
 }
 
 // MARK: - 加密相关

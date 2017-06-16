@@ -55,8 +55,8 @@ class Ticket: NSObject {
 
 extension Ticket {
     static func mesageSendWithOrderId(id: String, completionHandler: @escaping (Bool, String) -> ()) {
-        let stringPara = stringParameters(actTo: ActType.sendTicketSms)
-        let userinfoString = kHeaderUrl + RequestURL.kTicketMsSendUrlString + stringPara
+        let stringPara = stringParameters(actTo: ActType.sendTicketSms.rawValue)
+        let userinfoString = kHeaderUrl + RequestUrlStringType.ticketMsSend.rawValue + stringPara
         
         let url = URL(string: userinfoString)
         let parameters = ["uid": NSString(string: User.shared.uid).integerValue,
@@ -85,8 +85,8 @@ extension Ticket {
     func requestTickets(forExhibitionId exhibitionId: String, loadMore more: Bool, completionHandler: @escaping (Bool, String?, [Ticket]) -> ()) {
         ticketPage = more ? ticketPage + 1 : 1
         
-        let stringPara = stringParameters(actTo: ActType.sale_logs)
-        let userinfoString = kHeaderUrl + RequestURL.kTicketsUrlString + stringPara
+        let stringPara = stringParameters(actTo: ActType.sale_logs.rawValue)
+        let userinfoString = kHeaderUrl + RequestUrlStringType.soldTicktsInExhibition.rawValue + stringPara
         
         let url = URL(string: userinfoString)
         let parameters = ["uid": NSString(string: User.shared.uid).integerValue,

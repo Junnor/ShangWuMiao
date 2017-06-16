@@ -101,13 +101,41 @@ struct Vendor {
 }
 
 extension User {
-    
+    // MARK: - Login
+    static func login(parameters: Dictionary<String, String>,
+                      completionHandler: @escaping (_ success: Bool, _ info: String) -> ()) {
+        let url = nonSignInUrl(forUrlType: .login, actType: .login)
+        Alamofire.request(url!,
+                          method: .post,
+                          parameters: parameters,
+                          encoding: URLEncoding.default, headers: nil).responseJSON {
+                            response in
+                            switch response.result {
+                            case .success(let jsonResponse):
+                                let json = JSON(jsonResponse)
+                                
+                                //                                print("login json = \(json)")
+                                let info = json["info"].stringValue
+                                let status = json["status"].intValue
+                                if status == 1 {
+                                    
+                                    User.parseUserData(with: json)
+                                }
+                                completionHandler(status == 1, info)
+                            case .failure(let error):
+                                completionHandler(false, "登陆错误")
+                                print("login error = \(error)")
+                            }
+                            
+        }
+        
+    }
 
     // MARK: - User check
     static func userCheck(_ completionHandler: @escaping (_ isUserValid: Bool, _ info: String) -> ()) {
         
-        let stringPara = stringParameters(actTo: ActType.user_check)
-        let userinfoString = kHeaderUrl + RequestURL.kUserCheckUrlString + stringPara
+        let stringPara = stringParameters(actTo: ActType.user_check.rawValue)
+        let userinfoString = kHeaderUrl + RequestUrlStringType.userCheck.rawValue + stringPara
         let url = URL(string: userinfoString)
         
         let parameters = ["uid": NSString(string: User.shared.uid).integerValue,
@@ -142,44 +170,10 @@ extension User {
         }
     }
     
-    // MARK: - Login
-    static func login(parameters: Dictionary<String, String>,
-                      completionHandler: @escaping (_ success: Bool, _ info: String) -> ()) {
-        let loginSecret = kSecretKey + ActType.login
-        let token = loginSecret.md5
-        let loginUrlString = kHeaderUrl + RequestURL.kLoginUrlString + "&token=" + token!
-        
-        let url = URL(string: loginUrlString)
-        Alamofire.request(url!,
-                          method: .post,
-                          parameters: parameters,
-                          encoding: URLEncoding.default, headers: nil).responseJSON {
-                            response in
-                            switch response.result {
-                            case .success(let jsonResponse):
-                                let json = JSON(jsonResponse)
-                                
-//                                print("login json = \(json)")
-                                let info = json["info"].stringValue
-                                let status = json["status"].intValue
-                                if status == 1 {
-                                    
-                                    User.parseUserData(with: json)
-                                }
-                                completionHandler(status == 1, info)
-                            case .failure(let error):
-                                completionHandler(false, "登陆错误")
-                                print("login error = \(error)")
-                            }
-                            
-        }
-        
-    }
-    
     // MARK: - Buy tickt
     static func buyTickt(ticktId id: Int, counts: Int, phone: String, price: Float, callBack: @escaping (Bool, String) -> ()) {
-        let stringPara = stringParameters(actTo: ActType.buyTicket)
-        let userinfoString = kHeaderUrl + RequestURL.kBuyTicktUrlString + stringPara
+        let stringPara = stringParameters(actTo: ActType.buyTicket.rawValue)
+        let userinfoString = kHeaderUrl + RequestUrlStringType.buyTickt.rawValue + stringPara
         let url = URL(string: userinfoString)
         
         let parameters = ["uid": NSString(string: User.shared.uid).integerValue,
@@ -207,8 +201,8 @@ extension User {
     
     // MARK: - User info
     static func requestUserInfo(completionHandler: @escaping (Bool, String?) -> ()) {
-        let stringPara = stringParameters(actTo: ActType.getuinfo)
-        let userinfoString = kHeaderUrl + RequestURL.kUserInfoUrlString + stringPara
+        let stringPara = stringParameters(actTo: ActType.getuinfo.rawValue)
+        let userinfoString = kHeaderUrl + RequestUrlStringType.userInfo.rawValue + stringPara
         let url = URL(string: userinfoString)
         
         let parameters = ["uid": NSString(string: User.shared.uid).integerValue]
@@ -260,8 +254,8 @@ extension User {
     
     // MARK: - Feedback
     static func feedbackWithContent(contentText text: String, completionHandler: @escaping (Bool, String) -> ()) {
-        let stringPara = stringParameters(actTo: ActType.report)
-        let userinfoString = kHeaderUrl + RequestURL.kFeedbackUrlString + stringPara
+        let stringPara = stringParameters(actTo: ActType.report.rawValue)
+        let userinfoString = kHeaderUrl + RequestUrlStringType.feedback.rawValue + stringPara
         let url = URL(string: userinfoString)
         
         func deviceParameters() -> String {

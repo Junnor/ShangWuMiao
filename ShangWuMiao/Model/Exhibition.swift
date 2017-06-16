@@ -113,8 +113,8 @@ extension Exhibition {
 extension Exhibition {
     
     func requestExhibitionListTickets(completionHandle: @escaping (Bool, String?, [Ticket]) -> ()) {
-        let stringPara = stringParameters(actTo: ActType.ticket_list)
-        let userinfoString = kHeaderUrl + RequestURL.kExhibitionTicketList + stringPara
+        let stringPara = stringParameters(actTo: ActType.ticket_list.rawValue)
+        let userinfoString = kHeaderUrl + RequestUrlStringType.exhibitionTicketList.rawValue + stringPara
         
         let url = URL(string: userinfoString)
         let parameters = ["uid": NSString(string: User.shared.uid).integerValue,
@@ -154,8 +154,8 @@ extension Exhibition {
     func requestSoldTicketForExhibitionList(loadMore more: Bool, completionHandler: @escaping (Bool, String, [Exhibition]) -> ()) {
         ticketPage = more ? ticketPage + 1 : 1
         
-        let stringPara = stringParameters(actTo: ActType.my_list)
-        let userinfoString = kHeaderUrl + RequestURL.kSoldExhibitionUrlString + stringPara
+        let stringPara = stringParameters(actTo: ActType.my_list.rawValue)
+        let userinfoString = kHeaderUrl + RequestUrlStringType.soldExhibitions.rawValue + stringPara
         
         let url = URL(string: userinfoString)
         let parameters = ["uid": NSString(string: User.shared.uid).integerValue,
@@ -209,8 +209,8 @@ extension Exhibition {
     func requestExhibitionList(withKeyword keyword:  String?, loadMore: Bool, completionHandler: @escaping (Bool, String, [Exhibition]) -> ()) {
         exhibitionPage = loadMore ? exhibitionPage + 1 : 1
         
-        let stringPara = stringParameters(actTo: ActType.ex_list)
-        let userinfoString = kHeaderUrl + RequestURL.kExhibitionUrlString + stringPara
+        let stringPara = stringParameters(actTo: ActType.ex_list.rawValue)
+        let userinfoString = kHeaderUrl + RequestUrlStringType.exhibitions.rawValue + stringPara
         
         let url = URL(string: userinfoString)
         let parameters = ["uid": NSString(string: User.shared.uid).integerValue,

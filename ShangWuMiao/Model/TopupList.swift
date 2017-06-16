@@ -41,8 +41,8 @@ class TopupList: NSObject {
 extension TopupList {
     func requestTopupList(loadMore more: Bool, completionHandler: @escaping (Bool, String?, [TopupList]) -> ()) {
         topupListPage = more ? topupListPage + 1 : 1
-        let stringPara = stringParameters(actTo: ActType.recharge_logs)
-        let userinfoString = kHeaderUrl + RequestURL.kTopupListUrlString + stringPara
+        let stringPara = stringParameters(actTo: ActType.recharge_logs.rawValue)
+        let userinfoString = kHeaderUrl + RequestUrlStringType.topupList.rawValue + stringPara
         
         let url = URL(string: userinfoString)
         let parameters = ["uid": NSString(string: User.shared.uid).integerValue,

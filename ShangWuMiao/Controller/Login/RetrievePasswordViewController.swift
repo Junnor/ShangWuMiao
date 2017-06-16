@@ -154,7 +154,7 @@ class RetrievePasswordViewController: UIViewController, UITextFieldDelegate {
             } else {
                 self.indicatorView.isHidden = false
                 self.indicatorView.startAnimating()
-                User.requestPhoneCode(for: phoneTextField.text!, type: GetCodeType.retrievePassword) {
+                User.requestPhoneCode(for: phoneTextField.text!, codeType: GetCodeType.retrievePassword) {
                     [weak self] (success, info) in
                     SVProgressHUD.showInfo(withStatus: info)
                     if success {

@@ -19,7 +19,7 @@ enum GetCodeType: String {
 extension User {
     
     // MARK: - 获取验证码
-    static func requestPhoneCode(for phone: String, type: GetCodeType, callback: @escaping (_ status: Bool, _ info: String) -> ()) {
+    static func requestPhoneCode(for phone: String, codeType: GetCodeType, callback: @escaping (_ status: Bool, _ info: String) -> ()) {
         let count = phone.characters.count
         let value1 = Int(phone[0...2])!
         let value2 = Int(phone[3..<7])!
@@ -28,12 +28,9 @@ extension User {
         let codeString = String(result) + "nyato"
         let phoneCode = codeString.md5!
         
-        let codeSecret = kSecretKey + ActType.sendPhoneCode
-        let token = codeSecret.md5
-        let loginUrlString = kHeaderUrl + RequestURL.kCodeUrlString + "&token=" + token!
-        let url = URL(string: loginUrlString)
+        let url = nonSignInUrl(forUrlType: .phoneCode, actType: .sendPhoneCode)
         
-        let parameter = ["mobile": phone, "code": phoneCode, "type": type.rawValue]
+        let parameter = ["mobile": phone, "code": phoneCode, "type": codeType.rawValue]
         
         Alamofire.request(url!,
                           method: .post,
@@ -57,16 +54,14 @@ extension User {
     
     // MARK: - 注册
     static func register(forUser user: String, password: String, mobile: String, code: String, callback: @escaping (_ status: Bool, _ info: String) -> ()) {
-        let registerSecret = kSecretKey + ActType.register
-        let token = registerSecret.md5
-        let loginUrlString = kHeaderUrl + RequestURL.kRegisterUrlString + "&token=" + token!
-        
+
+        let url = nonSignInUrl(forUrlType: .register, actType: .register)
+
         let parameter = ["uname": user,
                          "password": password,
                          "mobile": mobile,
                          "code": code]
         
-        let url = URL(string: loginUrlString)
         
         Alamofire.request(url!,
                           method: .post,

@@ -14,14 +14,17 @@ extension User {
 
     // MARK: - create nyato account with third party
     static func createNyatoAccount(_ account: String, password: String, completionHander: @escaping (_ success: Bool, _ info: String?) -> ()) {
-        let stringParas = stringBindThirdPartyParameters(actTo: ActType.thirdPartyCreateNyato)
-        let urlString = kHeaderUrl + RequestURL.kThirdPartyCreateNyatoUrlString + stringParas
-        let url = URL(string: urlString)!
+//        let stringParas = stringBindThirdPartyParameters(actTo: ActType.thirdPartyCreateNyato.rawValue)
+//        let urlString = kHeaderUrl + RequestUrlStringType.thirdPartyCreateNyato.rawValue + stringParas
+//        let url = URL(string: urlString)!
+//        
+        let url = nonSignInUrl(forUrlType: .thirdPartyCreateNyato, actType: .thirdPartyCreateNyato)
+        
         let paras = ["uname": account,
                      "password": password,
                      "other_type": User.shared.bindType,
                      "type_uid": User.shared.bindUid]
-        Alamofire.request(url,
+        Alamofire.request(url!,
                           method: .post,
                           parameters: paras,
                           encoding: URLEncoding.default,
@@ -58,9 +61,9 @@ extension User {
 
     // MARK: - Bind third party with nyato acoount
     static func bindNaytoWithThirdPartyAccount(_ account: String, password: String, completionHander: @escaping (_ success: Bool, _ info: String?) -> ()) {
-        let stringParas = stringBindThirdPartyParameters(actTo: ActType.bindNyato)
-        let urlString = kHeaderUrl + RequestURL.kBindNyatoUrlString + stringParas
-        
+
+        let url = nonSignInUrl(forUrlType: .bindNyato, actType: .bindNyato)!
+
         let app_time = String(NSDate().timeIntervalSince1970*1000).components(separatedBy: ".").first!
         let au = app_time.md5!
         
@@ -69,8 +72,6 @@ extension User {
                      "other_type": User.shared.bindType,
                      "type_uid": User.shared.bindUid,
                      "oauth_token": au]
-        
-        let url = URL(string: urlString)!
         
         Alamofire.request(url,
                           method: .post,
@@ -102,9 +103,8 @@ extension User {
     // if binded aready, then login directory, otherwise, let user to bind the account
     static func hadBindThirdParty(for type: String, completionHandler: @escaping (_ binded: Bool) -> ()) {
         
-        let stringParas = stringBindThirdPartyParameters(actTo: ActType.thirdParty_BindCheck)
-        let urlString = kHeaderUrl + RequestURL.kThirdPartyBindCheckUrlString + stringParas
-        let url = URL(string: urlString)!
+        let url = nonSignInUrl(forUrlType: .thirdPartyBindCheck, actType: .thirdPartyBindCheck)!
+        
         let paras = ["other_type": type,
                      "type_uid": User.shared.bindUid]
         

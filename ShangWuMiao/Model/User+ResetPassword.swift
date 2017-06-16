@@ -15,9 +15,9 @@ extension User {
     static func verifyCodeForRetrievePswPhone(_ phone: String,
                                               verifyCode: String,
                                               completionHandler: @escaping (_ state: Bool, _ info: String) -> ()) {
-        let secret = kSecretKey + ActType.verifyCodeForRetrievePsw
+        let secret = kSecretKey + ActType.verifyCodeForRetrievePsw.rawValue
         let token = secret.md5
-        let urlString = kHeaderUrl + RequestURL.kVerifyCodeForRetrievePswUrlString + "&token=" + token!
+        let urlString = kHeaderUrl + RequestUrlStringType.verifyCodeForRetrievePsw.rawValue + "&token=" + token!
         let url = URL(string: urlString)
         
         let parameter = ["mobile": phone,
@@ -47,9 +47,9 @@ extension User {
                               repeatPassword: String,
                               completionHandler: @escaping (_ state: Bool, _ info: String) -> ()) {
         
-        let secret = kSecretKey + ActType.retrievePasswordWithTelephone
+        let secret = kSecretKey + ActType.retrievePasswordWithTelephone.rawValue
         let token = secret.md5
-        let loginUrlString = kHeaderUrl + RequestURL.kRetrievePasswordWithTelephoneUrlString + "&token=" + token!
+        let loginUrlString = kHeaderUrl + RequestUrlStringType.retrievePasswordWithTelephone.rawValue + "&token=" + token!
         let url = URL(string: loginUrlString)
         
         let parameter = ["mobile": phoneNumber,
@@ -76,9 +76,9 @@ extension User {
     }
     
     static func retrievePasswordWithEmail(_ email: String, completionHandler: @escaping (_ state: Bool, _ info: String) -> ()) {
-        let emailSecret = kSecretKey + ActType.retrievePasswordWithEmail
+        let emailSecret = kSecretKey + ActType.retrievePasswordWithEmail.rawValue
         let token = emailSecret.md5
-        let loginUrlString = kHeaderUrl + RequestURL.kRetrievePasswordWithEmailUrlString + "&token=" + token!
+        let loginUrlString = kHeaderUrl + RequestUrlStringType.retrievePasswordWithEmail.rawValue + "&token=" + token!
         let url = URL(string: loginUrlString)
 
         let parameter = ["email": email]
