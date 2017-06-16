@@ -28,6 +28,9 @@ let nyatoMcoinsChange = Notification.Name("nyatoMcoinsChange")
 
 enum RequestUrlStringType: String {
     
+    // 绑定邮箱
+    case bindEmail = "/index.php?app=ios&mod=Member&act=bindEmail"
+
     // 设置内重设密码
     case meResetPassword = "/index.php?app=ios&mod=Member&act=mod_pw"
     
@@ -101,6 +104,9 @@ enum RequestUrlStringType: String {
 }
 
 enum ActType: String {
+    // 绑定邮箱
+    case bindEmail = "bindEmail"
+    
     // 设置内重设密码
     case meResetPassword = "mod_pw"
 

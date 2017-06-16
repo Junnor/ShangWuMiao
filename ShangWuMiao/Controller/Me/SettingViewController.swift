@@ -84,28 +84,41 @@ class SettingViewController: UITableViewController {
     
     // MARK: - Helper
     
+    private var email: String = ""
     private func bindEmail() {
+        
+        func sendBindEmailRequest() {
+            User.bindEmail(email) { (success, info) in
+                if success {
+                    SVProgressHUD.showSuccess(withStatus: info)
+                } else {
+                    SVProgressHUD.showError(withStatus: info)
+                }
+            }
+        }
+        
         let alert = UIAlertController(title: "绑定邮箱",
                                       message: "输入邮箱地址，提交即可绑定邮箱。记得打开邮箱激活绑定哦",
                                       preferredStyle: .alert)
         alert.addTextField { (textField) in
             textField.placeholder = "请输入您的邮箱"
         }
-        let ok = UIAlertAction(title: "确定绑定", style: .destructive) { (action) in
+        let ok = UIAlertAction(title: "确定绑定", style: .destructive) { [weak self] (action) in
             if let email = alert.textFields?.first?.text {
                 if email == "" {
                     SVProgressHUD.showInfo(withStatus: "邮箱为空")
                 } else {
+                    self?.email = email
                     let innerAlert = UIAlertController(title: "确认邮箱",
                                                        message: "请确认您的邮箱：\(email) 是否正确",
                         preferredStyle: .alert)
                     let ok = UIAlertAction(title: "确定绑定", style: .destructive) { (action) in
-                        // TODO: fire
+                        sendBindEmailRequest()
                     }
                     let cancel = UIAlertAction(title: "取消", style: .default, handler: nil)
                     innerAlert.addAction(cancel)
                     innerAlert.addAction(ok)
-                    self.present(innerAlert, animated: true, completion: nil)
+                    self?.present(innerAlert, animated: true, completion: nil)
                 }
             }
         }
@@ -115,4 +128,5 @@ class SettingViewController: UITableViewController {
         alert.addAction(ok)
         present(alert, animated: true, completion: nil)
     }
+    
 }

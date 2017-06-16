@@ -17,6 +17,7 @@
 		671579C31EF3C909000EB710 /* SettingSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671579C21EF3C909000EB710 /* SettingSwitchCell.swift */; };
 		671579C91EF3CBCA000EB710 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671579C81EF3CBCA000EB710 /* SettingViewController.swift */; };
 		671579CB1EF3D295000EB710 /* MeResetPswViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671579CA1EF3D295000EB710 /* MeResetPswViewController.swift */; };
+		671579CD1EF3DCAA000EB710 /* User+Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671579CC1EF3DCAA000EB710 /* User+Setting.swift */; };
 		673070BB1EE5532200CEE9DA /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673070BA1EE5532200CEE9DA /* WalletViewController.swift */; };
 		673BD5A81EEE358A005A733A /* ShareSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 673BD5571EEE358A005A733A /* ShareSDK.framework */; };
 		673BD5A91EEE358A005A733A /* ShareSDKConfigFile.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 673BD55A1EEE358A005A733A /* ShareSDKConfigFile.bundle */; };
@@ -185,6 +186,7 @@
 		671579C21EF3C909000EB710 /* SettingSwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingSwitchCell.swift; sourceTree = "<group>"; };
 		671579C81EF3CBCA000EB710 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		671579CA1EF3D295000EB710 /* MeResetPswViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeResetPswViewController.swift; sourceTree = "<group>"; };
+		671579CC1EF3DCAA000EB710 /* User+Setting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+Setting.swift"; sourceTree = "<group>"; };
 		673070BA1EE5532200CEE9DA /* WalletViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
 		673BD5571EEE358A005A733A /* ShareSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDK.framework; sourceTree = "<group>"; };
 		673BD55A1EEE358A005A733A /* ShareSDKConfigFile.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ShareSDKConfigFile.bundle; sourceTree = "<group>"; };
@@ -1004,6 +1006,7 @@
 				67F4B1AB1EF22BA8003EEB44 /* User+Register.swift */,
 				67F4B1AD1EF22C18003EEB44 /* User+ThirdParty.swift */,
 				67F7A6411EF366EF00C841F9 /* User+ResetPassword.swift */,
+				671579CC1EF3DCAA000EB710 /* User+Setting.swift */,
 				8B4753011ECE7E6400EDD02A /* UserPay.swift */,
 				8BF6E7551EC3092B004FE5BB /* Exhibition.swift */,
 				8B84EAD41EC54720001B1BFF /* Ticket.swift */,
@@ -1325,6 +1328,7 @@
 				8B84EB021EC587FB001B1BFF /* TopupList.swift in Sources */,
 				8BCE2BAD1ECC369E00ACA1BB /* ExDescriptionCell.swift in Sources */,
 				67DB54341EEFCDBA004243EA /* CommisionSoldViewController.swift in Sources */,
+				671579CD1EF3DCAA000EB710 /* User+Setting.swift in Sources */,
 				67DB54291EEFCDB4004243EA /* ExhibitionDetailViewController.swift in Sources */,
 				8BDB06901EC01DBC00F0A660 /* TabBarViewController.swift in Sources */,
 				671579C31EF3C909000EB710 /* SettingSwitchCell.swift in Sources */,
