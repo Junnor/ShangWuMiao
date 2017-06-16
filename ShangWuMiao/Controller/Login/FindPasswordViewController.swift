@@ -195,8 +195,16 @@ class FindPasswordViewController: UIViewController, UITextFieldDelegate {
     }
 
     @IBAction private func emailSubmit() {
-        // TODO: - emailSubmit
-        performSegue(withIdentifier: "resetPassword", sender: nil)
+        if let email = emailTextField.text, email != "" {
+            User.findPasswordWithEmail(email, completionHandler: { (success, info) in
+                if success {
+                    SVProgressHUD.showSuccess(withStatus: info)
+                    self.navigationController?.popViewController(animated: true)
+                } else {
+                    SVProgressHUD.showError(withStatus: info)
+                }
+            })
+        }
     }
     
     @objc private func tapAction() {

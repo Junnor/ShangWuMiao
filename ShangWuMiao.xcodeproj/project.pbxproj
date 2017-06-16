@@ -90,6 +90,7 @@
 		67F4B1B21EF26839003EEB44 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F4B1B11EF26839003EEB44 /* ResetPasswordViewController.swift */; };
 		67F4B1F01EF26FB9003EEB44 /* FindPasswordWithTelephone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67F4B1EF1EF26FB9003EEB44 /* FindPasswordWithTelephone.xib */; };
 		67F4B1F21EF26FF5003EEB44 /* FindPasswordWithEmail.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67F4B1F11EF26FF5003EEB44 /* FindPasswordWithEmail.xib */; };
+		67F7A6421EF366EF00C841F9 /* User+ResetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F7A6411EF366EF00C841F9 /* User+ResetPassword.swift */; };
 		67FD72DD1EE791CC00C3DED6 /* libUPAPayPlugin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 67FD72DC1EE791CC00C3DED6 /* libUPAPayPlugin.a */; };
 		67FD72DF1EE7920C00C3DED6 /* PassKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67FD72DE1EE7920C00C3DED6 /* PassKit.framework */; };
 		8B0352741ECEB95E00E46DEE /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8B0352181ECEB95E00E46DEE /* AlipaySDK.bundle */; };
@@ -271,6 +272,7 @@
 		67F4B1B11EF26839003EEB44 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		67F4B1EF1EF26FB9003EEB44 /* FindPasswordWithTelephone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FindPasswordWithTelephone.xib; sourceTree = "<group>"; };
 		67F4B1F11EF26FF5003EEB44 /* FindPasswordWithEmail.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FindPasswordWithEmail.xib; sourceTree = "<group>"; };
+		67F7A6411EF366EF00C841F9 /* User+ResetPassword.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+ResetPassword.swift"; sourceTree = "<group>"; };
 		67FD72D91EE791CC00C3DED6 /* UPAPayPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPAPayPlugin.h; sourceTree = "<group>"; };
 		67FD72DA1EE791CC00C3DED6 /* UPAPayPluginDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPAPayPluginDelegate.h; sourceTree = "<group>"; };
 		67FD72DC1EE791CC00C3DED6 /* libUPAPayPlugin.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUPAPayPlugin.a; sourceTree = "<group>"; };
@@ -985,6 +987,7 @@
 				8BE380181EC2EA37001A6651 /* User.swift */,
 				67F4B1AB1EF22BA8003EEB44 /* User+Register.swift */,
 				67F4B1AD1EF22C18003EEB44 /* User+ThirdParty.swift */,
+				67F7A6411EF366EF00C841F9 /* User+ResetPassword.swift */,
 				8B4753011ECE7E6400EDD02A /* UserPay.swift */,
 				8BF6E7551EC3092B004FE5BB /* Exhibition.swift */,
 				8B84EAD41EC54720001B1BFF /* Ticket.swift */,
@@ -1299,6 +1302,7 @@
 				8BCE2BB91ECC3F9500ACA1BB /* ExFooterView.swift in Sources */,
 				8B05263C1ECF002A0090F11B /* ExBlurView.swift in Sources */,
 				8BDB06B01EC03C2F00F0A660 /* ComicViewCell.swift in Sources */,
+				67F7A6421EF366EF00C841F9 /* User+ResetPassword.swift in Sources */,
 				8B84EAD51EC54720001B1BFF /* Ticket.swift in Sources */,
 				8B84EB021EC587FB001B1BFF /* TopupList.swift in Sources */,
 				8BCE2BAD1ECC369E00ACA1BB /* ExDescriptionCell.swift in Sources */,

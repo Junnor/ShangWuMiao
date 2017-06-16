@@ -28,6 +28,9 @@ let nyatoMcoinsChange = Notification.Name("nyatoMcoinsChange")
 
 struct RequestURL {
     
+    // 邮箱找回密码
+    static let kFindPasswordWithEmailUrlString = "/index.php?app=ios&mod=Member&act=forgot_pwd"
+    
     // 通过第三方平台（比如微信，微博， QQ） 注册喵特账号
     static let kThirdPartyCreateNyatoUrlString = "/index.php?app=ios&mod=Member&act=other_login"
     
@@ -89,6 +92,9 @@ struct RequestURL {
 }
 
 struct ActType {
+    
+    // 邮箱找回密码
+    static let findPasswordWithEmail = "forgot_pwd"
     
     // 通过第三方平台（比如微信，微博， QQ） 注册喵特账号
     static let thirdPartyCreateNyato = "other_login"
