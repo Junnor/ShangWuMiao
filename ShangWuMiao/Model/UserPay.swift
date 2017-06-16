@@ -46,10 +46,8 @@ extension UserPay {
     static func pay(withType payType: Pay, orderPrice: Float, completionHandler: @escaping (Bool, String?) -> ()) {
         UserPay.shared.orderPrice = orderPrice
         
-        let stringPara = stringParameters(actTo: ActType.rechargeMb.rawValue)
-        let userinfoString = kHeaderUrl + RequestUrlStringType.recharge.rawValue + stringPara
+        let url = signedInUrl(forUrlType: .recharge, actType: .rechargeMb)
         
-        let url = URL(string: userinfoString)
         let parameters = ["uid": NSString(string: User.shared.uid).integerValue,
                           "order_price": orderPrice,
                           "pay_type": payType.rawValue] as [String : Any]
@@ -110,10 +108,9 @@ extension UserPay {
     }
     
     static func payResult(tradeStatus status: Int, callback completionHandler: @escaping (Bool, String?) -> ()) {
-        let stringPara = stringParameters(actTo: ActType.recharge_back.rawValue)
-        let userinfoString = kHeaderUrl + RequestUrlStringType.rechargeCallback.rawValue + stringPara
+
+        let url = signedInUrl(forUrlType: .rechargeCallback, actType: .recharge_back)
         
-        let url = URL(string: userinfoString)
         let parameters = ["uid": NSString(string: User.shared.uid).integerValue,
                           "order_price": UserPay.shared.orderPrice,
                           "out_trade_no": UserPay.shared.order_id,

@@ -11,12 +11,13 @@ import Foundation
 // MARK: - 未登录情况的通过参数获取的URL
 
 func nonSignInUrl(forUrlType urlStringType: RequestUrlStringType, actType: ActType) -> URL? {
+    
     let secret = kSecretKey + actType.rawValue
     let token = secret.md5
     let urlString = kHeaderUrl + urlStringType.rawValue + "&token=" + token!
     
     guard let url = URL(string: urlString) else {
-        print("=====Warning: invalid url with urlStringType: \(urlStringType), actType: \(actType)")
+        print("=====Warning: non sign in, invalid url with urlStringType: \(urlStringType), actType: \(actType)")
         return nil
     }
     
@@ -25,15 +26,36 @@ func nonSignInUrl(forUrlType urlStringType: RequestUrlStringType, actType: ActTy
 
 // MARK: - 已经登录情况的通过参数获取的URL
 
-func signedInUrl(for urlStringType: RequestUrlStringType, actType: ActType) -> URL? {
-    // TODO: ... replace
-    let secret = kSecretKey + actType.rawValue
-    let token = secret.md5
-    let urlString = kHeaderUrl + urlStringType.rawValue + "&token=" + token!
+func signedInUrl(forUrlType urlStringType: RequestUrlStringType, actType: ActType) -> URL? {
     
+    func stringParameters(actTo act: String) -> String {
+        let oauth_para = stringOauthParameters()
+        
+        let userinfoSecret = kSecretKey + act
+        let token = userinfoSecret.md5
+        let app_time = String(NSDate().timeIntervalSince1970*1000).components(separatedBy: ".").first!
+        let app_device = UIDevice.current.identifierForVendor?.uuidString ?? "0"
+        
+        let sort = [app_device, app_time, token!, User.shared.uid]
+        let sorted = sort.sorted { $0 < $1 }
+        let appsignSecret = sorted.joined(separator: "&")
+        let app_sign = appsignSecret.md5
+        
+        let app_time_para = "&app_time=" + app_time
+        let app_device_para = "&app_device=" + app_device
+        let token_para = "&token=" + token!
+        let app_sign_para = "&app_sign=" + app_sign!
+        
+        let version = "&version=" + kAppVersion
+        
+        return token_para + oauth_para + app_time_para + app_device_para + app_sign_para + version
+    }
+
+    let stringPara = stringParameters(actTo: actType.rawValue)
+    let urlString = kHeaderUrl + urlStringType.rawValue + stringPara
     
     guard let url = URL(string: urlString) else {
-        print("=====Warning: invalid url with urlStringType: \(urlStringType), actType: \(actType)")
+        print("=====Warning: signed in, invalid url with urlStringType: \(urlStringType), actType: \(actType)")
         return nil
     }
     
@@ -66,60 +88,6 @@ func stringOauthParameters() -> String {
     let oauth_token_secret_para = "&oauth_token_secret=" + User.shared.oauth_token_secret
     
     return uid_para + oauth_token_para + oauth_token_secret_para
-}
-
-// MARK: - 登陆后的一系列需要参数
-func stringParameters(actTo act: String) -> String {
-    let oauth_para = stringOauthParameters()
-    
-    let userinfoSecret = kSecretKey + act
-    let token = userinfoSecret.md5
-    let app_time = String(NSDate().timeIntervalSince1970*1000).components(separatedBy: ".").first!
-    let app_device = UIDevice.current.identifierForVendor?.uuidString ?? "0"
-    
-    let sort = [app_device, app_time, token!, User.shared.uid]
-    let sorted = sort.sorted { $0 < $1 }
-    let appsignSecret = sorted.joined(separator: "&")
-    let app_sign = appsignSecret.md5
-    
-    let app_time_para = "&app_time=" + app_time
-    let app_device_para = "&app_device=" + app_device
-    let token_para = "&token=" + token!
-    let app_sign_para = "&app_sign=" + app_sign!
-    
-    let version = "&version=" + kAppVersion
-    
-    return token_para + oauth_para + app_time_para + app_device_para + app_sign_para + version
-}
-
-// MARK: - 第三方登录绑定的参数
-func stringBindThirdPartyParameters(actTo act: String) -> String {
-    
-    let app_time = String(NSDate().timeIntervalSince1970*1000).components(separatedBy: ".").first!
-    
-    let uid_para = "&uid=" + ""
-    let oauth_token_para = "&oauth_token=" + app_time.md5
-    let oauth_token_secret_para = "&oauth_token_secret=" + kAppVersion.md5
-    
-    let oauth_para = uid_para + oauth_token_para + oauth_token_secret_para
-    
-    let userinfoSecret = kSecretKey + act
-    let token = userinfoSecret.md5
-    let app_device = UIDevice.current.identifierForVendor?.uuidString ?? "0"
-    
-    let sort = [app_device, app_time, token!, User.shared.uid]
-    let sorted = sort.sorted { $0 < $1 }
-    let appsignSecret = sorted.joined(separator: "&")
-    let app_sign = appsignSecret.md5
-    
-    let app_time_para = "&app_time=" + app_time
-    let app_device_para = "&app_device=" + app_device
-    let token_para = "&token=" + token!
-    let app_sign_para = "&app_sign=" + app_sign!
-    
-    let version = "&version=" + kAppVersion
-    
-    return token_para + oauth_para + app_time_para + app_device_para + app_sign_para + version
 }
 
 // MARK: - 存在本地相关

@@ -133,10 +133,8 @@ extension User {
 
     // MARK: - User check
     static func userCheck(_ completionHandler: @escaping (_ isUserValid: Bool, _ info: String) -> ()) {
-        
-        let stringPara = stringParameters(actTo: ActType.user_check.rawValue)
-        let userinfoString = kHeaderUrl + RequestUrlStringType.userCheck.rawValue + stringPara
-        let url = URL(string: userinfoString)
+
+        let url = signedInUrl(forUrlType: .userCheck, actType: .user_check)
         
         let parameters = ["uid": NSString(string: User.shared.uid).integerValue,
                           "password": User.shared.passwordToCheck] as [String : Any]
@@ -172,9 +170,8 @@ extension User {
     
     // MARK: - Buy tickt
     static func buyTickt(ticktId id: Int, counts: Int, phone: String, price: Float, callBack: @escaping (Bool, String) -> ()) {
-        let stringPara = stringParameters(actTo: ActType.buyTicket.rawValue)
-        let userinfoString = kHeaderUrl + RequestUrlStringType.buyTickt.rawValue + stringPara
-        let url = URL(string: userinfoString)
+
+        let url = signedInUrl(forUrlType: .buyTickt, actType: .buyTicket)
         
         let parameters = ["uid": NSString(string: User.shared.uid).integerValue,
                           "ticket_id": id,
@@ -201,9 +198,8 @@ extension User {
     
     // MARK: - User info
     static func requestUserInfo(completionHandler: @escaping (Bool, String?) -> ()) {
-        let stringPara = stringParameters(actTo: ActType.getuinfo.rawValue)
-        let userinfoString = kHeaderUrl + RequestUrlStringType.userInfo.rawValue + stringPara
-        let url = URL(string: userinfoString)
+
+        let url = signedInUrl(forUrlType: .userInfo, actType: .getuinfo)
         
         let parameters = ["uid": NSString(string: User.shared.uid).integerValue]
         
@@ -254,9 +250,8 @@ extension User {
     
     // MARK: - Feedback
     static func feedbackWithContent(contentText text: String, completionHandler: @escaping (Bool, String) -> ()) {
-        let stringPara = stringParameters(actTo: ActType.report.rawValue)
-        let userinfoString = kHeaderUrl + RequestUrlStringType.feedback.rawValue + stringPara
-        let url = URL(string: userinfoString)
+        
+        let url = signedInUrl(forUrlType: .feedback, actType: .report)
         
         func deviceParameters() -> String {
             let device = UIDevice.current

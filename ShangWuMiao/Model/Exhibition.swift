@@ -113,10 +113,9 @@ extension Exhibition {
 extension Exhibition {
     
     func requestExhibitionListTickets(completionHandle: @escaping (Bool, String?, [Ticket]) -> ()) {
-        let stringPara = stringParameters(actTo: ActType.ticket_list.rawValue)
-        let userinfoString = kHeaderUrl + RequestUrlStringType.exhibitionTicketList.rawValue + stringPara
+
+        let url = signedInUrl(forUrlType: .exhibitionTicketList, actType: .ticket_list)
         
-        let url = URL(string: userinfoString)
         let parameters = ["uid": NSString(string: User.shared.uid).integerValue,
                           "eid": NSString(string: self.exid).integerValue]
         
@@ -154,10 +153,8 @@ extension Exhibition {
     func requestSoldTicketForExhibitionList(loadMore more: Bool, completionHandler: @escaping (Bool, String, [Exhibition]) -> ()) {
         ticketPage = more ? ticketPage + 1 : 1
         
-        let stringPara = stringParameters(actTo: ActType.my_list.rawValue)
-        let userinfoString = kHeaderUrl + RequestUrlStringType.soldExhibitions.rawValue + stringPara
+        let url = signedInUrl(forUrlType: .soldExhibitions, actType: .my_list)
         
-        let url = URL(string: userinfoString)
         let parameters = ["uid": NSString(string: User.shared.uid).integerValue,
                           "p": self.ticketPage]
         
@@ -207,17 +204,16 @@ extension Exhibition {
 
     // true for more, false for page 0 or refresh
     func requestExhibitionList(withKeyword keyword:  String?, loadMore: Bool, completionHandler: @escaping (Bool, String, [Exhibition]) -> ()) {
+        
         exhibitionPage = loadMore ? exhibitionPage + 1 : 1
+
+        let url = signedInUrl(forUrlType: .exhibitions, actType: .ex_list)!
         
-        let stringPara = stringParameters(actTo: ActType.ex_list.rawValue)
-        let userinfoString = kHeaderUrl + RequestUrlStringType.exhibitions.rawValue + stringPara
-        
-        let url = URL(string: userinfoString)
         let parameters = ["uid": NSString(string: User.shared.uid).integerValue,
                           "p": self.exhibitionPage,
                           "keyword": keyword ?? ""] as [String : Any]
         
-        Alamofire.request(url!,
+        Alamofire.request(url,
                           method: .post,
                           parameters: parameters,
                           encoding: URLEncoding.default,

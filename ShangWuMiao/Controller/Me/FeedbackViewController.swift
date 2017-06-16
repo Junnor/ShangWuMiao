@@ -33,7 +33,9 @@ class FeedbackViewController: UIViewController, UITextViewDelegate {
         
         let text = textView.text
         
-        User.feedbackWithContent(contentText: text!) { _, info in
+        User.feedbackWithContent(contentText: text!) { [weak self] _, info in
+            self?.textView.resignFirstResponder()
+            
             SVProgressHUD.showInfo(withStatus: info)
         }
     }
