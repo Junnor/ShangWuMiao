@@ -32,8 +32,6 @@ class SettingViewController: UITableViewController {
     }
     
     private let bindedTelephone = false
-    private let bindedEmail = false
-
 
     // MARK: - Table view data source
 
@@ -58,7 +56,12 @@ class SettingViewController: UITableViewController {
         if indexPath.row == 0 {
             cell.detailTextLabel?.text = bindedTelephone ? "已绑定" : "未绑定"
         } else if indexPath.row == 1 {
-            cell.detailTextLabel?.text = bindedEmail ? "已绑定" : "未绑定"
+            var isBinded = false
+            if let value = UserDefaults.standard.value(forKey: kBindedEmail),
+                let binded = value as? String, binded != "" {
+                isBinded = true
+            }
+            cell.detailTextLabel?.text = isBinded ? "已绑定" : "未绑定"
         }
 
         return cell
@@ -88,11 +91,12 @@ class SettingViewController: UITableViewController {
     private func bindEmail() {
         
         func sendBindEmailRequest() {
-            User.bindEmail(email) { (success, info) in
+            User.bindEmail(email) { [weak self] (success, info) in
+                
+                SVProgressHUD.showInfo(withStatus: info)
                 if success {
-                    SVProgressHUD.showSuccess(withStatus: info)
-                } else {
-                    SVProgressHUD.showError(withStatus: info)
+                    UserDefaults.standard.setValue(self?.email, forKey: kBindedEmail)
+                    self?.tableView.reloadData()
                 }
             }
         }

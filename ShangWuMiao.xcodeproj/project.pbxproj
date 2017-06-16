@@ -539,8 +539,8 @@
 			children = (
 				679CC62B1EE6889C0032210A /* ShangWuMiao.entitlements */,
 				8B7A48D61EC0104500276058 /* View */,
-				8B7A48D51EC0103E00276058 /* Model */,
 				8B7A48D41EC0103400276058 /* Controller */,
+				8B7A48D51EC0103E00276058 /* Model */,
 				8B0352E71ECEE16200E46DEE /* Helper */,
 				4460C2AC1E9B19F3004166DB /* Main.storyboard */,
 				4460C2AF1E9B19F3004166DB /* Assets.xcassets */,

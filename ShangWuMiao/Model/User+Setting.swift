@@ -62,7 +62,7 @@ extension User {
                                 let json = JSON(jsonResponse)
                                 print("bind email json: \(json)")
                                 let info = json["info"].stringValue
-                                let status = json["status"].intValue
+                                let status = json["status"].intValue                                
                                 completionHandler(status == 1, info)
                             case .failure(let error):
                                 completionHandler(false, "发生错误")

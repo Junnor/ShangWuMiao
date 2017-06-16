@@ -63,6 +63,10 @@ final class User {
     var bindUid = ""
 //    var willRegisterNyato = false
     
+    // MARK: - 绑定手机或者邮箱
+    var bindedTelephone: String = ""
+    var bindedEmail: String = ""
+    
     // MARK: - clean after sign out
     func clean() {
         uid = ""
