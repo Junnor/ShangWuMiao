@@ -29,7 +29,6 @@ extension LoginViewController {
 //            print("=====user: \(user)")
 //            print("=====error: \(error)")
 //            print("=====state: \(state)")
-
             switch state {
             case .success:
                 if let user = user {

@@ -28,6 +28,9 @@ let nyatoMcoinsChange = Notification.Name("nyatoMcoinsChange")
 
 enum RequestUrlStringType: String {
     
+    // 设置内重设密码
+    case meResetPassword = "/index.php?app=ios&mod=Member&act=mod_pw"
+    
     // 验证找回通过手机找回密码的验证码
     case verifyCodeForRetrievePsw = "/index.php?app=ios&mod=Member&act=verifyCode"
 
@@ -98,7 +101,9 @@ enum RequestUrlStringType: String {
 }
 
 enum ActType: String {
-    
+    // 设置内重设密码
+    case meResetPassword = "mod_pw"
+
     // 验证找回通过手机找回密码的验证码
     case verifyCodeForRetrievePsw = "verifyCode"
     

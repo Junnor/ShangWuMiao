@@ -24,36 +24,45 @@ class WalletViewController: UIViewController {
         isUseableCheck()
     }
     
+    // For test
     @objc private func addPass() {
-        // Test receivedPassData
-        let filePath = Bundle.main.path(forResource: "Lollipop", ofType: "pkpass")
-        receivedPassData = try? Data(contentsOf: URL(fileURLWithPath: filePath!))
-
-        var error: NSError?
-        let pass = PKPass(data: receivedPassData, error: &error)
-        
-        if error != nil {
-            let alert = UIAlertController(title: "Pass error",
-                                          message: error?.localizedDescription,
-                                          preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
-            present(alert, animated: true, completion: nil)
-            return
-        }
-        
-        let passLibrary = PKPassLibrary()
-        if passLibrary.containsPass(pass) {
-            let alert = UIAlertController(title: "Wallet",
-                                          message: "您已添加该卡券",
-                                          preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
-            present(alert, animated: true, completion: nil)
-        } else {
-            let addPassViewController = PKAddPassesViewController(pass: pass)
-            addPassViewController.delegate = self
-            present(addPassViewController, animated: true, completion: nil)
+        DispatchQueue.main.async {
+            let activity = UIActivityViewController(activityItems: ["I love it!"],
+                                                    applicationActivities: nil)
+            self.present(activity, animated: true, completion: nil)
         }
     }
+    
+//    @objc private func addPass() {
+//        // Test receivedPassData
+//        let filePath = Bundle.main.path(forResource: "Lollipop", ofType: "pkpass")
+//        receivedPassData = try? Data(contentsOf: URL(fileURLWithPath: filePath!))
+//
+//        var error: NSError?
+//        let pass = PKPass(data: receivedPassData, error: &error)
+//        
+//        if error != nil {
+//            let alert = UIAlertController(title: "Pass error",
+//                                          message: error?.localizedDescription,
+//                                          preferredStyle: .alert)
+//            alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+//            present(alert, animated: true, completion: nil)
+//            return
+//        }
+//        
+//        let passLibrary = PKPassLibrary()
+//        if passLibrary.containsPass(pass) {
+//            let alert = UIAlertController(title: "Wallet",
+//                                          message: "您已添加该卡券",
+//                                          preferredStyle: .alert)
+//            alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+//            present(alert, animated: true, completion: nil)
+//        } else {
+//            let addPassViewController = PKAddPassesViewController(pass: pass)
+//            addPassViewController.delegate = self
+//            present(addPassViewController, animated: true, completion: nil)
+//        }
+//    }
     
     private func isUseableCheck() {
         if !PKPassLibrary.isPassLibraryAvailable() {

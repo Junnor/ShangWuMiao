@@ -84,24 +84,11 @@ class RetrievePasswordViewController: UIViewController, UITextFieldDelegate {
         
         telephoneBar.isHidden = telephoneView.isHidden
         emailBar.isHidden = emailView.isHidden
-
+        
         containerView.addSubview(telephoneView)
         containerView.addSubview(emailView)
         
         containerView.backgroundColor = UIColor.clear
-    }
-    
-    private var layoutEmail = false
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        if !layoutEmail {
-            layoutEmail = true
-            
-            let containerViewBounds = containerView.bounds
-            telephoneView.frame = containerViewBounds
-            emailView.frame = containerViewBounds
-        }
     }
     
     private var hasLeftImage = false
@@ -109,6 +96,11 @@ class RetrievePasswordViewController: UIViewController, UITextFieldDelegate {
         super.viewWillAppear(animated)
         if !hasLeftImage {
             hasLeftImage = false
+            
+            var containerViewBounds = view.bounds
+            containerViewBounds.size.height = 300
+            telephoneView.frame = containerViewBounds
+            emailView.frame = containerViewBounds
             
             setLeftImage()
         }
@@ -161,8 +153,6 @@ class RetrievePasswordViewController: UIViewController, UITextFieldDelegate {
                         if self != nil {
                             self?.codePhone = self?.phoneTextField.text
                             self?.fireTimer()
-                            
-                            print("... code phone = \(self?.codePhone)")
                         }
                     } else {
                         self?.indicatorView.stopAnimating()
@@ -174,9 +164,6 @@ class RetrievePasswordViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction private func telephoneSubmit() {
         tapAction()
-        print("..code = \(code)")
-        print("phone = \(codePhone)")
-
         if codePhone == nil {
             return
         }

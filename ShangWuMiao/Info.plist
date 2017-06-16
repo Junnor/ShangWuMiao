@@ -52,7 +52,7 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>com.nyato</string>
+			<string></string>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
