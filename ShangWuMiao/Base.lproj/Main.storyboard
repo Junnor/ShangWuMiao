@@ -1648,7 +1648,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v6v-hz-gLW">
-                                <rect key="frame" x="156" y="181" width="63" height="30"/>
+                                <rect key="frame" x="156" y="137" width="63" height="30"/>
                                 <state key="normal" title="To Wallet"/>
                             </button>
                         </subviews>

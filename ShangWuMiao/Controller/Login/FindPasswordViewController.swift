@@ -51,13 +51,14 @@ class FindPasswordViewController: UIViewController, UITextFieldDelegate {
     private var telephoneView: UIView!
 
     private var codePhone: String!
-    private var submitPhone: String!
     private var code: String!
     
     private enum PromptType: String {
         case telephone = "先输入手机号，点击“获取验证码”，然后输入手机收到的验证码点击下一步 "
         case email = "请输入注册时填写的邮箱，完成找回密码后，建议绑定手机号码"
     }
+
+    // MARK: - View controller lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -103,6 +104,26 @@ class FindPasswordViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    private var hasLeftImage = false
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if !hasLeftImage {
+            hasLeftImage = false
+            
+            setLeftImage()
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        resetInfo()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+
+    // MARK: - Helper
     
     @IBAction func findPasswordType(_ sender: UIButton) {
         if let text = sender.currentTitle, text == "手机找回" {
@@ -183,26 +204,16 @@ class FindPasswordViewController: UIViewController, UITextFieldDelegate {
         self.codeTextField.resignFirstResponder()
         self.emailTextField.resignFirstResponder()
     }
-
-    private var hasLeftImage = false
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        if !hasLeftImage {
-            hasLeftImage = false
-            
-            setLeftImage()
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "resetPassword" {
+            if let vc = segue.destination as? ResetPasswordViewController {
+                vc.code = code
+                vc.phone = codePhone
+            }
         }
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        resetInfo()
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
-
     // two image states for leftImageView
     private var telephoneLeftImageView = UIImageView()
     private var emailLeftImageView = UIImageView()

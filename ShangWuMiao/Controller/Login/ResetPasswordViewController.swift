@@ -12,6 +12,7 @@ import SVProgressHUD
 class ResetPasswordViewController: UIViewController, UITextFieldDelegate {
     
     var code: String!
+    var phone: String!
 
     @IBOutlet private weak var scrollView: UIScrollView! {
         didSet {
@@ -67,7 +68,6 @@ class ResetPasswordViewController: UIViewController, UITextFieldDelegate {
         }
         
         let uname = "xxxxxxxxxxxx"
-        let phone = "xxxxxxxxxxxx"
         
         User.register(forUser: uname,
                       password: password, mobile: phone, code: code) {

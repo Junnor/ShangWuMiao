@@ -753,8 +753,8 @@
 			children = (
 				67DB541F1EEFCDA9004243EA /* LoginViewController.swift */,
 				67AF73C91EF13E740068B349 /* LoginViewController+ThirdParty.swift */,
-				67DB54201EEFCDA9004243EA /* RegisterNameViewController.swift */,
 				67DB54211EEFCDA9004243EA /* RegisterTelViewController.swift */,
+				67DB54201EEFCDA9004243EA /* RegisterNameViewController.swift */,
 				67F4B1AF1EF2682D003EEB44 /* FindPasswordViewController.swift */,
 				67F4B1B11EF26839003EEB44 /* ResetPasswordViewController.swift */,
 			);
