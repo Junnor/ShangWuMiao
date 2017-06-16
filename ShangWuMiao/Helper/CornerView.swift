@@ -34,3 +34,19 @@ class CornerButton: UIButton {
     }
 
 }
+
+
+@IBDesignable
+class CornerView: UIView {
+    
+    @IBInspectable
+    var cornerRadius: CGFloat = 23 { didSet { setNeedsDisplay() } }
+    
+    override func draw(_ rect: CGRect) {
+        self.layer.cornerRadius = cornerRadius
+        self.layer.masksToBounds = true
+    }
+    
+}
+
+

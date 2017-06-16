@@ -14,10 +14,10 @@
 		4460C2B31E9B19F3004166DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4460C2B11E9B19F3004166DB /* LaunchScreen.storyboard */; };
 		4460C2BE1E9B19F3004166DB /* ShangWuMiaoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4460C2BD1E9B19F3004166DB /* ShangWuMiaoTests.swift */; };
 		4460C2C91E9B19F3004166DB /* ShangWuMiaoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4460C2C81E9B19F3004166DB /* ShangWuMiaoUITests.swift */; };
-		671579C31EF3C909000EB710 /* SettingSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671579C21EF3C909000EB710 /* SettingSwitchCell.swift */; };
 		671579C91EF3CBCA000EB710 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671579C81EF3CBCA000EB710 /* SettingViewController.swift */; };
 		671579CB1EF3D295000EB710 /* MeResetPswViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671579CA1EF3D295000EB710 /* MeResetPswViewController.swift */; };
 		671579CD1EF3DCAA000EB710 /* User+Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671579CC1EF3DCAA000EB710 /* User+Setting.swift */; };
+		671579CF1EF3E727000EB710 /* BindPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671579CE1EF3E727000EB710 /* BindPhoneViewController.swift */; };
 		673070BB1EE5532200CEE9DA /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673070BA1EE5532200CEE9DA /* WalletViewController.swift */; };
 		673BD5A81EEE358A005A733A /* ShareSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 673BD5571EEE358A005A733A /* ShareSDK.framework */; };
 		673BD5A91EEE358A005A733A /* ShareSDKConfigFile.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 673BD55A1EEE358A005A733A /* ShareSDKConfigFile.bundle */; };
@@ -183,10 +183,10 @@
 		4460C2C81E9B19F3004166DB /* ShangWuMiaoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShangWuMiaoUITests.swift; sourceTree = "<group>"; };
 		4460C2CA1E9B19F3004166DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		590987E7D1A7B64976B5ADA9 /* Pods-ShangWuMiao.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShangWuMiao.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShangWuMiao/Pods-ShangWuMiao.release.xcconfig"; sourceTree = "<group>"; };
-		671579C21EF3C909000EB710 /* SettingSwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingSwitchCell.swift; sourceTree = "<group>"; };
 		671579C81EF3CBCA000EB710 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		671579CA1EF3D295000EB710 /* MeResetPswViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeResetPswViewController.swift; sourceTree = "<group>"; };
 		671579CC1EF3DCAA000EB710 /* User+Setting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+Setting.swift"; sourceTree = "<group>"; };
+		671579CE1EF3E727000EB710 /* BindPhoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BindPhoneViewController.swift; sourceTree = "<group>"; };
 		673070BA1EE5532200CEE9DA /* WalletViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
 		673BD5571EEE358A005A733A /* ShareSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDK.framework; sourceTree = "<group>"; };
 		673BD55A1EEE358A005A733A /* ShareSDKConfigFile.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ShareSDKConfigFile.bundle; sourceTree = "<group>"; };
@@ -574,7 +574,6 @@
 		671579C11EF3C8E5000EB710 /* Me */ = {
 			isa = PBXGroup;
 			children = (
-				671579C21EF3C909000EB710 /* SettingSwitchCell.swift */,
 			);
 			path = Me;
 			sourceTree = "<group>";
@@ -804,6 +803,7 @@
 				67DB54331EEFCDBA004243EA /* TopupViewController.swift */,
 				671579C81EF3CBCA000EB710 /* SettingViewController.swift */,
 				671579CA1EF3D295000EB710 /* MeResetPswViewController.swift */,
+				671579CE1EF3E727000EB710 /* BindPhoneViewController.swift */,
 			);
 			path = Me;
 			sourceTree = "<group>";
@@ -1317,6 +1317,7 @@
 				8B0E1A761ECD42310017F11C /* ExAddressCell.swift in Sources */,
 				67F4B1AE1EF22C18003EEB44 /* User+ThirdParty.swift in Sources */,
 				671579CB1EF3D295000EB710 /* MeResetPswViewController.swift in Sources */,
+				671579CF1EF3E727000EB710 /* BindPhoneViewController.swift in Sources */,
 				8B03527A1ECEB95E00E46DEE /* openssl_wrapper.m in Sources */,
 				67DB54241EEFCDA9004243EA /* RegisterTelViewController.swift in Sources */,
 				67AF73CA1EF13E740068B349 /* LoginViewController+ThirdParty.swift in Sources */,
@@ -1331,7 +1332,6 @@
 				671579CD1EF3DCAA000EB710 /* User+Setting.swift in Sources */,
 				67DB54291EEFCDB4004243EA /* ExhibitionDetailViewController.swift in Sources */,
 				8BDB06901EC01DBC00F0A660 /* TabBarViewController.swift in Sources */,
-				671579C31EF3C909000EB710 /* SettingSwitchCell.swift in Sources */,
 				67F4B1B21EF26839003EEB44 /* ResetPasswordViewController.swift in Sources */,
 				8B0352E91ECEE16F00E46DEE /* ClassHelper.swift in Sources */,
 				8B0352EB1ECEE17D00E46DEE /* Constant.swift in Sources */,

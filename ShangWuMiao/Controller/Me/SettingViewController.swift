@@ -77,6 +77,7 @@ class SettingViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         
         if indexPath.row == 0 { // Bind telephone
+            performSegue(withIdentifier: "bindTelephone", sender: nil)
         } else if indexPath.row == 1 {   // Bind email
             bindEmail()
         } else if indexPath.row == 2 {   // reset password
