@@ -201,16 +201,13 @@ extension ExhibitionDetailViewController: ShareViewControllerDelegate {
         
     func shareViewController(_ shareViewController: ShareViewController, showMore more: Bool) {
         dismissShareView()
-        
         // apple original UIActivityViewController
         if let url = URL(string: shareUrlString), let title = exhibition.name {
-            print("1")
-            let activityVC = UIActivityViewController(activityItems: [title, url], applicationActivities: nil)
-            print("2")
-            
-            present(activityVC, animated: true, completion: nil)
-            print("3")
-
+            let activity = UIActivityViewController(activityItems: [title, url],
+                                                    applicationActivities: nil)
+            activity.modalPresentationStyle = .popover
+            activity.popoverPresentationController?.sourceView = self.shareView
+            present(activity, animated: true, completion: nil)
         }
     }
 }
