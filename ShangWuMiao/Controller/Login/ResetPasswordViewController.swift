@@ -71,12 +71,14 @@ class ResetPasswordViewController: UIViewController, UITextFieldDelegate {
                 return
         }
         
+        SVProgressHUD.showInfo(withStatus: "发送中...")
+        
         User.resetPassword(by: phone,
                            password: password,
                            repeatPassword: verified) { (success, info) in
                             if success {
                                 SVProgressHUD.showSuccess(withStatus: info)
-                                self.navigationController?.popViewController(animated: true)
+                                self.navigationController?.popToRootViewController(animated: true)
                             } else {
                                 SVProgressHUD.showError(withStatus: info)
                             }

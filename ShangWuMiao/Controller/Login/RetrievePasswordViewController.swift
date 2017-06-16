@@ -161,6 +161,8 @@ class RetrievePasswordViewController: UIViewController, UITextFieldDelegate {
                         if self != nil {
                             self?.codePhone = self?.phoneTextField.text
                             self?.fireTimer()
+                            
+                            print("... code phone = \(self?.codePhone)")
                         }
                     } else {
                         self?.indicatorView.stopAnimating()
@@ -172,7 +174,9 @@ class RetrievePasswordViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction private func telephoneSubmit() {
         tapAction()
-        
+        print("..code = \(code)")
+        print("phone = \(codePhone)")
+
         if codePhone == nil {
             return
         }
@@ -190,8 +194,14 @@ class RetrievePasswordViewController: UIViewController, UITextFieldDelegate {
             return
         }
         
-        self.timer.invalidate()
-        performSegue(withIdentifier: "resetPassword", sender: nil)
+        
+        User.verifyCodeForRetrievePswPhone(codePhone, verifyCode: code) { [weak self] (success, info) in
+            SVProgressHUD.showInfo(withStatus: info)
+            self?.timer.invalidate()
+            if success {
+                self?.performSegue(withIdentifier: "resetPassword", sender: nil)
+            }
+        }
     }
 
     @IBAction private func emailSubmit() {
