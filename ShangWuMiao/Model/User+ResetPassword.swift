@@ -15,15 +15,12 @@ extension User {
     static func verifyCodeForRetrievePswPhone(_ phone: String,
                                               verifyCode: String,
                                               completionHandler: @escaping (_ state: Bool, _ info: String) -> ()) {
-        let secret = kSecretKey + ActType.verifyCodeForRetrievePsw.rawValue
-        let token = secret.md5
-        let urlString = kHeaderUrl + RequestUrlStringType.verifyCodeForRetrievePsw.rawValue + "&token=" + token!
-        let url = URL(string: urlString)
+        let url = nonSignInUrl(forUrlType: .verifyCodeForRetrievePsw, actType: .verifyCodeForRetrievePsw)!
         
         let parameter = ["mobile": phone,
                          "code": verifyCode]
         
-        Alamofire.request(url!,
+        Alamofire.request(url,
                           method: .post,
                           parameters: parameter,
                           encoding: URLEncoding.default,
@@ -46,17 +43,15 @@ extension User {
                               password: String,
                               repeatPassword: String,
                               completionHandler: @escaping (_ state: Bool, _ info: String) -> ()) {
-        
-        let secret = kSecretKey + ActType.retrievePasswordWithTelephone.rawValue
-        let token = secret.md5
-        let loginUrlString = kHeaderUrl + RequestUrlStringType.retrievePasswordWithTelephone.rawValue + "&token=" + token!
-        let url = URL(string: loginUrlString)
+
+        let url = nonSignInUrl(forUrlType: .retrievePasswordWithTelephone,
+                               actType: .retrievePasswordWithTelephone)!
         
         let parameter = ["mobile": phoneNumber,
                          "password": password,
                          "repassword": repeatPassword]
         
-        Alamofire.request(url!,
+        Alamofire.request(url,
                           method: .post,
                           parameters: parameter,
                           encoding: URLEncoding.default,
@@ -76,14 +71,14 @@ extension User {
     }
     
     static func retrievePasswordWithEmail(_ email: String, completionHandler: @escaping (_ state: Bool, _ info: String) -> ()) {
-        let emailSecret = kSecretKey + ActType.retrievePasswordWithEmail.rawValue
-        let token = emailSecret.md5
-        let loginUrlString = kHeaderUrl + RequestUrlStringType.retrievePasswordWithEmail.rawValue + "&token=" + token!
-        let url = URL(string: loginUrlString)
+
+        let url = nonSignInUrl(forUrlType: .retrievePasswordWithEmail,
+                               actType: .retrievePasswordWithEmail)!
+
 
         let parameter = ["email": email]
         
-        Alamofire.request(url!,
+        Alamofire.request(url,
                           method: .post,
                           parameters: parameter,
                           encoding: URLEncoding.default,

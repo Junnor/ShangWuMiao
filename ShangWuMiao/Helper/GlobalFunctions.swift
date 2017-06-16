@@ -15,12 +15,6 @@ func nonSignInUrl(forUrlType urlStringType: RequestUrlStringType, actType: ActTy
     let token = secret.md5
     let urlString = kHeaderUrl + urlStringType.rawValue + "&token=" + token!
     
-    /*
-    let loginSecret = kSecretKey + ActType.login.rawValue
-    let token = loginSecret.md5
-    let loginUrlString = kHeaderUrl + RequestUrlStringType.login.rawValue + "&token=" + token!
-    */
-    
     guard let url = URL(string: urlString) else {
         print("=====Warning: invalid url with urlStringType: \(urlStringType), actType: \(actType)")
         return nil

@@ -14,10 +14,7 @@ extension User {
 
     // MARK: - create nyato account with third party
     static func createNyatoAccount(_ account: String, password: String, completionHander: @escaping (_ success: Bool, _ info: String?) -> ()) {
-//        let stringParas = stringBindThirdPartyParameters(actTo: ActType.thirdPartyCreateNyato.rawValue)
-//        let urlString = kHeaderUrl + RequestUrlStringType.thirdPartyCreateNyato.rawValue + stringParas
-//        let url = URL(string: urlString)!
-//        
+
         let url = nonSignInUrl(forUrlType: .thirdPartyCreateNyato, actType: .thirdPartyCreateNyato)
         
         let paras = ["uname": account,

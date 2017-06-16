@@ -20,17 +20,23 @@ extension User {
     
     // MARK: - 获取验证码
     static func requestPhoneCode(for phone: String, codeType: GetCodeType, callback: @escaping (_ status: Bool, _ info: String) -> ()) {
-        let count = phone.characters.count
-        let value1 = Int(phone[0...2])!
-        let value2 = Int(phone[3..<7])!
-        let value3 = Int(phone[count-4...count-1])!
-        let result = value1 + value2 + value3
-        let codeString = String(result) + "nyato"
-        let phoneCode = codeString.md5!
+        
+        func phoneCode(for phone: String) -> String {
+            let count = phone.characters.count
+            let value1 = Int(phone[0...2])!
+            let value2 = Int(phone[3..<7])!
+            let value3 = Int(phone[count-4...count-1])!
+            let result = value1 + value2 + value3
+            let codeString = String(result) + "nyato"
+            let phoneCode = codeString.md5!
+            return phoneCode
+        }
+        
+        let code = phoneCode(for: phone)
         
         let url = nonSignInUrl(forUrlType: .phoneCode, actType: .sendPhoneCode)
         
-        let parameter = ["mobile": phone, "code": phoneCode, "type": codeType.rawValue]
+        let parameter = ["mobile": phone, "code": code, "type": codeType.rawValue]
         
         Alamofire.request(url!,
                           method: .post,
