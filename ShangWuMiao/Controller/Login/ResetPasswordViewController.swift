@@ -11,9 +11,8 @@ import SVProgressHUD
 
 class ResetPasswordViewController: UIViewController, UITextFieldDelegate {
     
-    var code: String!
     var phone: String!
-
+    
     @IBOutlet private weak var scrollView: UIScrollView! {
         didSet {
             scrollView.alwaysBounceVertical = true
@@ -31,7 +30,7 @@ class ResetPasswordViewController: UIViewController, UITextFieldDelegate {
             verifyTextField?.delegate = self
         }
     }
-
+    
     // MARK: - View controller lifecycle
     
     override func viewDidLoad() {
@@ -61,26 +60,26 @@ class ResetPasswordViewController: UIViewController, UITextFieldDelegate {
         
         guard let password = passwordTextField.text,
             let verified = verifyTextField.text,
-            password == verified,
-            7 <= password.characters.count,
-            password.characters.count <= 16 else {
+            password == verified, password != "" else {
+                SVProgressHUD.showInfo(withStatus: "密码不一致")
                 return
         }
         
-        let uname = "xxxxxxxxxxxx"
+        guard 7 <= password.characters.count,
+            password.characters.count <= 16 else {
+                SVProgressHUD.showInfo(withStatus: "密码7到16位")
+                return
+        }
         
-        User.register(forUser: uname,
-                      password: password, mobile: phone, code: code) {
-                        [weak self] success, info in
-                        SVProgressHUD.showInfo(withStatus: info)
-                        if success {
-                            if self != nil {
-                                self?.performSegue(withIdentifier: "login from register", sender: nil)
-                                nyato_storeOauthData()
+        User.resetPassword(by: phone,
+                           password: password,
+                           repeatPassword: verified) { (success, info) in
+                            if success {
+                                SVProgressHUD.showSuccess(withStatus: info)
+                                self.navigationController?.popViewController(animated: true)
+                            } else {
+                                SVProgressHUD.showError(withStatus: info)
                             }
-                        } else {
-                            SVProgressHUD.showError(withStatus: info)
-                        }
         }
         
     }

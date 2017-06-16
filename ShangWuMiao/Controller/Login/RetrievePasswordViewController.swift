@@ -1,5 +1,5 @@
 //
-//  FindPasswordViewController.swift
+//  RetrievePasswordViewController.swift
 //  ShangWuMiao
 //
 //  Created by nyato喵特 on 2017/6/15.
@@ -9,7 +9,7 @@
 import UIKit
 import SVProgressHUD
 
-class FindPasswordViewController: UIViewController, UITextFieldDelegate {
+class RetrievePasswordViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet private weak var phoneTextField: UITextField! {
         didSet {
@@ -154,7 +154,7 @@ class FindPasswordViewController: UIViewController, UITextFieldDelegate {
             } else {
                 self.indicatorView.isHidden = false
                 self.indicatorView.startAnimating()
-                User.requestPhoneCode(for: phoneTextField.text!) {
+                User.requestPhoneCode(for: phoneTextField.text!, type: GetCodeType.retrievePassword) {
                     [weak self] (success, info) in
                     SVProgressHUD.showInfo(withStatus: info)
                     if success {
@@ -196,7 +196,7 @@ class FindPasswordViewController: UIViewController, UITextFieldDelegate {
 
     @IBAction private func emailSubmit() {
         if let email = emailTextField.text, email != "" {
-            User.findPasswordWithEmail(email, completionHandler: { (success, info) in
+            User.retrievePasswordWithEmail(email, completionHandler: { (success, info) in
                 if success {
                     SVProgressHUD.showSuccess(withStatus: info)
                     self.navigationController?.popViewController(animated: true)
@@ -216,7 +216,6 @@ class FindPasswordViewController: UIViewController, UITextFieldDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "resetPassword" {
             if let vc = segue.destination as? ResetPasswordViewController {
-                vc.code = code
                 vc.phone = codePhone
             }
         }

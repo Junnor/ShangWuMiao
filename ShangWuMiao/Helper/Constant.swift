@@ -28,8 +28,14 @@ let nyatoMcoinsChange = Notification.Name("nyatoMcoinsChange")
 
 struct RequestURL {
     
+    // 验证找回通过手机找回密码的验证码
+    static let kVerifyCodeForRetrievePswUrlString = "/index.php?app=ios&mod=Member&act=verifyCode"
+
+    // 手机找回密码
+    static let kRetrievePasswordWithTelephoneUrlString = "/index.php?app=ios&mod=Member&act=resetPwd"
+
     // 邮箱找回密码
-    static let kFindPasswordWithEmailUrlString = "/index.php?app=ios&mod=Member&act=forgot_pwd"
+    static let kRetrievePasswordWithEmailUrlString = "/index.php?app=ios&mod=Member&act=forgot_pwd"
     
     // 通过第三方平台（比如微信，微博， QQ） 注册喵特账号
     static let kThirdPartyCreateNyatoUrlString = "/index.php?app=ios&mod=Member&act=other_login"
@@ -91,14 +97,89 @@ struct RequestURL {
     
 }
 
+//struct ActType {
+//    
+//    // 验证找回通过手机找回密码的验证码
+//    static let verifyCodeForRetrievePsw = "verifyCode"
+//    
+//    // 手机找回密码
+//    static let retrievePasswordWithTelephone = "resetPwd"
+//    
+//    // 邮箱找回密码
+//    static let retrievePasswordWithEmail = "forgot_pwd"
+//    
+//    // 通过第三方平台（比如微信，微博， QQ） 注册喵特账号
+//    static let thirdPartyCreateNyato = "other_login"
+//
+//    // 第三方账号绑定喵特账户
+//    static let bindNyato = "bind_user"
+//    
+//    // 第三方登录绑定
+//    static let thirdParty_BindCheck = "is_bind"
+//    
+//    // 获取验证码
+//    static let sendPhoneCode = "sendPhoneCode"
+//    
+//    // 用户注册
+//    static let register = "phoneReg"
+//    
+//    // 用户登陆
+//    static let login = "login"
+//    
+//    // 获取用户信息
+//    static let getuinfo = "getuinfo"
+//    
+//    // 我的充值列表
+//    static let recharge_logs = "recharge_logs"
+//    
+//    // 重发购票短信
+//    static let sendTicketSms = "sendTicketSms"
+//    
+//    // 用户反馈
+//    static let report = "report"
+//    
+//    // 用户检测
+//    static let user_check = "userCheck"
+//    
+//    // 用户充值
+//    static let rechargeMb = "rechargeMb"
+//    
+//    // 充值成功回调
+//    static let recharge_back = "recharge_back"
+//    
+//    // 购买门票
+//    static let buyTicket = "buyTicket"
+//    
+//    // 展会列表
+//    static let ex_list = "ex_list"
+//
+//    // 我售出的展会列表
+//    static let my_list = "my_list"
+//    
+//    // 我售出的展会门票列表
+//    static let sale_logs = "sale_logs"
+//    
+//    // 展会门票列表
+//    static let ticket_list = "ticket_list"
+//    
+//    // 更新接口
+//    static let ios_update = "ios_update"
+//}
+
 struct ActType {
     
+    // 验证找回通过手机找回密码的验证码
+    static let verifyCodeForRetrievePsw = "verifyCode"
+    
+    // 手机找回密码
+    static let retrievePasswordWithTelephone = "resetPwd"
+    
     // 邮箱找回密码
-    static let findPasswordWithEmail = "forgot_pwd"
+    static let retrievePasswordWithEmail = "forgot_pwd"
     
     // 通过第三方平台（比如微信，微博， QQ） 注册喵特账号
     static let thirdPartyCreateNyato = "other_login"
-
+    
     // 第三方账号绑定喵特账户
     static let bindNyato = "bind_user"
     
@@ -140,7 +221,7 @@ struct ActType {
     
     // 展会列表
     static let ex_list = "ex_list"
-
+    
     // 我售出的展会列表
     static let my_list = "my_list"
     
@@ -153,4 +234,5 @@ struct ActType {
     // 更新接口
     static let ios_update = "ios_update"
 }
+
 

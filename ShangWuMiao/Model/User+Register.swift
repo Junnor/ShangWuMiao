@@ -11,10 +11,15 @@ import Alamofire
 import SwiftyJSON
 
 
+enum GetCodeType: String {
+    case register = "reg"
+    case retrievePassword = "pwd"
+}
+
 extension User {
     
     // MARK: - 获取验证码
-    static func requestPhoneCode(for phone: String, callback: @escaping (_ status: Bool, _ info: String) -> ()) {
+    static func requestPhoneCode(for phone: String, type: GetCodeType, callback: @escaping (_ status: Bool, _ info: String) -> ()) {
         let count = phone.characters.count
         let value1 = Int(phone[0...2])!
         let value2 = Int(phone[3..<7])!
@@ -28,7 +33,7 @@ extension User {
         let loginUrlString = kHeaderUrl + RequestURL.kCodeUrlString + "&token=" + token!
         let url = URL(string: loginUrlString)
         
-        let parameter = ["mobile": phone, "code": phoneCode, "type": "reg"]
+        let parameter = ["mobile": phone, "code": phoneCode, "type": type.rawValue]
         
         Alamofire.request(url!,
                           method: .post,

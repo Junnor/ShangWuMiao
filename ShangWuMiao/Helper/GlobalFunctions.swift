@@ -8,6 +8,11 @@
 
 import Foundation
 
+// MARK: - 未登录情况的通过参数获取的URL
+
+func nyato_url(for act: String) -> URL? {
+    return nil
+}
 
 // MARK: - 加密相关
 func stringOauthParameters() -> String {

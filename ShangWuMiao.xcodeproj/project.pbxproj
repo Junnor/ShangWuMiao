@@ -86,7 +86,7 @@
 		67DB547E1EEFF08A004243EA /* ExhibitionDetailViewController+Share.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DB547D1EEFF08A004243EA /* ExhibitionDetailViewController+Share.swift */; };
 		67F4B1AC1EF22BA8003EEB44 /* User+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F4B1AB1EF22BA8003EEB44 /* User+Register.swift */; };
 		67F4B1AE1EF22C18003EEB44 /* User+ThirdParty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F4B1AD1EF22C18003EEB44 /* User+ThirdParty.swift */; };
-		67F4B1B01EF2682D003EEB44 /* FindPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F4B1AF1EF2682D003EEB44 /* FindPasswordViewController.swift */; };
+		67F4B1B01EF2682D003EEB44 /* RetrievePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F4B1AF1EF2682D003EEB44 /* RetrievePasswordViewController.swift */; };
 		67F4B1B21EF26839003EEB44 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F4B1B11EF26839003EEB44 /* ResetPasswordViewController.swift */; };
 		67F4B1F01EF26FB9003EEB44 /* FindPasswordWithTelephone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67F4B1EF1EF26FB9003EEB44 /* FindPasswordWithTelephone.xib */; };
 		67F4B1F21EF26FF5003EEB44 /* FindPasswordWithEmail.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67F4B1F11EF26FF5003EEB44 /* FindPasswordWithEmail.xib */; };
@@ -268,7 +268,7 @@
 		67DB547D1EEFF08A004243EA /* ExhibitionDetailViewController+Share.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ExhibitionDetailViewController+Share.swift"; sourceTree = "<group>"; };
 		67F4B1AB1EF22BA8003EEB44 /* User+Register.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+Register.swift"; sourceTree = "<group>"; };
 		67F4B1AD1EF22C18003EEB44 /* User+ThirdParty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+ThirdParty.swift"; sourceTree = "<group>"; };
-		67F4B1AF1EF2682D003EEB44 /* FindPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindPasswordViewController.swift; sourceTree = "<group>"; };
+		67F4B1AF1EF2682D003EEB44 /* RetrievePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RetrievePasswordViewController.swift; sourceTree = "<group>"; };
 		67F4B1B11EF26839003EEB44 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		67F4B1EF1EF26FB9003EEB44 /* FindPasswordWithTelephone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FindPasswordWithTelephone.xib; sourceTree = "<group>"; };
 		67F4B1F11EF26FF5003EEB44 /* FindPasswordWithEmail.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FindPasswordWithEmail.xib; sourceTree = "<group>"; };
@@ -757,7 +757,7 @@
 				67AF73C91EF13E740068B349 /* LoginViewController+ThirdParty.swift */,
 				67DB54211EEFCDA9004243EA /* RegisterTelViewController.swift */,
 				67DB54201EEFCDA9004243EA /* RegisterNameViewController.swift */,
-				67F4B1AF1EF2682D003EEB44 /* FindPasswordViewController.swift */,
+				67F4B1AF1EF2682D003EEB44 /* RetrievePasswordViewController.swift */,
 				67F4B1B11EF26839003EEB44 /* ResetPasswordViewController.swift */,
 			);
 			path = Login;
@@ -1286,7 +1286,7 @@
 				67DB542B1EEFCDB4004243EA /* SearchViewController.swift in Sources */,
 				8BCE2BA91ECC351700ACA1BB /* ExHeaderCell.swift in Sources */,
 				8BE3800F1EC2A1A1001A6651 /* MeCell.swift in Sources */,
-				67F4B1B01EF2682D003EEB44 /* FindPasswordViewController.swift in Sources */,
+				67F4B1B01EF2682D003EEB44 /* RetrievePasswordViewController.swift in Sources */,
 				8BE380191EC2EA37001A6651 /* User.swift in Sources */,
 				8BE380171EC2A8A3001A6651 /* TicketOrderCell.swift in Sources */,
 				8B03527B1ECEB95E00E46DEE /* RSADataSigner.m in Sources */,

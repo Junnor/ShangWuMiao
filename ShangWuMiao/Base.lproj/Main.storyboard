@@ -1743,10 +1743,10 @@
             </objects>
             <point key="canvasLocation" x="-2684" y="113"/>
         </scene>
-        <!--Find Password View Controller-->
+        <!--Retrieve Password View Controller-->
         <scene sceneID="OTL-et-76A">
             <objects>
-                <viewController storyboardIdentifier="FindPasswordViewController" automaticallyAdjustsScrollViewInsets="NO" id="4Zc-ZE-jMk" customClass="FindPasswordViewController" customModule="ShangWuMiao" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RetrievePasswordViewController" automaticallyAdjustsScrollViewInsets="NO" id="4Zc-ZE-jMk" customClass="RetrievePasswordViewController" customModule="ShangWuMiao" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="UWf-eW-lBj"/>
                         <viewControllerLayoutGuide type="bottom" id="8jO-36-JXc"/>
