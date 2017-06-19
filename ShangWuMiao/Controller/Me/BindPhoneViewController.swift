@@ -95,6 +95,7 @@ class BindPhoneViewController: UIViewController, UITextFieldDelegate {
         
         scrollView.addSubview(tableView)
         
+        // Due to tableview has wried effect when in scrollview, so just add a gesture to tableview 
         tableView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tableViewGesture(sender:))))
     }
     
@@ -232,6 +233,7 @@ class BindPhoneViewController: UIViewController, UITextFieldDelegate {
                 self.tableView.frame = self.beginingTableViewFrame
             }, completion: { (_) in
                 self.placeSelected = false
+                self.tableView.reloadData()  // for cell.textColor
             })
         }
     }
@@ -322,6 +324,8 @@ extension BindPhoneViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell")
         let palce = AreaCodePlace(rawValue: indexPath.row)
         cell?.textLabel?.text = palce?.name
+        cell?.textLabel?.textColor = selectedPlace == AreaCodePlace(rawValue: indexPath.row) ?
+            UIColor.themeYellow : UIColor.mainTextColor
 //        cell?.textLabel?.highlightedTextColor = UIColor.themeYellow
         return cell!
     }
