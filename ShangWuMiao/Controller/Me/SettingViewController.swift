@@ -15,6 +15,12 @@ class SettingViewController: UITableViewController {
         super.viewDidLoad()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tableView.reloadData()
+    }
+    
     private enum AccountSetting: String {
         case bindTelephone = "绑定手机"
         case bindEmail = "绑定邮箱"
@@ -54,14 +60,19 @@ class SettingViewController: UITableViewController {
         cell.textLabel?.text = AccountSetting.settingText[indexPath.row]
         
         if indexPath.row == 0 {
-            cell.detailTextLabel?.text = bindedTelephone ? "已绑定" : "未绑定"
-        } else if indexPath.row == 1 {
-            var isBinded = false
-            if let value = UserDefaults.standard.value(forKey: kBindedEmail),
-                let binded = value as? String, binded != "" {
-                isBinded = true
+            var telephone = "未绑定"
+            if let value = UserDefaults.standard.value(forKey: kBindedTelephone),
+                let bindedValue = value as? String {
+                telephone = bindedValue
             }
-            cell.detailTextLabel?.text = isBinded ? "已绑定" : "未绑定"
+            cell.detailTextLabel?.text = telephone
+        } else if indexPath.row == 1 {
+            var email = "未绑定"
+            if let value = UserDefaults.standard.value(forKey: kBindedEmail),
+                let bindedValue = value as? String {
+                email = bindedValue
+            }
+            cell.detailTextLabel?.text = email
         }
 
         return cell
@@ -76,8 +87,12 @@ class SettingViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        if indexPath.row == 0 { // Bind telephone
-            performSegue(withIdentifier: "bindTelephone", sender: nil)
+        if indexPath.row == 0 {   // Unbind telephone
+            if let _ = UserDefaults.standard.value(forKey: kBindedTelephone) {
+                unbindTelephone()
+            } else {  // Bind telephone
+                performSegue(withIdentifier: "bindTelephone", sender: nil)
+            }
         } else if indexPath.row == 1 {   // Bind email
             bindEmail()
         } else if indexPath.row == 2 {   // reset password
@@ -87,6 +102,45 @@ class SettingViewController: UITableViewController {
  
     
     // MARK: - Helper
+    
+    private var unbindPassword: String = ""
+    private func unbindTelephone() {
+        
+        func sendUnbindTelephoneRequest() {
+            User.unbindTelephone(unbindPassword) { (success, info) in
+                SVProgressHUD.showInfo(withStatus: info)
+                if success {
+                    UserDefaults.standard.setValue(nil, forKey: kBindedTelephone)
+                    
+                    self.unbindPassword = ""
+                    self.tableView.reloadData()
+                }
+            }
+        }
+        
+        let alert = UIAlertController(title: "解除手机绑定",
+                                      message: "输入账号密码就可以解除手机绑定更换手机绑定啦，记得重新绑定账号哦",
+                                      preferredStyle: .alert)
+        alert.addTextField { (textField) in
+            textField.placeholder = "请输入您的账号密码"
+            textField.isSecureTextEntry = true
+        }
+        let ok = UIAlertAction(title: "解除绑定", style: .destructive) { (action) in
+            if let password = alert.textFields?.first?.text {
+                if password == "" {
+                    SVProgressHUD.showInfo(withStatus: "密码为空")
+                } else {
+                    self.unbindPassword = password
+                    sendUnbindTelephoneRequest()
+                }
+            }
+        }
+        
+        let cancel = UIAlertAction(title: "取消", style: .default, handler: nil)
+        alert.addAction(cancel)
+        alert.addAction(ok)
+        present(alert, animated: true, completion: nil)
+    }
     
     private var email: String = ""
     private func bindEmail() {

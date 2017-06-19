@@ -67,6 +67,9 @@ final class User {
     var bindedTelephone: String = ""
     var bindedEmail: String = ""
     
+    // Callback
+    typealias callBack = (Bool, String) -> ()
+    
     // MARK: - clean after sign out
     func clean() {
         uid = ""

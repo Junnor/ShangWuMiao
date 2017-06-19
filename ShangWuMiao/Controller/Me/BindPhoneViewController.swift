@@ -95,7 +95,7 @@ class BindPhoneViewController: UIViewController, UITextFieldDelegate {
         
         scrollView.addSubview(tableView)
         
-        // Due to tableview has wried effect when in scrollview, so just add a gesture to tableview 
+        // Due to tableview has wried effect when in scrollview, so just add a gesture to tableview
         tableView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tableViewGesture(sender:))))
     }
     
@@ -214,6 +214,7 @@ class BindPhoneViewController: UIViewController, UITextFieldDelegate {
         User.bindTelephone(codePhone, code: code) { (success, info) in
             SVProgressHUD.showInfo(withStatus: info)
             if success {
+                UserDefaults.standard.setValue(self.codePhone, forKey: kBindedTelephone)
                 self.navigationController?.popViewController(animated: true)
             }
         }
@@ -326,7 +327,6 @@ extension BindPhoneViewController: UITableViewDataSource, UITableViewDelegate {
         cell?.textLabel?.text = palce?.name
         cell?.textLabel?.textColor = selectedPlace == AreaCodePlace(rawValue: indexPath.row) ?
             UIColor.themeYellow : UIColor.mainTextColor
-//        cell?.textLabel?.highlightedTextColor = UIColor.themeYellow
         return cell!
     }
 }
