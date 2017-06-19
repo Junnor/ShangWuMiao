@@ -77,7 +77,7 @@ class RegisterNameViewController: UIViewController, UITextFieldDelegate {
                         SVProgressHUD.showInfo(withStatus: info)
                         if success {
                             if self != nil {
-                                UserDefaults.standard.set(self!.phone, forKey: kBindedTelephone)
+                                User.shared.telephone = self?.phone
                                 self?.performSegue(withIdentifier: "login from register", sender: nil)
                                 nyato_storeOauthData()
                             }

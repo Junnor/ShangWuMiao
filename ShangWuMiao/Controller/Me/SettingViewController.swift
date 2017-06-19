@@ -61,16 +61,14 @@ class SettingViewController: UITableViewController {
         
         if indexPath.row == 0 {
             var telephone = "未绑定"
-            if let value = UserDefaults.standard.value(forKey: kBindedTelephone),
-                let bindedValue = value as? String {
-                telephone = bindedValue
+            if let mobile = User.shared.telephone {
+                telephone = mobile
             }
             cell.detailTextLabel?.text = telephone
         } else if indexPath.row == 1 {
             var email = "未绑定"
-            if let value = UserDefaults.standard.value(forKey: kBindedEmail),
-                let bindedValue = value as? String {
-                email = bindedValue
+            if let value = User.shared.email {
+                email = value
             }
             cell.detailTextLabel?.text = email
         }
@@ -88,13 +86,17 @@ class SettingViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         
         if indexPath.row == 0 {   // Unbind telephone
-            if let _ = UserDefaults.standard.value(forKey: kBindedTelephone) {
+            if let _ = User.shared.telephone {
                 unbindTelephone()
             } else {  // Bind telephone
                 performSegue(withIdentifier: "bindTelephone", sender: nil)
             }
-        } else if indexPath.row == 1 {   // Bind email
-            bindEmail()
+        } else if indexPath.row == 1 {   // Unbind email
+            if let _ = User.shared.email {
+                SVProgressHUD.showInfo(withStatus: "已经绑定邮箱")
+            } else {  // Bind email
+                bindEmail()
+            }
         } else if indexPath.row == 2 {   // reset password
             performSegue(withIdentifier: "meResetPassword", sender: nil)
         }
@@ -110,8 +112,7 @@ class SettingViewController: UITableViewController {
             User.unbindTelephone(unbindPassword) { (success, info) in
                 SVProgressHUD.showInfo(withStatus: info)
                 if success {
-                    UserDefaults.standard.setValue(nil, forKey: kBindedTelephone)
-                    
+                    User.shared.telephone = nil
                     self.unbindPassword = ""
                     self.tableView.reloadData()
                 }
@@ -150,7 +151,7 @@ class SettingViewController: UITableViewController {
                 
                 SVProgressHUD.showInfo(withStatus: info)
                 if success {
-                    UserDefaults.standard.setValue(self?.email, forKey: kBindedEmail)
+                    User.shared.email = self?.email
                     self?.tableView.reloadData()
                 }
             }

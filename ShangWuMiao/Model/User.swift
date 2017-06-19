@@ -64,8 +64,8 @@ final class User {
 //    var willRegisterNyato = false
     
     // MARK: - 绑定手机或者邮箱
-    var bindedTelephone: String = ""
-    var bindedEmail: String = ""
+    var telephone: String!
+    var email: String!
     
     // Callback
     typealias callBack = (Bool, String) -> ()
@@ -220,7 +220,7 @@ extension User {
                             switch response.result {
                             case .success(let jsonResponse):
                                 let json = JSON(jsonResponse)
-                                //                                print("user info json: \(json)")
+//                                print("user info json: \(json)")
                                 let info = json["info"].stringValue
                                 let status = json["status"].intValue
                                 
@@ -233,6 +233,12 @@ extension User {
                                     let avatarUrlString = data["avatar"].stringValue
                                     let gender = data["sex"].stringValue
                                     let mcoins = data["mcoins"].floatValue
+                                    
+                                    let email = data["email"].stringValue
+                                    let mobile = data["mobile"].stringValue
+                                    
+                                    user.email = (email == "") ? nil : email
+                                    user.telephone = (mobile == "") ? nil : mobile
                                     
                                     user.mcoins = mcoins
                                     user.avatarString = avatarUrlString

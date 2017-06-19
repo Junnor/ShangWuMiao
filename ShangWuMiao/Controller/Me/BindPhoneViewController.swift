@@ -214,7 +214,7 @@ class BindPhoneViewController: UIViewController, UITextFieldDelegate {
         User.bindTelephone(codePhone, code: code) { (success, info) in
             SVProgressHUD.showInfo(withStatus: info)
             if success {
-                UserDefaults.standard.setValue(self.codePhone, forKey: kBindedTelephone)
+                User.shared.telephone = self.codePhone
                 self.navigationController?.popViewController(animated: true)
             }
         }
