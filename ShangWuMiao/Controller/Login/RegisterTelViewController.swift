@@ -91,7 +91,7 @@ class RegisterTelViewController: UIViewController, UITextFieldDelegate {
                 self.indicatorView.startAnimating()
                 User.requestPhoneCode(for: phoneTextField.text!,
                                       codeType: GetCodeType.register,
-                                      hasAreaCode: false) {
+                                      areaCode: nil) {
                     [weak self] (success, info) in
                     SVProgressHUD.showInfo(withStatus: info)
                     if success {

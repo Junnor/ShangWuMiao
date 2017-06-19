@@ -22,7 +22,7 @@ class RetrievePasswordViewController: UIViewController, UITextFieldDelegate {
             code = codeTextField.text
         }
     }
-
+    
     @IBOutlet private weak var emailTextField: UITextField! {
         didSet {
             emailTextField.delegate = self
@@ -38,18 +38,18 @@ class RetrievePasswordViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet private weak var promptLabel: UILabel!
     @IBOutlet private weak var telephoneBar: UIView!
     @IBOutlet private weak var emailBar: UIView!
-
+    
     @IBOutlet private weak var scrollView: UIScrollView! {
         didSet {
             scrollView.alwaysBounceVertical = true
         }
     }
-
+    
     @IBOutlet private weak var containerView: UIView!
     
     private var emailView: UIView!
     private var telephoneView: UIView!
-
+    
     private var codePhone: String!
     private var code: String!
     
@@ -57,9 +57,9 @@ class RetrievePasswordViewController: UIViewController, UITextFieldDelegate {
         case telephone = "先输入手机号，点击“获取验证码”，然后输入手机收到的验证码点击下一步 "
         case email = "请输入注册时填写的邮箱，完成找回密码后，建议绑定手机号码"
     }
-
+    
     // MARK: - View controller lifecycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -114,7 +114,7 @@ class RetrievePasswordViewController: UIViewController, UITextFieldDelegate {
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
-
+    
     // MARK: - Helper
     
     @IBAction func findPasswordType(_ sender: UIButton) {
@@ -148,17 +148,17 @@ class RetrievePasswordViewController: UIViewController, UITextFieldDelegate {
                 self.indicatorView.startAnimating()
                 User.requestPhoneCode(for: phoneTextField.text!,
                                       codeType: GetCodeType.retrievePassword,
-                                      hasAreaCode: false) {
-                    [weak self] (success, info) in
-                    SVProgressHUD.showInfo(withStatus: info)
-                    if success {
-                        if self != nil {
-                            self?.codePhone = self?.phoneTextField.text
-                            self?.fireTimer()
-                        }
-                    } else {
-                        self?.indicatorView.stopAnimating()
-                    }
+                                      areaCode: nil) {
+                                        [weak self] (success, info) in
+                                        SVProgressHUD.showInfo(withStatus: info)
+                                        if success {
+                                            if self != nil {
+                                                self?.codePhone = self?.phoneTextField.text
+                                                self?.fireTimer()
+                                            }
+                                        } else {
+                                            self?.indicatorView.stopAnimating()
+                                        }
                 }
             }
         }
@@ -184,15 +184,17 @@ class RetrievePasswordViewController: UIViewController, UITextFieldDelegate {
         }
         
         
-        User.verifyCodeForRetrievePswPhone(codePhone, verifyCode: code) { [weak self] (success, info) in
-            SVProgressHUD.showInfo(withStatus: info)
-            self?.timer.invalidate()
-            if success {
-                self?.performSegue(withIdentifier: "resetPassword", sender: nil)
-            }
+        User.verifyCodeForRetrievePswPhone(codePhone,
+                                           verifyCode: code) {
+                                            [weak self] (success, info) in
+                                            SVProgressHUD.showInfo(withStatus: info)
+                                            self?.timer.invalidate()
+                                            if success {
+                                                self?.performSegue(withIdentifier: "resetPassword", sender: nil)
+                                            }
         }
     }
-
+    
     @IBAction private func emailSubmit() {
         if let email = emailTextField.text, email != "" {
             User.retrievePasswordWithEmail(email, completionHandler: { (success, info) in
@@ -272,7 +274,7 @@ class RetrievePasswordViewController: UIViewController, UITextFieldDelegate {
             resetInfo()
         }
     }
-        
+    
     // MARK: - Text field delegate
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textField == phoneTextField {
@@ -288,6 +290,6 @@ class RetrievePasswordViewController: UIViewController, UITextFieldDelegate {
         } else if textField == emailTextField {
             emailLeftImageView.image = #imageLiteral(resourceName: "ico-emailed")
         }
-
+        
     }
 }

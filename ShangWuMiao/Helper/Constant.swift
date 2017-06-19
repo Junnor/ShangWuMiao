@@ -28,6 +28,9 @@ let nyatoMcoinsChange = Notification.Name("nyatoMcoinsChange")
 
 enum RequestUrlStringType: String {
     
+    // 绑定手机
+    case bindTelephone = "/index.php?app=ios&mod=Member&act=MobileBind"
+    
     // 绑定邮箱
     case bindEmail = "/index.php?app=ios&mod=Member&act=bindEmail"
 
@@ -104,6 +107,10 @@ enum RequestUrlStringType: String {
 }
 
 enum ActType: String {
+    
+    // 绑定手机
+    case bindTelephone = "MobileBind"
+
     // 绑定邮箱
     case bindEmail = "bindEmail"
     

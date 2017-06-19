@@ -73,7 +73,29 @@ extension User {
     }
     
     // MARK: - Bind telephone
-    static func bindTelephone(_ telephone: String) {
+    static func bindTelephone(_ telephone: String,
+                              code: String,
+                              completionHandler: @escaping (Bool, String) -> ()) {
+        let url = signedInUrl(forUrlType: .bindTelephone, actType: .bindTelephone)!
+        let parameters = ["mobile": telephone, "code": code]
+        
+        Alamofire.request(url,
+                          method: .post,
+                          parameters: parameters,
+                          encoding: URLEncoding.default,
+                          headers: nil).responseJSON { response in
+                            switch response.result {
+                            case .success(let jsonResponse):
+                                let json = JSON(jsonResponse)
+                                print("bind email json: \(json)")
+                                let info = json["info"].stringValue
+                                let status = json["status"].intValue
+                                completionHandler(status == 1, info)
+                            case .failure(let error):
+                                completionHandler(false, "发生错误")
+                                print("bind email error: \(error)")
+                            }
+        }
     }
 
 }

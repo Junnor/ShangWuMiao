@@ -19,7 +19,7 @@ enum GetCodeType: String {
 extension User {
     
     // MARK: - 获取验证码
-    static func requestPhoneCode(for phone: String, codeType: GetCodeType, hasAreaCode: Bool, callback: @escaping (_ status: Bool, _ info: String) -> ()) {
+    static func requestPhoneCode(for phone: String, codeType: GetCodeType, areaCode: Int?, callback: @escaping (_ status: Bool, _ info: String) -> ()) {
         
         func phoneCode(for phone: String) -> String {
             let count = phone.characters.count
@@ -36,7 +36,10 @@ extension User {
         
         let url = nonSignInUrl(forUrlType: .phoneCode, actType: .sendPhoneCode)
         
-        let parameter = ["mobile": phone, "code": code, "type": codeType.rawValue]
+        var parameter = ["mobile": phone, "code": code, "type": codeType.rawValue]
+        if areaCode != nil {
+            parameter["area_code"] = ""
+        }
         
         Alamofire.request(url!,
                           method: .post,

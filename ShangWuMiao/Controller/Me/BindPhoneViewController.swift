@@ -84,6 +84,28 @@ class BindPhoneViewController: UIViewController, UITextFieldDelegate {
 
     // MARK: - Helper
     
+    
+    private enum SelectedPlace: String {
+        case mainland = "内地"
+        case hongkong = "香港"
+        case macao = "澳门"
+        case taiwang = "台湾"
+        case japan = "日本"
+        case american = "美国"
+        
+        var areaCode: Int {
+            switch self {
+            case .mainland: return 86
+            case .hongkong: return 852
+            case .macao: return 853
+            case .taiwang: return 886
+            case .japan: return 81
+            case .american: return 1
+            }
+        }
+    }
+    
+    private var selectedPlace: SelectedPlace = .mainland
     @IBAction func getCode() {
         if phoneTextField?.text?.characters.count != 0 {
             let response = nyato_isPhoneNumber(phoneNumber: phoneTextField?.text)
@@ -97,7 +119,7 @@ class BindPhoneViewController: UIViewController, UITextFieldDelegate {
                 self.indicatorView.startAnimating()
                 User.requestPhoneCode(for: phoneTextField.text!,
                                       codeType: GetCodeType.register,
-                                      hasAreaCode: true) {
+                                      areaCode: selectedPlace.areaCode) {
                                         [weak self] (success, info) in
                                         SVProgressHUD.showInfo(withStatus: info)
                                         if success {
@@ -116,6 +138,34 @@ class BindPhoneViewController: UIViewController, UITextFieldDelegate {
 
 
     @IBAction func submit(_ sender: Any) {
+        tapAction()
+        
+        if codePhone == nil {
+            return
+        }
+        
+        guard let phone = phoneTextField.text, codePhone != nil, phone == codePhone else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                SVProgressHUD.showInfo(withStatus: "请勿更改手机号")
+            })
+            return
+        }
+        
+        code = codeTextField?.text
+        
+        if code == nil || code == "" {
+            return
+        }
+        
+        self.timer.invalidate()
+        
+        User.bindTelephone(codePhone, code: code) { (success, info) in
+            SVProgressHUD.showInfo(withStatus: info)
+            if success {
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
+        
     }
 
     @IBAction func filterAction(_ sender: UIButton) {
