@@ -118,13 +118,6 @@ class BindPhoneViewController: UIViewController, UITextFieldDelegate {
 
     // MARK: - Helper
     
-    @objc private func tableViewGesture(sender: UIGestureRecognizer) {
-        let location = sender.location(in: tableView)
-        if let indexPath = tableView.indexPathForRow(at: location) {
-            selectedPlace = AreaCodePlace(rawValue: indexPath.row)!
-        }
-    }
-    
     fileprivate enum AreaCodePlace: Int {
         case mainland = 0
         case hongkong
@@ -225,14 +218,34 @@ class BindPhoneViewController: UIViewController, UITextFieldDelegate {
         }
         
     }
+    
+    private let duration: TimeInterval = 0.2
+    @objc private func tableViewGesture(sender: UIGestureRecognizer) {
+        let location = sender.location(in: tableView)
+        if let indexPath = tableView.indexPathForRow(at: location) {
+            selectedPlace = AreaCodePlace(rawValue: indexPath.row)!
+            
+            UIView.animate(withDuration: duration, animations: {
+                self.tableView.frame = self.beginingTableViewFrame
+            })
+            UIView.animate(withDuration: duration, animations: {
+                self.tableView.frame = self.beginingTableViewFrame
+            }, completion: { (_) in
+                self.placeSelected = false
+            })
+        }
+    }
 
-    private var placeSelected = false
+    private var placeSelected = false {
+        didSet {
+            filterLabel.textColor = placeSelected ? UIColor.themeYellow : UIColor.mainTextColor
+            filterImageView.image = placeSelected ? #imageLiteral(resourceName: "ico-filter-yellow") : #imageLiteral(resourceName: "ico-filter-gray")
+        }
+    }
     @IBAction func filterAction(_ sender: UIButton) {
         placeSelected = !placeSelected
-        filterLabel.textColor = placeSelected ? UIColor.themeYellow : UIColor.mainTextColor
-        filterImageView.image = placeSelected ? #imageLiteral(resourceName: "ico-filter-yellow") : #imageLiteral(resourceName: "ico-filter-gray")
         
-        UIView.animate(withDuration: 0.2, animations: {
+        UIView.animate(withDuration: duration, animations: {
             self.tableView.frame = self.placeSelected ?
                 self.animatedTableViewFrame : self.beginingTableViewFrame
         })
