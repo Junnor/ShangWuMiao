@@ -41,6 +41,13 @@
 //新浪微博SDK需要在项目Build Settings中的Other Linker Flags添加"-ObjC"
 
 
+//   JPush
+#import "JPUSHService.h"
+// iOS10  APNs
+#ifdef NSFoundationVersionNumber_iOS_9_x_Max
+#import <UserNotifications/UserNotifications.h> 
+#endif
+
 #endif /* ShangWuMiao_Bridging_Header_h */
 
 

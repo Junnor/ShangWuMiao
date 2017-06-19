@@ -27,6 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITabBar.appearance().tintColor = UIColor.themeYellow
         
         registerShare()
+        
+        registerJPush(with: launchOptions)
 
         // Set different window root vc
         if UserDefaults.standard.value(forKeyPath: isLogin) != nil {
@@ -78,7 +80,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    // MARK: Helper
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        application.applicationIconBadgeNumber = 0
+    }
+    
+    // MARK: - Helper
     
     // ShareSDK: App Key 1e9aa2d08bba3
     private func registerShare() {
@@ -127,9 +133,57 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    
+    private func registerJPush(with launchOptions: [UIApplicationLaunchOptionsKey: Any]!) {
+        let entity = JPUSHRegisterEntity()
+        entity.types = Int(JPAuthorizationOptions.alert.rawValue | JPAuthorizationOptions.badge.rawValue | JPAuthorizationOptions.sound.rawValue)
+        JPUSHService.register(forRemoteNotificationConfig: entity, delegate: self)
+        
+        JPUSHService.setup(withOption: launchOptions,
+                           appKey: "80007dd9f0a3f42bd27c9cd2",
+                           channel: "Publish channel",
+                           apsForProduction: false,
+                           advertisingIdentifier: nil)
+        JPUSHService.registrationIDCompletionHandler { (resCode, resID) in
+            if resCode == 0 {  // success
+                print("set jpush success, resID: \(String(describing: resID))")
+            } else {
+                print("set jpush error, resCode: \(resCode)")
+            }
+        }
+    }
 }
 
-// Home sceen quick action
+// MARK: - APNs
+extension AppDelegate: JPUSHRegisterDelegate {
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        print("didRegisterForRemoteNotificationsWithDeviceToken: \(deviceToken)")
+        JPUSHService.registerDeviceToken(deviceToken)
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("didFailToRegisterForRemoteNotificationsWithError: \(error)")
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        JPUSHService.handleRemoteNotification(userInfo)
+        completionHandler(UIBackgroundFetchResult.newData)
+    }
+
+    // JPush delegate
+    @available(iOS 10.0, *)
+    func jpushNotificationCenter(_ center: UNUserNotificationCenter!, willPresent notification: UNNotification!, withCompletionHandler completionHandler: ((Int) -> Void)!) {
+        print("JPush willPresent notification")
+    }
+    
+    @available(iOS 10.0, *)
+    func jpushNotificationCenter(_ center: UNUserNotificationCenter!, didReceive response: UNNotificationResponse!, withCompletionHandler completionHandler: (() -> Void)!) {
+        print("JPush didReceive response")
+    }
+}
+
+// MARK: - Home sceen quick action
 extension AppDelegate {
     
     @available(iOS 9.0, *)
@@ -197,4 +251,6 @@ extension AppDelegate {
     }
     
 }
+
+
 

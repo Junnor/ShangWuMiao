@@ -44,7 +44,6 @@
 		673BD5BE1EEE358A005A733A /* TwitterConnector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 673BD5701EEE358A005A733A /* TwitterConnector.framework */; };
 		673BD5BF1EEE358A005A733A /* WechatConnector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 673BD5711EEE358A005A733A /* WechatConnector.framework */; };
 		673BD5C01EEE358A005A733A /* WhatsAppConnector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 673BD5721EEE358A005A733A /* WhatsAppConnector.framework */; };
-		673BD5C11EEE358A005A733A /* YiXinConnector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 673BD5731EEE358A005A733A /* YiXinConnector.framework */; };
 		673BD5C21EEE358A005A733A /* YouTubeConnector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 673BD5741EEE358A005A733A /* YouTubeConnector.framework */; };
 		673BD5C31EEE358A005A733A /* libAPOpenSdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 673BD5791EEE358A005A733A /* libAPOpenSdk.a */; };
 		673BD5C41EEE358A005A733A /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 673BD57A1EEE358A005A733A /* README.md */; };
@@ -88,6 +87,12 @@
 		67DB543D1EEFCDEB004243EA /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DB543B1EEFCDEB004243EA /* ShareViewController.swift */; };
 		67DB543E1EEFCDEB004243EA /* ShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67DB543C1EEFCDEB004243EA /* ShareViewController.xib */; };
 		67DB547E1EEFF08A004243EA /* ExhibitionDetailViewController+Share.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DB547D1EEFF08A004243EA /* ExhibitionDetailViewController+Share.swift */; };
+		67E19B6A1EF7C73200E9FF1F /* jcore-ios-1.1.3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 67E19B671EF7C73200E9FF1F /* jcore-ios-1.1.3.a */; };
+		67E19B6B1EF7C73200E9FF1F /* jpush-ios-3.0.5.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 67E19B681EF7C73200E9FF1F /* jpush-ios-3.0.5.a */; };
+		67E19B6D1EF7C7EE00E9FF1F /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67E19B6C1EF7C7EE00E9FF1F /* CoreFoundation.framework */; };
+		67E19B6F1EF7C81800E9FF1F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67E19B6E1EF7C81800E9FF1F /* Security.framework */; };
+		67E19B711EF7C83300E9FF1F /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67E19B701EF7C83200E9FF1F /* UserNotifications.framework */; };
+		67E19B731EF7C84F00E9FF1F /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 67E19B721EF7C84F00E9FF1F /* libresolv.tbd */; };
 		67F4B1AC1EF22BA8003EEB44 /* User+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F4B1AB1EF22BA8003EEB44 /* User+Register.swift */; };
 		67F4B1AE1EF22C18003EEB44 /* User+ThirdParty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F4B1AD1EF22C18003EEB44 /* User+ThirdParty.swift */; };
 		67F4B1B01EF2682D003EEB44 /* RetrievePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F4B1AF1EF2682D003EEB44 /* RetrievePasswordViewController.swift */; };
@@ -274,6 +279,13 @@
 		67DB543B1EEFCDEB004243EA /* ShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		67DB543C1EEFCDEB004243EA /* ShareViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareViewController.xib; sourceTree = "<group>"; };
 		67DB547D1EEFF08A004243EA /* ExhibitionDetailViewController+Share.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ExhibitionDetailViewController+Share.swift"; sourceTree = "<group>"; };
+		67E19B671EF7C73200E9FF1F /* jcore-ios-1.1.3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jcore-ios-1.1.3.a"; sourceTree = "<group>"; };
+		67E19B681EF7C73200E9FF1F /* jpush-ios-3.0.5.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jpush-ios-3.0.5.a"; sourceTree = "<group>"; };
+		67E19B691EF7C73200E9FF1F /* JPUSHService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPUSHService.h; sourceTree = "<group>"; };
+		67E19B6C1EF7C7EE00E9FF1F /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		67E19B6E1EF7C81800E9FF1F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		67E19B701EF7C83200E9FF1F /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		67E19B721EF7C84F00E9FF1F /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
 		67F4B1AB1EF22BA8003EEB44 /* User+Register.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+Register.swift"; sourceTree = "<group>"; };
 		67F4B1AD1EF22C18003EEB44 /* User+ThirdParty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+ThirdParty.swift"; sourceTree = "<group>"; };
 		67F4B1AF1EF2682D003EEB44 /* RetrievePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RetrievePasswordViewController.swift; sourceTree = "<group>"; };
@@ -429,6 +441,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67E19B731EF7C84F00E9FF1F /* libresolv.tbd in Frameworks */,
+				67E19B711EF7C83300E9FF1F /* UserNotifications.framework in Frameworks */,
+				67E19B6F1EF7C81800E9FF1F /* Security.framework in Frameworks */,
+				8B0352821ECEB9CB00E46DEE /* Foundation.framework in Frameworks */,
+				8B0352861ECEB9D900E46DEE /* CoreGraphics.framework in Frameworks */,
+				8B03528E1ECEB9F000E46DEE /* SystemConfiguration.framework in Frameworks */,
+				8B0352891ECEB9DF00E46DEE /* CoreTelephony.framework in Frameworks */,
+				67E19B6D1EF7C7EE00E9FF1F /* CoreFoundation.framework in Frameworks */,
+				8B0352801ECEB9C600E46DEE /* CFNetwork.framework in Frameworks */,
 				673BD5E01EEE3694005A733A /* MessageUI.framework in Frameworks */,
 				673BD5DE1EEE3682005A733A /* ImageIO.framework in Frameworks */,
 				673BD5DC1EEE364D005A733A /* JavaScriptCore.framework in Frameworks */,
@@ -454,27 +475,23 @@
 				673BD5C91EEE358A005A733A /* LineSDK.framework in Frameworks */,
 				673BD5AD1EEE358A005A733A /* ShareSDKUI.framework in Frameworks */,
 				673BD5CB1EEE358A005A733A /* TencentOpenAPI.framework in Frameworks */,
-				8B03528E1ECEB9F000E46DEE /* SystemConfiguration.framework in Frameworks */,
 				673BD5BC1EEE358A005A733A /* SinaWeiboConnector.framework in Frameworks */,
 				673BD5B31EEE358A005A733A /* GooglePlusConnector.framework in Frameworks */,
 				673BD5B41EEE358A005A733A /* InstagramConnector.framework in Frameworks */,
 				673BD5AE1EEE358A005A733A /* AliPayConnector.framework in Frameworks */,
 				673BD5C51EEE358A005A733A /* DTShareKit.framework in Frameworks */,
-				673BD5C11EEE358A005A733A /* YiXinConnector.framework in Frameworks */,
 				8B03528C1ECEB9E900E46DEE /* QuartzCore.framework in Frameworks */,
 				673BD5BA1EEE358A005A733A /* PrintConnector.framework in Frameworks */,
 				673BD5B01EEE358A005A733A /* DingTalkConnector.framework in Frameworks */,
-				8B0352891ECEB9DF00E46DEE /* CoreTelephony.framework in Frameworks */,
+				67E19B6A1EF7C73200E9FF1F /* jcore-ios-1.1.3.a in Frameworks */,
+				67E19B6B1EF7C73200E9FF1F /* jpush-ios-3.0.5.a in Frameworks */,
 				673BD5AB1EEE358A005A733A /* ShareSDKExtension.framework in Frameworks */,
 				673BD5D41EEE358A005A733A /* MOBFoundation.framework in Frameworks */,
 				8B03528A1ECEB9DF00E46DEE /* CoreText.framework in Frameworks */,
 				673BD5B81EEE358A005A733A /* MailConnector.framework in Frameworks */,
-				8B0352861ECEB9D900E46DEE /* CoreGraphics.framework in Frameworks */,
 				8B0352841ECEB9D100E46DEE /* UIKit.framework in Frameworks */,
 				673BD5C61EEE358A005A733A /* FBSDKCoreKit.framework in Frameworks */,
 				673BD5BB1EEE358A005A733A /* QQConnector.framework in Frameworks */,
-				8B0352821ECEB9CB00E46DEE /* Foundation.framework in Frameworks */,
-				8B0352801ECEB9C600E46DEE /* CFNetwork.framework in Frameworks */,
 				673BD5BF1EEE358A005A733A /* WechatConnector.framework in Frameworks */,
 				673BD5AF1EEE358A005A733A /* CopyConnector.framework in Frameworks */,
 				673BD5BD1EEE358A005A733A /* SMSConnector.framework in Frameworks */,
@@ -581,6 +598,7 @@
 		673BD5551EEE354F005A733A /* Share */ = {
 			isa = PBXGroup;
 			children = (
+				67E19B661EF7C73200E9FF1F /* Lib */,
 				673BD5561EEE358A005A733A /* ShareSDK */,
 			);
 			path = Share;
@@ -806,6 +824,16 @@
 				671579CE1EF3E727000EB710 /* BindPhoneViewController.swift */,
 			);
 			path = Me;
+			sourceTree = "<group>";
+		};
+		67E19B661EF7C73200E9FF1F /* Lib */ = {
+			isa = PBXGroup;
+			children = (
+				67E19B671EF7C73200E9FF1F /* jcore-ios-1.1.3.a */,
+				67E19B681EF7C73200E9FF1F /* jpush-ios-3.0.5.a */,
+				67E19B691EF7C73200E9FF1F /* JPUSHService.h */,
+			);
+			path = Lib;
 			sourceTree = "<group>";
 		};
 		67FD72D71EE791CC00C3DED6 /* applePaySDK */ = {
@@ -1058,6 +1086,10 @@
 		CFA0ACAAC78DE45F580AF923 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				67E19B721EF7C84F00E9FF1F /* libresolv.tbd */,
+				67E19B701EF7C83200E9FF1F /* UserNotifications.framework */,
+				67E19B6E1EF7C81800E9FF1F /* Security.framework */,
+				67E19B6C1EF7C7EE00E9FF1F /* CoreFoundation.framework */,
 				673BD5DF1EEE3694005A733A /* MessageUI.framework */,
 				673BD5DD1EEE3682005A733A /* ImageIO.framework */,
 				673BD5DB1EEE364D005A733A /* JavaScriptCore.framework */,
@@ -1156,6 +1188,12 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplePay = {
+								enabled = 1;
+							};
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
 								enabled = 1;
 							};
 						};
@@ -1537,6 +1575,7 @@
 					"$(PROJECT_DIR)/Share/ShareSDK/Support/PlatformSDK/SinaWeiboSDK",
 					"$(PROJECT_DIR)/Share/ShareSDK/Support/PlatformSDK/WeChatSDK",
 					"$(PROJECT_DIR)/Share/ShareSDK/Support/PlatformSDK/YiXinSDK",
+					"$(PROJECT_DIR)/Share/Lib",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ShangWuMiao;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1579,6 +1618,7 @@
 					"$(PROJECT_DIR)/Share/ShareSDK/Support/PlatformSDK/SinaWeiboSDK",
 					"$(PROJECT_DIR)/Share/ShareSDK/Support/PlatformSDK/WeChatSDK",
 					"$(PROJECT_DIR)/Share/ShareSDK/Support/PlatformSDK/YiXinSDK",
+					"$(PROJECT_DIR)/Share/Lib",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ShangWuMiao;
 				PRODUCT_NAME = "$(TARGET_NAME)";
