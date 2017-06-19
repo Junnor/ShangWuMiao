@@ -112,8 +112,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                             redirectUri : nyatourl,
                                             authType : SSDKAuthTypeBoth)
             case SSDKPlatformType.typeWechat:
-                appInfo?.ssdkSetupWeChat(byAppId: "wx8356797cc8741cfb",
-                                         appSecret: "432be9d7445dd12bff81e29ac6375c6a")
+                appInfo?.ssdkSetupWeChat(byAppId: "wxeb0f70c7821904f6",
+                                         appSecret: "90c169dfaee46efe8c63123fa38bb326")
             case SSDKPlatformType.typeQQ:
                 appInfo?.ssdkSetupQQ(byAppId: "1101335990",
                                      appKey: "1101335990",
