@@ -40,7 +40,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    // pay callback
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        application.applicationIconBadgeNumber = 0
+    }
+    
+
+    // MARK: - Pay callback
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
         if url.host == "safepay" {
             AlipaySDK.defaultService().processOrder(withPaymentResult: url, standbyCallback: { response in
@@ -73,20 +78,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             AlipaySDK.defaultService().processAuth_V2Result(url, standbyCallback: { response in
                 print("processAuth_V2Result response: \(String(describing: response))")
-                // TODO: alipay
             })
         }
         
         return true
     }
     
-    func applicationWillEnterForeground(_ application: UIApplication) {
-        application.applicationIconBadgeNumber = 0
-    }
-    
-    // MARK: - Helper
-    
-    // ShareSDK: App Key 1e9aa2d08bba3
+    // MARK: - Share
     private func registerShare() {
         let shareAppKey = "1e9aa2d08bba3"
         let nyatourl = "http://nyato.com"
@@ -134,7 +132,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    private func registerJPush(with launchOptions: [UIApplicationLaunchOptionsKey: Any]!) {
+}
+
+// MARK: - APNs
+extension AppDelegate: JPUSHRegisterDelegate {
+    
+    fileprivate func registerJPush(with launchOptions: [UIApplicationLaunchOptionsKey: Any]!) {
         let entity = JPUSHRegisterEntity()
         entity.types = Int(JPAuthorizationOptions.alert.rawValue | JPAuthorizationOptions.badge.rawValue | JPAuthorizationOptions.sound.rawValue)
         JPUSHService.register(forRemoteNotificationConfig: entity, delegate: self)
@@ -152,11 +155,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-}
 
-// MARK: - APNs
-extension AppDelegate: JPUSHRegisterDelegate {
-    
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         print("didRegisterForRemoteNotificationsWithDeviceToken: \(deviceToken)")
         JPUSHService.registerDeviceToken(deviceToken)
