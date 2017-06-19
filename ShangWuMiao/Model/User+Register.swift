@@ -19,7 +19,7 @@ enum GetCodeType: String {
 extension User {
     
     // MARK: - 获取验证码
-    static func requestPhoneCode(for phone: String, codeType: GetCodeType, callback: @escaping (_ status: Bool, _ info: String) -> ()) {
+    static func requestPhoneCode(for phone: String, codeType: GetCodeType, hasAreaCode: Bool, callback: @escaping (_ status: Bool, _ info: String) -> ()) {
         
         func phoneCode(for phone: String) -> String {
             let count = phone.characters.count

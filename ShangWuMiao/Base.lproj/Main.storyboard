@@ -308,7 +308,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入手机号码   " textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="k86-DY-omw" customClass="CornerTextField" customModule="ShangWuMiao" customModuleProvider="target">
-                                                <rect key="frame" x="140" y="30" width="215" height="46"/>
+                                                <rect key="frame" x="130" y="30" width="225" height="46"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="46" id="7ZL-5v-5Lo"/>
@@ -336,6 +336,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
+                                                    <action selector="getCode" destination="bDy-E9-aDA" eventType="touchUpInside" id="Vhc-eE-vYX"/>
                                                     <action selector="getCode" destination="O1a-CI-lYP" eventType="touchUpInside" id="gdt-TE-Idp"/>
                                                 </connections>
                                             </button>
@@ -365,7 +366,7 @@
                                                 <rect key="frame" x="267" y="109" width="20" height="20"/>
                                             </activityIndicatorView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fOC-qr-x1x" customClass="CornerView" customModule="ShangWuMiao" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="30" width="110" height="46"/>
+                                                <rect key="frame" x="20" y="30" width="100" height="46"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CtS-CA-yQw">
                                                         <rect key="frame" x="15" y="12.5" width="42" height="21"/>
@@ -374,10 +375,10 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ico-filter-yellow" translatesAutoresizingMaskIntoConstraints="NO" id="wWs-FQ-L0c">
-                                                        <rect key="frame" x="70" y="8" width="30" height="30"/>
+                                                        <rect key="frame" x="60" y="8" width="30" height="30"/>
                                                     </imageView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AeI-ur-wci">
-                                                        <rect key="frame" x="0.0" y="0.0" width="110" height="46"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="100" height="46"/>
                                                         <connections>
                                                             <action selector="filterAction:" destination="bDy-E9-aDA" eventType="touchUpInside" id="UXm-ij-3Dd"/>
                                                         </connections>
@@ -390,7 +391,7 @@
                                                     <constraint firstItem="CtS-CA-yQw" firstAttribute="centerY" secondItem="fOC-qr-x1x" secondAttribute="centerY" id="Euy-xj-t6P"/>
                                                     <constraint firstItem="AeI-ur-wci" firstAttribute="top" secondItem="fOC-qr-x1x" secondAttribute="top" id="KMg-QF-3zc"/>
                                                     <constraint firstItem="CtS-CA-yQw" firstAttribute="leading" secondItem="fOC-qr-x1x" secondAttribute="leading" constant="15" id="R2e-Pg-EVh"/>
-                                                    <constraint firstAttribute="width" constant="110" id="Rrx-zn-2g6"/>
+                                                    <constraint firstAttribute="width" constant="100" id="Rrx-zn-2g6"/>
                                                     <constraint firstItem="wWs-FQ-L0c" firstAttribute="centerY" secondItem="fOC-qr-x1x" secondAttribute="centerY" id="g88-VX-Ej0"/>
                                                     <constraint firstItem="AeI-ur-wci" firstAttribute="leading" secondItem="fOC-qr-x1x" secondAttribute="leading" id="ogQ-tT-vs5"/>
                                                     <constraint firstAttribute="height" constant="46" id="x68-Fm-Paf"/>

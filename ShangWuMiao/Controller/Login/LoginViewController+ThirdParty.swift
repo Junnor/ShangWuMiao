@@ -37,7 +37,6 @@ extension LoginViewController {
                     User.shared.bindToken = user.credential.token
                     User.shared.avatarString = user.icon
                     User.shared.uname = user.nickname
-                    print("======....success")
                     // Network layer
                     User.hadBindThirdParty(for: type, completionHandler: { (binded) in
                         if binded {

@@ -71,6 +71,10 @@ extension User {
         }
         
     }
+    
+    // MARK: - Bind telephone
+    static func bindTelephone(_ telephone: String) {
+    }
 
 }
 
