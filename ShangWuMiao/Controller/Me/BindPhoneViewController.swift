@@ -47,6 +47,10 @@ class BindPhoneViewController: UIViewController, UITextFieldDelegate {
     // Corner view
     @IBOutlet weak var filterLabel: UILabel!
     @IBOutlet weak var filterImageView: UIImageView!
+    @IBOutlet weak var filterButton: UIButton!
+    @IBOutlet weak var filterView: CornerView!
+
+    fileprivate var tableView: UITableView!
     
     // MARK: - View controller lifecycle
     override func viewDidLoad() {
@@ -61,7 +65,37 @@ class BindPhoneViewController: UIViewController, UITextFieldDelegate {
                                                name: NSNotification.Name.UIKeyboardWillChangeFrame,
                                                object: nil)
         
+        
         filterLabel.text = "内地"
+        
+        configureTableView()
+    }
+    
+    private var animatedTableViewFrame: CGRect = .zero
+    private var beginingTableViewFrame: CGRect = .zero
+    private func configureTableView() {
+        tableView = UITableView(frame: .zero, style: .plain)
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.rowHeight = 50
+
+        var frame = filterView.frame
+        frame.origin.y = frame.origin.y + frame.height + 10
+        frame.size.height = CGFloat(AreaCodePlace.count * 50)
+        
+        animatedTableViewFrame = frame
+        
+        // For begining state
+        frame.size.height = 0.0
+        beginingTableViewFrame = frame
+        
+        tableView.frame = beginingTableViewFrame
+        
+        scrollView.addSubview(tableView)
+        
+        tableView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tableViewGesture(sender:))))
     }
     
     private var hasLeftImage = false
@@ -84,14 +118,22 @@ class BindPhoneViewController: UIViewController, UITextFieldDelegate {
 
     // MARK: - Helper
     
+    @objc private func tableViewGesture(sender: UIGestureRecognizer) {
+        let location = sender.location(in: tableView)
+        if let indexPath = tableView.indexPathForRow(at: location) {
+            selectedPlace = AreaCodePlace(rawValue: indexPath.row)!
+        }
+    }
     
-    private enum SelectedPlace: String {
-        case mainland = "内地"
-        case hongkong = "香港"
-        case macao = "澳门"
-        case taiwang = "台湾"
-        case japan = "日本"
-        case american = "美国"
+    fileprivate enum AreaCodePlace: Int {
+        case mainland = 0
+        case hongkong
+        case macao
+        case taiwang
+        case japan
+        case american
+        
+        static var count: Int { return 6 }
         
         var areaCode: Int {
             switch self {
@@ -103,9 +145,25 @@ class BindPhoneViewController: UIViewController, UITextFieldDelegate {
             case .american: return 1
             }
         }
+        
+        var name: String {
+            switch self {
+            case .mainland: return "内地"
+            case .hongkong: return "香港"
+            case .macao: return "澳门"
+            case .taiwang: return "台湾"
+            case .japan: return "日本"
+            case .american: return "美国"
+            }
+        }
     }
     
-    private var selectedPlace: SelectedPlace = .mainland
+    fileprivate var selectedPlace: AreaCodePlace = .mainland {
+        didSet {
+            filterLabel.text = selectedPlace.name
+        }
+    }
+    
     @IBAction func getCode() {
         if phoneTextField?.text?.characters.count != 0 {
             let response = nyato_isPhoneNumber(phoneNumber: phoneTextField?.text)
@@ -168,7 +226,16 @@ class BindPhoneViewController: UIViewController, UITextFieldDelegate {
         
     }
 
+    private var placeSelected = false
     @IBAction func filterAction(_ sender: UIButton) {
+        placeSelected = !placeSelected
+        filterLabel.textColor = placeSelected ? UIColor.themeYellow : UIColor.mainTextColor
+        filterImageView.image = placeSelected ? #imageLiteral(resourceName: "ico-filter-yellow") : #imageLiteral(resourceName: "ico-filter-gray")
+        
+        UIView.animate(withDuration: 0.2, animations: {
+            self.tableView.frame = self.placeSelected ?
+                self.animatedTableViewFrame : self.beginingTableViewFrame
+        })
     }
     
     // two image states for leftImageView
@@ -230,4 +297,19 @@ class BindPhoneViewController: UIViewController, UITextFieldDelegate {
         }
     }
 
+}
+
+extension BindPhoneViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return AreaCodePlace.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell")
+        let palce = AreaCodePlace(rawValue: indexPath.row)
+        cell?.textLabel?.text = palce?.name
+//        cell?.textLabel?.highlightedTextColor = UIColor.themeYellow
+        return cell!
+    }
 }

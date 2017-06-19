@@ -79,6 +79,10 @@ extension UIColor {
     static var themeYellow: UIColor {
         return UIColor(red: 255/255.0, green: 214/255.0, blue: 0.0, alpha: 1.0)
     }
+    
+    static var mainTextColor: UIColor {
+        return UIColor(red: 51/255.0, green: 51/255.0, blue: 51/255.0, alpha: 1.0)
+    }
 
     // For Share
 

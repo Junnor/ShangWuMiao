@@ -369,13 +369,13 @@
                                                 <rect key="frame" x="20" y="30" width="100" height="46"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CtS-CA-yQw">
-                                                        <rect key="frame" x="15" y="12.5" width="42" height="21"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" red="0.98823529409999999" green="0.82745098039999998" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <rect key="frame" x="15" y="13.5" width="39.5" height="19.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ico-filter-yellow" translatesAutoresizingMaskIntoConstraints="NO" id="wWs-FQ-L0c">
-                                                        <rect key="frame" x="60" y="8" width="30" height="30"/>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ico-filter-gray" translatesAutoresizingMaskIntoConstraints="NO" id="wWs-FQ-L0c">
+                                                        <rect key="frame" x="74" y="15" width="16" height="16"/>
                                                     </imageView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AeI-ur-wci">
                                                         <rect key="frame" x="0.0" y="0.0" width="100" height="46"/>
@@ -447,8 +447,10 @@
                     <connections>
                         <outlet property="codeButton" destination="Bze-wB-YLE" id="gHD-qU-DrW"/>
                         <outlet property="codeTextField" destination="Fug-GD-0CK" id="zuE-VY-j4T"/>
+                        <outlet property="filterButton" destination="AeI-ur-wci" id="lwf-uN-EFR"/>
                         <outlet property="filterImageView" destination="wWs-FQ-L0c" id="wgj-up-6yJ"/>
                         <outlet property="filterLabel" destination="CtS-CA-yQw" id="ib1-h9-Wxd"/>
+                        <outlet property="filterView" destination="fOC-qr-x1x" id="eYe-GF-ThC"/>
                         <outlet property="indicatorView" destination="i4p-J2-Iyk" id="nca-LW-tGq"/>
                         <outlet property="phoneTextField" destination="k86-DY-omw" id="NnG-oJ-JEW"/>
                         <outlet property="promptLable" destination="QaX-yL-TTc" id="wHM-AV-fCA"/>
@@ -2008,7 +2010,7 @@
         <!--Wallet-->
         <scene sceneID="6bU-Pe-bQu">
             <objects>
-                <viewController id="Otm-2e-egK" customClass="WalletViewController" customModule="ShangWuMiao" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Wallet" id="Otm-2e-egK" customClass="WalletViewController" customModule="ShangWuMiao" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hMH-iH-JHh"/>
                         <viewControllerLayoutGuide type="bottom" id="fDK-63-yeY"/>
@@ -2495,7 +2497,7 @@
         <image name="bg-figure" width="297" height="133"/>
         <image name="buy-2" width="50" height="25"/>
         <image name="ico-addr-2" width="24" height="24"/>
-        <image name="ico-filter-yellow" width="30" height="30"/>
+        <image name="ico-filter-gray" width="16" height="16"/>
         <image name="ico-location" width="54" height="54"/>
         <image name="ico-mcionmy" width="25" height="25"/>
         <image name="ico-qq" width="66" height="66"/>
