@@ -9,6 +9,13 @@
 import UIKit
 import SwiftyJSON
 import SVProgressHUD
+import SafariServices
+import UserNotifications
+import WebKit
+
+
+fileprivate let viewActionIdentifier = "VIEW_IDENTIFIER"
+fileprivate let newsCategoryIdentifier = "NEWS_CATEGORY"
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -29,13 +36,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         registerShare()
         
         registerJPush(with: launchOptions)
-
+        
         // Set different window root vc
         if UserDefaults.standard.value(forKeyPath: isLogin) != nil {
             if let tabvc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarViewController") as? TabBarViewController {
                 window?.rootViewController = tabvc
             }
         }
+        
+        handleAPNsIfNeeded(launchOptions: launchOptions)
         
         return true
     }
@@ -44,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.applicationIconBadgeNumber = 0
     }
     
-
+    
     // MARK: - Pay callback
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
         if url.host == "safepay" {
@@ -134,55 +143,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
 }
 
-// MARK: - APNs
-extension AppDelegate: JPUSHRegisterDelegate {
-    
-    
-    fileprivate func registerJPush(with launchOptions: [UIApplicationLaunchOptionsKey: Any]!) {
-        let entity = JPUSHRegisterEntity()
-        entity.types = Int(JPAuthorizationOptions.alert.rawValue | JPAuthorizationOptions.badge.rawValue | JPAuthorizationOptions.sound.rawValue)
-        JPUSHService.register(forRemoteNotificationConfig: entity, delegate: self)
-        
-        JPUSHService.setup(withOption: launchOptions,
-                           appKey: "80007dd9f0a3f42bd27c9cd2",
-                           channel: "Publish channel",
-                           apsForProduction: false,
-                           advertisingIdentifier: nil)
-        JPUSHService.registrationIDCompletionHandler { (resCode, resID) in
-            if resCode == 0 {  // success
-                print("set jpush success, resID: \(String(describing: resID))")
-            } else {
-                print("set jpush error, resCode: \(resCode)")
-            }
-        }
-        
-    }
-    
-    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        print("didRegisterForRemoteNotificationsWithDeviceToken: \(deviceToken)")
-        JPUSHService.registerDeviceToken(deviceToken)
-    }
-    
-    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-        print("didFailToRegisterForRemoteNotificationsWithError: \(error)")
-    }
-    
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        JPUSHService.handleRemoteNotification(userInfo)
-        completionHandler(UIBackgroundFetchResult.newData)
-    }
-
-    // JPush delegate
-    @available(iOS 10.0, *)
-    func jpushNotificationCenter(_ center: UNUserNotificationCenter!, willPresent notification: UNNotification!, withCompletionHandler completionHandler: ((Int) -> Void)!) {
-        print("JPush willPresent notification")
-    }
-    
-    @available(iOS 10.0, *)
-    func jpushNotificationCenter(_ center: UNUserNotificationCenter!, didReceive response: UNNotificationResponse!, withCompletionHandler completionHandler: (() -> Void)!) {
-        print("JPush didReceive response")
-    }
-}
 
 // MARK: - Home sceen quick action
 extension AppDelegate {
@@ -235,7 +195,7 @@ extension AppDelegate {
             }
         }
     }
-        
+    
     private func showFeedback() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
@@ -251,6 +211,137 @@ extension AppDelegate {
         }
     }
     
+}
+
+
+// MARK: - APNs
+extension AppDelegate: JPUSHRegisterDelegate {
+    
+    // App not running
+    fileprivate func handleAPNsIfNeeded(launchOptions: [UIApplicationLaunchOptionsKey: Any]?) {
+        if let notification = launchOptions?[.remoteNotification] as? [String: AnyObject] {
+            if let aps = notification["aps"] as? [String: AnyObject] {
+                if let urlString = aps["link_url"] as? String,
+                    let url = URL(string: urlString) {
+                    let webViewController = createWebViewController(with: url, title: "查看内容 launch")
+                    
+                    ((window?.rootViewController as? TabBarViewController)?.selectedViewController as? UINavigationController)?.pushViewController(webViewController, animated: true)
+                }
+                
+            }
+        }
+    }
+    
+    fileprivate func registerJPush(with launchOptions: [UIApplicationLaunchOptionsKey: Any]!) {
+        let entity = JPUSHRegisterEntity()
+        entity.types = Int(JPAuthorizationOptions.alert.rawValue | JPAuthorizationOptions.badge.rawValue | JPAuthorizationOptions.sound.rawValue)
+        JPUSHService.register(forRemoteNotificationConfig: entity, delegate: self)
+        
+        JPUSHService.setup(withOption: launchOptions,
+                           appKey: "80007dd9f0a3f42bd27c9cd2",
+                           channel: "Publish channel",
+                           apsForProduction: false,
+                           advertisingIdentifier: nil)
+        JPUSHService.registrationIDCompletionHandler { (resCode, resID) in
+            if resCode == 0 {  // success
+                if #available(iOS 10.0, *) {
+                    let viewAction = UNNotificationAction(identifier: viewActionIdentifier,
+                                                          title: "查看",
+                                                          options: [.foreground])
+                    let newCategory = UNNotificationCategory(identifier: newsCategoryIdentifier,
+                                                             actions: [viewAction],
+                                                             intentIdentifiers: [],
+                                                             options: [])
+                    UNUserNotificationCenter.current().setNotificationCategories([newCategory])
+                } else {
+                    // Fallback on earlier versions
+                }
+            } else {
+                print("set jpush error, resCode: \(resCode)")
+            }
+        }
+    }
+    
+    func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
+        application.registerForRemoteNotifications()
+    }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        JPUSHService.registerDeviceToken(deviceToken)
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("didFailToRegisterForRemoteNotificationsWithError: \(error)")
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        print("===== didReceiveRemoteNotification")
+        
+        JPUSHService.handleRemoteNotification(userInfo)
+        
+        let aps = userInfo["aps"] as! [String: AnyObject]
+        
+        if let urlString = aps["link_url"] as? String,
+            let url = URL(string: urlString) {
+            let webViewController = createWebViewController(with: url, title: "查看内容 application")
+            
+            ((window?.rootViewController as? TabBarViewController)?.selectedViewController as? UINavigationController)?.pushViewController(webViewController, animated: true)
+        }
+        
+        completionHandler(.newData)
+    }
+    
+    // JPush delegate
+    @available(iOS 10.0, *)
+    func jpushNotificationCenter(_ center: UNUserNotificationCenter!, willPresent notification: UNNotification!, withCompletionHandler completionHandler: ((Int) -> Void)!) {
+        print("=====Center, willPresent")
+        let userInfo = notification.request.content.userInfo
+        
+        let aps = userInfo["aps"] as! [String: AnyObject]
+        
+        // response.actionIdentifier == viewActionIdentifier
+        if let urlString = aps["link_url"] as? String,
+            let url = URL(string: urlString) {
+            let webViewController = createWebViewController(with: url, title: "查看内容 Center Will")
+            
+            ((window?.rootViewController as? TabBarViewController)?.selectedViewController as? UINavigationController)?.pushViewController(webViewController, animated: true)
+        }
+        
+        
+        let type = Int(JPAuthorizationOptions.alert.rawValue | JPAuthorizationOptions.badge.rawValue | JPAuthorizationOptions.sound.rawValue)
+        
+        completionHandler(type)
+    }
+    
+    @available(iOS 10.0, *)
+    func jpushNotificationCenter(_ center: UNUserNotificationCenter!, didReceive response: UNNotificationResponse!, withCompletionHandler completionHandler: (() -> Void)!) {
+        let userInfo = response.notification.request.content.userInfo
+        
+        print("=====Center, didReceive")
+        
+        let aps = userInfo["aps"] as! [String: AnyObject]
+        
+        // response.actionIdentifier == viewActionIdentifier
+        if let urlString = aps["link_url"] as? String,
+            let url = URL(string: urlString) {
+            let webViewController = createWebViewController(with: url, title: "查看内容 Center Did")
+            
+            ((window?.rootViewController as? TabBarViewController)?.selectedViewController as? UINavigationController)?.pushViewController(webViewController, animated: true)
+        }
+        
+        completionHandler()
+    }
+    
+    private func createWebViewController(with url: URL, title: String) -> WebViewController {
+        let webViewController = WebViewController()
+        webViewController.automaticallyAdjustsScrollViewInsets = false
+        webViewController.view.frame = UIScreen.main.bounds
+        webViewController.url = url
+        webViewController.webTitle = title
+        webViewController.hidesBottomBarWhenPushed = true
+        
+        return webViewController
+    }
 }
 
 

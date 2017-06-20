@@ -15,8 +15,6 @@ class MeViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("me view controller view did load")
-        
         // 在Group模式下隐藏头部空白区域
         tableView.contentInset = UIEdgeInsets(top: -35, left: 0, bottom: 0, right: 0)
         
@@ -48,15 +46,10 @@ class MeViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier {
             if identifier == SegueIdentifer.topUpRecord {
-                print(".. top up record")
             } else if identifier == SegueIdentifer.delegate {
-                print("... delegate")
             } else if identifier == SegueIdentifer.feedback {
-                print(".. feedback")
             } else if identifier == SegueIdentifer.sold {
-                print(".. sold")
             } else if identifier == SegueIdentifer.topUpAction {
-                print(".. top up action")
             }
         }
     }

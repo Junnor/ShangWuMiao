@@ -137,7 +137,6 @@ class ExhibitionDetailViewController: UIViewController {
     // MARK: - View controller lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("self viewDidLoad = \(self)")
 
         self.titleLabel?.text = self.exhibition.name
         self.titleLabel?.isHidden = true

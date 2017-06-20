@@ -34,7 +34,7 @@ class JPushAliasViewController: UIViewController {
                               object: self)
     }
     
-    func tagsAliasCallBack(resCode:CInt, tags:NSSet, alias:NSString) {
+    func tagsAliasCallBack(resCode: CInt, tags: NSSet, alias: NSString) {
         resultLabel.text = "响应结果：\(resCode)"
     }
 
