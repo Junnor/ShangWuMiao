@@ -100,6 +100,7 @@
 		67F4B1F01EF26FB9003EEB44 /* FindPasswordWithTelephone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67F4B1EF1EF26FB9003EEB44 /* FindPasswordWithTelephone.xib */; };
 		67F4B1F21EF26FF5003EEB44 /* FindPasswordWithEmail.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67F4B1F11EF26FF5003EEB44 /* FindPasswordWithEmail.xib */; };
 		67F7A6421EF366EF00C841F9 /* User+ResetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F7A6411EF366EF00C841F9 /* User+ResetPassword.swift */; };
+		67FC3BB31EF8B1CF00C45CE3 /* JPushAliasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FC3BB21EF8B1CF00C45CE3 /* JPushAliasViewController.swift */; };
 		67FD72DD1EE791CC00C3DED6 /* libUPAPayPlugin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 67FD72DC1EE791CC00C3DED6 /* libUPAPayPlugin.a */; };
 		67FD72DF1EE7920C00C3DED6 /* PassKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67FD72DE1EE7920C00C3DED6 /* PassKit.framework */; };
 		8B0352741ECEB95E00E46DEE /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8B0352181ECEB95E00E46DEE /* AlipaySDK.bundle */; };
@@ -293,6 +294,7 @@
 		67F4B1EF1EF26FB9003EEB44 /* FindPasswordWithTelephone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FindPasswordWithTelephone.xib; sourceTree = "<group>"; };
 		67F4B1F11EF26FF5003EEB44 /* FindPasswordWithEmail.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FindPasswordWithEmail.xib; sourceTree = "<group>"; };
 		67F7A6411EF366EF00C841F9 /* User+ResetPassword.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+ResetPassword.swift"; sourceTree = "<group>"; };
+		67FC3BB21EF8B1CF00C45CE3 /* JPushAliasViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPushAliasViewController.swift; sourceTree = "<group>"; };
 		67FD72D91EE791CC00C3DED6 /* UPAPayPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPAPayPlugin.h; sourceTree = "<group>"; };
 		67FD72DA1EE791CC00C3DED6 /* UPAPayPluginDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPAPayPluginDelegate.h; sourceTree = "<group>"; };
 		67FD72DC1EE791CC00C3DED6 /* libUPAPayPlugin.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUPAPayPlugin.a; sourceTree = "<group>"; };
@@ -1020,6 +1022,7 @@
 			children = (
 				8BDB068F1EC01DBC00F0A660 /* TabBarViewController.swift */,
 				673070BA1EE5532200CEE9DA /* WalletViewController.swift */,
+				67FC3BB21EF8B1CF00C45CE3 /* JPushAliasViewController.swift */,
 				67DB541E1EEFCDA9004243EA /* Login */,
 				67DB542C1EEFCDBA004243EA /* Me */,
 				67DB54251EEFCDB4004243EA /* Exhibition */,
@@ -1387,6 +1390,7 @@
 				8B4753021ECE7E6400EDD02A /* UserPay.swift in Sources */,
 				67F4B1AC1EF22BA8003EEB44 /* User+Register.swift in Sources */,
 				67DB54381EEFCDBA004243EA /* SoldTicketViewController.swift in Sources */,
+				67FC3BB31EF8B1CF00C45CE3 /* JPushAliasViewController.swift in Sources */,
 				673BD5F01EEE8D92005A733A /* ShareCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -137,6 +137,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 // MARK: - APNs
 extension AppDelegate: JPUSHRegisterDelegate {
     
+    
     fileprivate func registerJPush(with launchOptions: [UIApplicationLaunchOptionsKey: Any]!) {
         let entity = JPUSHRegisterEntity()
         entity.types = Int(JPAuthorizationOptions.alert.rawValue | JPAuthorizationOptions.badge.rawValue | JPAuthorizationOptions.sound.rawValue)
@@ -154,8 +155,9 @@ extension AppDelegate: JPUSHRegisterDelegate {
                 print("set jpush error, resCode: \(resCode)")
             }
         }
+        
     }
-
+    
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         print("didRegisterForRemoteNotificationsWithDeviceToken: \(deviceToken)")
         JPUSHService.registerDeviceToken(deviceToken)
