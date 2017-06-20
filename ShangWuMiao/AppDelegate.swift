@@ -286,30 +286,69 @@ extension AppDelegate: JPUSHRegisterDelegate {
             let webViewController = createWebViewController(with: url, title: "查看内容 application")
             
             ((window?.rootViewController as? TabBarViewController)?.selectedViewController as? UINavigationController)?.pushViewController(webViewController, animated: true)
+            
+            
+            // ======================================  if foreground
+            print("===== create banner view")
+            let banner = createBannerView(withPush: "Some infomation about the apns, and url: \(url)")
+            let bannerView = banner.bannerView
+            
+            window?.addSubview(banner.bannerView)
+            window?.bringSubview(toFront: banner.bannerView)
+            
+            UIView.animate(withDuration: 1.0, animations: {
+                bannerView.frame = banner.finalFrame
+            }, completion: nil)
+            // ======================================
         }
-        
+    
         completionHandler(.newData)
+    }
+    
+    private func createBannerView(withPush text: String) -> (bannerView: BannerView, startFrame: CGRect, finalFrame: CGRect) {
+        let bannerView = Bundle.main.loadNibNamed("BannerView",
+                                                  owner: nil,
+                                                  options: [:])?.first as! BannerView
+        let width =  UIScreen.main.bounds.width - 20
+        let textWidth = width - 20
+        let rect = NSString(string: text).boundingRect(with: CGSize(width:textWidth, height: CGFloat(MAXFLOAT)), options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 16)], context: nil)
+
+        let textHeight = ceil(rect.height)
+        let propmtHeight: CGFloat = 30
+        let height = textHeight + propmtHeight
+        
+        let startFrame = CGRect(x: 10, y: -100, width: width, height: height)
+        let finalFrame = CGRect(x: 10, y: 20, width: width, height: height)
+        
+        bannerView.frame = startFrame
+        bannerView.bannerLabel.text = text
+        
+        bannerView.layer.cornerRadius = 20
+        bannerView.clipsToBounds = true
+
+        bannerView.backgroundColor = UIColor.themeYellow
+        
+        let tap = UITapGestureRecognizer(target: self,
+                                         action: #selector(openCustomBannerViewContent))
+        bannerView.addGestureRecognizer(tap)
+        
+  
+        
+        return (bannerView, startFrame, finalFrame)
+    }
+
+    @objc private func openCustomBannerViewContent() {
+        
     }
     
     // JPush delegate
     @available(iOS 10.0, *)
     func jpushNotificationCenter(_ center: UNUserNotificationCenter!, willPresent notification: UNNotification!, withCompletionHandler completionHandler: ((Int) -> Void)!) {
+        // Create a custom banner view
         print("=====Center, willPresent")
-        let userInfo = notification.request.content.userInfo
         
-        let aps = userInfo["aps"] as! [String: AnyObject]
-        
-        // response.actionIdentifier == viewActionIdentifier
-        if let urlString = aps["link_url"] as? String,
-            let url = URL(string: urlString) {
-            let webViewController = createWebViewController(with: url, title: "查看内容 Center Will")
-            
-            ((window?.rootViewController as? TabBarViewController)?.selectedViewController as? UINavigationController)?.pushViewController(webViewController, animated: true)
-        }
-        
-        
+        // completion handler
         let type = Int(JPAuthorizationOptions.alert.rawValue | JPAuthorizationOptions.badge.rawValue | JPAuthorizationOptions.sound.rawValue)
-        
         completionHandler(type)
     }
     

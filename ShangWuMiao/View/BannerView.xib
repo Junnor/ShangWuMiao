@@ -15,8 +15,8 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="700" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zCn-Oc-LKA">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="61.5"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="700" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zCn-Oc-LKA">
+                    <rect key="frame" x="20" y="0.0" width="335" height="61.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -38,8 +38,8 @@
                 <constraint firstItem="cPg-vj-hCq" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="FZf-3F-MIB"/>
                 <constraint firstItem="zCn-Oc-LKA" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="LJq-bD-33c"/>
                 <constraint firstItem="cPg-vj-hCq" firstAttribute="top" secondItem="kSv-6a-JyV" secondAttribute="bottom" constant="5" id="MeA-h5-tle"/>
-                <constraint firstItem="zCn-Oc-LKA" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Vz7-R4-cTE"/>
-                <constraint firstAttribute="trailing" secondItem="zCn-Oc-LKA" secondAttribute="trailing" id="X3x-Bn-aG6"/>
+                <constraint firstItem="zCn-Oc-LKA" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="Vz7-R4-cTE"/>
+                <constraint firstAttribute="trailing" secondItem="zCn-Oc-LKA" secondAttribute="trailing" constant="20" id="X3x-Bn-aG6"/>
                 <constraint firstAttribute="bottom" secondItem="cPg-vj-hCq" secondAttribute="bottom" constant="5" id="ew9-Kk-877"/>
                 <constraint firstAttribute="trailing" secondItem="kSv-6a-JyV" secondAttribute="trailing" id="ftY-IK-nvh"/>
             </constraints>
