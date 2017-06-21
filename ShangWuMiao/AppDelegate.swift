@@ -22,6 +22,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
+    // For APNs in forground (custom)
+    fileprivate var hasEnteredBackground = false
+    fileprivate var isPrioriOS10APNsUseCustomBannerNow = true
+    fileprivate var isFromLaunch = false
+    fileprivate var customBannerUrl: URL!
+    fileprivate var customBanner: (bannerView: BannerView, startFrame: CGRect, finalFrame: CGRect)!
+    fileprivate var bannerShowSeconds = 5
+    fileprivate var bannerTimer: Timer!
+
+    // --------------------------------------
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -50,9 +60,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationWillEnterForeground(_ application: UIApplication) {
+        print("==== application Will Enter Foreground")
+        
         application.applicationIconBadgeNumber = 0
+        
+        isPrioriOS10APNsUseCustomBannerNow = hasEnteredBackground ? false : true
     }
     
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        print("====application Did Enter Background")
+        
+        hasEnteredBackground = true
+    }
     
     // MARK: - Pay callback
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
@@ -223,11 +242,12 @@ extension AppDelegate: JPUSHRegisterDelegate {
             if let aps = notification["aps"] as? [String: AnyObject] {
                 if let urlString = aps["link_url"] as? String,
                     let url = URL(string: urlString) {
+                    isFromLaunch = true
+                    
                     let webViewController = createWebViewController(with: url, title: "查看内容 launch")
                     
                     ((window?.rootViewController as? TabBarViewController)?.selectedViewController as? UINavigationController)?.pushViewController(webViewController, animated: true)
                 }
-                
             }
         }
     }
@@ -274,6 +294,7 @@ extension AppDelegate: JPUSHRegisterDelegate {
         print("didFailToRegisterForRemoteNotificationsWithError: \(error)")
     }
     
+    
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         print("===== didReceiveRemoteNotification")
         
@@ -283,28 +304,69 @@ extension AppDelegate: JPUSHRegisterDelegate {
         
         if let urlString = aps["link_url"] as? String,
             let url = URL(string: urlString) {
-            let webViewController = createWebViewController(with: url, title: "查看内容 application")
             
-            ((window?.rootViewController as? TabBarViewController)?.selectedViewController as? UINavigationController)?.pushViewController(webViewController, animated: true)
+            print("isPrioriOS10APNsUseCustomBannerNow = \(isPrioriOS10APNsUseCustomBannerNow), and isFromLaunch = \(isFromLaunch)")
             
-            
-            // ======================================  if foreground
-            print("===== create banner view")
-            let banner = createBannerView(withPush: "Some infomation about the apns, and url: \(url)")
-            let bannerView = banner.bannerView
-            
-            window?.addSubview(banner.bannerView)
-            window?.bringSubview(toFront: banner.bannerView)
-            
-            UIView.animate(withDuration: 1.0, animations: {
-                bannerView.frame = banner.finalFrame
-            }, completion: nil)
-            // ======================================
+            if isPrioriOS10APNsUseCustomBannerNow  {
+                // Foreground called
+                if !isFromLaunch {
+                    print("use custom banner view")
+                    
+                    customBannerUrl = url
+                    
+                    customBanner?.bannerView.removeFromSuperview()
+                    customBanner = nil
+                    invalidBannerTimer()
+                    
+                    let banner = createBannerView(withPush: "Some infomation about the apns, and url: \(url)")
+                    customBanner = banner
+                    
+                    window?.addSubview(customBanner.bannerView)
+                    window?.bringSubview(toFront:customBanner.bannerView)
+                    
+                    UIView.animate(withDuration: 1.0, animations: {
+                        self.customBanner.bannerView.frame = banner.finalFrame
+                    }, completion: nil)
+                    
+                    fireBannerTimer()
+                }
+                isFromLaunch = false
+            } else {
+                // Background called
+                let webViewController = createWebViewController(with: url, title: "查看内容 didReceiveRemoteNotification")
+                
+                ((window?.rootViewController as? TabBarViewController)?.selectedViewController as? UINavigationController)?.pushViewController(webViewController, animated: true)
+                
+                isPrioriOS10APNsUseCustomBannerNow = true
+            }
         }
-    
+        
         completionHandler(.newData)
     }
     
+    private func fireBannerTimer() {
+        bannerTimer = Timer.scheduledTimer(timeInterval: 1.0,
+                                          target: self,
+                                          selector: #selector(validBanner),
+                                          userInfo: nil,
+                                          repeats: true)
+        bannerTimer.fire()
+    }
+    
+    private func invalidBannerTimer() {
+        bannerShowSeconds = 5
+        bannerTimer?.invalidate()
+    }
+    
+    @objc private func validBanner() {
+        bannerShowSeconds -= 1
+        
+        if bannerShowSeconds == 0 {
+            invalidBannerTimer()
+            swipeCustomBannerToClosed()
+        }
+    }
+
     private func createBannerView(withPush text: String) -> (bannerView: BannerView, startFrame: CGRect, finalFrame: CGRect) {
         let bannerView = Bundle.main.loadNibNamed("BannerView",
                                                   owner: nil,
@@ -312,7 +374,7 @@ extension AppDelegate: JPUSHRegisterDelegate {
         let width =  UIScreen.main.bounds.width - 20
         let textWidth = width - 20
         let rect = NSString(string: text).boundingRect(with: CGSize(width:textWidth, height: CGFloat(MAXFLOAT)), options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 16)], context: nil)
-
+        
         let textHeight = ceil(rect.height)
         let propmtHeight: CGFloat = 30
         let height = textHeight + propmtHeight
@@ -325,20 +387,43 @@ extension AppDelegate: JPUSHRegisterDelegate {
         
         bannerView.layer.cornerRadius = 20
         bannerView.clipsToBounds = true
-
+        
         bannerView.backgroundColor = UIColor.themeYellow
         
         let tap = UITapGestureRecognizer(target: self,
                                          action: #selector(openCustomBannerViewContent))
         bannerView.addGestureRecognizer(tap)
         
-  
+        let swipeUp = UISwipeGestureRecognizer(target: self,
+                                               action: #selector(swipeCustomBannerToClosed))
+        swipeUp.direction = .up
+        bannerView.addGestureRecognizer(swipeUp)
         
         return (bannerView, startFrame, finalFrame)
     }
-
-    @objc private func openCustomBannerViewContent() {
+    
+    @objc private func swipeCustomBannerToClosed() {
         
+        UIView.animate(withDuration: 0.5,
+                       animations: {
+                        self.customBanner.bannerView.frame = self.customBanner.startFrame
+        },
+                       completion: { (_) in
+                        self.invalidBannerTimer()
+                        self.customBanner?.bannerView.removeFromSuperview()
+                        self.customBanner = nil
+        })
+    }
+    
+    @objc private func openCustomBannerViewContent() {
+        invalidBannerTimer()
+        customBanner?.bannerView.removeFromSuperview()
+        customBanner = nil
+        
+        let webViewController = createWebViewController(with: customBannerUrl,
+                                                        title: "查看内容 Banner")
+        
+        ((window?.rootViewController as? TabBarViewController)?.selectedViewController as? UINavigationController)?.pushViewController(webViewController, animated: true)
     }
     
     // JPush delegate
