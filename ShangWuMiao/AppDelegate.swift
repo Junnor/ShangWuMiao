@@ -22,17 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
-    // For APNs in forground (custom)
-    fileprivate var hasEnteredBackground = false
-    fileprivate var isPrioriOS10APNsUseCustomBannerNow = true
-    fileprivate var isFromLaunch = false
-    fileprivate var customBannerUrl: URL!
-    fileprivate var customBanner: (bannerView: BannerView, startFrame: CGRect, finalFrame: CGRect)!
-    fileprivate var bannerShowSeconds = 5
-    fileprivate var bannerTimer: Timer!
-
-    // --------------------------------------
-    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
@@ -160,6 +149,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
+    // MARK: Properties for APNs in forground (custom)
+    fileprivate var hasEnteredBackground = false
+    fileprivate var isPrioriOS10APNsUseCustomBannerNow = true
+    fileprivate var isFromLaunch = false
+    fileprivate var customBannerUrl: URL!
+    fileprivate var customBanner: (bannerView: BannerView, startFrame: CGRect, finalFrame: CGRect)!
+    fileprivate var bannerShowSeconds = 5
+    fileprivate var bannerTimer: Timer!
+    // --------------------------------------
+
 }
 
 
@@ -313,8 +312,6 @@ extension AppDelegate: JPUSHRegisterDelegate {
             if isPrioriOS10APNsUseCustomBannerNow  {
                 // Foreground called
                 if !isFromLaunch {
-                    print("use custom banner view")
-                    
                     customBannerUrl = url
                     
                     customBanner?.bannerView.removeFromSuperview()
