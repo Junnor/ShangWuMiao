@@ -23,7 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
         
         // Set navigation bar appearance and back title
         let barAppearance = UINavigationBar.appearance()
@@ -32,17 +31,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         barAppearance.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         UITabBar.appearance().tintColor = UIColor.themeYellow
         
+        // Share and login with third party [ShareSDK]
         registerShare()
         
+        // Apple push notification service, use the third party [JPush]
         registerJPush(with: launchOptions)
         
-        // Set different window root vc
+        // Set different window root view controller
         if UserDefaults.standard.value(forKeyPath: isLogin) != nil {
             if let tabvc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarViewController") as? TabBarViewController {
                 window?.rootViewController = tabvc
             }
         }
         
+        // Check APNs, just need to do with the platform which prior iOS 10
         if #available(iOS 10.0, *) {
             // When iOS platform is iOS, the UNUserNotificationCennter will handle it
         } else {
@@ -59,7 +61,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationDidEnterBackground(_ application: UIApplication) {
-        
         hasEnteredBackground = true
     }
     
@@ -97,6 +98,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             AlipaySDK.defaultService().processAuth_V2Result(url, standbyCallback: { response in
                 print("processAuth_V2Result response: \(String(describing: response))")
             })
+        } else if url.scheme == nyatoWechatAppId {
+            return WXApi.handleOpen(url, delegate: self)
         }
         
         return true
@@ -458,10 +461,9 @@ extension AppDelegate: JPUSHRegisterDelegate {
     
     @available(iOS 10.0, *)
     func jpushNotificationCenter(_ center: UNUserNotificationCenter!, didReceive response: UNNotificationResponse!, withCompletionHandler completionHandler: (() -> Void)!) {
-        let userInfo = response.notification.request.content.userInfo
-        
         print("=====Center, didReceive")
         
+        let userInfo = response.notification.request.content.userInfo
         let aps = userInfo["aps"] as! [String: AnyObject]
         
         // response.actionIdentifier == viewActionIdentifier
@@ -476,5 +478,13 @@ extension AppDelegate: JPUSHRegisterDelegate {
     }
 }
 
+// MARK: - Wechat Api Delegate
+
+extension AppDelegate: WXApiDelegate {
+    
+    func onResp(_ resp: BaseResp!) {
+        // TODO: ...... do something if needed
+    }
+}
 
 

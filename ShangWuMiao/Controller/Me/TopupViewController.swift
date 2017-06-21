@@ -154,7 +154,6 @@ extension TopupViewController: UITableViewDataSource, UITableViewDelegate {
                             }
             })
         } else if indexPath.row == 1 { // Wechat pay
-            isWechat = true
             // Float(currentMcoinsCount)
             UserPay.pay(withType: Pay.wechat,
                         orderPrice: Float(1),
