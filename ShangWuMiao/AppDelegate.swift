@@ -53,15 +53,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationWillEnterForeground(_ application: UIApplication) {
-        print("==== application Will Enter Foreground")
-        
         application.applicationIconBadgeNumber = 0
         
         isPrioriOS10APNsUseCustomBannerNow = hasEnteredBackground ? false : true
     }
     
     func applicationDidEnterBackground(_ application: UIApplication) {
-        print("====application Did Enter Background")
         
         hasEnteredBackground = true
     }
@@ -153,7 +150,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    // MARK: Properties for APNs in forground (custom)
+    // MARK: - Properties for APNs in forground (used in custom banner)
     fileprivate var hasEnteredBackground = false
     fileprivate var isPrioriOS10APNsUseCustomBannerNow = true
     fileprivate var isFromLaunch = false
@@ -236,26 +233,12 @@ extension AppDelegate {
 }
 
 
-// MARK: - APNs
+// MARK: - Apple Push Notificaiton service (APNs)
+
 extension AppDelegate: JPUSHRegisterDelegate {
     
-    // App not running
-    fileprivate func handleAPNsIfNeeded(launchOptions: [UIApplicationLaunchOptionsKey: Any]?) {
-        if let notification = launchOptions?[.remoteNotification] as? [String: AnyObject] {
-            if let aps = notification["aps"] as? [String: AnyObject] {
-                if let urlString = aps["link_url"] as? String,
-                    let url = URL(string: urlString) {
-                    isFromLaunch = true
-                    let webViewController = createWebViewController(with: url, title: "查看内容 launch")
-                    // Important, or selectedViewController will be nil
-                    (window?.rootViewController as? TabBarViewController)?.selectedIndex = 0
-                    ((window?.rootViewController as? TabBarViewController)?.selectedViewController as? UINavigationController)?.pushViewController(webViewController, animated: true)
-                }
-            }
-        }
-        
-    }
-    
+    // MARK: - Register and recieve stuff
+
     fileprivate func registerJPush(with launchOptions: [UIApplicationLaunchOptionsKey: Any]!) {
         let entity = JPUSHRegisterEntity()
         entity.types = Int(JPAuthorizationOptions.alert.rawValue | JPAuthorizationOptions.badge.rawValue | JPAuthorizationOptions.sound.rawValue)
@@ -286,6 +269,22 @@ extension AppDelegate: JPUSHRegisterDelegate {
         }
     }
     
+    fileprivate func handleAPNsIfNeeded(launchOptions: [UIApplicationLaunchOptionsKey: Any]?) {
+        if let notification = launchOptions?[.remoteNotification] as? [String: AnyObject] {
+            if let aps = notification["aps"] as? [String: AnyObject] {
+                if let urlString = aps["link_url"] as? String,
+                    let url = URL(string: urlString) {
+                    isFromLaunch = true
+                    let webViewController = createWebViewController(with: url, title: "查看内容 launch")
+                    // Important, or selectedViewController will be nil
+                    (window?.rootViewController as? TabBarViewController)?.selectedIndex = 0
+                    ((window?.rootViewController as? TabBarViewController)?.selectedViewController as? UINavigationController)?.pushViewController(webViewController, animated: true)
+                }
+            }
+        }
+        
+    }
+
     func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
         application.registerForRemoteNotifications()
     }
@@ -346,11 +345,12 @@ extension AppDelegate: JPUSHRegisterDelegate {
                 }
             }
 
-        }
-
-        
+        }        
         completionHandler(.newData)
     }
+    
+    
+    // MARK: - Custom banner view
     
     private func fireBannerTimer() {
         bannerTimer = Timer.scheduledTimer(timeInterval: 1.0,
@@ -434,7 +434,19 @@ extension AppDelegate: JPUSHRegisterDelegate {
         ((window?.rootViewController as? TabBarViewController)?.selectedViewController as? UINavigationController)?.pushViewController(webViewController, animated: true)
     }
     
-    // JPush delegate
+    // WebViewConroller
+    private func createWebViewController(with url: URL, title: String) -> WebViewController {
+        let webViewController = WebViewController()
+        webViewController.automaticallyAdjustsScrollViewInsets = false
+        webViewController.view.frame = UIScreen.main.bounds
+        webViewController.url = url
+        webViewController.webTitle = title
+        webViewController.hidesBottomBarWhenPushed = true
+        
+        return webViewController
+    }
+
+    // MARK: - JPush delegate, for iOS 10
     @available(iOS 10.0, *)
     func jpushNotificationCenter(_ center: UNUserNotificationCenter!, willPresent notification: UNNotification!, withCompletionHandler completionHandler: ((Int) -> Void)!) {
         print("=====Center, willPresent")
@@ -461,17 +473,6 @@ extension AppDelegate: JPUSHRegisterDelegate {
         }
         
         completionHandler()
-    }
-    
-    private func createWebViewController(with url: URL, title: String) -> WebViewController {
-        let webViewController = WebViewController()
-        webViewController.automaticallyAdjustsScrollViewInsets = false
-        webViewController.view.frame = UIScreen.main.bounds
-        webViewController.url = url
-        webViewController.webTitle = title
-        webViewController.hidesBottomBarWhenPushed = true
-        
-        return webViewController
     }
 }
 

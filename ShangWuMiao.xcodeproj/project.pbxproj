@@ -100,6 +100,7 @@
 		67F4B1F01EF26FB9003EEB44 /* FindPasswordWithTelephone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67F4B1EF1EF26FB9003EEB44 /* FindPasswordWithTelephone.xib */; };
 		67F4B1F21EF26FF5003EEB44 /* FindPasswordWithEmail.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67F4B1F11EF26FF5003EEB44 /* FindPasswordWithEmail.xib */; };
 		67F7A6421EF366EF00C841F9 /* User+ResetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F7A6411EF366EF00C841F9 /* User+ResetPassword.swift */; };
+		67F8ADE81EFA5B5B0071C92D /* Area.plist in Resources */ = {isa = PBXBuildFile; fileRef = 67F8ADE71EFA5B5B0071C92D /* Area.plist */; };
 		67FC3BB31EF8B1CF00C45CE3 /* JPushAliasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FC3BB21EF8B1CF00C45CE3 /* JPushAliasViewController.swift */; };
 		67FC3BB91EF90ADA00C45CE3 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FC3BB81EF90ADA00C45CE3 /* WebViewController.swift */; };
 		67FC3BBD1EF9211400C45CE3 /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FC3BBC1EF9211400C45CE3 /* BannerView.swift */; };
@@ -297,6 +298,7 @@
 		67F4B1EF1EF26FB9003EEB44 /* FindPasswordWithTelephone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FindPasswordWithTelephone.xib; sourceTree = "<group>"; };
 		67F4B1F11EF26FF5003EEB44 /* FindPasswordWithEmail.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FindPasswordWithEmail.xib; sourceTree = "<group>"; };
 		67F7A6411EF366EF00C841F9 /* User+ResetPassword.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+ResetPassword.swift"; sourceTree = "<group>"; };
+		67F8ADE71EFA5B5B0071C92D /* Area.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Area.plist; sourceTree = "<group>"; };
 		67FC3BB21EF8B1CF00C45CE3 /* JPushAliasViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPushAliasViewController.swift; sourceTree = "<group>"; };
 		67FC3BB81EF90ADA00C45CE3 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		67FC3BBC1EF9211400C45CE3 /* BannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
@@ -574,6 +576,7 @@
 				8BDE8EC81EC193260000C1C8 /* ShangWuMiao-Bridging-Header.h */,
 				677D66641EE65ECD0078F1BC /* Lollipop.pkpass */,
 				4460C2B41E9B19F3004166DB /* Info.plist */,
+				67F8ADE71EFA5B5B0071C92D /* Area.plist */,
 			);
 			path = ShangWuMiao;
 			sourceTree = "<group>";
@@ -1270,6 +1273,7 @@
 				8BCE2BBA1ECC3F9500ACA1BB /* ExFooterView.xib in Resources */,
 				673BD5D01EEE358A005A733A /* WeiboSDK.bundle in Resources */,
 				8BCE2BAE1ECC369E00ACA1BB /* ExDescriptionCell.xib in Resources */,
+				67F8ADE81EFA5B5B0071C92D /* Area.plist in Resources */,
 				8BCE2BB21ECC375200ACA1BB /* ExInputHintCell.xib in Resources */,
 				8B0E1A771ECD42310017F11C /* ExAddressCell.xib in Resources */,
 			);
