@@ -243,12 +243,15 @@ extension AppDelegate: JPUSHRegisterDelegate {
                 if let urlString = aps["link_url"] as? String,
                     let url = URL(string: urlString) {
                     isFromLaunch = true
-                    
+
                     let webViewController = createWebViewController(with: url, title: "查看内容 launch")
-                    
+                    // Important, or selectedViewController will be nil
+                    (window?.rootViewController as? TabBarViewController)?.selectedIndex = 0
                     ((window?.rootViewController as? TabBarViewController)?.selectedViewController as? UINavigationController)?.pushViewController(webViewController, animated: true)
                 }
             }
+            
+
         }
     }
     
@@ -429,7 +432,6 @@ extension AppDelegate: JPUSHRegisterDelegate {
     // JPush delegate
     @available(iOS 10.0, *)
     func jpushNotificationCenter(_ center: UNUserNotificationCenter!, willPresent notification: UNNotification!, withCompletionHandler completionHandler: ((Int) -> Void)!) {
-        // Create a custom banner view
         print("=====Center, willPresent")
         
         // completion handler
