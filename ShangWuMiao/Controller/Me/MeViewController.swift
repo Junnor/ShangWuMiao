@@ -139,6 +139,7 @@ extension MeViewController {
                     cell.avatarImageView.layer.cornerRadius = width / 2
                     cell.avatarImageView.layer.masksToBounds = true
                     if let url = URL(string: User.shared.avatarString) {
+                        print("...avatar url = \(url)")
                         let resource = ImageResource(downloadURL: url,
                                                      cacheKey: url.absoluteString)
                         

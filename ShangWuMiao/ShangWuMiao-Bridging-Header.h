@@ -40,6 +40,8 @@
 #import "WeiboSDK.h"
 //新浪微博SDK需要在项目Build Settings中的Other Linker Flags添加"-ObjC"
 
+// 统计相关
+#import "Countly.h"
 
 //   JPush
 #import "JPUSHService.h"

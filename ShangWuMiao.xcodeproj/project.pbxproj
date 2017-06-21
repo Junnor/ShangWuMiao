@@ -101,6 +101,26 @@
 		67F4B1F21EF26FF5003EEB44 /* FindPasswordWithEmail.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67F4B1F11EF26FF5003EEB44 /* FindPasswordWithEmail.xib */; };
 		67F7A6421EF366EF00C841F9 /* User+ResetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F7A6411EF366EF00C841F9 /* User+ResetPassword.swift */; };
 		67F8ADE81EFA5B5B0071C92D /* Area.plist in Resources */ = {isa = PBXBuildFile; fileRef = 67F8ADE71EFA5B5B0071C92D /* Area.plist */; };
+		67F8AE0F1EFA77EA0071C92D /* .gitattributes in Resources */ = {isa = PBXBuildFile; fileRef = 67F8ADEB1EFA77EA0071C92D /* .gitattributes */; };
+		67F8AE101EFA77EA0071C92D /* Countly.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F8ADED1EFA77EA0071C92D /* Countly.m */; };
+		67F8AE111EFA77EA0071C92D /* Countly.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 67F8ADEE1EFA77EA0071C92D /* Countly.podspec */; };
+		67F8AE121EFA77EA0071C92D /* Countly_OpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F8ADF01EFA77EA0071C92D /* Countly_OpenUDID.m */; };
+		67F8AE131EFA77EA0071C92D /* CountlyAPM.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F8ADF21EFA77EA0071C92D /* CountlyAPM.m */; };
+		67F8AE141EFA77EA0071C92D /* CountlyAPMNetworkLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F8ADF41EFA77EA0071C92D /* CountlyAPMNetworkLog.m */; };
+		67F8AE151EFA77EA0071C92D /* CountlyCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F8ADF61EFA77EA0071C92D /* CountlyCommon.m */; };
+		67F8AE161EFA77EA0071C92D /* CountlyConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F8ADF81EFA77EA0071C92D /* CountlyConfig.m */; };
+		67F8AE171EFA77EA0071C92D /* CountlyConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F8ADFA1EFA77EA0071C92D /* CountlyConnectionManager.m */; };
+		67F8AE181EFA77EA0071C92D /* CountlyCrashReporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F8ADFC1EFA77EA0071C92D /* CountlyCrashReporter.m */; };
+		67F8AE191EFA77EA0071C92D /* CountlyDeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F8ADFE1EFA77EA0071C92D /* CountlyDeviceInfo.m */; };
+		67F8AE1A1EFA77EA0071C92D /* CountlyEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F8AE001EFA77EA0071C92D /* CountlyEvent.m */; };
+		67F8AE1B1EFA77EA0071C92D /* CountlyNotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F8AE021EFA77EA0071C92D /* CountlyNotificationService.m */; };
+		67F8AE1C1EFA77EA0071C92D /* CountlyPersistency.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F8AE041EFA77EA0071C92D /* CountlyPersistency.m */; };
+		67F8AE1D1EFA77EA0071C92D /* CountlyPushNotifications.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F8AE061EFA77EA0071C92D /* CountlyPushNotifications.m */; };
+		67F8AE1E1EFA77EA0071C92D /* CountlyStarRating.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F8AE081EFA77EA0071C92D /* CountlyStarRating.m */; };
+		67F8AE1F1EFA77EA0071C92D /* CountlyUserDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F8AE0A1EFA77EA0071C92D /* CountlyUserDetails.m */; };
+		67F8AE201EFA77EA0071C92D /* CountlyViewTracking.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F8AE0C1EFA77EA0071C92D /* CountlyViewTracking.m */; };
+		67F8AE211EFA77EA0071C92D /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 67F8AE0D1EFA77EA0071C92D /* LICENSE */; };
+		67F8AE221EFA77EA0071C92D /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 67F8AE0E1EFA77EA0071C92D /* README.md */; };
 		67FC3BB31EF8B1CF00C45CE3 /* JPushAliasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FC3BB21EF8B1CF00C45CE3 /* JPushAliasViewController.swift */; };
 		67FC3BB91EF90ADA00C45CE3 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FC3BB81EF90ADA00C45CE3 /* WebViewController.swift */; };
 		67FC3BBD1EF9211400C45CE3 /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FC3BBC1EF9211400C45CE3 /* BannerView.swift */; };
@@ -299,6 +319,42 @@
 		67F4B1F11EF26FF5003EEB44 /* FindPasswordWithEmail.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FindPasswordWithEmail.xib; sourceTree = "<group>"; };
 		67F7A6411EF366EF00C841F9 /* User+ResetPassword.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+ResetPassword.swift"; sourceTree = "<group>"; };
 		67F8ADE71EFA5B5B0071C92D /* Area.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Area.plist; sourceTree = "<group>"; };
+		67F8ADEB1EFA77EA0071C92D /* .gitattributes */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitattributes; sourceTree = "<group>"; };
+		67F8ADEC1EFA77EA0071C92D /* Countly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Countly.h; sourceTree = "<group>"; };
+		67F8ADED1EFA77EA0071C92D /* Countly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Countly.m; sourceTree = "<group>"; };
+		67F8ADEE1EFA77EA0071C92D /* Countly.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Countly.podspec; sourceTree = "<group>"; };
+		67F8ADEF1EFA77EA0071C92D /* Countly_OpenUDID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Countly_OpenUDID.h; sourceTree = "<group>"; };
+		67F8ADF01EFA77EA0071C92D /* Countly_OpenUDID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Countly_OpenUDID.m; sourceTree = "<group>"; };
+		67F8ADF11EFA77EA0071C92D /* CountlyAPM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyAPM.h; sourceTree = "<group>"; };
+		67F8ADF21EFA77EA0071C92D /* CountlyAPM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountlyAPM.m; sourceTree = "<group>"; };
+		67F8ADF31EFA77EA0071C92D /* CountlyAPMNetworkLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyAPMNetworkLog.h; sourceTree = "<group>"; };
+		67F8ADF41EFA77EA0071C92D /* CountlyAPMNetworkLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountlyAPMNetworkLog.m; sourceTree = "<group>"; };
+		67F8ADF51EFA77EA0071C92D /* CountlyCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyCommon.h; sourceTree = "<group>"; };
+		67F8ADF61EFA77EA0071C92D /* CountlyCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountlyCommon.m; sourceTree = "<group>"; };
+		67F8ADF71EFA77EA0071C92D /* CountlyConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyConfig.h; sourceTree = "<group>"; };
+		67F8ADF81EFA77EA0071C92D /* CountlyConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountlyConfig.m; sourceTree = "<group>"; };
+		67F8ADF91EFA77EA0071C92D /* CountlyConnectionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyConnectionManager.h; sourceTree = "<group>"; };
+		67F8ADFA1EFA77EA0071C92D /* CountlyConnectionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountlyConnectionManager.m; sourceTree = "<group>"; };
+		67F8ADFB1EFA77EA0071C92D /* CountlyCrashReporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyCrashReporter.h; sourceTree = "<group>"; };
+		67F8ADFC1EFA77EA0071C92D /* CountlyCrashReporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountlyCrashReporter.m; sourceTree = "<group>"; };
+		67F8ADFD1EFA77EA0071C92D /* CountlyDeviceInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyDeviceInfo.h; sourceTree = "<group>"; };
+		67F8ADFE1EFA77EA0071C92D /* CountlyDeviceInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountlyDeviceInfo.m; sourceTree = "<group>"; };
+		67F8ADFF1EFA77EA0071C92D /* CountlyEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyEvent.h; sourceTree = "<group>"; };
+		67F8AE001EFA77EA0071C92D /* CountlyEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountlyEvent.m; sourceTree = "<group>"; };
+		67F8AE011EFA77EA0071C92D /* CountlyNotificationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyNotificationService.h; sourceTree = "<group>"; };
+		67F8AE021EFA77EA0071C92D /* CountlyNotificationService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountlyNotificationService.m; sourceTree = "<group>"; };
+		67F8AE031EFA77EA0071C92D /* CountlyPersistency.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyPersistency.h; sourceTree = "<group>"; };
+		67F8AE041EFA77EA0071C92D /* CountlyPersistency.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountlyPersistency.m; sourceTree = "<group>"; };
+		67F8AE051EFA77EA0071C92D /* CountlyPushNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyPushNotifications.h; sourceTree = "<group>"; };
+		67F8AE061EFA77EA0071C92D /* CountlyPushNotifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountlyPushNotifications.m; sourceTree = "<group>"; };
+		67F8AE071EFA77EA0071C92D /* CountlyStarRating.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyStarRating.h; sourceTree = "<group>"; };
+		67F8AE081EFA77EA0071C92D /* CountlyStarRating.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountlyStarRating.m; sourceTree = "<group>"; };
+		67F8AE091EFA77EA0071C92D /* CountlyUserDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyUserDetails.h; sourceTree = "<group>"; };
+		67F8AE0A1EFA77EA0071C92D /* CountlyUserDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountlyUserDetails.m; sourceTree = "<group>"; };
+		67F8AE0B1EFA77EA0071C92D /* CountlyViewTracking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyViewTracking.h; sourceTree = "<group>"; };
+		67F8AE0C1EFA77EA0071C92D /* CountlyViewTracking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountlyViewTracking.m; sourceTree = "<group>"; };
+		67F8AE0D1EFA77EA0071C92D /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		67F8AE0E1EFA77EA0071C92D /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		67FC3BB21EF8B1CF00C45CE3 /* JPushAliasViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPushAliasViewController.swift; sourceTree = "<group>"; };
 		67FC3BB81EF90ADA00C45CE3 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		67FC3BBC1EF9211400C45CE3 /* BannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
@@ -544,6 +600,7 @@
 				4460C2BC1E9B19F3004166DB /* ShangWuMiaoTests */,
 				4460C2C71E9B19F3004166DB /* ShangWuMiaoUITests */,
 				4460C2A61E9B19F3004166DB /* Products */,
+				67F8ADE91EFA77DC0071C92D /* ThirdPartySDK */,
 				7EF51B8EA468F8A98768E468 /* Pods */,
 				673BD5551EEE354F005A733A /* Share */,
 				8B0352161ECEB94A00E46DEE /* Pay */,
@@ -845,6 +902,57 @@
 				67E19B691EF7C73200E9FF1F /* JPUSHService.h */,
 			);
 			path = Lib;
+			sourceTree = "<group>";
+		};
+		67F8ADE91EFA77DC0071C92D /* ThirdPartySDK */ = {
+			isa = PBXGroup;
+			children = (
+				67F8ADEA1EFA77EA0071C92D /* countly-sdk-ios */,
+			);
+			path = ThirdPartySDK;
+			sourceTree = "<group>";
+		};
+		67F8ADEA1EFA77EA0071C92D /* countly-sdk-ios */ = {
+			isa = PBXGroup;
+			children = (
+				67F8ADEB1EFA77EA0071C92D /* .gitattributes */,
+				67F8ADEC1EFA77EA0071C92D /* Countly.h */,
+				67F8ADED1EFA77EA0071C92D /* Countly.m */,
+				67F8ADEE1EFA77EA0071C92D /* Countly.podspec */,
+				67F8ADEF1EFA77EA0071C92D /* Countly_OpenUDID.h */,
+				67F8ADF01EFA77EA0071C92D /* Countly_OpenUDID.m */,
+				67F8ADF11EFA77EA0071C92D /* CountlyAPM.h */,
+				67F8ADF21EFA77EA0071C92D /* CountlyAPM.m */,
+				67F8ADF31EFA77EA0071C92D /* CountlyAPMNetworkLog.h */,
+				67F8ADF41EFA77EA0071C92D /* CountlyAPMNetworkLog.m */,
+				67F8ADF51EFA77EA0071C92D /* CountlyCommon.h */,
+				67F8ADF61EFA77EA0071C92D /* CountlyCommon.m */,
+				67F8ADF71EFA77EA0071C92D /* CountlyConfig.h */,
+				67F8ADF81EFA77EA0071C92D /* CountlyConfig.m */,
+				67F8ADF91EFA77EA0071C92D /* CountlyConnectionManager.h */,
+				67F8ADFA1EFA77EA0071C92D /* CountlyConnectionManager.m */,
+				67F8ADFB1EFA77EA0071C92D /* CountlyCrashReporter.h */,
+				67F8ADFC1EFA77EA0071C92D /* CountlyCrashReporter.m */,
+				67F8ADFD1EFA77EA0071C92D /* CountlyDeviceInfo.h */,
+				67F8ADFE1EFA77EA0071C92D /* CountlyDeviceInfo.m */,
+				67F8ADFF1EFA77EA0071C92D /* CountlyEvent.h */,
+				67F8AE001EFA77EA0071C92D /* CountlyEvent.m */,
+				67F8AE011EFA77EA0071C92D /* CountlyNotificationService.h */,
+				67F8AE021EFA77EA0071C92D /* CountlyNotificationService.m */,
+				67F8AE031EFA77EA0071C92D /* CountlyPersistency.h */,
+				67F8AE041EFA77EA0071C92D /* CountlyPersistency.m */,
+				67F8AE051EFA77EA0071C92D /* CountlyPushNotifications.h */,
+				67F8AE061EFA77EA0071C92D /* CountlyPushNotifications.m */,
+				67F8AE071EFA77EA0071C92D /* CountlyStarRating.h */,
+				67F8AE081EFA77EA0071C92D /* CountlyStarRating.m */,
+				67F8AE091EFA77EA0071C92D /* CountlyUserDetails.h */,
+				67F8AE0A1EFA77EA0071C92D /* CountlyUserDetails.m */,
+				67F8AE0B1EFA77EA0071C92D /* CountlyViewTracking.h */,
+				67F8AE0C1EFA77EA0071C92D /* CountlyViewTracking.m */,
+				67F8AE0D1EFA77EA0071C92D /* LICENSE */,
+				67F8AE0E1EFA77EA0071C92D /* README.md */,
+			);
+			path = "countly-sdk-ios";
 			sourceTree = "<group>";
 		};
 		67FD72D71EE791CC00C3DED6 /* applePaySDK */ = {
@@ -1253,10 +1361,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B05263E1ECF00370090F11B /* ExBlurView.xib in Resources */,
+				67F8AE111EFA77EA0071C92D /* Countly.podspec in Resources */,
 				4460C2B31E9B19F3004166DB /* LaunchScreen.storyboard in Resources */,
 				673BD5D51EEE358A005A733A /* ShareSDK.bundle in Resources */,
 				673BD5AC1EEE358A005A733A /* ShareSDKUI.bundle in Resources */,
 				673BD5F11EEE8D92005A733A /* ShareCell.xib in Resources */,
+				67F8AE0F1EFA77EA0071C92D /* .gitattributes in Resources */,
 				673BD5CC1EEE358A005A733A /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				677D66651EE65ECD0078F1BC /* Lollipop.pkpass in Resources */,
 				673BD5A91EEE358A005A733A /* ShareSDKConfigFile.bundle in Resources */,
@@ -1265,6 +1375,7 @@
 				67F4B1F21EF26FF5003EEB44 /* FindPasswordWithEmail.xib in Resources */,
 				67DB543E1EEFCDEB004243EA /* ShareViewController.xib in Resources */,
 				8BCE2BB61ECC3A5D00ACA1BB /* ExTicketCell.xib in Resources */,
+				67F8AE211EFA77EA0071C92D /* LICENSE in Resources */,
 				4460C2B01E9B19F3004166DB /* Assets.xcassets in Resources */,
 				673BD5D21EEE358A005A733A /* README.txt in Resources */,
 				4460C2AE1E9B19F3004166DB /* Main.storyboard in Resources */,
@@ -1348,17 +1459,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67F8AE171EFA77EA0071C92D /* CountlyConnectionManager.m in Sources */,
 				4460C2A91E9B19F3004166DB /* AppDelegate.swift in Sources */,
 				8B03527C1ECEB95E00E46DEE /* RSADataVerifier.m in Sources */,
 				8B96043A1ED3D98E001AFC0F /* CornerView.swift in Sources */,
 				8BE380111EC2A38A001A6651 /* TopupRecordCell.swift in Sources */,
 				8BE380151EC2A887001A6651 /* BoughtTicketCell.swift in Sources */,
+				67F8AE1C1EFA77EA0071C92D /* CountlyPersistency.m in Sources */,
 				8BE380131EC2A757001A6651 /* TopupCell.swift in Sources */,
 				67DB54231EEFCDA9004243EA /* RegisterNameViewController.swift in Sources */,
+				67F8AE151EFA77EA0071C92D /* CountlyCommon.m in Sources */,
 				67DB547E1EEFF08A004243EA /* ExhibitionDetailViewController+Share.swift in Sources */,
 				8BCE2BB51ECC3A5D00ACA1BB /* ExTicketCell.swift in Sources */,
+				67F8AE141EFA77EA0071C92D /* CountlyAPMNetworkLog.m in Sources */,
 				67DB54391EEFCDBA004243EA /* TopupRecordViewController.swift in Sources */,
+				67F8AE121EFA77EA0071C92D /* Countly_OpenUDID.m in Sources */,
 				67DB542B1EEFCDB4004243EA /* SearchViewController.swift in Sources */,
+				67F8AE181EFA77EA0071C92D /* CountlyCrashReporter.m in Sources */,
 				8BCE2BA91ECC351700ACA1BB /* ExHeaderCell.swift in Sources */,
 				67FC3BB91EF90ADA00C45CE3 /* WebViewController.swift in Sources */,
 				8BE3800F1EC2A1A1001A6651 /* MeCell.swift in Sources */,
@@ -1370,11 +1487,16 @@
 				8B0352781ECEB95E00E46DEE /* base64.m in Sources */,
 				67FC3BBD1EF9211400C45CE3 /* BannerView.swift in Sources */,
 				67DB543D1EEFCDEB004243EA /* ShareViewController.swift in Sources */,
+				67F8AE191EFA77EA0071C92D /* CountlyDeviceInfo.m in Sources */,
 				67DB54351EEFCDBA004243EA /* ExhibitionTicketTableViewController.swift in Sources */,
+				67F8AE131EFA77EA0071C92D /* CountlyAPM.m in Sources */,
+				67F8AE221EFA77EA0071C92D /* README.md in Sources */,
 				8B0E1A761ECD42310017F11C /* ExAddressCell.swift in Sources */,
+				67F8AE201EFA77EA0071C92D /* CountlyViewTracking.m in Sources */,
 				67F4B1AE1EF22C18003EEB44 /* User+ThirdParty.swift in Sources */,
 				671579CB1EF3D295000EB710 /* MeResetPswViewController.swift in Sources */,
 				671579CF1EF3E727000EB710 /* BindPhoneViewController.swift in Sources */,
+				67F8AE1B1EFA77EA0071C92D /* CountlyNotificationService.m in Sources */,
 				8B03527A1ECEB95E00E46DEE /* openssl_wrapper.m in Sources */,
 				67DB54241EEFCDA9004243EA /* RegisterTelViewController.swift in Sources */,
 				67AF73CA1EF13E740068B349 /* LoginViewController+ThirdParty.swift in Sources */,
@@ -1382,6 +1504,7 @@
 				8B05263C1ECF002A0090F11B /* ExBlurView.swift in Sources */,
 				8BDB06B01EC03C2F00F0A660 /* ComicViewCell.swift in Sources */,
 				67F7A6421EF366EF00C841F9 /* User+ResetPassword.swift in Sources */,
+				67F8AE101EFA77EA0071C92D /* Countly.m in Sources */,
 				8B84EAD51EC54720001B1BFF /* Ticket.swift in Sources */,
 				8B84EB021EC587FB001B1BFF /* TopupList.swift in Sources */,
 				8BCE2BAD1ECC369E00ACA1BB /* ExDescriptionCell.swift in Sources */,
@@ -1391,16 +1514,21 @@
 				8BDB06901EC01DBC00F0A660 /* TabBarViewController.swift in Sources */,
 				67F4B1B21EF26839003EEB44 /* ResetPasswordViewController.swift in Sources */,
 				8B0352E91ECEE16F00E46DEE /* ClassHelper.swift in Sources */,
+				67F8AE1A1EFA77EA0071C92D /* CountlyEvent.m in Sources */,
+				67F8AE161EFA77EA0071C92D /* CountlyConfig.m in Sources */,
 				8B0352EB1ECEE17D00E46DEE /* Constant.swift in Sources */,
 				673070BB1EE5532200CEE9DA /* WalletViewController.swift in Sources */,
 				67DB54371EEFCDBA004243EA /* MeViewController.swift in Sources */,
 				67DB54221EEFCDA9004243EA /* LoginViewController.swift in Sources */,
 				8B0352ED1ECEE18500E46DEE /* GlobalFunctions.swift in Sources */,
 				8BF6E7561EC3092B004FE5BB /* Exhibition.swift in Sources */,
+				67F8AE1E1EFA77EA0071C92D /* CountlyStarRating.m in Sources */,
 				671579C91EF3CBCA000EB710 /* SettingViewController.swift in Sources */,
 				67DB54361EEFCDBA004243EA /* FeedbackViewController.swift in Sources */,
+				67F8AE1F1EFA77EA0071C92D /* CountlyUserDetails.m in Sources */,
 				67DB543A1EEFCDBA004243EA /* TopupViewController.swift in Sources */,
 				673BD5C41EEE358A005A733A /* README.md in Sources */,
+				67F8AE1D1EFA77EA0071C92D /* CountlyPushNotifications.m in Sources */,
 				67DB542A1EEFCDB4004243EA /* ExhibitionViewController.swift in Sources */,
 				8BCE2BB11ECC375200ACA1BB /* ExInputHintCell.swift in Sources */,
 				8B4753021ECE7E6400EDD02A /* UserPay.swift in Sources */,

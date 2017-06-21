@@ -220,7 +220,7 @@ extension User {
                             switch response.result {
                             case .success(let jsonResponse):
                                 let json = JSON(jsonResponse)
-//                                print("user info json: \(json)")
+//                                print("=== user info json: \(json)")
                                 let info = json["info"].stringValue
                                 let status = json["status"].intValue
                                 
@@ -253,6 +253,8 @@ extension User {
                                     default: break
                                     }
                                     
+                                    // Statistics
+                                    User.statisticWithCounty()
                                 }
                                 completionHandler(status == 1, info)
                             case .failure(let error):
@@ -260,6 +262,26 @@ extension User {
                                 print("get user info error: \(error)")
                             }
         }
+    }
+    
+    // Statistic
+    static private func statisticWithCounty() {
+        
+        let user = User.shared
+        
+        Countly.sharedInstance().userLogged(in: user.uid)
+        
+        //default properties
+        Countly.user().name = user.uid as CountlyUserDetailsNullableString
+        Countly.user().username = user.uname as CountlyUserDetailsNullableString
+        Countly.user().email = (user.email ?? "") as CountlyUserDetailsNullableString
+        Countly.user().gender = (user.gender == "1" ? "M" : "F") as CountlyUserDetailsNullableString
+        Countly.user().phone = (user.telephone ?? "") as CountlyUserDetailsNullableString
+        
+        //profile photo
+        Countly.user().pictureURL = user.avatarString as CountlyUserDetailsNullableString
+        
+        Countly.user().save()
     }
     
     // MARK: - Feedback

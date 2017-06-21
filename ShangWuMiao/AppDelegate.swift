@@ -51,6 +51,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             handleAPNsIfNeeded(launchOptions: launchOptions)
         }
         
+        // Statistics, use the thrid party [Countly]
+        let countlyConfig = CountlyConfig()
+        countlyConfig.appKey = "78df730eb3e4785ee47721a2da25d5ce1fff40e2"
+        countlyConfig.host = "https://appanalytics.nyato.com"
+        countlyConfig.features = [CLYPushNotifications, CLYCrashReporting, CLYAutoViewTracking]
+
+        Countly.sharedInstance().start(with: countlyConfig)
+        
         return true
     }
     

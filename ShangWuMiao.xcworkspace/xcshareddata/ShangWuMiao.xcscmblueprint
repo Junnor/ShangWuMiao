@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "6C07191EE673976AE139D8F8A4AFCAE8342F1DE6",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "E212CE6A13F37CE1A577B6EE0BE9609B0AA640C7" : 9223372036854775807,
+    "6C07191EE673976AE139D8F8A4AFCAE8342F1DE6" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "E41B99E4-FE48-4763-A9AE-C7B1E0D44443",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "E212CE6A13F37CE1A577B6EE0BE9609B0AA640C7" : "ShangWuMiao\/ThirdPartySDK\/countly-sdk-ios\/",
+    "6C07191EE673976AE139D8F8A4AFCAE8342F1DE6" : "ShangWuMiao\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "ShangWuMiao",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "ShangWuMiao.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Junnor\/ShangWuMiao.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "6C07191EE673976AE139D8F8A4AFCAE8342F1DE6"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Countly\/countly-sdk-ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E212CE6A13F37CE1A577B6EE0BE9609B0AA640C7"
+    }
+  ]
+}
