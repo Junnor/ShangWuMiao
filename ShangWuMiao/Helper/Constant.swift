@@ -20,7 +20,7 @@ let kAppVersion = "2.0"
 // 支付宝跳转
 let kAlipaySchema = "NyatoVendorAlipay"
 //let kAppId = "wx8356797cc8741cfb"
-//var isWechat: Bool!
+var isWechat: Bool!
 
 // 喵币监听
 let nyatoMcoinsChange = Notification.Name("nyatoMcoinsChange")

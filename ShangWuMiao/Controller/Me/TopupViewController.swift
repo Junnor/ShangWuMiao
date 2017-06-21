@@ -34,7 +34,7 @@ class TopupViewController: UIViewController {
         }
     }
     
-    fileprivate var numberOfChoice = 1
+    fileprivate var numberOfPayChoice = 1
     fileprivate let topupIdentifier = "top up identifier"
     fileprivate let applePayIdentifier = "Apple Pay"
     
@@ -51,7 +51,7 @@ class TopupViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        numberOfChoice = isApplePayAvailable() ? 2 : 1
+        numberOfPayChoice = isApplePayAvailable() ? 2 : 1
 
         title = "充值喵币"
         mcoinsLabel?.text = "\(User.shared.mcoins)"
@@ -95,7 +95,7 @@ class TopupViewController: UIViewController {
 extension TopupViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return numberOfChoice
+        return numberOfPayChoice
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -145,8 +145,6 @@ extension TopupViewController: UITableViewDataSource, UITableViewDelegate {
         } else if indexPath.row == 1 { // Apple pay
             applePay()
         } else {  // wechat
-            /*
-            // TODO: Hidden Hidden Hidden Hidden Hidden Hidden Hidden
             isWechat = true
             // Float(currentMcoinsCount)
             UserPay.pay(withType: Pay.wechat,
@@ -161,7 +159,6 @@ extension TopupViewController: UITableViewDataSource, UITableViewDelegate {
                             }
                             
             })
-             */
         }
     }
 
@@ -309,7 +306,6 @@ fileprivate extension TopupViewController {
 }
 
 // MARK: - Wechat pay
-/*
 fileprivate extension TopupViewController {
     fileprivate func wechatAction() {
         let payReq = PayReq()
@@ -324,4 +320,3 @@ fileprivate extension TopupViewController {
         WXApi.send(payReq)
     }
 }
- */

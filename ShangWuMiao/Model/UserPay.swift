@@ -27,8 +27,7 @@ final class UserPay {
     // for alipay
     var alipay_sign_str: String!
 
-    // for wechat ... Not used yet
-    /*
+    // for wechat
     var wechat_sign_str: String!
     var appid: String!
     var noncestr: String!
@@ -36,8 +35,7 @@ final class UserPay {
     var prepayid: String!
     var package: String!
     var timestamp: UInt32!
-     */
-    
+ 
     // for
     var paySuccess: Bool!
 }
@@ -59,7 +57,7 @@ extension UserPay {
                             response in
                             switch response.result {
                             case .success(let jsonResource):
-//                                print("pay json: \(jsonResource)")
+                                print("pay json: \(jsonResource)")
                                 let json = JSON(jsonResource)
                                 let info = json["info"].stringValue
                                 if json["status"].intValue == 1 {
@@ -71,7 +69,6 @@ extension UserPay {
                                         
                                         UserPay.shared.alipay_sign_str = sign_str
                                     case .wechat:
-                                        /*     Not used yet
                                         if let wechatSource = json["wx_sign"].dictionary {
                                             let wechat = JSON(wechatSource)
                                             let appid = wechat["appid"].stringValue
@@ -91,7 +88,6 @@ extension UserPay {
                                             UserPay.shared.package = package
                                             UserPay.shared.timestamp = UInt32(timestamp)
                                         }
-                                         */
                                         break
                                     }
                                     completionHandler(true, nil)

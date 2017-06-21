@@ -138,11 +138,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                          appSecret: "90c169dfaee46efe8c63123fa38bb326")
             case SSDKPlatformType.typeQQ:
                 appInfo?.ssdkSetupQQ(byAppId: "1101335990",
-                                     appKey: "1101335990",
+                                     appKey: "9hislwXqqUdRiPp2",
                                      authType: SSDKAuthTypeSSO)
             case SSDKPlatformType.subTypeQZone:
                 appInfo?.ssdkSetupQQ(byAppId: "1101335990",
-                                     appKey: "1101335990",
+                                     appKey: "9hislwXqqUdRiPp2",
                                      authType: SSDKAuthTypeSSO)
             default:
                 break
