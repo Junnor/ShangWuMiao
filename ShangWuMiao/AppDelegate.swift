@@ -43,7 +43,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
-        handleAPNsIfNeeded(launchOptions: launchOptions)
+        if #available(iOS 10.0, *) {
+            // When iOS platform is iOS, the UNUserNotificationCennter will handle it
+        } else {
+            handleAPNsIfNeeded(launchOptions: launchOptions)
+        }
         
         return true
     }
@@ -242,16 +246,14 @@ extension AppDelegate: JPUSHRegisterDelegate {
                 if let urlString = aps["link_url"] as? String,
                     let url = URL(string: urlString) {
                     isFromLaunch = true
-
                     let webViewController = createWebViewController(with: url, title: "查看内容 launch")
                     // Important, or selectedViewController will be nil
                     (window?.rootViewController as? TabBarViewController)?.selectedIndex = 0
                     ((window?.rootViewController as? TabBarViewController)?.selectedViewController as? UINavigationController)?.pushViewController(webViewController, animated: true)
                 }
             }
-            
-
         }
+        
     }
     
     fileprivate func registerJPush(with launchOptions: [UIApplicationLaunchOptionsKey: Any]!) {
@@ -298,48 +300,54 @@ extension AppDelegate: JPUSHRegisterDelegate {
     
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        print("===== didReceiveRemoteNotification")
+        print("===== did Receive Remote Notification")
         
         JPUSHService.handleRemoteNotification(userInfo)
         
-        let aps = userInfo["aps"] as! [String: AnyObject]
-        
-        if let urlString = aps["link_url"] as? String,
-            let url = URL(string: urlString) {
-            
-            print("isPrioriOS10APNsUseCustomBannerNow = \(isPrioriOS10APNsUseCustomBannerNow), and isFromLaunch = \(isFromLaunch)")
-            
-            if isPrioriOS10APNsUseCustomBannerNow  {
-                // Foreground called
-                if !isFromLaunch {
-                    customBannerUrl = url
+        if #available(iOS 10.0, *) {
+            // Handle notification by UNUserNotificationCenterDelegate
+        } else {
+            let aps = userInfo["aps"] as! [String: AnyObject]
+
+            if let urlString = aps["link_url"] as? String,
+                let url = URL(string: urlString) {
+                
+                print("isPrioriOS10APNsUseCustomBannerNow = \(isPrioriOS10APNsUseCustomBannerNow), and isFromLaunch = \(isFromLaunch)")
+                
+                if isPrioriOS10APNsUseCustomBannerNow  {
+                    // Foreground called
+                    if !isFromLaunch {
+                        customBannerUrl = url
+                        
+                        customBanner?.bannerView.removeFromSuperview()
+                        customBanner = nil
+                        invalidBannerTimer()
+                        
+                        let banner = createBannerView(withPush: "Some infomation about the apns, and url: \(url)")
+                        customBanner = banner
+                        
+                        window?.addSubview(customBanner.bannerView)
+                        window?.bringSubview(toFront:customBanner.bannerView)
+                        
+                        UIView.animate(withDuration: 1.0, animations: {
+                            self.customBanner.bannerView.frame = banner.finalFrame
+                        }, completion: nil)
+                        
+                        fireBannerTimer()
+                    }
+                    isFromLaunch = false
+                } else {
+                    // Background called
+                    let webViewController = createWebViewController(with: url, title: "查看内容 didReceiveRemoteNotification")
                     
-                    customBanner?.bannerView.removeFromSuperview()
-                    customBanner = nil
-                    invalidBannerTimer()
+                    ((window?.rootViewController as? TabBarViewController)?.selectedViewController as? UINavigationController)?.pushViewController(webViewController, animated: true)
                     
-                    let banner = createBannerView(withPush: "Some infomation about the apns, and url: \(url)")
-                    customBanner = banner
-                    
-                    window?.addSubview(customBanner.bannerView)
-                    window?.bringSubview(toFront:customBanner.bannerView)
-                    
-                    UIView.animate(withDuration: 1.0, animations: {
-                        self.customBanner.bannerView.frame = banner.finalFrame
-                    }, completion: nil)
-                    
-                    fireBannerTimer()
+                    isPrioriOS10APNsUseCustomBannerNow = true
                 }
-                isFromLaunch = false
-            } else {
-                // Background called
-                let webViewController = createWebViewController(with: url, title: "查看内容 didReceiveRemoteNotification")
-                
-                ((window?.rootViewController as? TabBarViewController)?.selectedViewController as? UINavigationController)?.pushViewController(webViewController, animated: true)
-                
-                isPrioriOS10APNsUseCustomBannerNow = true
             }
+
         }
+
         
         completionHandler(.newData)
     }
