@@ -34,7 +34,8 @@ class TopupViewController: UIViewController {
         }
     }
     
-    fileprivate var numberOfPayChoice = 1
+    // alipay + wecaht pay + apple pay (if available)
+    fileprivate var numberOfPayChoice = 2
     fileprivate let topupIdentifier = "top up identifier"
     fileprivate let applePayIdentifier = "Apple Pay"
     
@@ -48,10 +49,11 @@ class TopupViewController: UIViewController {
     fileprivate var payNetworks = [PKPaymentNetwork]()
 
 
+    // MARK: - View controller lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        numberOfPayChoice = isApplePayAvailable() ? 2 : 1
+        numberOfPayChoice = isApplePayAvailable() ? 3 : 2
 
         title = "充值喵币"
         mcoinsLabel?.text = "\(User.shared.mcoins)"
@@ -62,6 +64,7 @@ class TopupViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
+    // MARK: - Helper
     
     @objc private func refreshMcoins() {
         mcoinsLabel?.text = "\(User.shared.mcoins)"
@@ -99,17 +102,20 @@ extension TopupViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellId = (indexPath.row == 0) ? topupIdentifier : applePayIdentifier
+        let cellId = (indexPath.row == (numberOfPayChoice - 1)) ? applePayIdentifier : topupIdentifier
         let cell = tableView.dequeueReusableCell(withIdentifier:cellId, for: indexPath)
         cell.selectionStyle = .none
         if let cell = cell as? TopupCell {
-            cell.payImageView?.image = #imageLiteral(resourceName: "pay-alipay")
-            cell.titleLabel?.text = "使用支付宝支付"
+            var image = #imageLiteral(resourceName: "pay-wenxin")
+            var text = "使用微信支付"
+            if indexPath.row == 0 {
+                image = #imageLiteral(resourceName: "pay-alipay")
+                text = "使用支付宝支付"
+            }
+            cell.payImageView?.image = image
+            cell.titleLabel?.text = text
             
         } else if let cell = cell as? ApplePayCell {
-//            for subview in cell.applyPayView.subviews {
-//                subview.removeFromSuperview()
-//            }
             if #available(iOS 8.3, *) {
                 if !addedPayButton {
                     addedPayButton = true
@@ -142,16 +148,14 @@ extension TopupViewController: UITableViewDataSource, UITableViewDelegate {
                                 print("alipay pay failure: \(info!)")
                             }
             })
-        } else if indexPath.row == 1 { // Apple pay
-            applePay()
-        } else {  // wechat
+        } else if indexPath.row == 1 { // Wechat pay
             isWechat = true
             // Float(currentMcoinsCount)
             UserPay.pay(withType: Pay.wechat,
                         orderPrice: Float(1),
                         completionHandler: { [weak self] (success, info) in
                             if success {
-                                print("pay.....")
+                                print("wechat pay.....")
                                 self?.wechatAction()
                             } else {
                                 SVProgressHUD.showError(withStatus: info!)
@@ -159,6 +163,9 @@ extension TopupViewController: UITableViewDataSource, UITableViewDelegate {
                             }
                             
             })
+
+        } else {  // Apple pay
+            applePay()
         }
     }
 
@@ -275,7 +282,7 @@ fileprivate extension TopupViewController {
     fileprivate func alipayAction() {
         AlipaySDK.defaultService().payOrder(UserPay.shared.alipay_sign_str,
                                             fromScheme: kAlipaySchema,
-                                            callback: { response in
+                                            callback: { response in    // 没有支付宝客户端的回调
                                                 let json = JSON(response as Any)
                                                 let status = json["resultStatus"].intValue
                                                 //                                                print(".... source application json: \(json)")

@@ -98,9 +98,7 @@ extension User {
         
     // MARK: - Login with third party
     // if binded aready, then login directory, otherwise, let user to bind the account
-    static func hadBindThirdParty(for type: String, completionHandler: @escaping (_ binded: Bool) -> ()) {
-        print("........... hadBindThirdParty")
-        
+    static func hadBindThirdParty(for type: String, completionHandler: @escaping (_ binded: Bool) -> ()) {        
         let url = nonSignInUrl(forUrlType: .thirdPartyBindCheck, actType: .thirdPartyBindCheck)!
         
         let paras = ["other_type": type,

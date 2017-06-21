@@ -65,7 +65,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // MARK: - Pay callback
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-        if url.host == "safepay" {
+        if url.host == "safepay" {   // 有支付宝客户端情况
             AlipaySDK.defaultService().processOrder(withPaymentResult: url, standbyCallback: { response in
                 let json = JSON(response as Any)
                 let status = json["resultStatus"].intValue
@@ -137,11 +137,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 appInfo?.ssdkSetupWeChat(byAppId: "wxeb0f70c7821904f6",
                                          appSecret: "90c169dfaee46efe8c63123fa38bb326")
             case SSDKPlatformType.typeQQ:
-                appInfo?.ssdkSetupQQ(byAppId: "1101335990",
+                appInfo?.ssdkSetupQQ(byAppId: "1106143355",
                                      appKey: "9hislwXqqUdRiPp2",
                                      authType: SSDKAuthTypeSSO)
             case SSDKPlatformType.subTypeQZone:
-                appInfo?.ssdkSetupQQ(byAppId: "1101335990",
+                appInfo?.ssdkSetupQQ(byAppId: "1106143355",
                                      appKey: "9hislwXqqUdRiPp2",
                                      authType: SSDKAuthTypeSSO)
             default:
