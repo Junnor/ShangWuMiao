@@ -102,7 +102,12 @@ extension TopupViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellId = (indexPath.row == (numberOfPayChoice - 1)) ? applePayIdentifier : topupIdentifier
+        var cellId = topupIdentifier
+        
+        if isApplePayAvailable() {
+            cellId = (indexPath.row == (numberOfPayChoice - 1)) ? applePayIdentifier : topupIdentifier
+        }
+        
         let cell = tableView.dequeueReusableCell(withIdentifier:cellId, for: indexPath)
         cell.selectionStyle = .none
         if let cell = cell as? TopupCell {
