@@ -83,6 +83,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 // tell database
                 if  status == 9000 {
+                    NotificationCenter.default.post(name: alipaySuccess, object: nil)
+
                     User.requestUserInfo(completionHandler: { (success, statusInfo) in
                         if success {
                             // TODO
@@ -491,11 +493,9 @@ extension AppDelegate: JPUSHRegisterDelegate {
 extension AppDelegate: WXApiDelegate {
     
     func onResp(_ resp: BaseResp!) {
-        // TODO: ...... do something if needed
         switch resp.errCode {
         case 0:
-            print("Weixin pay uccess")
-            
+            NotificationCenter.default.post(name: wechatPaySuccess, object: nil)
         default: break
         }
     }

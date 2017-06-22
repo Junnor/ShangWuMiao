@@ -43,6 +43,9 @@ final class User {
     // 头像 url string
     var avatarString = String()
     
+    // 地理坐标
+    var coordinateString = ""
+    
     /* Struct Vendor
      0: 不是商户
      1: 普通商户

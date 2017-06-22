@@ -56,6 +56,8 @@
 			<string></string>
 		</dict>
 	</array>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>开通定位后固定时间内将会向您推送附近的相关漫展活动信息</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSApplicationQueriesSchemes</key>

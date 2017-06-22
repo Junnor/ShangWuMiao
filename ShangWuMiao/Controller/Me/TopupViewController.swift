@@ -57,7 +57,23 @@ class TopupViewController: UIViewController {
 
         title = "充值喵币"
         mcoinsLabel?.text = "\(User.shared.mcoins)"
-        NotificationCenter.default.addObserver(self, selector: #selector(refreshMcoins), name: nyatoMcoinsChange, object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(refreshMcoins),
+                                               name: nyatoMcoinsChange,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(countlyTopup),
+                                               name: alipaySuccess,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(countlyTopup),
+                                               name: wechatPaySuccess,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(countlyTopup),
+                                               name: applePaySuccess,
+                                               object: nil)
+
     }
     
     deinit {
@@ -68,6 +84,10 @@ class TopupViewController: UIViewController {
     
     @objc private func refreshMcoins() {
         mcoinsLabel?.text = "\(User.shared.mcoins)"
+    }
+    
+    @objc fileprivate func countlyTopup() {
+        countlyWithMoney(Double(currentMcoinsCount))
     }
     
     fileprivate var currentMcoinsCount = 10 {
@@ -156,7 +176,7 @@ extension TopupViewController: UITableViewDataSource, UITableViewDelegate {
         } else if indexPath.row == 1 { // Wechat pay
             // Float(currentMcoinsCount)
             UserPay.pay(withType: Pay.wechat,
-                        orderPrice: Float(1),
+                        orderPrice: Float(currentMcoinsCount),
                         completionHandler: { [weak self] (success, info) in
                             if success {
                                 print("wechat pay.....")
@@ -184,19 +204,20 @@ extension TopupViewController: UPAPayPluginDelegate {
         if let status = payResult?.paymentResultStatus {
             switch status {
             case .success:
-                print("success")
+                print("apple pay success")
+                countlyTopup()   // Statistics
                 let otherInfo = payResult.otherInfo ?? ""
                 let successInfo = "支付成功\n\(otherInfo)"
                 showAlert(successInfo)
             case .failure:
-                print("failure")
+                print("apple pay failure")
                 let errorInfo = payResult.errorDescription ?? "支付失败"
                 showAlert(errorInfo)
             case .cancel:
-                print("cancel")
+                print("apple pay cancel")
                 showAlert("支付取消")
             case .unknownCancel:
-                print("unknownCancel")
+                print("apple pay unknownCancel")
                 let errorInfo = ""
                 // TODO: get [errorInfo] from server, may success or failure
                 showAlert(errorInfo)
@@ -294,6 +315,9 @@ fileprivate extension TopupViewController {
                                                 
                                                 // tell database
                                                 if  status == 9000 {
+
+                                                    self.countlyTopup()
+                                                    
                                                     User.requestUserInfo(completionHandler: { (success, statusInfo) in
                                                         if success {
                                                             // TODO

@@ -14,6 +14,7 @@
 		4460C2B31E9B19F3004166DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4460C2B11E9B19F3004166DB /* LaunchScreen.storyboard */; };
 		4460C2BE1E9B19F3004166DB /* ShangWuMiaoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4460C2BD1E9B19F3004166DB /* ShangWuMiaoTests.swift */; };
 		4460C2C91E9B19F3004166DB /* ShangWuMiaoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4460C2C81E9B19F3004166DB /* ShangWuMiaoUITests.swift */; };
+		67055AF01EFB6DA4002D7ACC /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67055AEF1EFB6DA4002D7ACC /* LocationViewController.swift */; };
 		671579C91EF3CBCA000EB710 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671579C81EF3CBCA000EB710 /* SettingViewController.swift */; };
 		671579CB1EF3D295000EB710 /* MeResetPswViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671579CA1EF3D295000EB710 /* MeResetPswViewController.swift */; };
 		671579CD1EF3DCAA000EB710 /* User+Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671579CC1EF3DCAA000EB710 /* User+Setting.swift */; };
@@ -213,6 +214,7 @@
 		4460C2C81E9B19F3004166DB /* ShangWuMiaoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShangWuMiaoUITests.swift; sourceTree = "<group>"; };
 		4460C2CA1E9B19F3004166DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		590987E7D1A7B64976B5ADA9 /* Pods-ShangWuMiao.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShangWuMiao.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShangWuMiao/Pods-ShangWuMiao.release.xcconfig"; sourceTree = "<group>"; };
+		67055AEF1EFB6DA4002D7ACC /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		671579C81EF3CBCA000EB710 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		671579CA1EF3D295000EB710 /* MeResetPswViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeResetPswViewController.swift; sourceTree = "<group>"; };
 		671579CC1EF3DCAA000EB710 /* User+Setting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+Setting.swift"; sourceTree = "<group>"; };
@@ -1141,6 +1143,7 @@
 				673070BA1EE5532200CEE9DA /* WalletViewController.swift */,
 				67FC3BB21EF8B1CF00C45CE3 /* JPushAliasViewController.swift */,
 				67FC3BB81EF90ADA00C45CE3 /* WebViewController.swift */,
+				67055AEF1EFB6DA4002D7ACC /* LocationViewController.swift */,
 				67DB541E1EEFCDA9004243EA /* Login */,
 				67DB542C1EEFCDBA004243EA /* Me */,
 				67DB54251EEFCDB4004243EA /* Exhibition */,
@@ -1492,6 +1495,7 @@
 				67F8AE131EFA77EA0071C92D /* CountlyAPM.m in Sources */,
 				67F8AE221EFA77EA0071C92D /* README.md in Sources */,
 				8B0E1A761ECD42310017F11C /* ExAddressCell.swift in Sources */,
+				67055AF01EFB6DA4002D7ACC /* LocationViewController.swift in Sources */,
 				67F8AE201EFA77EA0071C92D /* CountlyViewTracking.m in Sources */,
 				67F4B1AE1EF22C18003EEB44 /* User+ThirdParty.swift in Sources */,
 				671579CB1EF3D295000EB710 /* MeResetPswViewController.swift in Sources */,

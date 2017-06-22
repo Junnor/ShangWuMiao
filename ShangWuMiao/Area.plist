@@ -18,7 +18,7 @@
 				<array>
 					<dict>
 						<key>area_id</key>
-						<integer>110101</integer>
+						<real>110101</real>
 						<key>area_name</key>
 						<string>东城区</string>
 					</dict>
@@ -4285,12 +4285,12 @@
 						<key>area_name</key>
 						<string>临江市</string>
 					</dict>
-                    <dict>
-                        <key>area_id</key>
-                        <integer>910996</integer>
-                        <key>area_name</key>
-                        <string>浑江区</string>
-                    </dict>
+					<dict>
+						<key>area_id</key>
+						<integer>910996</integer>
+						<key>area_name</key>
+						<string>浑江区</string>
+					</dict>
 				</array>
 			</dict>
 			<dict>
@@ -5416,21 +5416,21 @@
 	</dict>
 	<dict>
 		<key>province_id</key>
-		<integer>310000</integer>
+		<real>310000</real>
 		<key>title</key>
 		<string>上海市</string>
 		<key>citys</key>
 		<array>
 			<dict>
 				<key>city_id</key>
-				<integer>310100</integer>
+				<real>310100</real>
 				<key>titile</key>
 				<string>上海市</string>
 				<key>areas</key>
 				<array>
 					<dict>
 						<key>area_id</key>
-						<integer>310101</integer>
+						<real>310101</real>
 						<key>area_name</key>
 						<string>黄浦区</string>
 					</dict>
