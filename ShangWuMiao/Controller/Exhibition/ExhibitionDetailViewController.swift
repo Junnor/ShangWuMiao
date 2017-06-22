@@ -156,6 +156,7 @@ class ExhibitionDetailViewController: UIViewController {
                                                selector: #selector(self.collectionView.nyato_keyboardNotification(notification:)),
                                                name: NSNotification.Name.UIKeyboardWillChangeFrame,
                                                object: nil)
+        
         isVendor = (User.shared.vendorType != Vendor.none)
         
         if self.isVendor {
@@ -197,7 +198,6 @@ class ExhibitionDetailViewController: UIViewController {
     }
     
     // MARK: - Helper
-    
     
     @objc private func tapAction() {
         self.phoneTextField?.resignFirstResponder()
@@ -256,6 +256,8 @@ class ExhibitionDetailViewController: UIViewController {
                                           price: price,
                                           callBack: { success, info in
                                             if success {
+                                                countlyWithMoney(Double(price))
+                                                
                                                 // 更新金额
                                                 User.requestUserInfo(completionHandler: { (success, statusInfo) in
                                                     if success {

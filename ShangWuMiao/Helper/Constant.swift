@@ -35,7 +35,6 @@ let countlyPayEventKey = "shangwupay"
 let alipaySuccess = Notification.Name("alipaySuccess")
 let wechatPaySuccess = Notification.Name("wechatPaySuccess")
 let applePaySuccess = Notification.Name("applePaySuccess")
-let buyTicktsSuccess = Notification.Name("buyTicktsSuccess")
 
 
 // Url string
