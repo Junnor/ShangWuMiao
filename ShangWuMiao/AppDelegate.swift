@@ -58,7 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         countlyConfig.features = [CLYPushNotifications, CLYCrashReporting, CLYAutoViewTracking]
 
         Countly.sharedInstance().start(with: countlyConfig)
-        
+                
         return true
     }
     

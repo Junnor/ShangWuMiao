@@ -33,7 +33,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        SVProgressHUD.setDefaultMaskType(.clear)
+//        // 定位相关
+//        _ = LocationViewController()
         
         // not elegant
         let itemAppearance = UIBarButtonItem.appearance()
@@ -83,6 +84,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             SVProgressHUD.dismiss()
             SVProgressHUD.showInfo(withStatus: info)
             if success {
+                JPUSHService.setAlias("\(User.shared.uid)", callbackSelector: nil, object: nil)
+
                 self?.performSegue(withIdentifier: "login", sender: nil)
                 nyato_storeOauthData()
             }
