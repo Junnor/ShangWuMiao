@@ -138,6 +138,9 @@ extension TabBarViewController: CLLocationManagerDelegate {
                     UserDefaults.standard.setValue(self.cityID, forKey: "cityID")
                     UserDefaults.standard.setValue(self.procinceName, forKey: "procinceName")
                     
+                    Countly.user().custom = ["province": self.procinceName, "city": self.cityName] as CountlyUserDetailsNullableDictionary
+                    Countly.user().save()
+                    
                     var tags = Set<NSObject>()
                     tags.insert("\(shangHuAppVersion)" as NSObject)
                     tags.insert("\(self.procinceName)" as NSObject)
