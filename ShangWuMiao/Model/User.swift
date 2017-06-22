@@ -293,7 +293,7 @@ extension User {
             let device = UIDevice.current
             let model = device.model
             let systemVersion = device.systemVersion
-            let appVersion = kAppVersion  // may store in device
+            let appVersion = shangHuAppVersion  // may store in device
             
             return "appVersion: \(appVersion), systemVersion: \(systemVersion), device: \(model)"
         }

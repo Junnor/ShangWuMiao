@@ -247,7 +247,7 @@ class ExhibitionDetailViewController: UIViewController {
                 let alert = UIAlertController(title: "确认购买", message: message, preferredStyle: .alert)
                 let cancel = UIAlertAction(title: "取消", style: .default, handler: nil)
                 let ok = UIAlertAction(title: "确定", style: .destructive) { [weak self] _ in
-                    if User.shared.mcoins >= price {
+                    if User.shared.mcoins >= price {    // Buy tickts directly
                         if self != nil {
                             let tickt = self?.tickts[(self?.lastSelectedIndexPath.item)!]
                             User.buyTickt(ticktId: Int(tickt!.id)!,
@@ -276,7 +276,7 @@ class ExhibitionDetailViewController: UIViewController {
                                             }
                             })
                         }
-                    } else {
+                    } else {     // Due to has not enough mcoins, top up
                         if let topupvc = self?.storyboard?.instantiateViewController(withIdentifier: "TopupViewController") as? TopupViewController {
                             self?.navigationController?.pushViewController(topupvc, animated: true)
                         }
@@ -570,13 +570,7 @@ extension ExhibitionDetailViewController: UICollectionViewDelegateFlowLayout {
         if indexPath.section == 0 {
             switch indexPath.row {
             case 0:
-                height = UIWindow().bounds.height * 2/5
-                // BUGBUGBUG ####################
-                // 一个 5C ios 8.1 的不可思议的Bug...... 好像是iOS8以下 UIWindow 的初始问题
-                if height == 0 {
-                    height = collectionView.bounds.height * 2/5
-                }
-            // ###################
+                height = UIScreen.main.bounds.height * 2/5
             case 1:
                 let font = UIFont.systemFont(ofSize: 16)
                 let str = self.exhibition.exDescription!

@@ -15,7 +15,9 @@ let kImageHeaderUrl = "https://img.nyato.com/"
 let kSecretKey = "us8dgf30hjRJGFU21"
 
 // 版本
-let kAppVersion = "2.0"
+var shangHuAppVersion: String {
+    return  Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
+}
 
 // 支付宝跳转
 let kAlipaySchema = "NyatoVendorAlipay"
@@ -27,6 +29,16 @@ let nyatoWechatAppId = "wxeb0f70c7821904f6"
 let nyatoMcoinsChange = Notification.Name("nyatoMcoinsChange")
 
 
+// Counlty 统计
+let countlyPayEventKey = "shangwupay"
+
+let alipaySuccess = Notification.Name("alipaySuccess")
+let wechatPaySuccess = Notification.Name("wechatPaySuccess")
+let applePaySuccess = Notification.Name("applePaySuccess")
+let buyTicktsSuccess = Notification.Name("buyTicktsSuccess")
+
+
+// Url string
 enum RequestUrlStringType: String {
     
     // 解除绑定手机

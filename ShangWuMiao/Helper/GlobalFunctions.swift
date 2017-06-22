@@ -8,6 +8,19 @@
 
 import Foundation
 
+
+// MARK: - Countly 支付成功统计
+
+func countlyWithMoney(_ money: Double) {
+    Countly.sharedInstance().recordEvent(countlyPayEventKey,
+                                         segmentation: ["uid": User.shared.uid,
+                                                        "app_version": shangHuAppVersion,
+                                                        "uname": User.shared.uname,
+                                                        "system": "iOS"],
+                                         count: 1,
+                                         sum: money)
+}
+
 // MARK: - 未登录情况的通过参数获取的URL
 
 func nonSignInUrl(forUrlType urlStringType: RequestUrlStringType, actType: ActType) -> URL? {
@@ -46,8 +59,8 @@ func signedInUrl(forUrlType urlStringType: RequestUrlStringType, actType: ActTyp
         let token_para = "&token=" + token!
         let app_sign_para = "&app_sign=" + app_sign!
         
-        let version = "&version=" + kAppVersion
-        
+        let version = "&version=" + shangHuAppVersion
+                
         return token_para + oauth_para + app_time_para + app_device_para + app_sign_para + version
     }
 

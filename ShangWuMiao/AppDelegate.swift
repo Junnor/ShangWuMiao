@@ -492,6 +492,12 @@ extension AppDelegate: WXApiDelegate {
     
     func onResp(_ resp: BaseResp!) {
         // TODO: ...... do something if needed
+        switch resp.errCode {
+        case 0:
+            print("Weixin pay uccess")
+            
+        default: break
+        }
     }
 }
 
