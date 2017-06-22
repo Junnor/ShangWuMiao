@@ -131,21 +131,12 @@ class BindPhoneViewController: UIViewController, UITextFieldDelegate {
         
         var areaCode: String {
             
-//            switch self {
-//            case .mainland: return "86"
-//            case .hongkong: return "852"
-//            case .macao: return "853"
-//            case .taiwang: return "886"
-//            case .japan: return "81"
-//            case .american: return "1"
-//            }
-            
             for phone in User.shared.phonesInfo {
                 if phone.title == self.name {
                     return phone.area_code
                 }
             }
-            return "86"
+            return "1000"
         }
         
         var name: String {
@@ -177,6 +168,7 @@ class BindPhoneViewController: UIViewController, UITextFieldDelegate {
             } else {
                 self.indicatorView.isHidden = false
                 self.indicatorView.startAnimating()
+                print("aselectedPlace rea code \(selectedPlace.areaCode)")
                 User.requestPhoneCode(for: phoneTextField.text!,
                                       codeType: GetCodeType.register,
                                       areaCode: selectedPlace.areaCode) {
