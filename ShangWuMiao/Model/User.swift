@@ -223,7 +223,7 @@ extension User {
                             switch response.result {
                             case .success(let jsonResponse):
                                 let json = JSON(jsonResponse)
-                                print("..setting json = \(json)")
+//                                print("..setting json = \(json)")
                                 
                                 var phonesInfo = [(title: String, area_code: String, length: Int)]()
                                 

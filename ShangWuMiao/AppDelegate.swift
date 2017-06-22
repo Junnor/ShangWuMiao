@@ -56,6 +56,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         countlyConfig.appKey = "78df730eb3e4785ee47721a2da25d5ce1fff40e2"
         countlyConfig.host = "https://appanalytics.nyato.com"
         countlyConfig.features = [CLYPushNotifications, CLYCrashReporting, CLYAutoViewTracking]
+        var city = "未知"
+        if let cityName = UserDefaults.standard.value(forKey: "cityName") as? String {
+            city = cityName
+        }
+        
+        countlyConfig.city = city
 
         Countly.sharedInstance().start(with: countlyConfig)
                 

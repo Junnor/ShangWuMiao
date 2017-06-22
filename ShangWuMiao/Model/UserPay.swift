@@ -88,6 +88,10 @@ extension UserPay {
                                             UserPay.shared.package = package
                                             UserPay.shared.timestamp = UInt32(timestamp)
                                         }
+                                        
+//                                        // test for temporary appid
+//                                        UserPay.shared.appid = json["appid"].stringValue
+
                                         break
                                     }
                                     completionHandler(true, nil)
