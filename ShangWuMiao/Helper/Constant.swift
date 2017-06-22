@@ -91,6 +91,9 @@ enum RequestUrlStringType: String {
     // 用户反馈
     case feedback = "/index.php?app=ios&mod=Index&act=report"
     
+    // 设置检测
+    case setting = "/index.php?app=ios&mod=Index&act=paySetting"
+
     // 用户检测
     case userCheck = "/index.php?app=ios&mod=Member&act=userCheck"
     
@@ -173,6 +176,9 @@ enum ActType: String {
     
     // 用户反馈
     case report = "report"
+    
+    // 设置检测
+    case setting = "paySetting"
     
     // 用户检测
     case user_check = "userCheck"

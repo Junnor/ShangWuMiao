@@ -27,6 +27,9 @@ class TabBarViewController: UITabBarController {
                 print("request user info failure: \(String(describing: statusInfo))")
             }
         })
+        
+        // 检测设置信息（获取不同地区手机号的一些信息）
+        User.requestSettingInfo()
     }
     
     // MARK: - 定位相关
@@ -163,7 +166,7 @@ extension TabBarViewController: CLLocationManagerDelegate {
     // MARK: - Helper
     
     func tagsAliasCallBack(resCode: CInt, tags: NSSet, alias: NSString) {
-        let tips = "=== 注册地点响应结果：\(resCode)"
-        print(tips)
+//        let tips = "=== 注册地点响应结果：\(resCode)"
+//        print(tips)
     }
 }

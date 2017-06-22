@@ -129,15 +129,23 @@ class BindPhoneViewController: UIViewController, UITextFieldDelegate {
         
         static var count: Int { return 6 }
         
-        var areaCode: Int {
-            switch self {
-            case .mainland: return 86
-            case .hongkong: return 852
-            case .macao: return 853
-            case .taiwang: return 886
-            case .japan: return 81
-            case .american: return 1
+        var areaCode: String {
+            
+//            switch self {
+//            case .mainland: return "86"
+//            case .hongkong: return "852"
+//            case .macao: return "853"
+//            case .taiwang: return "886"
+//            case .japan: return "81"
+//            case .american: return "1"
+//            }
+            
+            for phone in User.shared.phonesInfo {
+                if phone.title == self.name {
+                    return phone.area_code
+                }
             }
+            return "86"
         }
         
         var name: String {

@@ -70,6 +70,9 @@ final class User {
     var telephone: String!
     var email: String!
     
+    // 保存不同地区手机的信息
+    var phonesInfo = [(title: String, area_code: String, length: Int)]()
+    
     // Callback
     typealias callBack = (Bool, String) -> ()
     
@@ -203,6 +206,42 @@ extension User {
                             case .failure(let error):
                                 print("buy tickts error: \(error)")
                                 callBack(false, "购票错误")
+                            }
+        }
+    }
+    
+    // MARK: - Setting info
+    static func requestSettingInfo() {
+        let url = signedInUrl(forUrlType: .setting, actType: .setting)!
+        
+        let parameters = ["uid": NSString(string: User.shared.uid).integerValue]
+        Alamofire.request(url,
+                          method: .post,
+                          parameters: parameters,
+                          encoding: URLEncoding.default,
+                          headers: nil).responseJSON { response in
+                            switch response.result {
+                            case .success(let jsonResponse):
+                                let json = JSON(jsonResponse)
+                                print("..setting json = \(json)")
+                                
+                                var phonesInfo = [(title: String, area_code: String, length: Int)]()
+                                
+                                let phones = json["phone"].arrayValue
+                                
+                                for phone in phones {
+                                    let title = phone["title"].stringValue
+                                    let area_code = phone["area_code"].stringValue
+                                    let length = phone["length"].intValue
+                                    
+                                    let phoneInfo = (title, area_code, length)
+                                    phonesInfo.append(phoneInfo)
+                                }
+                                
+                                User.shared.phonesInfo = phonesInfo
+                                
+                            case .failure(let error):
+                                print("request setting info error: \(error)")
                             }
         }
     }
