@@ -32,13 +32,12 @@ extension User {
                             switch response.result {
                             case .success(let jsonResponse):
                                 let json = JSON(jsonResponse)
-                                print("me reset passwor json: \(json)")
                                 let info = json["info"].stringValue
                                 let status = json["status"].intValue
                                 completionHandler(status == 1, info)
                             case .failure(let error):
                                 completionHandler(false, "发生错误")
-                                print("me reset password error: \(error)")
+                                printX("error: \(error)")
                             }
         }
         
@@ -60,13 +59,12 @@ extension User {
                             switch response.result {
                             case .success(let jsonResponse):
                                 let json = JSON(jsonResponse)
-                                print("bind email json: \(json)")
                                 let info = json["info"].stringValue
                                 let status = json["status"].intValue                                
                                 completionHandler(status == 1, info)
                             case .failure(let error):
                                 completionHandler(false, "发生错误")
-                                print("bind email error: \(error)")
+                                printX("error: \(error)")
                             }
         }
         
@@ -87,13 +85,12 @@ extension User {
                             switch response.result {
                             case .success(let jsonResponse):
                                 let json = JSON(jsonResponse)
-                                print("bind email json: \(json)")
                                 let info = json["info"].stringValue
                                 let status = json["status"].intValue
                                 completionHandler(status == 1, info)
                             case .failure(let error):
                                 completionHandler(false, "发生错误")
-                                print("bind email error: \(error)")
+                                printX("error: \(error)")
                             }
         }
     }
@@ -112,13 +109,12 @@ extension User {
                             switch response.result {
                             case .success(let jsonResponse):
                                 let json = JSON(jsonResponse)
-                                print("unbind telephoe email json: \(json)")
                                 let info = json["info"].stringValue
                                 let status = json["status"].intValue
                                 completion(status == 1, info)
                             case .failure(let error):
                                 completion(false, "发生错误")
-                                print("unbind telephoe error: \(error)")
+                                printX("error: \(error)")
                             }
         }
     }

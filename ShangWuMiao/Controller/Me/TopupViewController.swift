@@ -183,7 +183,7 @@ extension TopupViewController: UITableViewDataSource, UITableViewDelegate {
                                 self?.wechatAction()
                             } else {
                                 SVProgressHUD.showError(withStatus: info!)
-                                print("wehcat pay failure: \(info!)")
+                                printX("error")
                             }
                             
             })

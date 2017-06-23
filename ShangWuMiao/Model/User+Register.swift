@@ -49,13 +49,12 @@ extension User {
                             switch response.result {
                             case .success(let jsonSource):
                                 let json = JSON(jsonSource)
-                                print("code json: \(json)")
                                 let info = json["info"].stringValue
                                 let status = json["status"].intValue
                                 callback(status == 1, info)
                             case .failure(let error):
                                 callback(false, "获取验证码失败")
-                                print("get code error: \(error)")
+                                printX("error: \(error)")
                             }
         }
     }
@@ -80,7 +79,6 @@ extension User {
                             switch response.result {
                             case .success(let jsonSource):
                                 let json = JSON(jsonSource)
-                                print("register json: \(json)")
                                 let status = json["status"].intValue
                                 var info = ""
                                 switch status {
@@ -101,7 +99,7 @@ extension User {
                                 
                             case .failure(let error):
                                 callback(false, "注册错误")
-                                print("register error: \(error)")
+                                printX("error: \(error)")
                             }
         }
     }

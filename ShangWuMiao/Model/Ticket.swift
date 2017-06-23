@@ -69,13 +69,12 @@ extension Ticket {
                             switch response.result {
                             case .success(let jsonResponse):
                                 let json = JSON(jsonResponse)
-//                                print("..ticket json: \(json)")
                                 let status = json["status"].intValue
                                 let info = json["info"].stringValue
                                 completionHandler(status == 1, info)
                             case .failure(let error):
                                 completionHandler(false, "短信重发错误")
-                                print("send ticket message error: \(error)")
+                                printX("error: \(error)")
                             }
         }
 
@@ -98,7 +97,6 @@ extension Ticket {
                             switch response.result {
                             case .success(let jsonResponse):
                                 let json = JSON(jsonResponse)
-//                                print("exhibition list json: \(json)")
                                 let status = json["result"].intValue
                                 let errorInfo = json["error"].stringValue
                                 var tmpTickets = [Ticket]()
@@ -132,7 +130,7 @@ extension Ticket {
                                 completionHandler(status == 1, errorInfo, self.tickets)
                             case .failure(let error):
                                 completionHandler(false, "获取错误", [])
-                                print("get tickets data error: \(error)")
+                                printX("error: \(error)")
                             }
         }
     }

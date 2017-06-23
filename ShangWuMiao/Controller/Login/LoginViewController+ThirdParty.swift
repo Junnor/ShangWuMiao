@@ -26,9 +26,7 @@ extension LoginViewController {
     
     private func loginWith(platformType: SSDKPlatformType, type: String) {
         ShareSDK.getUserInfo(platformType) { [weak self] (state, user, error) in
-//            print("=====user: \(user)")
-//            print("=====error: \(error)")
-//            print("=====state: \(state)")
+
             switch state {
             case .success:
                 if let user = user {

@@ -29,7 +29,6 @@ extension User {
                             switch response.result {
                             case .success(let jsonResponse):
                                 let json = JSON(jsonResponse)
-//                                print("create nyato account json: \(json)")
                                 let status = json["status"].intValue
                                 var info = ""
                                 switch status {
@@ -50,7 +49,7 @@ extension User {
                                 
                             case .failure(let error):
                                 completionHander(false, "注册错误")
-                                print("create nyato account failure: \(error)")
+                                printX("error: \(error)")
                             }
         }
 
@@ -79,7 +78,6 @@ extension User {
                             switch response.result {
                             case .success(let jsonResponse):
                                 let json = JSON(jsonResponse)
-                                print("bind nyato json = \(json)")
                                 let status = json["status"].intValue
                                 if status == 100 {                                    
                                     User.parseUserData(with: json)
@@ -91,7 +89,7 @@ extension User {
                                 }
                                 
                             case .failure(let error):
-                                print("bind nyato error: \(error)")
+                                printX("error: \(error)")
                             }
         }
     }
@@ -112,7 +110,6 @@ extension User {
                             switch response.result {
                             case .success(let jsonResponse):
                                 let json = JSON(jsonResponse)
-//                                print("third party json = \(json)")
                                 let status = json["status"].intValue
                                 if status == 0 {
                                     completionHandler(false)
@@ -122,7 +119,7 @@ extension User {
                                 }
                             case .failure(let error):
                                 completionHandler(false)
-                                print("bind error: \(error)")
+                                printX("error: \(error)")
                             }
         }
     }

@@ -52,7 +52,7 @@ class TopupRecordViewController: UIViewController, UITableViewDataSource, UITabl
                     }
                 }
             } else {
-                print("load topup list failure: \(info ?? "no value")")
+                printX("load topup list failure: \(info ?? "no value")")
             }
         })
     }

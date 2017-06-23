@@ -49,7 +49,8 @@ class ExhibitionTicketTableViewController: UITableViewController {
                     self!.tableView?.mj_footer = footerRefresh
                 }
             } else {
-                print("load tickets failure: \(String(describing: info))")
+                printX("load tickets failure: \(String(describing: info))")
+
             }
         }
     }
@@ -61,7 +62,8 @@ class ExhibitionTicketTableViewController: UITableViewController {
                 self?.tickets = tickets
                 self?.tableView.reloadData()
             } else {
-                print("load more tickets failure: \(String(describing: info))")
+                printX("load more tickets failure: \(String(describing: info))")
+
             }
         }
     }

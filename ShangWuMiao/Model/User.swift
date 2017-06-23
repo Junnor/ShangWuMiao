@@ -346,13 +346,12 @@ extension User {
             switch response.result {
             case .success(let jsonResponse):
                 let json = JSON(jsonResponse)
-                //                print("feed back json: \(json)")
                 let info = json["info"].stringValue
                 let status = json["status"].intValue
                 completionHandler(status == 1, info)
             case .failure(let error):
                 completionHandler(false, "反馈错误")
-                print("feed back error: \(error)")
+                printX("error: \(error)")
             }
         }
     }

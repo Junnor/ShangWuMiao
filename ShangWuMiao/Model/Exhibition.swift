@@ -143,7 +143,7 @@ extension Exhibition {
                                 completionHandle(status == 1, nil, tickts)
                             case .failure(let error):
                                 completionHandle(false, "获取错误", [])
-                                print("get exhibition detail error: \(error)")
+                                printX("error: \(error)")
                             }
         }
         
@@ -195,7 +195,7 @@ extension Exhibition {
                                 
                             case .failure(let error):
                                 completionHandler(false, "获取已购漫展错误", [])
-                                print("get exhibition data error: \(error)")
+                                printX("error: \(error)")
                             }
         }
     }
@@ -242,7 +242,7 @@ extension Exhibition {
                                 completionHandler(status == 1, errorInfo, self.exhibitions)
                             case .failure(let error):
                                 completionHandler(false, "获取漫展列表错误", [])
-                                print("get exhibition data error: \(error)")
+                                printX("error: \(error)")
                             }
         }
     }

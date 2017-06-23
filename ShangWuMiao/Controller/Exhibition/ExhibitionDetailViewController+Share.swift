@@ -70,7 +70,7 @@ extension ExhibitionDetailViewController: ShareViewControllerDelegate {
                     SVProgressHUD.showSuccess(withStatus: "已添加事件到日历")
                 }
             } catch {
-                print("insert event to calendar error: \(error)")
+                printX("error: \(error)")
             }
         }
         
@@ -85,7 +85,7 @@ extension ExhibitionDetailViewController: ShareViewControllerDelegate {
                 if access {
                     insertEvent(eventStore)
                 } else {
-                    print("Access calendar action denied !")
+                    printX("Access calendar action denied !")
                 }
             })
         default: break

@@ -28,13 +28,12 @@ extension User {
                             switch response.result {
                             case .success(let jsonResponse):
                                 let json = JSON(jsonResponse)
-                                print(".....verify code json: \(json)")
                                 let status = json["status"].intValue
                                 let info = json["info"].stringValue
                                 completionHandler(status == 1, info)
                             case .failure(let error):
                                 completionHandler(false, "网络发生错误")
-                                print("verify code error: \(error)")
+                                printX("error: \(error)")
                             }
         }
     }
@@ -59,13 +58,12 @@ extension User {
                             switch response.result {
                             case .success(let jsonResponse):
                                 let json = JSON(jsonResponse)
-                                print(".....verify telephone json: \(json)")
                                 let status = json["status"].intValue
                                 let info = json["info"].stringValue
                                 completionHandler(status == 1, info)
                             case .failure(let error):
                                 completionHandler(false, "网络发生错误")
-                                print("verify telephone  error: \(error)")
+                                printX("error: \(error)")
                             }
         }
     }
@@ -86,13 +84,12 @@ extension User {
                             switch response.result {
                             case .success(let jsonResponse):
                                 let json = JSON(jsonResponse)
-//                                print(".....verify email json: \(json)")
                                 let status = json["status"].intValue
                                 let info = json["info"].stringValue
                                 completionHandler(status == 1, info)
                             case .failure(let error):
                                 completionHandler(false, "网络发生错误")
-                                print("verify email error: \(error)")
+                                printX("error: \(error)")
                             }
         }
     }
