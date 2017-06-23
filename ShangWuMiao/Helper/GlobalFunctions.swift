@@ -22,7 +22,7 @@ func printX<T>(_ message: T,
 // MARK: - Countly 支付成功统计
 
 func countlyWithMoney(_ money: Double) {
-    printX("call shuangwupay event money: \(money)")
+    printX("money: \(money)")
     Countly.sharedInstance().recordEvent(countlyPayEventKey,
                                          segmentation: ["uid": User.shared.uid,
                                                         "app_version": shangHuAppVersion,

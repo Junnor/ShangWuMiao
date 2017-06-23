@@ -46,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Check APNs, just need to do with the platform which prior iOS 10
         if #available(iOS 10.0, *) {
-            // When iOS platform is iOS, the UNUserNotificationCennter will handle it
+            // When iOS platform is 10, the UNUserNotificationCennter will handle it
         } else {
             handleAPNsIfNeeded(launchOptions: launchOptions)
         }
@@ -123,7 +123,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
-    
     
     // 到时候会去掉  iOS 9 以下
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
@@ -225,7 +224,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     fileprivate var customBanner: (bannerView: BannerView, startFrame: CGRect, finalFrame: CGRect)!
     fileprivate var bannerShowSeconds = 5
     fileprivate var bannerTimer: Timer!
-    // --------------------------------------
 
 }
 
@@ -317,6 +315,7 @@ extension AppDelegate: JPUSHRegisterDelegate {
                            apsForProduction: false,
                            advertisingIdentifier: nil)
         JPUSHService.registrationIDCompletionHandler { (resCode, resID) in
+            printX("resCode = \(resCode)")
             if resCode == 0 {  // success
                 if #available(iOS 10.0, *) {
                     let viewAction = UNNotificationAction(identifier: viewActionIdentifier,
@@ -368,6 +367,7 @@ extension AppDelegate: JPUSHRegisterDelegate {
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         JPUSHService.handleRemoteNotification(userInfo)
         
+        printX("...")
         if #available(iOS 10.0, *) {
             // Handle notification by UNUserNotificationCenterDelegate
         } else {
@@ -512,7 +512,7 @@ extension AppDelegate: JPUSHRegisterDelegate {
     // MARK: - JPush delegate, for iOS 10
     @available(iOS 10.0, *)
     func jpushNotificationCenter(_ center: UNUserNotificationCenter!, willPresent notification: UNNotification!, withCompletionHandler completionHandler: ((Int) -> Void)!) {
-        
+        printX("will present")
         // completion handler
         let type = Int(JPAuthorizationOptions.alert.rawValue | JPAuthorizationOptions.badge.rawValue | JPAuthorizationOptions.sound.rawValue)
         completionHandler(type)
@@ -520,7 +520,7 @@ extension AppDelegate: JPUSHRegisterDelegate {
     
     @available(iOS 10.0, *)
     func jpushNotificationCenter(_ center: UNUserNotificationCenter!, didReceive response: UNNotificationResponse!, withCompletionHandler completionHandler: (() -> Void)!) {
-        
+        printX("did receive")
         let userInfo = response.notification.request.content.userInfo
         let aps = userInfo["aps"] as! [String: AnyObject]
         
