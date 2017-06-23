@@ -259,6 +259,9 @@ extension User {
                             switch response.result {
                             case .success(let jsonResponse):
                                 let json = JSON(jsonResponse)
+                                
+//                                printX("json: \(json)")
+                                
                                 let info = json["info"].stringValue
                                 let status = json["status"].intValue
                                 

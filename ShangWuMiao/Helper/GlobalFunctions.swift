@@ -15,7 +15,7 @@ func printX<T>(_ message: T,
               method: String = #function,
               line: Int = #line) {
     #if DEBUGLOG
-        print("===== \((file as NSString).lastPathComponent)[\(line)], \(method): \(message)")
+        print("***** \((file as NSString).lastPathComponent)[\(line)], \(method): \(message)")
     #endif
 }
 
