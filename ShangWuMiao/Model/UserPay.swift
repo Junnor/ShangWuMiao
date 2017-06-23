@@ -57,7 +57,6 @@ extension UserPay {
                             response in
                             switch response.result {
                             case .success(let jsonResource):
-                                print("pay json: \(jsonResource)")
                                 let json = JSON(jsonResource)
                                 let info = json["info"].stringValue
                                 if json["status"].intValue == 1 {
@@ -100,7 +99,7 @@ extension UserPay {
                                 completionHandler(false, info)
                             case .failure(let error):
                                 completionHandler(false, "支付错误")
-                                print("pay error: \(error)")
+                                printX("error: \(error)")
                             }
                             
         }
@@ -124,13 +123,12 @@ extension UserPay {
                             switch response.result {
                             case .success(let jsonResource):
                                 let json = JSON(jsonResource)
-//                                print("pay success json: \(json)")
                                 let info = json["info"].stringValue
                                 let status = json["status"].intValue
                                 completionHandler(status == 1, info)
                             case .failure(let error):
                                 completionHandler(false, "回调错误")
-                                print("pay callback error: \(error)")
+                                printX("error: \(error)")
                             }
         }
     }

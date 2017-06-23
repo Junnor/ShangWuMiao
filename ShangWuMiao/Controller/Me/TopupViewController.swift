@@ -164,7 +164,7 @@ extension TopupViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {   // alipay
             UserPay.pay(withType: Pay.alipay,
-                        orderPrice: Float(1),
+                        orderPrice: Float(currentMcoinsCount),
                         completionHandler: { [weak self] (success, info) in
                             if success {
                                 self?.alipayAction()
@@ -310,7 +310,7 @@ fileprivate extension TopupViewController {
                                             callback: { response in    // 没有支付宝客户端的回调
                                                 let json = JSON(response as Any)
                                                 let status = json["resultStatus"].intValue
-                                                print(".... source application json: \(json)")
+//                                                print(".... source application json: \(json)")
                                                 UserPay.shared.paySuccess = (status == 9000) ? true : false
                                                 
                                                 // tell database

@@ -14,7 +14,7 @@ class TabBarViewController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         locationConfigure()
         
         // 载入用户信息

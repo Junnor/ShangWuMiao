@@ -8,6 +8,16 @@
 
 import Foundation
 
+// MARK: - Log debug
+
+func printX<T>(_ message: T,
+              file: String = #file,
+              method: String = #function,
+              line: Int = #line) {
+    #if DEBUGLOG
+        print("===== \((file as NSString).lastPathComponent)[\(line)], \(method): \(message)")
+    #endif
+}
 
 // MARK: - Countly 支付成功统计
 

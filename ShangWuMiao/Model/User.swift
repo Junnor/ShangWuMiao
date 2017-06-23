@@ -128,7 +128,6 @@ extension User {
                             case .success(let jsonResponse):
                                 let json = JSON(jsonResponse)
                                 
-                                //                                print("login json = \(json)")
                                 let info = json["info"].stringValue
                                 let status = json["status"].intValue
                                 if status == 1 {
@@ -138,7 +137,7 @@ extension User {
                                 completionHandler(status == 1, info)
                             case .failure(let error):
                                 completionHandler(false, "登陆错误")
-                                print("login error = \(error)")
+                                printX("error: \(error)")
                             }
                             
         }
@@ -170,14 +169,13 @@ extension User {
                                  >0: 退出用户
                                  */
                                 let json = JSON(jsonResponse)
-//                                print("user check json: \(json)")
 
                                 let status = json["status"].intValue
                                 let info = json["info"].stringValue
                                 completionHandler(status == 0, info)
                             case .failure(let error):
                                 completionHandler(false, "请求数据失败")
-                                print("user check error: \(error)")
+                                printX("error: \(error)")
                             }
         }
     }
@@ -204,7 +202,7 @@ extension User {
                                 let status = json["status"].intValue
                                 callBack(status == 1, info)
                             case .failure(let error):
-                                print("buy tickts error: \(error)")
+                                printX("error: \(error)")
                                 callBack(false, "购票错误")
                             }
         }
@@ -223,7 +221,6 @@ extension User {
                             switch response.result {
                             case .success(let jsonResponse):
                                 let json = JSON(jsonResponse)
-//                                print("..setting json = \(json)")
                                 
                                 var phonesInfo = [(title: String, area_code: String, length: Int)]()
                                 
@@ -241,7 +238,7 @@ extension User {
                                 User.shared.phonesInfo = phonesInfo
                                 
                             case .failure(let error):
-                                print("request setting info error: \(error)")
+                                printX("error: \(error)")
                             }
         }
     }
@@ -262,7 +259,6 @@ extension User {
                             switch response.result {
                             case .success(let jsonResponse):
                                 let json = JSON(jsonResponse)
-//                                print("=== user info json: \(json)")
                                 let info = json["info"].stringValue
                                 let status = json["status"].intValue
                                 
@@ -301,7 +297,7 @@ extension User {
                                 completionHandler(status == 1, info)
                             case .failure(let error):
                                 completionHandler(false, "获取错误")
-                                print("get user info error: \(error)")
+                                printX("error: \(error)")
                             }
         }
     }

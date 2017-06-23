@@ -168,7 +168,6 @@ class BindPhoneViewController: UIViewController, UITextFieldDelegate {
             } else {
                 self.indicatorView.isHidden = false
                 self.indicatorView.startAnimating()
-                print("aselectedPlace rea code \(selectedPlace.areaCode)")
                 User.requestPhoneCode(for: phoneTextField.text!,
                                       codeType: GetCodeType.register,
                                       areaCode: selectedPlace.areaCode) {

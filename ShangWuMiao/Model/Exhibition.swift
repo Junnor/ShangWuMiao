@@ -127,7 +127,6 @@ extension Exhibition {
                             switch response.result {
                             case .success(let jsonResponse):
                                 let json = JSON(jsonResponse)
-//                                print("exhibition detail json: \(json)")
                                 let status = json["result"].intValue
                                 var tickts = [Ticket]()
                                 if status == 1 {
@@ -166,7 +165,6 @@ extension Exhibition {
                             switch response.result {
                             case .success(let jsonResponse):
                                 let json = JSON(jsonResponse)
-//                                print("ticket exhibition list json: \(json)")
                                 
                                 let status = json["result"].intValue
                                 let errorInfo = json["error"].stringValue
@@ -221,7 +219,6 @@ extension Exhibition {
                             switch response.result {
                             case .success(let jsonResponse):
                                 let json = JSON(jsonResponse)
-//                                print("exhibition list json: \(json)")
                                 let status = json["result"].intValue
                                 let errorInfo = json["error"].stringValue
                                 var tmpExhibitions = [Exhibition]()

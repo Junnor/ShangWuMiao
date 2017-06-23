@@ -1721,6 +1721,7 @@
 					"$(PROJECT_DIR)/Share/ShareSDK/Support/PlatformSDK/YiXinSDK",
 					"$(PROJECT_DIR)/Share/Lib",
 				);
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -D DEBUGLOG";
 				PRODUCT_BUNDLE_IDENTIFIER = ShangWuMiao;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/$(PROJECT_NAME)-Bridging-Header.h";
