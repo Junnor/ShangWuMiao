@@ -262,7 +262,7 @@ extension User {
                             switch response.result {
                             case .success(let jsonResponse):
                                 let json = JSON(jsonResponse)
-//                                print("=== user info json: \(json)")
+                                print("=== user info json: \(json)")
                                 let info = json["info"].stringValue
                                 let status = json["status"].intValue
                                 

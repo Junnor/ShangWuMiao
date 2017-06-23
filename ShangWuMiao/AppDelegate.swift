@@ -79,17 +79,73 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     // MARK: - Pay callback
-    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+    
+    // iOS 9 以上
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        print("======== UIApplicationOpenURLOptionsKey")
         if url.host == "safepay" {   // 有支付宝客户端情况
+            print(".... alipay")
             AlipaySDK.defaultService().processOrder(withPaymentResult: url, standbyCallback: { response in
                 let json = JSON(response as Any)
                 let status = json["resultStatus"].intValue
                 
+                
+                print("sourceApplication json = \(json)")
                 UserPay.shared.paySuccess = (status == 9000) ? true : false
                 
                 // tell database
                 if  status == 9000 {
                     NotificationCenter.default.post(name: alipaySuccess, object: nil)
+                    print(".... pay success")
+                    
+                    User.requestUserInfo(completionHandler: { (success, statusInfo) in
+                        if success {
+                            // TODO
+                        } else {
+                            SVProgressHUD.showInfo(withStatus: statusInfo)
+                            print("request user info failure: \(String(describing: statusInfo))")
+                        }
+                    })
+                    
+                    UserPay.payResult(tradeStatus: status, callback: { success, info in
+                        if success {
+                            SVProgressHUD.showSuccess(withStatus: info)
+                        } else {
+                            SVProgressHUD.showError(withStatus: info!)
+                        }
+                    })
+                }
+                
+            })
+            
+            AlipaySDK.defaultService().processAuth_V2Result(url, standbyCallback: { response in
+                print("processAuth_V2Result response: \(String(describing: response))")
+            })
+        } else if url.scheme == nyatoWechatAppId {
+            return WXApi.handleOpen(url, delegate: self)
+        }
+        
+        return true
+    }
+    
+    
+    // 到时候会去掉  iOS 9 以下
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        print("======= sourceApplication url")
+        if url.host == "safepay" {   // 有支付宝客户端情况
+            print(".... alipay")
+            AlipaySDK.defaultService().processOrder(withPaymentResult: url, standbyCallback: { response in
+                let json = JSON(response as Any)
+                let status = json["resultStatus"].intValue
+                
+            
+                print("sourceApplication json = \(json)")
+                UserPay.shared.paySuccess = (status == 9000) ? true : false
+                
+                // tell database
+                if  status == 9000 {
+                    NotificationCenter.default.post(name: alipaySuccess, object: nil)
+                    print(".... pay success")
 
                     User.requestUserInfo(completionHandler: { (success, statusInfo) in
                         if success {

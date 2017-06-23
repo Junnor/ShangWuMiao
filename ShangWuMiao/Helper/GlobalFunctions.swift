@@ -12,6 +12,7 @@ import Foundation
 // MARK: - Countly 支付成功统计
 
 func countlyWithMoney(_ money: Double) {
+    print("=== call shuangwupay event money: \(money)")
     Countly.sharedInstance().recordEvent(countlyPayEventKey,
                                          segmentation: ["uid": User.shared.uid,
                                                         "app_version": shangHuAppVersion,
