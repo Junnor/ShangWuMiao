@@ -22,7 +22,7 @@ func printX<T>(_ message: T,
 // MARK: - Countly 支付成功统计
 
 func countlyWithMoney(_ money: Double) {
-    print("=== call shuangwupay event money: \(money)")
+    printX("call shuangwupay event money: \(money)")
     Countly.sharedInstance().recordEvent(countlyPayEventKey,
                                          segmentation: ["uid": User.shared.uid,
                                                         "app_version": shangHuAppVersion,
@@ -41,7 +41,7 @@ func nonSignInUrl(forUrlType urlStringType: RequestUrlStringType, actType: ActTy
     let urlString = kHeaderUrl + urlStringType.rawValue + "&token=" + token!
     
     guard let url = URL(string: urlString) else {
-        print("=====Warning: non sign in, invalid url with urlStringType: \(urlStringType), actType: \(actType)")
+        printX("Warning: non sign in, invalid url with urlStringType: \(urlStringType), actType: \(actType)")
         return nil
     }
     
@@ -79,7 +79,7 @@ func signedInUrl(forUrlType urlStringType: RequestUrlStringType, actType: ActTyp
     let urlString = kHeaderUrl + urlStringType.rawValue + stringPara
     
     guard let url = URL(string: urlString) else {
-        print("=====Warning: signed in, invalid url with urlStringType: \(urlStringType), actType: \(actType)")
+        printX("Warning: signed in, invalid url with urlStringType: \(urlStringType), actType: \(actType)")
         return nil
     }
     

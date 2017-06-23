@@ -170,7 +170,7 @@ extension TopupViewController: UITableViewDataSource, UITableViewDelegate {
                                 self?.alipayAction()
                             } else {
                                 SVProgressHUD.showError(withStatus: info!)
-                                print("alipay pay failure: \(info!)")
+                                printX("alipay pay failure: \(info!)")
                             }
             })
         } else if indexPath.row == 1 { // Wechat pay
@@ -179,7 +179,7 @@ extension TopupViewController: UITableViewDataSource, UITableViewDelegate {
                         orderPrice: Float(currentMcoinsCount),
                         completionHandler: { [weak self] (success, info) in
                             if success {
-                                print("wechat pay.....")
+                                printX("wechat pay.....")
                                 self?.wechatAction()
                             } else {
                                 SVProgressHUD.showError(withStatus: info!)
@@ -204,20 +204,20 @@ extension TopupViewController: UPAPayPluginDelegate {
         if let status = payResult?.paymentResultStatus {
             switch status {
             case .success:
-                print("apple pay success")
+                printX("apple pay success")
                 countlyTopup()   // Statistics
                 let otherInfo = payResult.otherInfo ?? ""
                 let successInfo = "支付成功\n\(otherInfo)"
                 showAlert(successInfo)
             case .failure:
-                print("apple pay failure")
+                printX("apple pay failure")
                 let errorInfo = payResult.errorDescription ?? "支付失败"
                 showAlert(errorInfo)
             case .cancel:
-                print("apple pay cancel")
+                printX("apple pay cancel")
                 showAlert("支付取消")
             case .unknownCancel:
-                print("apple pay unknownCancel")
+                printX("apple pay unknownCancel")
                 let errorInfo = ""
                 // TODO: get [errorInfo] from server, may success or failure
                 showAlert(errorInfo)
@@ -286,7 +286,7 @@ extension TopupViewController: UPAPayPluginDelegate {
                                     let str = String(describing: data)
                                     callbacK(str)
                                 case .failure(let error):
-                                    print("Fetch TN error: \(error)")
+                                    printX("Fetch TN error: \(error)")
                                 }
                                 
             }
@@ -310,7 +310,7 @@ fileprivate extension TopupViewController {
                                             callback: { response in    // 没有支付宝客户端的回调
                                                 let json = JSON(response as Any)
                                                 let status = json["resultStatus"].intValue
-//                                                print(".... source application json: \(json)")
+
                                                 UserPay.shared.paySuccess = (status == 9000) ? true : false
                                                 
                                                 // tell database
@@ -323,7 +323,7 @@ fileprivate extension TopupViewController {
                                                             // TODO
                                                         } else {
                                                             SVProgressHUD.showInfo(withStatus: statusInfo)
-                                                            print("request user info failure: \(String(describing: statusInfo))")
+                                                            printX("request user info failure: \(String(describing: statusInfo))")
                                                         }
                                                     })
                                                     

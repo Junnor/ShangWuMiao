@@ -70,7 +70,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBAction func login(_ sender: UIButton) {
         tapAction()
         
-        //        print("###login")
         guard let uname = unameTextfield.text,
             let password = passwordTextfield.text else {
                 SVProgressHUD.showError(withStatus: "账号或密码不能为空")

@@ -66,7 +66,7 @@ class TopupRecordViewController: UIViewController, UITableViewDataSource, UITabl
                     self!.tableView.reloadData()
                 }
             } else {
-                print("load more topup list failure: \(info ?? "no value")")
+                printX("load more topup list failure: \(info ?? "no value")")
             }
         })
     }

@@ -150,7 +150,7 @@ class SearchViewController: UIViewController, UICollectionViewDataSource, UIColl
                     self!.collectionView.reloadData()
                 }
             } else {
-                print("load more exhibition failure: \(info)")
+                printX("load more exhibition failure: \(info)")
             }
         })
     }

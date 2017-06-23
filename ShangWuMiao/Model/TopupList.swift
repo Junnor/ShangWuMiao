@@ -54,8 +54,6 @@ extension TopupList {
                             response in
                             switch response.result {
                             case .success(let jsonSource):
-//                                print("list json: \(jsonSource)")
-                                
                                 let json = JSON(jsonSource)
                                 guard let result = json["result"].int,
                                     result == 1 else {
@@ -85,7 +83,7 @@ extension TopupList {
                                 completionHandler(true, nil, tmpLists)
                             case .failure(let error):
                                 completionHandler(false, "获取错误", [])
-                                print("request top up list error: \(error)")
+                                printX("error: \(error)")
                             }
         }
     }

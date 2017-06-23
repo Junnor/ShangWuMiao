@@ -218,7 +218,7 @@ class ExhibitionDetailViewController: UIViewController {
                 // set initial value
                 self?.vcpriceLabel?.text = self?.tickts[0].proxy_price
             } else {
-                print("request exhibition ticket failure: \(String(describing: info))")
+                printX("request exhibition ticket failure: \(String(describing: info))")
             }
         }
     }
@@ -264,7 +264,7 @@ class ExhibitionDetailViewController: UIViewController {
                                                         // TODO
                                                     } else {
                                                         SVProgressHUD.showInfo(withStatus: statusInfo)
-                                                        print("request user info failure: \(String(describing: statusInfo))")
+                                                        printX("request user info failure: \(String(describing: statusInfo))")
                                                     }
                                                 })
                                                 

@@ -50,7 +50,7 @@ extension LoginViewController {
                     })
                 }
             case .fail:
-                print("getUserInfo fail: \(String(describing: error))")
+                printX("getUserInfo fail: \(String(describing: error))")
             default: break
             }
         }

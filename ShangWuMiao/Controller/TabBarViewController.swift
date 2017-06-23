@@ -24,7 +24,7 @@ class TabBarViewController: UITabBarController {
                 UIApplication.shared.keyWindow?.rootViewController = self
             } else {
                 SVProgressHUD.showInfo(withStatus: statusInfo)
-                print("request user info failure: \(String(describing: statusInfo))")
+                printX("request user info failure: \(String(describing: statusInfo))")
             }
         })
         
@@ -154,16 +154,16 @@ extension TabBarViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
         case .denied, .notDetermined:
-            print("=== Can not use location yet")
+            printX("can not use location yet")
         default:
-            print("=== Can use location now")
+            printX("can use location now")
             manager.startUpdatingLocation()
         }
         
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("===location fail with error: \(error)")
+        printX("error: \(error)")
     }
     
     // MARK: - Helper

@@ -99,7 +99,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             // TODO
                         } else {
                             SVProgressHUD.showInfo(withStatus: statusInfo)
-                            print("request user info failure: \(String(describing: statusInfo))")
+                            printX("request user info failure: \(String(describing: statusInfo))")
                         }
                     })
                     
@@ -115,7 +115,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             })
             
             AlipaySDK.defaultService().processAuth_V2Result(url, standbyCallback: { response in
-                print("processAuth_V2Result response: \(String(describing: response))")
+                printX("processAuth_V2Result response: \(String(describing: response))")
             })
         } else if url.scheme == nyatoWechatAppId {
             return WXApi.handleOpen(url, delegate: self)
@@ -144,7 +144,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             // TODO
                         } else {
                             SVProgressHUD.showInfo(withStatus: statusInfo)
-                            print("request user info failure: \(String(describing: statusInfo))")
+                            printX("request user info failure: \(String(describing: statusInfo))")
                         }
                     })
                     
@@ -160,7 +160,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             })
             
             AlipaySDK.defaultService().processAuth_V2Result(url, standbyCallback: { response in
-                print("processAuth_V2Result response: \(String(describing: response))")
+                printX("processAuth_V2Result response: \(String(describing: response))")
             })
         } else if url.scheme == nyatoWechatAppId {
             return WXApi.handleOpen(url, delegate: self)
@@ -331,7 +331,7 @@ extension AppDelegate: JPUSHRegisterDelegate {
                     // Fallback on earlier versions
                 }
             } else {
-                print("set jpush error, resCode: \(resCode)")
+                printX("set jpush error, resCode: \(resCode)")
             }
         }
     }
@@ -361,7 +361,7 @@ extension AppDelegate: JPUSHRegisterDelegate {
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-        print("didFailToRegisterForRemoteNotificationsWithError: \(error)")
+        printX("didFailToRegisterForRemoteNotificationsWithError: \(error)")
     }
     
     

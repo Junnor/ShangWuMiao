@@ -164,10 +164,10 @@ extension ExhibitionDetailViewController: ShareViewControllerDelegate {
                             case .success:
                                 SVProgressHUD.showSuccess(withStatus: "分享成功")
                             case .fail:
-                                print("share error: \(String(describing: error))")
+                                printX("share error: \(String(describing: error))")
                                 SVProgressHUD.showError(withStatus: "分享失败")
                             case .cancel:
-                                print("=======share cancel")
+                                printX("share cancel")
                             default: break
                             }
             })
