@@ -84,19 +84,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         print("======== UIApplicationOpenURLOptionsKey")
         if url.host == "safepay" {   // 有支付宝客户端情况
-            print(".... alipay")
+//            print(".... alipay")
             AlipaySDK.defaultService().processOrder(withPaymentResult: url, standbyCallback: { response in
                 let json = JSON(response as Any)
                 let status = json["resultStatus"].intValue
                 
                 
-                print("sourceApplication json = \(json)")
+//                print("sourceApplication json = \(json)")
                 UserPay.shared.paySuccess = (status == 9000) ? true : false
                 
                 // tell database
                 if  status == 9000 {
                     NotificationCenter.default.post(name: alipaySuccess, object: nil)
-                    print(".... pay success")
+//                    print(".... pay success")
                     
                     User.requestUserInfo(completionHandler: { (success, statusInfo) in
                         if success {
@@ -133,19 +133,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
         print("======= sourceApplication url")
         if url.host == "safepay" {   // 有支付宝客户端情况
-            print(".... alipay")
+//            print(".... alipay")
             AlipaySDK.defaultService().processOrder(withPaymentResult: url, standbyCallback: { response in
                 let json = JSON(response as Any)
                 let status = json["resultStatus"].intValue
                 
             
-                print("sourceApplication json = \(json)")
+//                print("sourceApplication json = \(json)")
                 UserPay.shared.paySuccess = (status == 9000) ? true : false
                 
                 // tell database
                 if  status == 9000 {
                     NotificationCenter.default.post(name: alipaySuccess, object: nil)
-                    print(".... pay success")
+//                    print(".... pay success")
 
                     User.requestUserInfo(completionHandler: { (success, statusInfo) in
                         if success {
