@@ -1151,11 +1151,11 @@
 		8B7A48D41EC0103400276058 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				67DA3C031F00E7EF00E140EE /* NewExhibitionViewController.swift */,
 				8BDB068F1EC01DBC00F0A660 /* TabBarViewController.swift */,
 				673070BA1EE5532200CEE9DA /* WalletViewController.swift */,
 				67DA3BFF1F00E6FF00E140EE /* PageScrollViewController.swift */,
 				67DA3C011F00E73200E140EE /* PageContentViewController.swift */,
-				67DA3C031F00E7EF00E140EE /* NewExhibitionViewController.swift */,
 				67FC3BB81EF90ADA00C45CE3 /* WebViewController.swift */,
 				67DB541E1EEFCDA9004243EA /* Login */,
 				67DB542C1EEFCDBA004243EA /* Me */,

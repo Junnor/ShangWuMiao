@@ -6,6 +6,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -346,7 +347,69 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bf4-yh-D9J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2071" y="1492"/>
+            <point key="canvasLocation" x="-2519" y="1890"/>
+        </scene>
+        <!--New Exhibition View Controller-->
+        <scene sceneID="Zxv-dS-5cv">
+            <objects>
+                <viewController id="61z-zp-j7y" customClass="NewExhibitionViewController" customModule="ShangWuMiao" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hV1-0o-zaC"/>
+                        <viewControllerLayoutGuide type="bottom" id="yv1-Sf-F4i"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lZj-QZ-3Dc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Uj7-FU-FuD">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="PJd-eE-2TJ" appends="YES" id="i3F-j4-tcS"/>
+                                </connections>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f9w-B7-bEN" customClass="CornerButton" customModule="ShangWuMiao" customModuleProvider="target">
+                                <rect key="frame" x="289" y="577" width="70" height="70"/>
+                                <color key="backgroundColor" red="0.98823529409999999" green="0.82745098039999998" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="1JI-oh-2oj"/>
+                                    <constraint firstAttribute="width" constant="70" id="SDR-iF-r6W"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="35"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="skip:" destination="61z-zp-j7y" eventType="touchUpInside" id="hTm-ZU-u3f"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Uj7-FU-FuD" secondAttribute="trailing" id="7gk-p2-kGC"/>
+                            <constraint firstItem="f9w-B7-bEN" firstAttribute="trailing" secondItem="lZj-QZ-3Dc" secondAttribute="trailingMargin" id="Bkk-2f-ymA"/>
+                            <constraint firstItem="Uj7-FU-FuD" firstAttribute="leading" secondItem="lZj-QZ-3Dc" secondAttribute="leading" id="LiU-Ju-en9"/>
+                            <constraint firstItem="yv1-Sf-F4i" firstAttribute="top" secondItem="f9w-B7-bEN" secondAttribute="bottom" constant="20" id="T5p-Pe-sO9"/>
+                            <constraint firstItem="Uj7-FU-FuD" firstAttribute="top" secondItem="lZj-QZ-3Dc" secondAttribute="top" id="bkh-wq-xoq"/>
+                            <constraint firstItem="yv1-Sf-F4i" firstAttribute="top" secondItem="Uj7-FU-FuD" secondAttribute="bottom" id="lkA-XD-Nl3"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bgImageView" destination="Uj7-FU-FuD" id="5Jf-Pv-za1"/>
+                        <outlet property="timeRemindButton" destination="f9w-B7-bEN" id="Uju-NM-kWi"/>
+                        <segue destination="JzJ-jK-I5g" kind="presentation" identifier="toTabBar" animates="NO" id="Cee-0I-xMA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uQj-J5-gbG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="PJd-eE-2TJ">
+                    <connections>
+                        <action selector="toExhibitionViewController:" destination="61z-zp-j7y" id="7AE-rr-0tS"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="-1567.2" y="936.88155922038993"/>
         </scene>
         <!--Retrieve Password View Controller-->
         <scene sceneID="OTL-et-76A">
@@ -792,6 +855,6 @@
         <image name="ico-wechat" width="66" height="66"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="abH-Lw-0tv"/>
+        <segue reference="Cee-0I-xMA"/>
     </inferredMetricsTieBreakers>
 </document>

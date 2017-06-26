@@ -9,12 +9,12 @@
 import UIKit
 import CoreLocation
 import SVProgressHUD
-import Kingfisher
 
 class TabBarViewController: UITabBarController {
     
-    var newExhibitionView: NewExhibition!
-    
+    var toNewestExhibition: Bool?
+    var newestExhibition: Exhibition?
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,87 +34,13 @@ class TabBarViewController: UITabBarController {
         // 检测设置信息（获取不同地区手机号的一些信息）
         User.requestSettingInfo()
         
-        // New exhibition view
-        configureNewExhibitionView()
-    }
-    
-    // MARK: - 本地最新一个漫展相关
-    private func configureNewExhibitionView() {
-        newExhibitionView = Bundle.main.loadNibNamed("NewExhibition", owner: nil, options: [:])?.first as! NewExhibition
-        newExhibitionView.frame = self.view.frame
-        newExhibitionView.backgroundColor = UIColor.background
-        let tap = UITapGestureRecognizer(target: self, action: #selector(toNewExhibition))
-        newExhibitionView.addGestureRecognizer(tap)
-
-        newExhibitionView.timeRemindButton.addTarget(self, action: #selector(skip), for: .touchUpInside)
-
-        Exhibition.newLocalExhibition { (success, exhibition) in
-            if success {
-                self.newExhibition = exhibition
-                self.dataWithNewExhibitionView()
-            } else {
-                self.newExhibitionView.removeFromSuperview()
+        // Need to newest exhibition view controller 
+        if let toNewestVC = toNewestExhibition {
+            self.selectedIndex = 0
+            if let exhibitionVC = UIStoryboard.exhibition().instantiateViewController(withIdentifier: "ExhibitionDetailViewController") as? ExhibitionDetailViewController {
+                exhibitionVC.exhibition = newestExhibition
+                (selectedViewController as? UINavigationController)?.pushViewController(exhibitionVC, animated: true)
             }
-        }
-    }
-    
-    private var timer: Timer!
-    private var seconds = 7
-    
-    private func dataWithNewExhibitionView() {
-        
-        if let url = URL(string: kImageHeaderUrl + newExhibition.logo!) {
-            let resourcce = ImageResource(downloadURL: url, cacheKey: url.absoluteString)
-            newExhibitionView.bgImageView.kf.setImage(with: resourcce,
-                                    placeholder: nil,
-                                    options: [.transition(.fade(1))],
-                                    progressBlock: nil,
-                                    completionHandler: nil)
-        }
-        
-        self.view.addSubview(self.newExhibitionView)
-        
-        timer = Timer.scheduledTimer(timeInterval: 1.0,
-                                     target: self,
-                                     selector: #selector(updateUI),
-                                     userInfo: nil,
-                                     repeats: true)
-        timer?.fire()
-    }
-    
-    @objc private func skip() {
-        timer?.invalidate()
-        newExhibitionView?.removeFromSuperview()
-    }
-    
-    @objc private func updateUI() {
-        newExhibitionView.timeRemindButton.setTitle("跳过 \(seconds) s", for: .normal)
-
-        seconds -= 1
-        if seconds == -1 {
-            timer?.invalidate()
-            newExhibitionView.removeFromSuperview()
-        }
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        
-        seconds = 7
-        timer?.invalidate()
-        newExhibitionView.timeRemindButton?.setTitle("", for: .normal)
-    }
-    
-    private var newExhibition: Exhibition!
-    @objc private func toNewExhibition() {
-        // TODO: segue action
-        if let selectedController = self.selectedViewController as? UINavigationController,
-            let exhibitionDetailVC = UIStoryboard.exhibition().instantiateViewController(withIdentifier: "ExhibitionDetailViewController") as? ExhibitionDetailViewController {
-            exhibitionDetailVC.exhibition = newExhibition
-            selectedController.pushViewController(exhibitionDetailVC, animated: true)
-        } else {
-            timer?.invalidate()
-            newExhibitionView.removeFromSuperview()
         }
     }
     

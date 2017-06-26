@@ -270,7 +270,6 @@ extension Exhibition {
                             switch response.result {
                             case .success(let jsonResponse):
                                 let json = JSON(jsonResponse)
-                                printX("json: \(json)")
 
                                 let status = json["status"].intValue
                                 var exhibition = Exhibition()
