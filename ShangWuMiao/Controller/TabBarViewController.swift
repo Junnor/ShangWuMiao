@@ -36,8 +36,9 @@ class TabBarViewController: UITabBarController {
     private var manager: CLLocationManager!
     
     fileprivate var allArea: NSMutableOrderedSet = []
-    fileprivate var provinceNames = [String]()
-    fileprivate var provinceIds = [Int]()
+//    fileprivate var provinceNames = [String]()
+    fileprivate var provinces = [(id: Int, name: String)]()
+//    fileprivate var provinceIds = [Int]()
     
     fileprivate var cityName = ""
     fileprivate var cityID = 0
@@ -64,8 +65,11 @@ class TabBarViewController: UITabBarController {
             let name = dic["title"] as! String
             let id = dic["province_id"] as! Int
             
-            provinceNames.append(name)
-            provinceIds.append(id)
+//            provinceNames.append(name)
+//            provinceIds.append(id)
+            
+            let province = (id: id, name: name)
+            provinces.append(province)
         }
     }
     
@@ -94,19 +98,6 @@ extension TabBarViewController: CLLocationManagerDelegate {
                         self.cityName = "未知"
                     }
 
-                    if let index = self.provinceNames.index(of: administrativeArea) {
-                        let area = self.allArea.object(at: index) as! NSDictionary
-                        let citys = area["citys"] as! NSArray
-                        for city in citys {
-                            let cityDic = city as! Dictionary<String, AnyObject>
-                            let name = cityDic["titile"] as! String
-                            if name == self.cityName {
-                                self.cityID = cityDic["city_id"] as! Int
-                                break
-                            }
-                        }
-                    }
-
                     if country == "中国" || country == "中國" {   // 中国地区
                         // 国内部分地区名称转换
                         if administrativeArea == "新疆维吾尔自治区" {
@@ -130,14 +121,36 @@ extension TabBarViewController: CLLocationManagerDelegate {
                         self.cityName = administrativeArea
                         administrativeArea = "海外"
                     }
-                    
+
+//                    if let index = self.provinceNames.index(of: administrativeArea) {
+//                        let area = self.allArea.object(at: index) as! NSDictionary
+//                        let citys = area["citys"] as! NSArray
+//                        for city in citys {
+//                            let cityDic = city as! Dictionary<String, AnyObject>
+//                            let name = cityDic["titile"] as! String
+//                            if name == self.cityName {
+//                                self.cityID = cityDic["city_id"] as! Int
+//                                break
+//                            }
+//                        }
+//                    }
+
                     self.procinceName = administrativeArea
+                    
+                    
+                    for (id, name) in self.provinces {
+                        if name == self.procinceName {
+                            self.provinceId = id
+                            break
+                        }
+                    }
                     
                     // Not uesd yet
                     UserDefaults.standard.setValue(self.cityName, forKey: "cityName")
                     UserDefaults.standard.setValue(self.cityID, forKey: "cityID")
                     UserDefaults.standard.setValue(self.procinceName, forKey: "procinceName")
-                    
+                    UserDefaults.standard.setValue(self.provinceId, forKey: "procinceId")
+
                     Countly.user().custom = ["province": self.procinceName, "city": self.cityName] as CountlyUserDetailsNullableDictionary
                     Countly.user().save()
                                         

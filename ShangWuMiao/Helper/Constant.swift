@@ -41,6 +41,9 @@ let toLoginViewController = Notification.Name("toLoginViewController")
 // Url string
 enum RequestUrlStringType: String {
     
+    // 最新一个本地漫展
+    case newExhibitionPic = "/index.php?app=ios&mod=Index&act=getNewStartPic"
+    
     // 解除绑定手机
     case unbindTelephone = "/index.php?app=ios&mod=Member&act=phoneUnBind"
 
@@ -126,6 +129,9 @@ enum RequestUrlStringType: String {
 }
 
 enum ActType: String {
+    
+    // 最新一个本地漫展
+    case newExhibitionPic = "getNewStartPic"
     
     // 解除绑定手机
     case unbindTelephone = "phoneUnBind"
