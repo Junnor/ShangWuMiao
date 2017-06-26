@@ -56,7 +56,7 @@ class ExhibitionDetailViewController: UIViewController {
     override var previewActionItems: [UIPreviewActionItem] {
         let preview = UIPreviewAction(title: "查看", style: .default) { [weak self] (previewAction, viewController) in
             if let sourceVC = self?.previewSourceViewController {
-                guard let detailViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ExhibitionDetailViewController") as? ExhibitionDetailViewController else {
+                guard let detailViewController = UIStoryboard(name: UIStoryboard.Exhibition, bundle: nil).instantiateViewController(withIdentifier: "ExhibitionDetailViewController") as? ExhibitionDetailViewController else {
                     return
                 }
                 // DO NOT perform sourceVC.sourePreViewController.show(self, sender: self)

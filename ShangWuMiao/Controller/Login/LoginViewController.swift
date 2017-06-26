@@ -33,6 +33,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // 是否显示引导页
+        UserDefaults.standard.setValue(1, forKey: installOrReinstall)
+        
 //        // 定位相关
 //        _ = LocationViewController()
         

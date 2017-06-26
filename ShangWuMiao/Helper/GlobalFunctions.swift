@@ -115,6 +115,7 @@ func stringOauthParameters() -> String {
 }
 
 // MARK: - 存在本地相关
+let installOrReinstall = "installOrReinstall"
 let isLogin = "isLogin"
 let uid = "uid"
 let oauth_token = "oauth_token"

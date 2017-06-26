@@ -35,6 +35,7 @@ let countlyPayEventKey = "shangwupay"
 let alipaySuccess = Notification.Name("alipaySuccess")
 let wechatPaySuccess = Notification.Name("wechatPaySuccess")
 let applePaySuccess = Notification.Name("applePaySuccess")
+let toLoginViewController = Notification.Name("toLoginViewController")
 
 
 // Url string

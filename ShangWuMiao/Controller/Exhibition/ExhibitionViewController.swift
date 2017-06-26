@@ -150,7 +150,7 @@ extension ExhibitionViewController: UIViewControllerPreviewingDelegate {
             return nil
         }
         
-        guard let detailViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ExhibitionDetailViewController") as? ExhibitionDetailViewController else {
+        guard let detailViewController = UIStoryboard(name: UIStoryboard.Exhibition, bundle: nil).instantiateViewController(withIdentifier: "ExhibitionDetailViewController") as? ExhibitionDetailViewController else {
                 return nil
         }
 

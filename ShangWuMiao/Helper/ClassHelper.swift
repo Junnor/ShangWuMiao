@@ -8,6 +8,34 @@
 
 import UIKit
 
+
+extension UIStoryboard {
+    
+    static var Main: String {
+        return "Main"
+    }
+    
+    static var Me: String {
+        return "Me"
+    }
+    
+    static var Exhibition: String {
+        return "Exhibition"
+    }
+    
+//    enum StoryboardName: String {
+//        case main = "Main"
+//        case me = "Me"
+//        case exhibition = "Exhibition"
+//    }
+ }
+
+extension UIViewController {
+    static var itentifier: String {
+        return self.description()
+    }
+}
+
 extension UIImage {
     static func from(color: UIColor) -> UIImage {
         let rect = CGRect(x: 0, y: 0, width: 1, height: 1)

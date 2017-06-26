@@ -71,6 +71,11 @@
 		673BD5F11EEE8D92005A733A /* ShareCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 673BD5EF1EEE8D92005A733A /* ShareCell.xib */; };
 		677D66651EE65ECD0078F1BC /* Lollipop.pkpass in Resources */ = {isa = PBXBuildFile; fileRef = 677D66641EE65ECD0078F1BC /* Lollipop.pkpass */; };
 		67AF73CA1EF13E740068B349 /* LoginViewController+ThirdParty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AF73C91EF13E740068B349 /* LoginViewController+ThirdParty.swift */; };
+		67DA3BBB1F00B36500E140EE /* Exhibition.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67DA3BBA1F00B36500E140EE /* Exhibition.storyboard */; };
+		67DA3BBD1F00B59500E140EE /* Me.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67DA3BBC1F00B59500E140EE /* Me.storyboard */; };
+		67DA3C001F00E6FF00E140EE /* PageScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DA3BFF1F00E6FF00E140EE /* PageScrollViewController.swift */; };
+		67DA3C021F00E73200E140EE /* PageContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DA3C011F00E73200E140EE /* PageContentViewController.swift */; };
+		67DA3C041F00E7EF00E140EE /* NewExhibitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DA3C031F00E7EF00E140EE /* NewExhibitionViewController.swift */; };
 		67DB54221EEFCDA9004243EA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DB541F1EEFCDA9004243EA /* LoginViewController.swift */; };
 		67DB54231EEFCDA9004243EA /* RegisterNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DB54201EEFCDA9004243EA /* RegisterNameViewController.swift */; };
 		67DB54241EEFCDA9004243EA /* RegisterTelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DB54211EEFCDA9004243EA /* RegisterTelViewController.swift */; };
@@ -287,6 +292,11 @@
 		677D66641EE65ECD0078F1BC /* Lollipop.pkpass */ = {isa = PBXFileReference; lastKnownFileType = file; path = Lollipop.pkpass; sourceTree = "<group>"; };
 		679CC62B1EE6889C0032210A /* ShangWuMiao.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShangWuMiao.entitlements; sourceTree = "<group>"; };
 		67AF73C91EF13E740068B349 /* LoginViewController+ThirdParty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LoginViewController+ThirdParty.swift"; sourceTree = "<group>"; };
+		67DA3BBA1F00B36500E140EE /* Exhibition.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Exhibition.storyboard; sourceTree = "<group>"; };
+		67DA3BBC1F00B59500E140EE /* Me.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Me.storyboard; sourceTree = "<group>"; };
+		67DA3BFF1F00E6FF00E140EE /* PageScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageScrollViewController.swift; sourceTree = "<group>"; };
+		67DA3C011F00E73200E140EE /* PageContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageContentViewController.swift; sourceTree = "<group>"; };
+		67DA3C031F00E7EF00E140EE /* NewExhibitionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewExhibitionViewController.swift; sourceTree = "<group>"; };
 		67DB541F1EEFCDA9004243EA /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		67DB54201EEFCDA9004243EA /* RegisterNameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterNameViewController.swift; sourceTree = "<group>"; };
 		67DB54211EEFCDA9004243EA /* RegisterTelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterTelViewController.swift; sourceTree = "<group>"; };
@@ -625,6 +635,8 @@
 				8B7A48D51EC0103E00276058 /* Model */,
 				8B0352E71ECEE16200E46DEE /* Helper */,
 				4460C2AC1E9B19F3004166DB /* Main.storyboard */,
+				67DA3BBC1F00B59500E140EE /* Me.storyboard */,
+				67DA3BBA1F00B36500E140EE /* Exhibition.storyboard */,
 				4460C2AF1E9B19F3004166DB /* Assets.xcassets */,
 				4460C2B11E9B19F3004166DB /* LaunchScreen.storyboard */,
 				4460C2A81E9B19F3004166DB /* AppDelegate.swift */,
@@ -1137,6 +1149,9 @@
 			children = (
 				8BDB068F1EC01DBC00F0A660 /* TabBarViewController.swift */,
 				673070BA1EE5532200CEE9DA /* WalletViewController.swift */,
+				67DA3BFF1F00E6FF00E140EE /* PageScrollViewController.swift */,
+				67DA3C011F00E73200E140EE /* PageContentViewController.swift */,
+				67DA3C031F00E7EF00E140EE /* NewExhibitionViewController.swift */,
 				67FC3BB81EF90ADA00C45CE3 /* WebViewController.swift */,
 				67DB541E1EEFCDA9004243EA /* Login */,
 				67DB542C1EEFCDBA004243EA /* Me */,
@@ -1358,6 +1373,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B05263E1ECF00370090F11B /* ExBlurView.xib in Resources */,
+				67DA3BBD1F00B59500E140EE /* Me.storyboard in Resources */,
 				67F8AE111EFA77EA0071C92D /* Countly.podspec in Resources */,
 				4460C2B31E9B19F3004166DB /* LaunchScreen.storyboard in Resources */,
 				673BD5D51EEE358A005A733A /* ShareSDK.bundle in Resources */,
@@ -1368,6 +1384,7 @@
 				677D66651EE65ECD0078F1BC /* Lollipop.pkpass in Resources */,
 				673BD5A91EEE358A005A733A /* ShareSDKConfigFile.bundle in Resources */,
 				8B0352741ECEB95E00E46DEE /* AlipaySDK.bundle in Resources */,
+				67DA3BBB1F00B36500E140EE /* Exhibition.storyboard in Resources */,
 				8BCE2BAA1ECC351700ACA1BB /* ExHeaderCell.xib in Resources */,
 				67F4B1F21EF26FF5003EEB44 /* FindPasswordWithEmail.xib in Resources */,
 				67DB543E1EEFCDEB004243EA /* ShareViewController.xib in Resources */,
@@ -1460,12 +1477,15 @@
 				4460C2A91E9B19F3004166DB /* AppDelegate.swift in Sources */,
 				8B03527C1ECEB95E00E46DEE /* RSADataVerifier.m in Sources */,
 				8B96043A1ED3D98E001AFC0F /* CornerView.swift in Sources */,
+				67DA3C001F00E6FF00E140EE /* PageScrollViewController.swift in Sources */,
 				8BE380111EC2A38A001A6651 /* TopupRecordCell.swift in Sources */,
 				8BE380151EC2A887001A6651 /* BoughtTicketCell.swift in Sources */,
 				67F8AE1C1EFA77EA0071C92D /* CountlyPersistency.m in Sources */,
 				8BE380131EC2A757001A6651 /* TopupCell.swift in Sources */,
+				67DA3C021F00E73200E140EE /* PageContentViewController.swift in Sources */,
 				67DB54231EEFCDA9004243EA /* RegisterNameViewController.swift in Sources */,
 				67F8AE151EFA77EA0071C92D /* CountlyCommon.m in Sources */,
+				67DA3C041F00E7EF00E140EE /* NewExhibitionViewController.swift in Sources */,
 				67DB547E1EEFF08A004243EA /* ExhibitionDetailViewController+Share.swift in Sources */,
 				8BCE2BB51ECC3A5D00ACA1BB /* ExTicketCell.swift in Sources */,
 				67F8AE141EFA77EA0071C92D /* CountlyAPMNetworkLog.m in Sources */,
@@ -1626,7 +1646,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
@@ -1673,7 +1693,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = (
 					"-Objc",

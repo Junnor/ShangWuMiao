@@ -219,7 +219,7 @@ extension MeViewController {
 
             performSegue(withIdentifier: identififer, sender: indexPath)
         } else {
-            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController")
+            let vc = UIStoryboard(name: UIStoryboard.Main, bundle: nil).instantiateViewController(withIdentifier: "LoginViewController")
             
             if let loginvc = vc as? LoginViewController {
                 let navivc = UINavigationController(rootViewController: loginvc)
