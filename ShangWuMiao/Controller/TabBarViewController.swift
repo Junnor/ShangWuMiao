@@ -12,7 +12,6 @@ import SVProgressHUD
 
 class TabBarViewController: UITabBarController {
     
-    var toNewestExhibition: Bool?
     var newestExhibition: Exhibition?
         
     override func viewDidLoad() {
@@ -35,7 +34,7 @@ class TabBarViewController: UITabBarController {
         User.requestSettingInfo()
         
         // Need to newest exhibition view controller 
-        if let toNewestVC = toNewestExhibition {
+        if newestExhibition != nil {
             self.selectedIndex = 0
             if let exhibitionVC = UIStoryboard.exhibition().instantiateViewController(withIdentifier: "ExhibitionDetailViewController") as? ExhibitionDetailViewController {
                 exhibitionVC.exhibition = newestExhibition

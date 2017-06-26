@@ -44,7 +44,6 @@ class NewExhibitionViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "toTabBar") && (passDataToTabBar == true) {
             if let tabbar = segue.destination as? TabBarViewController {
-                tabbar.toNewestExhibition = true
                 tabbar.newestExhibition = newExhibition
             }
         }
