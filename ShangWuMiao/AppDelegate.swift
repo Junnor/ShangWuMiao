@@ -37,6 +37,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Apple push notification service, use the third party [JPush]
         registerJPush(with: launchOptions)
         
+        if #available(iOS 10.0, *) {
+            UNUserNotificationCenter.current().delegate = self
+        } else {
+            // Fallback on earlier versions
+        }
+        
         // Set different window root view controller
         if UserDefaults.standard.value(forKeyPath: isLogin) != nil {
             if let tabvc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarViewController") as? TabBarViewController {
@@ -307,6 +313,20 @@ extension AppDelegate: JPUSHRegisterDelegate {
     fileprivate func registerJPush(with launchOptions: [UIApplicationLaunchOptionsKey: Any]!) {
         let entity = JPUSHRegisterEntity()
         entity.types = Int(JPAuthorizationOptions.alert.rawValue | JPAuthorizationOptions.badge.rawValue | JPAuthorizationOptions.sound.rawValue)
+        
+        if #available(iOS 10.0, *) {
+            let viewAction = UNNotificationAction(identifier: viewActionIdentifier,
+                                                  title: "查看",
+                                                  options: [.foreground])
+            let newCategory = UNNotificationCategory(identifier: newsCategoryIdentifier,
+                                                     actions: [viewAction],
+                                                     intentIdentifiers: [],
+                                                     options: [])
+            UNUserNotificationCenter.current().setNotificationCategories([newCategory])
+            
+            entity.categories = [newCategory]
+        }
+        
         JPUSHService.register(forRemoteNotificationConfig: entity, delegate: self)
         
         JPUSHService.setup(withOption: launchOptions,
@@ -357,8 +377,15 @@ extension AppDelegate: JPUSHRegisterDelegate {
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         JPUSHService.registerDeviceToken(deviceToken)
+//        JPUSHService.setAlias("\(uid)", callbackSelector: nil, object: nil)
+        
+        JPUSHService.setAlias("ooooooo", callbackSelector: #selector(self.tagsAliasCallBack(resCode:tags:alias:)), object: nil)
     }
     
+    func tagsAliasCallBack(resCode: CInt, tags: NSSet, alias: NSString) {
+        printX(resCode)
+    }
+
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         printX("didFailToRegisterForRemoteNotificationsWithError: \(error)")
     }
@@ -498,7 +525,7 @@ extension AppDelegate: JPUSHRegisterDelegate {
     }
     
     // WebViewConroller
-    private func createWebViewController(with url: URL, title: String) -> WebViewController {
+    fileprivate func createWebViewController(with url: URL, title: String) -> WebViewController {
         let webViewController = WebViewController()
         webViewController.automaticallyAdjustsScrollViewInsets = false
         webViewController.view.frame = UIScreen.main.bounds
@@ -534,6 +561,7 @@ extension AppDelegate: JPUSHRegisterDelegate {
         
         completionHandler()
     }
+    
 }
 
 // MARK: - Wechat Api Delegate
@@ -547,6 +575,34 @@ extension AppDelegate: WXApiDelegate {
         default: break
         }
     }
+}
+
+
+// 极光推送目前不知道怎么了，接收不到通知，所以先用原生的处理
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    
+    @available(iOS 10.0, *)
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        printX("original will present")
+        // completion handler
+        let type = Int(JPAuthorizationOptions.alert.rawValue | JPAuthorizationOptions.badge.rawValue | JPAuthorizationOptions.sound.rawValue)
+        completionHandler(UNNotificationPresentationOptions(rawValue: UInt(type)))
+    }
+    
+    @available(iOS 10.0, *)
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        printX("original did receive")
+        let userInfo = response.notification.request.content.userInfo
+        if let urlString = userInfo["link_url"] as? String,
+            let url = URL(string: urlString) {
+            let webViewController = createWebViewController(with: url, title: "查看内容 Center Did")
+            
+            ((window?.rootViewController as? TabBarViewController)?.selectedViewController as? UINavigationController)?.pushViewController(webViewController, animated: true)
+        }
+
+        completionHandler()
+    }
+    
 }
 
 
