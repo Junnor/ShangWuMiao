@@ -104,7 +104,7 @@ extension ExhibitionDetailViewController: ShareViewControllerDelegate {
     // 问题反馈
     private func feedbackAction() {
         let identifier = "FeedbackViewController"
-        let storyboard = UIStoryboard(name: UIStoryboard.Me, bundle: nil)
+        let storyboard = UIStoryboard.me()
         let feedbackVC = storyboard.instantiateViewController(withIdentifier: identifier) as! FeedbackViewController
         self.navigationController?.pushViewController(feedbackVC, animated: true)
     }

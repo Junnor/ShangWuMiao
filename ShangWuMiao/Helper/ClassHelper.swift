@@ -11,23 +11,18 @@ import UIKit
 
 extension UIStoryboard {
     
-    static var Main: String {
-        return "Main"
+    static func main() -> UIStoryboard {
+        return UIStoryboard(name: "Main", bundle: nil)
     }
     
-    static var Me: String {
-        return "Me"
+    static func exhibition() -> UIStoryboard {
+        return UIStoryboard(name: "Exhibition", bundle: nil)
     }
     
-    static var Exhibition: String {
-        return "Exhibition"
+    static func me() -> UIStoryboard {
+        return UIStoryboard(name: "Me", bundle: nil)
     }
-    
-//    enum StoryboardName: String {
-//        case main = "Main"
-//        case me = "Me"
-//        case exhibition = "Exhibition"
-//    }
+
  }
 
 extension UIViewController {

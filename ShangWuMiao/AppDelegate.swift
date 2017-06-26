@@ -47,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // showed page scroll already
         if UserDefaults.standard.value(forKey: installOrReinstall) != nil {
-            let main = UIStoryboard(name: UIStoryboard.Main, bundle: nil)
+            let main = UIStoryboard.main()
             if UserDefaults.standard.value(forKeyPath: isLogin) != nil {  // show tabbar
                 if let tabvc = main.instantiateViewController(withIdentifier: "TabBarViewController") as? TabBarViewController {
                     window?.rootViewController = tabvc
@@ -279,7 +279,7 @@ extension AppDelegate {
     }
     
     private func showTopup() {
-        let storyboard = UIStoryboard(name: UIStoryboard.Me, bundle: nil)
+        let storyboard = UIStoryboard.me()
         
         if let rootViewController = window?.rootViewController as? TabBarViewController {
             rootViewController.selectedIndex = 1
@@ -297,7 +297,7 @@ extension AppDelegate {
     }
     
     private func showFeedback() {
-        let storyboard = UIStoryboard(name: UIStoryboard.Me, bundle: nil)
+        let storyboard = UIStoryboard.me()
         
         if let rootViewController = window?.rootViewController as? TabBarViewController {
             rootViewController.selectedIndex = 1

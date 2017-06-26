@@ -28,6 +28,10 @@ class Exhibition: NSObject {
     // for ticket exhibition
     var stauts: String!
     
+    
+    // for the newest enhibition of local
+    var logo: String!
+    
     override init() {
         // do nothing
         super.init()
@@ -248,5 +252,45 @@ extension Exhibition {
     }
     
     
+    // MARK: - A new local exhibition
+    static func newLocalExhibition(completionHandler: @escaping (_ status: Bool, _ exhibition: Exhibition?) -> ()) {
+        let url = signedInUrl(forUrlType: .newExhibitionPic, actType: .newExhibitionPic)!
+        
+        var provinceId = 0
+        if let value = UserDefaults.standard.value(forKey: "procinceId") as? Int {
+            provinceId = value
+        }
+        
+        let parameters = ["province": provinceId]
+        Alamofire.request(url,
+                          method: .post,
+                          parameters: parameters,
+                          encoding: URLEncoding.default, headers: nil).responseJSON {
+                            response in
+                            switch response.result {
+                            case .success(let jsonResponse):
+                                let json = JSON(jsonResponse)
+                                printX("json: \(json)")
+
+                                let status = json["status"].intValue
+                                var exhibition = Exhibition()
+                                if status == 1 {
+                                    if status == 1 {
+                                        let data = json["data"]
+                                        exhibition = Exhibition.fromJSON(data)
+                                    }
+                                    
+                                    let logo = json["logo"].stringValue
+                                    exhibition.logo = logo
+                                }
+                                completionHandler(status == 1, exhibition)
+                            case .failure(let error):
+                                completionHandler(false, nil)
+                                printX("error: \(error)")
+                            }
+                            
+        }
+        
+    }
 
 }

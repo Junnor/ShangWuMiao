@@ -117,37 +117,6 @@ struct Vendor {
 
 extension User {
     
-    // MARK: - A new local exhibition
-    static func newLocalExhibition(completionHandler: @escaping callBack) {
-        let url = signedInUrl(forUrlType: .newExhibitionPic, actType: .newExhibitionPic)!
-        
-        var provinceId = 0
-        if let value = UserDefaults.standard.value(forKey: "procinceId") as? Int {
-            provinceId = value
-        }
-        
-        let parameters = ["province": provinceId]
-        Alamofire.request(url,
-                          method: .post,
-                          parameters: parameters,
-                          encoding: URLEncoding.default, headers: nil).responseJSON {
-                            response in
-                            switch response.result {
-                            case .success(let jsonResponse):
-                                let json = JSON(jsonResponse)
-                                printX("json: \(json)")
-                                let info = json["info"].stringValue
-                                let status = json["status"].intValue
-                                completionHandler(status == 1, info)
-                            case .failure(let error):
-                                completionHandler(false, "")
-                                printX("error: \(error)")
-                            }
-                            
-        }
-
-    }
-    
     // MARK: - Login
     static func login(parameters: Dictionary<String, String>,
                       completionHandler: @escaping (_ success: Bool, _ info: String) -> ()) {

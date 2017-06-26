@@ -56,7 +56,7 @@ class ExhibitionDetailViewController: UIViewController {
     override var previewActionItems: [UIPreviewActionItem] {
         let preview = UIPreviewAction(title: "查看", style: .default) { [weak self] (previewAction, viewController) in
             if let sourceVC = self?.previewSourceViewController {
-                guard let detailViewController = UIStoryboard(name: UIStoryboard.Exhibition, bundle: nil).instantiateViewController(withIdentifier: "ExhibitionDetailViewController") as? ExhibitionDetailViewController else {
+                guard let detailViewController = UIStoryboard.exhibition().instantiateViewController(withIdentifier: "ExhibitionDetailViewController") as? ExhibitionDetailViewController else {
                     return
                 }
                 // DO NOT perform sourceVC.sourePreViewController.show(self, sender: self)
@@ -75,7 +75,7 @@ class ExhibitionDetailViewController: UIViewController {
     @IBOutlet weak var vcpriceLabel: UILabel!
     
     /**
-     dsdd
+     collection view
      */
     @IBOutlet weak var payViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var collectionView: UICollectionView! {

@@ -76,6 +76,8 @@
 		67DA3C001F00E6FF00E140EE /* PageScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DA3BFF1F00E6FF00E140EE /* PageScrollViewController.swift */; };
 		67DA3C021F00E73200E140EE /* PageContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DA3C011F00E73200E140EE /* PageContentViewController.swift */; };
 		67DA3C041F00E7EF00E140EE /* NewExhibitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DA3C031F00E7EF00E140EE /* NewExhibitionViewController.swift */; };
+		67DA3C091F00FE4400E140EE /* NewExhibition.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67DA3C081F00FE4400E140EE /* NewExhibition.xib */; };
+		67DA3C0B1F01097D00E140EE /* NewExhibition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DA3C0A1F01097D00E140EE /* NewExhibition.swift */; };
 		67DB54221EEFCDA9004243EA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DB541F1EEFCDA9004243EA /* LoginViewController.swift */; };
 		67DB54231EEFCDA9004243EA /* RegisterNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DB54201EEFCDA9004243EA /* RegisterNameViewController.swift */; };
 		67DB54241EEFCDA9004243EA /* RegisterTelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DB54211EEFCDA9004243EA /* RegisterTelViewController.swift */; };
@@ -297,6 +299,8 @@
 		67DA3BFF1F00E6FF00E140EE /* PageScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageScrollViewController.swift; sourceTree = "<group>"; };
 		67DA3C011F00E73200E140EE /* PageContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageContentViewController.swift; sourceTree = "<group>"; };
 		67DA3C031F00E7EF00E140EE /* NewExhibitionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewExhibitionViewController.swift; sourceTree = "<group>"; };
+		67DA3C081F00FE4400E140EE /* NewExhibition.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewExhibition.xib; sourceTree = "<group>"; };
+		67DA3C0A1F01097D00E140EE /* NewExhibition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewExhibition.swift; sourceTree = "<group>"; };
 		67DB541F1EEFCDA9004243EA /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		67DB54201EEFCDA9004243EA /* RegisterNameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterNameViewController.swift; sourceTree = "<group>"; };
 		67DB54211EEFCDA9004243EA /* RegisterTelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterTelViewController.swift; sourceTree = "<group>"; };
@@ -1183,6 +1187,8 @@
 				67FC3BBE1EF9211D00C45CE3 /* BannerView.xib */,
 				67F4B1EF1EF26FB9003EEB44 /* FindPasswordWithTelephone.xib */,
 				67F4B1F11EF26FF5003EEB44 /* FindPasswordWithEmail.xib */,
+				67DA3C081F00FE4400E140EE /* NewExhibition.xib */,
+				67DA3C0A1F01097D00E140EE /* NewExhibition.swift */,
 				673BD5EE1EEE8D92005A733A /* ShareCell.swift */,
 				673BD5EF1EEE8D92005A733A /* ShareCell.xib */,
 				8BDB06AF1EC03C2F00F0A660 /* ComicViewCell.swift */,
@@ -1391,6 +1397,7 @@
 				8BCE2BB61ECC3A5D00ACA1BB /* ExTicketCell.xib in Resources */,
 				67F8AE211EFA77EA0071C92D /* LICENSE in Resources */,
 				4460C2B01E9B19F3004166DB /* Assets.xcassets in Resources */,
+				67DA3C091F00FE4400E140EE /* NewExhibition.xib in Resources */,
 				673BD5D21EEE358A005A733A /* README.txt in Resources */,
 				4460C2AE1E9B19F3004166DB /* Main.storyboard in Resources */,
 				67F4B1F01EF26FB9003EEB44 /* FindPasswordWithTelephone.xib in Resources */,
@@ -1548,6 +1555,7 @@
 				67F8AE1D1EFA77EA0071C92D /* CountlyPushNotifications.m in Sources */,
 				67DB542A1EEFCDB4004243EA /* ExhibitionViewController.swift in Sources */,
 				8BCE2BB11ECC375200ACA1BB /* ExInputHintCell.swift in Sources */,
+				67DA3C0B1F01097D00E140EE /* NewExhibition.swift in Sources */,
 				8B4753021ECE7E6400EDD02A /* UserPay.swift in Sources */,
 				67F4B1AC1EF22BA8003EEB44 /* User+Register.swift in Sources */,
 				67DB54381EEFCDBA004243EA /* SoldTicketViewController.swift in Sources */,
