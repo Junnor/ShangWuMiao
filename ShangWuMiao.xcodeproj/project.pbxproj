@@ -71,6 +71,7 @@
 		673BD5F11EEE8D92005A733A /* ShareCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 673BD5EF1EEE8D92005A733A /* ShareCell.xib */; };
 		6775230B1F01F19E004487C7 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6775230A1F01F19E004487C7 /* ProfileViewController.swift */; };
 		677523101F022F66004487C7 /* User+ProfileEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6775230F1F022F66004487C7 /* User+ProfileEdit.swift */; };
+		677523121F024C53004487C7 /* DistrictViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677523111F024C53004487C7 /* DistrictViewController.swift */; };
 		677D66651EE65ECD0078F1BC /* Lollipop.pkpass in Resources */ = {isa = PBXBuildFile; fileRef = 677D66641EE65ECD0078F1BC /* Lollipop.pkpass */; };
 		67AF73CA1EF13E740068B349 /* LoginViewController+ThirdParty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AF73C91EF13E740068B349 /* LoginViewController+ThirdParty.swift */; };
 		67DA3BBB1F00B36500E140EE /* Exhibition.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67DA3BBA1F00B36500E140EE /* Exhibition.storyboard */; };
@@ -295,6 +296,7 @@
 		673BD5EF1EEE8D92005A733A /* ShareCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareCell.xib; sourceTree = "<group>"; };
 		6775230A1F01F19E004487C7 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		6775230F1F022F66004487C7 /* User+ProfileEdit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+ProfileEdit.swift"; sourceTree = "<group>"; };
+		677523111F024C53004487C7 /* DistrictViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistrictViewController.swift; sourceTree = "<group>"; };
 		677D66641EE65ECD0078F1BC /* Lollipop.pkpass */ = {isa = PBXFileReference; lastKnownFileType = file; path = Lollipop.pkpass; sourceTree = "<group>"; };
 		679CC62B1EE6889C0032210A /* ShangWuMiao.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShangWuMiao.entitlements; sourceTree = "<group>"; };
 		67AF73C91EF13E740068B349 /* LoginViewController+ThirdParty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LoginViewController+ThirdParty.swift"; sourceTree = "<group>"; };
@@ -909,6 +911,7 @@
 				671579CA1EF3D295000EB710 /* MeResetPswViewController.swift */,
 				671579CE1EF3E727000EB710 /* BindPhoneViewController.swift */,
 				6775230A1F01F19E004487C7 /* ProfileViewController.swift */,
+				677523111F024C53004487C7 /* DistrictViewController.swift */,
 			);
 			path = Me;
 			sourceTree = "<group>";
@@ -1506,6 +1509,7 @@
 				67DB54391EEFCDBA004243EA /* TopupRecordViewController.swift in Sources */,
 				67F8AE121EFA77EA0071C92D /* Countly_OpenUDID.m in Sources */,
 				67DB542B1EEFCDB4004243EA /* SearchViewController.swift in Sources */,
+				677523121F024C53004487C7 /* DistrictViewController.swift in Sources */,
 				67F8AE181EFA77EA0071C92D /* CountlyCrashReporter.m in Sources */,
 				8BCE2BA91ECC351700ACA1BB /* ExHeaderCell.swift in Sources */,
 				67FC3BB91EF90ADA00C45CE3 /* WebViewController.swift in Sources */,

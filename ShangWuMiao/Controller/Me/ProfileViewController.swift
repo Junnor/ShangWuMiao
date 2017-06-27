@@ -36,8 +36,9 @@ class ProfileViewController: UIViewController {
                                                         2: User.shared.city]
     
     fileprivate var words = "这个人很懒，什么都没有留下"
-    
-    
+    fileprivate var gender = User.shared.gender == "男" ? "汉子" : "妹子"
+    fileprivate var username = User.shared.uname
+
     private var canSave = false {
         didSet {
             editItem.tintColor = canSave ? UIColor.white : UIColor.clear
@@ -157,6 +158,78 @@ extension ProfileViewController: UITableViewDataSource {
 
 extension ProfileViewController: UITableViewDelegate {
     
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        if indexPath.section == 0 {
+            avatarEdit()
+        } else if indexPath.section == 1 {
+            if indexPath.row == 0 {
+                usernameEdit()
+            } else if indexPath.row == 1 {
+                genderEdit()
+            } else {
+                locationEdit()
+            }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        var height: CGFloat = 44
+        if indexPath.section == 0 {
+            height = 100
+        } else if indexPath.section == 2 {
+            height = 200
+        }
+        
+        return height
+    }
+    
+    // MARK: - Helper
+    private func locationEdit() {
+        // TODO: - location
+        performSegue(withIdentifier: "Change District", sender: nil)
+    }
+    
+    private func usernameEdit() {
+        let alert = UIAlertController(title: "修改个人昵称", message: nil, preferredStyle: .alert)
+        
+        alert.addTextField { (textField) in
+            textField.placeholder = User.shared.uname
+        }
+
+        let ok = UIAlertAction(title: "确定", style: .default) { (action) in
+            if let text = alert.textFields?.first?.text {
+                self.username = text
+            }
+        }
+        let cancel = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+        
+        alert.addAction(ok)
+        alert.addAction(cancel)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    private func genderEdit() {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let male = UIAlertAction(title: "汉子 ", style: .default) { (action) in
+            self.gender = "汉子"
+        }
+        let female = UIAlertAction(title: "妹子", style: .default) { (action) in
+            self.gender = "妹子"
+        }
+        
+        let cancel = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+        alert.addAction(male)
+        alert.addAction(female)
+        alert.addAction(cancel)
+        
+        present(alert, animated: true, completion: nil)
+
+    }
+    
     private func avatarEdit() {
         let alert = UIAlertController(title: "头像修改", message: nil, preferredStyle: .actionSheet)
         let camera = UIAlertAction(title: "拍照 ", style: .default) { (action) in
@@ -175,25 +248,6 @@ extension ProfileViewController: UITableViewDelegate {
         alert.addAction(cancel)
         
         present(alert, animated: true, completion: nil)
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        
-        if indexPath.section == 0 {
-            avatarEdit()
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        var height: CGFloat = 44
-        if indexPath.section == 0 {
-            height = 100
-        } else if indexPath.section == 2 {
-            height = 200
-        }
-        
-        return height
     }
 }
 
