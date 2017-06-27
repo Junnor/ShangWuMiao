@@ -363,7 +363,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="wordsIdentifier" rowHeight="230" id="UPC-Xg-jBF">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="wordsIdentifier" rowHeight="230" id="UPC-Xg-jBF" customClass="WordsCell" customModule="ShangWuMiao" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="216.5" width="375" height="230"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UPC-Xg-jBF" id="72o-Op-Wc6">
@@ -393,6 +393,9 @@
                                                 <constraint firstItem="sdh-fa-Uxb" firstAttribute="top" secondItem="hEs-im-Nik" secondAttribute="bottom" constant="15" id="zmm-0e-eqk"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="wordsTextView" destination="sdh-fa-Uxb" id="wif-fb-i39"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

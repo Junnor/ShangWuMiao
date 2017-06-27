@@ -15,6 +15,10 @@ class ProfileCell: UITableViewCell {
      @IBOutlet weak var avatarLabel: UILabel!
 }
 
+class WordsCell: UITableViewCell {
+    @IBOutlet weak var wordsTextView: UITextView!
+}
+
 class ProfileViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView! {
@@ -31,16 +35,55 @@ class ProfileViewController: UIViewController {
                                                         1: User.shared.gender,
                                                         2: User.shared.city]
     
+    fileprivate var words = "这个人很懒，什么都没有留下"
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "修改资料"
         
-        NotificationCenter.default.addObserver(self.tableView,
-                                               selector: #selector(self.tableView.nyato_keyboardNotification(notification:)),
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapAction))
+        view.addGestureRecognizer(tapGesture)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardNotification(notification:)),
                                                name: NSNotification.Name.UIKeyboardWillChangeFrame,
                                                object: nil)
+    }
+    
+    
+    @objc private func tapAction() {
+        if let cell = tableView.cellForRow(at: IndexPath(item: 0, section: 2)) as? WordsCell {
+            cell.wordsTextView.resignFirstResponder()
+        }
+    }
+    
+    @objc private func keyboardNotification(notification: NSNotification) {
+        if let userInfo = notification.userInfo {
+            var endFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
+            let duration:TimeInterval = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0
+            let animationCurveRawNSN = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber
+            let animationCurveRaw = animationCurveRawNSN?.uintValue ?? UIViewAnimationOptions.curveEaseInOut.rawValue
+            let animationCurve:UIViewAnimationOptions = UIViewAnimationOptions(rawValue: animationCurveRaw)
+            
+            if (endFrame?.origin.y)! >= UIScreen.main.bounds.size.height {
+                let contentInset:UIEdgeInsets = UIEdgeInsets.zero
+                tableView.contentInset = contentInset
+                tableView.contentOffset = .zero
+            } else {
+                endFrame = self.view?.convert(endFrame!, from: nil)
+                var contentInset:UIEdgeInsets = tableView.contentInset
+                contentInset.bottom = endFrame!.size.height
+                tableView.contentInset = contentInset
+                tableView.contentOffset = CGPoint(x: 0, y: endFrame!.size.height)
+            }
+            
+            UIView.animate(withDuration: duration,
+                           delay: TimeInterval(0),
+                           options: animationCurve,
+                           animations: { self.view?.layoutIfNeeded() },
+                           completion: nil)
+        }
     }
 
 }
@@ -81,6 +124,9 @@ extension ProfileViewController: UITableViewDataSource {
                 cell.avatarLabel?.text = "修改头像"
             }
         } else if indexPath.section == 2 {
+            if let cell = cell as? WordsCell {
+                cell.wordsTextView.text = words
+            }
         } else {
             cell.textLabel?.text = titles[indexPath.row]
             cell.detailTextLabel?.text = details[indexPath.row]
