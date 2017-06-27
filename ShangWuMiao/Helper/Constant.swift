@@ -36,11 +36,15 @@ let alipaySuccess = Notification.Name("alipaySuccess")
 let wechatPaySuccess = Notification.Name("wechatPaySuccess")
 let applePaySuccess = Notification.Name("applePaySuccess")
 let toLoginViewController = Notification.Name("toLoginViewController")
+let avatarChanged = Notification.Name("avatarChanged")
 
 
 // Url string
 enum RequestUrlStringType: String {
     
+    // 头像图片上传
+    case avatarUpload = "/api/mobile.php?app=ios&act=ios_avatar"
+
     // 最新一个本地漫展
     case newExhibitionPic = "/index.php?app=ios&mod=Index&act=getNewStartPic"
     
@@ -130,6 +134,9 @@ enum RequestUrlStringType: String {
 
 enum ActType: String {
     
+    // 头像图片上传
+    case avatarUpload = "ios_avatar"
+
     // 最新一个本地漫展
     case newExhibitionPic = "getNewStartPic"
     

@@ -7,9 +7,7 @@
 //
 
 import UIKit
-
-
-
+import SVProgressHUD
 
 class ProfileCell: UITableViewCell {
     
@@ -26,7 +24,6 @@ class ProfileViewController: UIViewController {
         }
     }
     
-    
     fileprivate let titles: Dictionary<Int, String> = [0: "昵称",
                                                        1: "性别",
                                                        2: "城市"]
@@ -38,6 +35,7 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "修改资料"
     }
 
 }
@@ -95,7 +93,10 @@ extension ProfileViewController: UITableViewDelegate {
             // TODO: -
         }
         let photo = UIAlertAction(title: "从手机相册选择", style: .default) { (action) in
-            // TODO: -
+            let imagePickerVC = UIImagePickerController()
+            imagePickerVC.delegate = self
+            imagePickerVC.allowsEditing = true
+            self.present(imagePickerVC, animated: true, completion: nil)
         }
         
         let cancel = UIAlertAction(title: "取消", style: .cancel, handler: nil)
@@ -123,5 +124,33 @@ extension ProfileViewController: UITableViewDelegate {
         }
         
         return height
+    }
+}
+
+
+extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
+            User.avatarUpload(image, completionHandler: { (success, info) in
+                SVProgressHUD.showInfo(withStatus: info)
+                if success {
+                    DispatchQueue.main.async {
+                        let cell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? ProfileCell
+                        cell?.avatarImageView.image = image
+                        User.shared.avatar = image
+                        self.tableView.reloadData()
+                    }
+                }
+            })
+        }
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+        
     }
 }

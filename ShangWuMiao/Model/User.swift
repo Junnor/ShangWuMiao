@@ -45,7 +45,12 @@ final class User {
     var avatarString = String()
     
     // 头像
-    var avatar: UIImage?
+    var avatar: UIImage? {
+        didSet {
+            // post notification
+            NotificationCenter.default.post(name: avatarChanged, object: nil)
+        }
+    }
     
     // 地理坐标
     var coordinateString = ""
@@ -267,7 +272,7 @@ extension User {
                             case .success(let jsonResponse):
                                 let json = JSON(jsonResponse)
                                 
-                                printX("json: \(json)")
+//                                printX("json: \(json)")
                                 
                                 let info = json["info"].stringValue
                                 let status = json["status"].intValue

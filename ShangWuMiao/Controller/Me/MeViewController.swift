@@ -18,7 +18,14 @@ class MeViewController: UITableViewController {
         // 在Group模式下隐藏头部空白区域
         tableView.contentInset = UIEdgeInsets(top: -35, left: 0, bottom: 0, right: 0)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadMcoins), name: nyatoMcoinsChange, object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(reloadMcoins),
+                                               name: nyatoMcoinsChange,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(refreshAvatar),
+                                               name: avatarChanged,
+                                               object: nil)
         
         meVendor = User.shared.vendorType != Vendor.none
         
@@ -35,6 +42,10 @@ class MeViewController: UITableViewController {
     
     deinit {
         NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc private func refreshAvatar() {
+        self.tableView.reloadData()
     }
     
     @objc private func reloadMcoins() {
@@ -138,19 +149,25 @@ extension MeViewController {
                     let width = cell.avatarImageView.frame.width
                     cell.avatarImageView.layer.cornerRadius = width / 2
                     cell.avatarImageView.layer.masksToBounds = true
-                    if let url = URL(string: User.shared.avatarString) {
-                        let resource = ImageResource(downloadURL: url,
-                                                     cacheKey: url.absoluteString)
-//                        cell.avatarImageView?.kf.setImage(with: resource)
-                        cell.avatarImageView.kf.setImage(with: resource,
-                                                         placeholder: nil,
-                                                         options: nil,
-                                                         progressBlock: nil,
-                                                         completionHandler: {
-                                                            (image, _, _, _) in
-                                                            User.shared.avatar = image
-                        })
+                    
+                    if User.shared.avatar != nil {
+                        cell.avatarImageView.image = User.shared.avatar
+                    } else {
+                        if let url = URL(string: User.shared.avatarString) {
+                            let resource = ImageResource(downloadURL: url,
+                                                         cacheKey: url.absoluteString)
+                            //                        cell.avatarImageView?.kf.setImage(with: resource)
+                            cell.avatarImageView.kf.setImage(with: resource,
+                                                             placeholder: nil,
+                                                             options: nil,
+                                                             progressBlock: nil,
+                                                             completionHandler: {
+                                                                (image, _, _, _) in
+                                                                User.shared.avatar = image
+                            })
+                        }
                     }
+
                     
                     cell.avatarImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(editProfile)))
                     cell.avatarImageView.isUserInteractionEnabled = true
