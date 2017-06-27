@@ -2,6 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSCalendarsUsageDescription</key>
+	<string>允许喵特商户使用添加漫展事件到日历</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>开通定位后固定时间内将会向您推送附近的相关漫展活动信息</string>
+	<key>NSCameraUsageDescription</key>
+	<string>允许喵特商户使用摄像头</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>允许喵特商户使用相册</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -56,8 +64,6 @@
 			<string></string>
 		</dict>
 	</array>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>开通定位后固定时间内将会向您推送附近的相关漫展活动信息</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSApplicationQueriesSchemes</key>
@@ -186,8 +192,6 @@
 			</dict>
 		</dict>
 	</dict>
-	<key>NSCalendarsUsageDescription</key>
-	<string>允许喵特商户使用添加漫展事件到日历</string>
 	<key>UIApplicationShortcutItems</key>
 	<array>
 		<dict>

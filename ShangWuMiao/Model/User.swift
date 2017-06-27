@@ -44,9 +44,14 @@ final class User {
     // 头像 url string
     var avatarString = String()
     
+    // 头像
+    var avatar: UIImage?
+    
     // 地理坐标
     var coordinateString = ""
     
+    // 用户位置(可在设置里更改)
+    var city = "未知"
     
     /* Struct Vendor
      0: 不是商户
@@ -262,7 +267,7 @@ extension User {
                             case .success(let jsonResponse):
                                 let json = JSON(jsonResponse)
                                 
-//                                printX("json: \(json)")
+                                printX("json: \(json)")
                                 
                                 let info = json["info"].stringValue
                                 let status = json["status"].intValue
@@ -280,13 +285,22 @@ extension User {
                                     let email = data["email"].stringValue
                                     let mobile = data["mobile"].stringValue
                                     
+                                    let location = data["location"].stringValue
+                                    
                                     user.email = (email == "") ? nil : email
                                     user.telephone = (mobile == "") ? nil : mobile
                                     
                                     user.mcoins = mcoins
                                     user.avatarString = avatarUrlString
                                     user.uname = uname
-                                    user.gender = gender
+                                    
+                                    user.city = location
+                                    
+                                    if gender == "1" {
+                                        user.gender = "男"
+                                    } else {
+                                        user.gender = "女"
+                                    }
                                     
                                     switch isBusiness {
                                     case "0": user.vendorType = Vendor.none
@@ -318,7 +332,7 @@ extension User {
         Countly.user().name = user.uid as CountlyUserDetailsNullableString
         Countly.user().username = user.uname as CountlyUserDetailsNullableString
         Countly.user().email = (user.email ?? "") as CountlyUserDetailsNullableString
-        Countly.user().gender = (user.gender == "1" ? "M" : "F") as CountlyUserDetailsNullableString
+        Countly.user().gender = (user.gender == "男" ? "M" : "F") as CountlyUserDetailsNullableString
         Countly.user().phone = (user.telephone ?? "") as CountlyUserDetailsNullableString
         
         //profile photo

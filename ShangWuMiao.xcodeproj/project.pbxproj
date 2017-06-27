@@ -69,6 +69,7 @@
 		673BD5E01EEE3694005A733A /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 673BD5DF1EEE3694005A733A /* MessageUI.framework */; };
 		673BD5F01EEE8D92005A733A /* ShareCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673BD5EE1EEE8D92005A733A /* ShareCell.swift */; };
 		673BD5F11EEE8D92005A733A /* ShareCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 673BD5EF1EEE8D92005A733A /* ShareCell.xib */; };
+		6775230B1F01F19E004487C7 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6775230A1F01F19E004487C7 /* ProfileViewController.swift */; };
 		677D66651EE65ECD0078F1BC /* Lollipop.pkpass in Resources */ = {isa = PBXBuildFile; fileRef = 677D66641EE65ECD0078F1BC /* Lollipop.pkpass */; };
 		67AF73CA1EF13E740068B349 /* LoginViewController+ThirdParty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AF73C91EF13E740068B349 /* LoginViewController+ThirdParty.swift */; };
 		67DA3BBB1F00B36500E140EE /* Exhibition.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67DA3BBA1F00B36500E140EE /* Exhibition.storyboard */; };
@@ -291,6 +292,7 @@
 		673BD5DF1EEE3694005A733A /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		673BD5EE1EEE8D92005A733A /* ShareCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareCell.swift; sourceTree = "<group>"; };
 		673BD5EF1EEE8D92005A733A /* ShareCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareCell.xib; sourceTree = "<group>"; };
+		6775230A1F01F19E004487C7 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		677D66641EE65ECD0078F1BC /* Lollipop.pkpass */ = {isa = PBXFileReference; lastKnownFileType = file; path = Lollipop.pkpass; sourceTree = "<group>"; };
 		679CC62B1EE6889C0032210A /* ShangWuMiao.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShangWuMiao.entitlements; sourceTree = "<group>"; };
 		67AF73C91EF13E740068B349 /* LoginViewController+ThirdParty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LoginViewController+ThirdParty.swift"; sourceTree = "<group>"; };
@@ -904,6 +906,7 @@
 				671579C81EF3CBCA000EB710 /* SettingViewController.swift */,
 				671579CA1EF3D295000EB710 /* MeResetPswViewController.swift */,
 				671579CE1EF3E727000EB710 /* BindPhoneViewController.swift */,
+				6775230A1F01F19E004487C7 /* ProfileViewController.swift */,
 			);
 			path = Me;
 			sourceTree = "<group>";
@@ -1486,6 +1489,7 @@
 				8B96043A1ED3D98E001AFC0F /* CornerView.swift in Sources */,
 				67DA3C001F00E6FF00E140EE /* PageScrollViewController.swift in Sources */,
 				8BE380111EC2A38A001A6651 /* TopupRecordCell.swift in Sources */,
+				6775230B1F01F19E004487C7 /* ProfileViewController.swift in Sources */,
 				8BE380151EC2A887001A6651 /* BoughtTicketCell.swift in Sources */,
 				67F8AE1C1EFA77EA0071C92D /* CountlyPersistency.m in Sources */,
 				8BE380131EC2A757001A6651 /* TopupCell.swift in Sources */,

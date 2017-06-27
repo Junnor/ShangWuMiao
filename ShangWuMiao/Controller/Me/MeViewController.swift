@@ -141,9 +141,19 @@ extension MeViewController {
                     if let url = URL(string: User.shared.avatarString) {
                         let resource = ImageResource(downloadURL: url,
                                                      cacheKey: url.absoluteString)
-                        
-                        cell.avatarImageView?.kf.setImage(with: resource)
+//                        cell.avatarImageView?.kf.setImage(with: resource)
+                        cell.avatarImageView.kf.setImage(with: resource,
+                                                         placeholder: nil,
+                                                         options: nil,
+                                                         progressBlock: nil,
+                                                         completionHandler: {
+                                                            (image, _, _, _) in
+                                                            User.shared.avatar = image
+                        })
                     }
+                    
+                    cell.avatarImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(editProfile)))
+                    cell.avatarImageView.isUserInteractionEnabled = true
                     
                     cell.usernameLabel?.text = User.shared.uname
                     cell.levelLabel?.text = User.shared.vendorType
@@ -228,6 +238,11 @@ extension MeViewController {
                 })
             }
         }
+    }
+    
+    // MARK: - Helper
+    @objc private func editProfile() {
+        performSegue(withIdentifier: "EditProfile", sender: nil)
     }
     
 }
