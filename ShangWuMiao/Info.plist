@@ -11,7 +11,7 @@
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>允许喵特商户使用相册</string>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>en</string>
+	<string>cn</string>
 	<key>CFBundleDisplayName</key>
 	<string>喵特商户</string>
 	<key>CFBundleExecutable</key>

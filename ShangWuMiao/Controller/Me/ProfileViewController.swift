@@ -12,7 +12,7 @@ import SVProgressHUD
 class ProfileCell: UITableViewCell {
     
     @IBOutlet weak var avatarImageView: UIImageView!
-     @IBOutlet weak var avatarLabel: UILabel!
+    @IBOutlet weak var avatarLabel: UILabel!
 }
 
 class WordsCell: UITableViewCell {
@@ -38,12 +38,28 @@ class ProfileViewController: UIViewController {
     fileprivate var words = "这个人很懒，什么都没有留下"
     
     
+    private var canSave = false {
+        didSet {
+            editItem.tintColor = canSave ? UIColor.white : UIColor.clear
+        }
+    }
+    
+    private var editItem: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "修改资料"
         
+        editItem = UIBarButtonItem(title: "保存",
+                                   style: .done,
+                                   target: self,
+                                   action: #selector(save))
+        editItem.tintColor = canSave ? UIColor.white : UIColor.clear
+        
+        self.navigationItem.rightBarButtonItem = editItem
+        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapAction))
+        tapGesture.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGesture)
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(keyboardNotification(notification:)),
@@ -51,6 +67,8 @@ class ProfileViewController: UIViewController {
                                                object: nil)
     }
     
+    @objc private func save() {
+    }
     
     @objc private func tapAction() {
         if let cell = tableView.cellForRow(at: IndexPath(item: 0, section: 2)) as? WordsCell {
@@ -59,6 +77,7 @@ class ProfileViewController: UIViewController {
     }
     
     @objc private func keyboardNotification(notification: NSNotification) {
+        canSave = true
         if let userInfo = notification.userInfo {
             var endFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
             let duration:TimeInterval = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0
@@ -85,7 +104,7 @@ class ProfileViewController: UIViewController {
                            completion: nil)
         }
     }
-
+    
 }
 
 

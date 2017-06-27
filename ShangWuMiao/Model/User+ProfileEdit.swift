@@ -13,7 +13,12 @@ import SwiftyJSON
 
 extension User {
     
-    // MARK: - Me reset password
+    
+    // MARK: - Profile edit
+    static func submitLatestProfile() {
+    }
+    
+    // MARK: - Avatar upload
     static func avatarUpload(_ image: UIImage,
                                 completionHandler: @escaping (Bool, String) -> ()) {
         

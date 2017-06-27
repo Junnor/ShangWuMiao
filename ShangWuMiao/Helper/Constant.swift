@@ -42,6 +42,9 @@ let avatarChanged = Notification.Name("avatarChanged")
 // Url string
 enum RequestUrlStringType: String {
     
+    // 提交修改个人信息
+    case profileEdit = "/index.php?app=ios&mod=Member&act=modify"
+
     // 头像图片上传
     case avatarUpload = "/api/mobile.php?app=ios&act=ios_avatar"
 
@@ -133,6 +136,9 @@ enum RequestUrlStringType: String {
 }
 
 enum ActType: String {
+    
+    // 提交修改个人信息
+    case profileEdit = "modify"
     
     // 头像图片上传
     case avatarUpload = "ios_avatar"
