@@ -36,6 +36,11 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         
         title = "修改资料"
+        
+        NotificationCenter.default.addObserver(self.tableView,
+                                               selector: #selector(self.tableView.nyato_keyboardNotification(notification:)),
+                                               name: NSNotification.Name.UIKeyboardWillChangeFrame,
+                                               object: nil)
     }
 
 }
