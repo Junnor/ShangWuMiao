@@ -69,6 +69,8 @@ class TabBarViewController: UITabBarController {
         if let file = Bundle.main.path(forResource: "Area", ofType: "plist"),
             let erea = NSMutableArray(contentsOfFile: file) {
             allArea = NSMutableOrderedSet(array: erea as [AnyObject])
+            
+            printX("path: \(file)")
         }
         
         for area in allArea {

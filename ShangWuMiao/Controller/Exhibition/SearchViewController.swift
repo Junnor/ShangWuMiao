@@ -14,7 +14,12 @@ import SVProgressHUD
 class SearchViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     // MARK: - Outlets
-    @IBOutlet var searchBar: UISearchBar!
+    @IBOutlet var searchBar: UISearchBar! {
+        didSet {
+            searchBar.tintColor = UIColor.gray
+        }
+    }
+
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var cancelItem: UIBarButtonItem!
     // MARK: - Private properties
