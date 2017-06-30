@@ -72,6 +72,8 @@
 		6775230B1F01F19E004487C7 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6775230A1F01F19E004487C7 /* ProfileViewController.swift */; };
 		677523101F022F66004487C7 /* User+ProfileEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6775230F1F022F66004487C7 /* User+ProfileEdit.swift */; };
 		677523121F024C53004487C7 /* DistrictViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677523111F024C53004487C7 /* DistrictViewController.swift */; };
+		677A4ED41F05FC3900763B20 /* AreaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677A4ED21F05FC3900763B20 /* AreaCell.swift */; };
+		677A4ED51F05FC3900763B20 /* AreaCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 677A4ED31F05FC3900763B20 /* AreaCell.xib */; };
 		677D66651EE65ECD0078F1BC /* Lollipop.pkpass in Resources */ = {isa = PBXBuildFile; fileRef = 677D66641EE65ECD0078F1BC /* Lollipop.pkpass */; };
 		67AF73CA1EF13E740068B349 /* LoginViewController+ThirdParty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AF73C91EF13E740068B349 /* LoginViewController+ThirdParty.swift */; };
 		67DA3BBB1F00B36500E140EE /* Exhibition.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67DA3BBA1F00B36500E140EE /* Exhibition.storyboard */; };
@@ -297,6 +299,8 @@
 		6775230A1F01F19E004487C7 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		6775230F1F022F66004487C7 /* User+ProfileEdit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+ProfileEdit.swift"; sourceTree = "<group>"; };
 		677523111F024C53004487C7 /* DistrictViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistrictViewController.swift; sourceTree = "<group>"; };
+		677A4ED21F05FC3900763B20 /* AreaCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AreaCell.swift; sourceTree = "<group>"; };
+		677A4ED31F05FC3900763B20 /* AreaCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AreaCell.xib; sourceTree = "<group>"; };
 		677D66641EE65ECD0078F1BC /* Lollipop.pkpass */ = {isa = PBXFileReference; lastKnownFileType = file; path = Lollipop.pkpass; sourceTree = "<group>"; };
 		679CC62B1EE6889C0032210A /* ShangWuMiao.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShangWuMiao.entitlements; sourceTree = "<group>"; };
 		67AF73C91EF13E740068B349 /* LoginViewController+ThirdParty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LoginViewController+ThirdParty.swift"; sourceTree = "<group>"; };
@@ -1206,6 +1210,8 @@
 				8BE380121EC2A757001A6651 /* TopupCell.swift */,
 				8BE380141EC2A887001A6651 /* BoughtTicketCell.swift */,
 				8BE380161EC2A8A3001A6651 /* TicketOrderCell.swift */,
+				677A4ED21F05FC3900763B20 /* AreaCell.swift */,
+				677A4ED31F05FC3900763B20 /* AreaCell.xib */,
 				671579C11EF3C8E5000EB710 /* Me */,
 				8BCE2B991ECC294000ACA1BB /* ExhibitionDetail */,
 			);
@@ -1404,6 +1410,7 @@
 				67F4B1F21EF26FF5003EEB44 /* FindPasswordWithEmail.xib in Resources */,
 				67DB543E1EEFCDEB004243EA /* ShareViewController.xib in Resources */,
 				8BCE2BB61ECC3A5D00ACA1BB /* ExTicketCell.xib in Resources */,
+				677A4ED51F05FC3900763B20 /* AreaCell.xib in Resources */,
 				67F8AE211EFA77EA0071C92D /* LICENSE in Resources */,
 				4460C2B01E9B19F3004166DB /* Assets.xcassets in Resources */,
 				67DA3C091F00FE4400E140EE /* NewExhibition.xib in Resources */,
@@ -1535,6 +1542,7 @@
 				67F8AE1B1EFA77EA0071C92D /* CountlyNotificationService.m in Sources */,
 				8B03527A1ECEB95E00E46DEE /* openssl_wrapper.m in Sources */,
 				67DB54241EEFCDA9004243EA /* RegisterTelViewController.swift in Sources */,
+				677A4ED41F05FC3900763B20 /* AreaCell.swift in Sources */,
 				67AF73CA1EF13E740068B349 /* LoginViewController+ThirdParty.swift in Sources */,
 				8BCE2BB91ECC3F9500ACA1BB /* ExFooterView.swift in Sources */,
 				8B05263C1ECF002A0090F11B /* ExBlurView.swift in Sources */,

@@ -9,22 +9,24 @@
 import UIKit
 
 
-class AreaCell: UITableViewCell {
-    @IBOutlet weak var areaLabel: UILabel!
-}
-
 class DistrictViewController: UIViewController {
 
     @IBOutlet weak var provinceTableView: UITableView! {
         didSet {
             provinceTableView.dataSource = self
             provinceTableView.delegate = self
+            provinceTableView.separatorStyle = .none
+            provinceTableView.register(UINib(nibName: "AreaCell", bundle: nil),
+                                       forCellReuseIdentifier: "AreaCell")
         }
     }
     @IBOutlet weak var cityTableView: UITableView! {
         didSet {
             cityTableView.dataSource = self
             cityTableView.delegate = self
+            cityTableView.separatorStyle = .none
+            cityTableView.register(UINib(nibName: "AreaCell", bundle: nil),
+                                   forCellReuseIdentifier: "AreaCell")
         }
     }
 
@@ -32,12 +34,23 @@ class DistrictViewController: UIViewController {
         didSet {
             districtTableView.dataSource = self
             districtTableView.delegate = self
+            districtTableView.separatorStyle = .none
+            districtTableView.register(UINib(nibName: "AreaCell", bundle: nil),
+                                       forCellReuseIdentifier: "AreaCell")
         }
     }
     
     
-    fileprivate var selectedProvince: (id: Int, name: String)!
-    fileprivate var selectedCity: (id: Int, name: String)!
+    fileprivate var selectedProvince: (id: Int, name: String)! {
+        didSet {
+            cityTableView.reloadData()
+        }
+    }
+    fileprivate var selectedCity: (id: Int, name: String)! {
+        didSet {
+            districtTableView.reloadData()
+        }
+    }
     fileprivate var selectedDistrict: (id: Int, name: String)!
     
     // [(id: 440000, name: 广东省)]
@@ -52,21 +65,19 @@ class DistrictViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        initializerData()
-        
-        
-//        print("provinces: \(provinces)\n\n\n\n")
-//        print("cities: \(cities)\n\n\n")
-//        print("districtes: \(districtes)")
-
-        
-        for data in self.cities {
-            print("data: \(data)\n")
-        }
+        initializerData()        
     }
     
     
     // MARK: - Helper
+    
+    @IBAction func cancel(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func done(_ sender: Any) {
+    }
+    
     private func initializerData() {
         if let file = Bundle.main.path(forResource: "Area", ofType: "plist"),
             let erea = NSMutableArray(contentsOfFile: file) {
@@ -129,13 +140,21 @@ extension DistrictViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell Identifier", for: indexPath)
-        if tableView == provinceTableView {
-            if let cell = cell as? AreaCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "AreaCell", for: indexPath)
+        if let cell = cell as? AreaCell {
+            if tableView == provinceTableView {    // province table view
                 cell.areaLabel.text = provinces[indexPath.row].name
+            } else if tableView == cityTableView {    // city table view
+                if let name = selectedProvince?.name,
+                    let all = cities[name] {
+                    cell.areaLabel.text = all[indexPath.row].name
+                }
+            } else {   // district table view
+                if let name = selectedCity?.name,
+                    let all = districtes[name] {
+                    cell.areaLabel.text = all[indexPath.row].name
+                }
             }
-        } else if tableView == cityTableView {
-        } else {   // district table view
         }
         return cell
     }
@@ -143,4 +162,24 @@ extension DistrictViewController: UITableViewDataSource {
 
 
 extension DistrictViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if tableView == provinceTableView {
+            selectedProvince = provinces[indexPath.row]
+            
+            selectedCity = nil
+            selectedDistrict = nil
+        } else if tableView == cityTableView {
+            let name = selectedProvince!.name
+            let all = cities[name]!
+            selectedCity = all[indexPath.row]
+            
+            selectedDistrict = nil
+        } else {
+            let name = selectedCity!.name
+            let all = districtes[name]!
+            selectedDistrict = all[indexPath.row]
+        }
+    }
 }
